@@ -16,6 +16,7 @@ public class BattleSystem : MonoBehaviour
 
     BattleState state;
     int currentAction;
+    int currentMove;
 
     private void Start()
     {
@@ -28,7 +29,9 @@ public class BattleSystem : MonoBehaviour
         playerHud.setData(playerUnit.Animal);
         enemyHud.setData(enemyUnit.Animal);
 
-        yield return dialogBox.TypeDialog($"A wild {playerUnit.Animal.Base.Name} appeared.");
+        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+
+        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Animal.Base.Name} appeared.");
         yield return new WaitForSeconds(1f);
 
         PlayerAction();
@@ -43,7 +46,7 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerMove()
     {
-        state = BattleState.PlayerAction;
+        state = BattleState.PlayerMove;
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
@@ -51,9 +54,13 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        if(state == BattleState.PlayerAction)
+        if (state == BattleState.PlayerAction)
         {
-        HandleActionSelection();
+            HandleActionSelection();
+        }
+        else if (state == BattleState.PlayerMove)
+        {
+            HandleMoveSelection();
         }
     }
     void HandleActionSelection()
@@ -83,5 +90,31 @@ public class BattleSystem : MonoBehaviour
                 // Run
             }
         }
+    }
+
+    void HandleMoveSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (currentMove < playerUnit.Animal.Moves.Count - 1)
+                ++currentMove;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (currentMove > 0)
+                --currentMove;
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (currentMove < playerUnit.Animal.Moves.Count - 2)
+                currentMove += 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (currentMove > 1)
+                currentMove -= 2;
+        }
+
+        dialogBox.UpdateMoveSelection(currentMove, playerUnit.Animal.Moves[currentMove]);
     }
 }
