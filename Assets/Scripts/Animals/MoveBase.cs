@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //To create instances of this class in unity
-[CreateAssetMenu(fileName = "Move", menuName ="Animal/Create new move")]
+[CreateAssetMenu(fileName = "Move", menuName = "Animal/Create new move")]
 public class MoveBase : ScriptableObject
 {
     [SerializeField] new string name;
@@ -24,17 +24,36 @@ public class MoveBase : ScriptableObject
     {
         get { return description; }
     }
-    public AnimalType Type {
+    public AnimalType Type
+    {
         get { return type; }
     }
 
-    public int Power {
+    public int Power
+    {
         get { return power; }
     }
-    public int Accuracy {
+    public int Accuracy
+    {
         get { return accuracy; }
     }
-    public int PP {
+    public int PP
+    {
         get { return pp; }
+    }
+    public bool IsSpecial
+    {
+        get
+        {
+            //For testing purposes
+            if (type == AnimalType.Omnivore || type == AnimalType.Birds)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

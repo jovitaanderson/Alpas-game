@@ -102,3 +102,28 @@ public enum AnimalType
     Herbivorous,
     Omnivore
 }
+public class TypeChart
+{
+    static float[][] chart =
+    {
+       /*                            MAM BIR REP CAR HER OMI*/
+       /*Mammals*/      new float[] {1f,   0.5f, 2f,   1f,   1f,   1f},
+       /*Birds*/        new float[] {2f,   1f,   0.5f, 1f,   1f,   1f},
+       /*Reptiles*/     new float[] {0.5f, 2f,   1f,   1f,   1f,   1f},
+       /*Carnivous*/    new float[] {1f,   1f,   1f,   1f,   2f,   0.5f},
+       /*Herbivorous*/  new float[] {1f,   1f,   1f,   0.5f, 1f,   2f},
+       /*Omivore*/      new float[] {1f,   1f,   1f,   2f,   0.5f, 1f}
+       /*Test*/
+    };
+    public static float GetEffectiveness(AnimalType attackType, AnimalType defenseType)
+    {
+        if (attackType == AnimalType.None || defenseType == AnimalType.None)
+            return 1;
+
+        int row = (int)attackType - 1;
+        int col = (int)defenseType - 1;
+        return chart[row][col];
+    }
+
+}
+
