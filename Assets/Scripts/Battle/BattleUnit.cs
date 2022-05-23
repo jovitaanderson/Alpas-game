@@ -7,8 +7,6 @@ using DG.Tweening;
 //A script for our player unit ( animal)  in battle 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] AnimalBase _base;
-    [SerializeField] int level;
     [SerializeField] bool isPlayerUnit;
 
     public Animal Animal { get; set; }
@@ -23,9 +21,9 @@ public class BattleUnit : MonoBehaviour
         originalColor = image.color;
     }
 
-    public void Setup()
+    public void Setup(Animal animal)
     {
-        Animal = new Animal(_base, level);
+        Animal = animal;
         if (isPlayerUnit) image.sprite = Animal.Base.BackSprite;
         else image.sprite = Animal.Base.FrontSprite;
 

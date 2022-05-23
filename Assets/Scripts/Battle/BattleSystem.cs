@@ -21,14 +21,19 @@ public class BattleSystem : MonoBehaviour
     int currentAction;
     int currentMove;
 
-    public void StartBattle()
+    AnimalParty playerParty;
+    Animal wildAnimal;
+
+    public void StartBattle(AnimalParty playerParty, Animal  wildAnimal)
     {
+        this.playerParty = playerParty;
+        this.wildAnimal = wildAnimal;
         StartCoroutine(SetupBattle());
     }
     public IEnumerator SetupBattle()
     {
-        playerUnit.Setup();
-        enemyUnit.Setup();
+        playerUnit.Setup(playerParty.GetHealthyPokemon());
+        enemyUnit.Setup(wildAnimal);
         playerHud.setData(playerUnit.Animal);
         enemyHud.setData(enemyUnit.Animal);
 
@@ -108,7 +113,25 @@ public class BattleSystem : MonoBehaviour
             playerUnit.PlayFaintAnimation();
             
             yield return new WaitForSeconds(2f);
-            OnBattleOver(false);
+
+            //Check if any other healthy animal before ending the battle
+
+            var nextPokemon = playerParty.GetHealthyPokemon();
+            if (nextPokemon != null)
+            {
+                playerUnit.Setup(nextPokemon);
+                playerHud.setData(nextPokemon);
+
+                dialogBox.SetMoveNames(nextPokemon.Moves);
+
+                yield return dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}");
+
+                PlayerAction();
+            }
+            else
+            {
+                OnBattleOver(false);
+            }
         }
         else
         {
@@ -162,6 +185,7 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 1)
             {
                 // Run
+                //OnBattleOver(false);
             }
         }
     }

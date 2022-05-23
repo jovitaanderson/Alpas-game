@@ -5,18 +5,24 @@ using UnityEngine;
 //Calculte all stat values speific to a level
 /** Class to store Pokemon actual info such as stats and actual moves 
  */
+[System.Serializable] //classes will only be shown in the inspector if we use this arttibute 
 public class Animal
 {
-    public AnimalBase Base { get; set; } // put get and set  to access this properties outside the class
-    public int Level { get; set; }
+    [SerializeField] AnimalBase _base;
+    [SerializeField] int level;
+
+    public AnimalBase Base {
+        get { return _base; }
+    } 
+    public int Level { 
+        get {  return level;}
+    }
 
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
-    public Animal(AnimalBase pBase, int pLevel)
+    public void Init()
     {
-        Base = pBase;
-        Level = pLevel;
         HP = MaxHp;
 
         //Will add moves to the Animal if level is reached [Animal can only have 4 moves]
