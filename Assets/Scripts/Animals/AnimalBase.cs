@@ -102,6 +102,15 @@ public enum AnimalType
     Herbivorous,
     Omnivore
 }
+public enum Stat
+{
+    Attack,
+    Defense,
+    SpAttack,
+    SpDefense,
+    Speed
+}
+
 public class TypeChart
 {
     static float[][] chart =

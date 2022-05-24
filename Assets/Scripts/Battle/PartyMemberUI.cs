@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//To set the name and level text in the battleHud depending on the animal
-public class BattleHud : MonoBehaviour
+public class PartyMemberUI : MonoBehaviour
 {
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
     [SerializeField] HPBar hpBar;
 
-    Animal _animal;
+    [SerializeField] Color highlightedColor;
 
+    Animal _animal;
     public void SetData(Animal animal)
     {
         _animal = animal;
         nameText.text = animal.Base.Name;
-        levelText.text = "Lvl " + animal.Level;
+        levelText.text = "Lvl" + animal.Level;
         hpBar.SetHP((float)animal.HP / animal.MaxHp);
     }
 
-    public IEnumerator UpdateHP()
+    //Change color of selected party member
+    public void SetSelected(bool selected)
     {
-        yield return hpBar.SetHPSmooth((float)_animal.HP / _animal.MaxHp);
+        if (selected)
+            nameText.color = highlightedColor;
+        else         
+            nameText.color = Color.black;
     }
+
 }

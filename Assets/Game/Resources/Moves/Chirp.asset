@@ -10,11 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a4def8633cd484a925d38c7b1b4c94, type: 3}
-  m_Name: Chrip
+  m_Name: Chirp
   m_EditorClassIdentifier: 
-  name: Chrip
+  name: Chirp
   description: 
   type: 2
-  power: 50
+  power: 0
   accuracy: 100
   pp: 40
+  category: 2
+  effects:
+    boosts:
+    - stat: 0
+      boost: -1
+  target: 0

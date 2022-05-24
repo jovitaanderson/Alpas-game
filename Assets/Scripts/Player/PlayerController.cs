@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
                 if (IsWalkable(targetPos))
                 {
                     StartCoroutine(Move(targetPos));
-                    //Debug.Log("wee");
                 }
             }
         }
@@ -73,6 +72,7 @@ public class PlayerController : MonoBehaviour
         CheckForEncounters();
     }
 
+    //If object is solidObjectLayer, player cannot walk over it
     private bool IsWalkable(Vector3 targetPos)
     {
         if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    //Probability of encountering an animal in a bush
     private void CheckForEncounters()
     {
         if(Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)

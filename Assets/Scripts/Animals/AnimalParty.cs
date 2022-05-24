@@ -6,6 +6,15 @@ using UnityEngine;
 public class AnimalParty : MonoBehaviour
 {
     [SerializeField] List<Animal> animals;
+
+    public List<Animal> Animals
+    {
+        get
+        {
+            return animals;
+        }
+    }
+
     private void Start()
     {
         foreach (var animal in animals) //for loop for every animal in animal list

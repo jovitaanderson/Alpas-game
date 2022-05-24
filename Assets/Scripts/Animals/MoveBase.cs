@@ -15,45 +15,64 @@ public class MoveBase : ScriptableObject
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] int pp; //pp is the number of times a move can be performed
+    [SerializeField] MoveCategory category;
+    [SerializeField] MoveEffects effects;
+    [SerializeField] MoveTarget target;
 
-    public string Name
-    {
+    public string Name {
         get { return name; }
     }
-    public string Description
-    {
+    public string Description {
         get { return description; }
     }
-    public AnimalType Type
-    {
+    public AnimalType Type {
         get { return type; }
     }
 
-    public int Power
-    {
+    public int Power {
         get { return power; }
     }
-    public int Accuracy
-    {
+    public int Accuracy {
         get { return accuracy; }
     }
-    public int PP
-    {
+    public int PP {
         get { return pp; }
     }
-    public bool IsSpecial
-    {
-        get
-        {
-            //For testing purposes
-            if (type == AnimalType.Omnivore || type == AnimalType.Birds)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+
+    public MoveCategory Category{
+        get { return category; }
     }
+
+    public MoveEffects Effects {
+        get { return effects; }
+    }
+    public MoveTarget Target {
+        get { return target; }
+    }
+}
+
+[System.Serializable]
+public class MoveEffects
+{
+    [SerializeField] List<StatBoost> boosts;
+    public List<StatBoost> Boosts {
+        get { return boosts; }
+    }
+}
+
+[System.Serializable]
+public class StatBoost
+{
+    public Stat stat;
+    public int boost;
+}
+
+public enum MoveCategory
+{
+    Physical, Special, Status
+}
+
+public enum MoveTarget
+{
+    Foe, Self
 }

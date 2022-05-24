@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //to store battle state
-public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy}
+public enum BattleState { Start, ActionSelection, MoveSelection, PerformMove, Busy, PartyScreen, BattleOver}
 
 //To control the entire battle
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleUnit playerUnit;
     [SerializeField] BattleUnit enemyUnit;
-    [SerializeField] BattleHud playerHud;
-    [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] PartyScreen partyScreen;
 
     public event Action<bool> OnBattleOver;
 
     BattleState state;
     int currentAction;
     int currentMove;
+    int currentMember;
 
     AnimalParty playerParty;
     Animal wildAnimal;
@@ -34,109 +34,144 @@ public class BattleSystem : MonoBehaviour
     {
         playerUnit.Setup(playerParty.GetHealthyPokemon());
         enemyUnit.Setup(wildAnimal);
-        playerHud.setData(playerUnit.Animal);
-        enemyHud.setData(enemyUnit.Animal);
+
+        partyScreen.Init();
 
         dialogBox.SetMoveNames(playerUnit.Animal.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Animal.Base.Name} appeared.");
 
-        PlayerAction();
+        ChooseFirstTurn();
+    }
+    void ChooseFirstTurn()
+    {
+        if (playerUnit.Animal.Speed >= enemyUnit.Animal.Speed)
+            ActionSelection();
+        else
+            StartCoroutine(EnemyMove());
     }
 
-    void PlayerAction()
+    void BattleOver(bool won) //state
     {
-        state = BattleState.PlayerAction;
-        StartCoroutine(dialogBox.TypeDialog("Choose an action"));
+        state = BattleState.BattleOver;
+        playerParty.Animals.ForEach(p => p.OnBattleOver());
+        OnBattleOver(won); //event
+    }
+
+    //Player chooses to fight or run
+    void ActionSelection()
+    {
+        state = BattleState.ActionSelection;
+        dialogBox.SetDialog("Choose an action");
         dialogBox.EnableActionSelector(true);
     }
-
-    void PlayerMove()
+    void OpenPartyScreen()
     {
-        state = BattleState.PlayerMove;
+        state = BattleState.PartyScreen;
+        partyScreen.SetPartyData(playerParty.Animals);
+        partyScreen.gameObject.SetActive(true);
+    }
+
+    void MoveSelection()
+    {
+        state = BattleState.MoveSelection;
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
     }
 
     //Player animal will perform move, and enemy will take damage
-    IEnumerator PerformPlayerMove()
+    IEnumerator PlayerMove()
     {
-        state = BattleState.Busy;
+        state = BattleState.PerformMove;
 
         var move = playerUnit.Animal.Moves[currentMove];
-        move.PP--;
-        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} used {move.Base.Name}");
+        yield return RunMove(playerUnit, enemyUnit, move);
 
-        playerUnit.PlayAttackAnimation();
-        yield return new WaitForSeconds(1f);
-
-        enemyUnit.PlayHitAnimation();
-
-        var damageDetails = enemyUnit.Animal.TakeDamage(move, playerUnit.Animal);
-        yield return enemyHud.UpdateHP();
-        yield return ShowDamageDetails(damageDetails);
-
-        if (damageDetails.Fainted)
-        {
-            yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} Fainted");
-            enemyUnit.PlayFaintAnimation();
-
-            yield return new WaitForSeconds(2f);
-            OnBattleOver(true); 
-        }
-        else
-        {
+        //If the battle stat was not changed by RunMove, then go to next step
+        if(state == BattleState.PerformMove)
             StartCoroutine(EnemyMove());
-        }
+        
     }
 
     IEnumerator EnemyMove() {
-        state = BattleState.Busy;
 
-        var move = enemyUnit.Animal.Moves[currentMove];
+        state = BattleState.PerformMove;
+
+        var move = enemyUnit.Animal.GetRandomMove();
+        yield return RunMove(enemyUnit, playerUnit, move);
+
+        //If the battle stat was not changed by RunMove, then go to next step
+        if (state == BattleState.PerformMove)
+            ActionSelection();
+    }
+
+    IEnumerator RunMove(BattleUnit sourceUnit, BattleUnit targetUnit, Move move)
+    {
         move.PP--;
-        yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} used {move.Base.Name}");
+        yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} used {move.Base.Name}");
 
-        enemyUnit.PlayAttackAnimation();
+        sourceUnit.PlayAttackAnimation();
         yield return new WaitForSeconds(1f);
+        targetUnit.PlayHitAnimation();
 
-       playerUnit.PlayHitAnimation();
-
-        var damageDetails = playerUnit.Animal.TakeDamage(move, playerUnit.Animal);
-        yield return playerHud.UpdateHP();
-        yield return ShowDamageDetails(damageDetails);
-
-        if (damageDetails.Fainted)
+        if (move.Base.Category == MoveCategory.Status) //Status move doesnt do damage
         {
-            yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} Fainted");
-            playerUnit.PlayFaintAnimation();
-            
-            yield return new WaitForSeconds(2f);
-
-            //Check if any other healthy animal before ending the battle
-
-            var nextPokemon = playerParty.GetHealthyPokemon();
-            if (nextPokemon != null)
-            {
-                playerUnit.Setup(nextPokemon);
-                playerHud.setData(nextPokemon);
-
-                dialogBox.SetMoveNames(nextPokemon.Moves);
-
-                yield return dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}");
-
-                PlayerAction();
-            }
-            else
-            {
-                OnBattleOver(false);
-            }
+            yield return RunMoveEffects(move, sourceUnit.Animal, targetUnit.Animal);
         }
         else
         {
-            PlayerAction();
+            var damageDetails = targetUnit.Animal.TakeDamage(move, sourceUnit.Animal);
+            yield return targetUnit.Hud.UpdateHP();
+            yield return ShowDamageDetails(damageDetails);
         }
+
+        if (targetUnit.Animal.HP <=0)
+        {
+            yield return dialogBox.TypeDialog($"{targetUnit.Animal.Base.Name} Fainted");
+            targetUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(2f);
+
+            CheckForBattleOver(targetUnit);
+        }
+    }
+    IEnumerator RunMoveEffects(Move move, Animal source, Animal target)
+    {
+        var effects = move.Base.Effects;
+        if (effects.Boosts != null)
+        {
+            if (move.Base.Target == MoveTarget.Self)
+                source.ApplyBoosts(effects.Boosts);
+            else
+                target.ApplyBoosts(effects.Boosts);
+        }
+
+        yield return ShowStatusChanges(source);
+        yield return ShowStatusChanges(target);
+    }
+
+    IEnumerator ShowStatusChanges(Animal animal)
+    {
+        while (animal.StatusChanges.Count > 0)
+        {
+            var message = animal.StatusChanges.Dequeue();
+            yield return dialogBox.TypeDialog(message);
+        }
+    }
+
+    void CheckForBattleOver(BattleUnit faintedUnit)
+    {
+        if (faintedUnit.IsPlayerUnit)
+        {
+            //Check if any other healthy animal before ending the battle
+            var nextPokemon = playerParty.GetHealthyPokemon();
+            if (nextPokemon != null)
+                OpenPartyScreen();
+            else
+                BattleOver(false);
+        }
+        else
+            BattleOver(true);
     }
 
     IEnumerator ShowDamageDetails(DamageDetails damageDetails)
@@ -151,27 +186,33 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (state == BattleState.PlayerAction)
+        if (state == BattleState.ActionSelection)
         {
             HandleActionSelection();
         }
-        else if (state == BattleState.PlayerMove)
+        else if (state == BattleState.MoveSelection)
         {
             HandleMoveSelection();
+        }
+        else if (state == BattleState.PartyScreen)
+        {
+            HandlePartySelection();
         }
     }
     void HandleActionSelection()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentAction < 1)
-                ++currentAction;
-        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++currentAction;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --currentAction;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            currentAction += 2;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (currentAction > 0)
-                --currentAction;
-        }
+            currentAction -= 2;
+
+        //Restrict value of currentAction between 0 and 3
+        currentAction = Mathf.Clamp(currentAction, 0, 3);
 
         dialogBox.UpdateActionSelection(currentAction);
 
@@ -179,10 +220,19 @@ public class BattleSystem : MonoBehaviour
         {
             if (currentAction == 0)
             {
-                // FightI
-                PlayerMove();
+                // Fight
+                MoveSelection();
             }
             else if (currentAction == 1)
+            {
+                // Bag
+            }
+            else if (currentAction == 2)
+            {
+                // Animal
+                OpenPartyScreen();
+            }
+            else if (currentAction == 3)
             {
                 // Run
                 //OnBattleOver(false);
@@ -193,25 +243,16 @@ public class BattleSystem : MonoBehaviour
     void HandleMoveSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (currentMove < playerUnit.Animal.Moves.Count - 1)
-                ++currentMove;
-        }
+            ++currentMove;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentMove > 0)
-                --currentMove;
-        }
+            --currentMove;
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentMove < playerUnit.Animal.Moves.Count - 2)
-                currentMove += 2;
-        }
+            currentMove += 2;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (currentMove > 1)
-                currentMove -= 2;
-        }
+            currentMove -= 2;
+
+        //Restrict value of currentMove between 0 and no. of animals moves
+        currentMove = Mathf.Clamp(currentMove, 0, playerUnit.Animal.Moves.Count - 1);
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Animal.Moves[currentMove]);
 
@@ -219,9 +260,82 @@ public class BattleSystem : MonoBehaviour
         {
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
-            StartCoroutine(PerformPlayerMove());
-            
+            StartCoroutine(PlayerMove());
+        }
+
+        //When esc key/backspace key press he goes back to selection screen
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            dialogBox.EnableMoveSelector(false);
+            dialogBox.EnableDialogText(true);
+            ActionSelection();
         }
 
     }
+
+    //Handles party screen selection
+    void HandlePartySelection()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++currentMember;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --currentMember;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            currentMember += 2;
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+            currentMember -= 2;
+
+        //Restrict value of currentMove between 0 and no. of animals moves
+        currentMember = Mathf.Clamp(currentMember, 0, playerParty.Animals.Count - 1);
+
+        partyScreen.UpdateMemberSelection(currentMember);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            var selectedMember = playerParty.Animals[currentMember];
+            if (selectedMember.HP <= 0)
+            {
+                partyScreen.SetMessageText("You can't send out a fainted pokemon");
+                return;
+            }
+            if (selectedMember == playerUnit.Animal)
+            {
+                partyScreen.SetMessageText("You can't switch with the same pokemon");
+                return;
+            }
+
+            partyScreen.gameObject.SetActive(false);
+            state = BattleState.Busy;
+            StartCoroutine(SwitchAnimal(selectedMember));
+        }
+        //Go back to select action screen if esc or backspace is pressed
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            partyScreen.gameObject.SetActive(false);
+            ActionSelection();
+        }
+    }
+
+    //Switch pokemon method
+    IEnumerator SwitchAnimal(Animal newAnimal)
+    {
+        bool currentAnimalFainted = true;
+        if (playerUnit.Animal.HP > 0)
+        {
+            currentAnimalFainted = false;
+            yield return dialogBox.TypeDialog($"Come back {playerUnit.Animal.Base.Name}");
+            playerUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(2f);
+        }
+
+        playerUnit.Setup(newAnimal);
+        dialogBox.SetMoveNames(newAnimal.Moves);
+        yield return dialogBox.TypeDialog($"Go {newAnimal.Base.Name} !");
+
+        if (currentAnimalFainted)
+            ChooseFirstTurn();
+        else
+            StartCoroutine(EnemyMove());
+    }
+
 }
