@@ -98,6 +98,7 @@ public enum AnimalType
     Mammals,
     Birds,
     Reptiles,
+    Amphibians,
     Carnivorous,
     Herbivorous,
     Omnivore
@@ -108,20 +109,25 @@ public enum Stat
     Defense,
     SpAttack,
     SpDefense,
-    Speed
+    Speed,
+
+    // These2are not actual stats,they're used to boost the moveAccuracy
+    Accuracy,
+    Evasion
 }
 
 public class TypeChart
 {
     static float[][] chart =
     {
-       /*                            MAM BIR REP CAR HER OMI*/
-       /*Mammals*/      new float[] {1f,   0.5f, 2f,   1f,   1f,   1f},
-       /*Birds*/        new float[] {2f,   1f,   0.5f, 1f,   1f,   1f},
-       /*Reptiles*/     new float[] {0.5f, 2f,   1f,   1f,   1f,   1f},
-       /*Carnivous*/    new float[] {1f,   1f,   1f,   1f,   2f,   0.5f},
-       /*Herbivorous*/  new float[] {1f,   1f,   1f,   0.5f, 1f,   2f},
-       /*Omivore*/      new float[] {1f,   1f,   1f,   2f,   0.5f, 1f}
+       /*                            MAM   BIR   REP   AMP   CAR   HER   OMI*/
+       /*Mammals*/      new float[] {1f,   0.5f, 2f,   1f,   1f,   1f,   1f},
+       /*Birds*/        new float[] {2f,   1f,   0.5f, 1f,   1f,   1f,   1f},
+       /*Reptiles*/     new float[] {0.5f, 2f,   1f,   1f,   1f,   1f,   1f},
+       /*Amphibians*/   new float[] {1f,   1f,   1f,   1f,   1f,   1f,   1f},
+       /*Carnivous*/    new float[] {1f,   1f,   1f,   1f,   1f,   2f,   0.5f},
+       /*Herbivorous*/  new float[] {1f,   1f,   1f,   1f,   0.5f, 1f,   2f},
+       /*Omivore*/      new float[] {1f,   1f,   1f,   1f,   2f,   0.5f, 1f}
        /*Test*/
     };
     public static float GetEffectiveness(AnimalType attackType, AnimalType defenseType)

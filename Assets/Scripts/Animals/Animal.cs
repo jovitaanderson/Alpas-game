@@ -23,7 +23,17 @@ public class Animal
     //Dictionary to store values of all the stats, Similar to a hashmap with a key and vallue
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
+    public Condition Status { get; private set; }
+    public int StatusTime { get; set; }
+
+    public Condition VolatileStatus { get; private set; }
+
+    public int VolatileStatusTime { get; set; }
+
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+    public bool HpChanged { get; set; }
+
+    public event System.Action OnStatusChanged;
 
 
 
@@ -42,6 +52,8 @@ public class Animal
         HP = MaxHp;
 
         ResetStatBoost();
+        Status = null;
+        VolatileStatus = null;
     }
 
     void CalculateStats()
@@ -54,7 +66,7 @@ public class Animal
         Stats.Add(Stat.SpDefense, Mathf.FloorToInt((Base.SpDefense * Level) / 100f) + 5);
         Stats.Add(Stat.Speed, Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5);
         
-        MaxHp = Mathf.FloorToInt((Base.MaxHp * Level) / 100f) + 10;
+        MaxHp = Mathf.FloorToInt((Base.MaxHp * Level) / 100f) + 10 + Level;
 
     }
     void ResetStatBoost()
@@ -66,6 +78,8 @@ public class Animal
             {Stat.SpAttack, 0},
             {Stat.SpDefense, 0},
             {Stat.Speed, 0},
+            {Stat.Accuracy,0},
+            {Stat.Evasion,0},
         };
     }
 
@@ -101,7 +115,7 @@ public class Animal
             else
                 StatusChanges.Enqueue($"{Base.Name}'s {stat} fell!");
 
-            Debug.Log($"{stat} has been bossted to {StatBoosts[stat]}");
+            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
         }
     }
 
@@ -154,15 +168,49 @@ public class Animal
         float d = a * move.Base.Power * ((float)attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        HP -= damage;
-        if (HP <= 0)
-        {
-            HP = 0;
-            damageDetails.Fainted = true;
-        }
+        UpdateHP(damage);
 
         return damageDetails;
-     }
+    }
+
+    public void UpdateHP(int damage)
+    {
+        HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        HpChanged = true;
+    }
+
+    public void  SetStatus(ConditionID conditionId)
+    {
+        if (Status != null) return;
+
+        Status = ConditionsDB.Conditions[conditionId];
+        Status?.OnStart?.Invoke(this);
+        //Base.Name is name of animal
+        StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}");
+
+        OnStatusChanged?.Invoke();
+    }
+
+    public void CureStatus()
+    {
+        Status = null;
+        OnStatusChanged?.Invoke();
+    }
+
+    public void SetVolatileStatus(ConditionID conditionId)
+    {
+        if (VolatileStatus != null) return;
+
+        VolatileStatus = ConditionsDB.Conditions[conditionId];
+        VolatileStatus?.OnStart?.Invoke(this);
+        //Base.Name is name of animal
+        StatusChanges.Enqueue($"{Base.Name} {VolatileStatus.StartMessage}");
+    }
+
+    public void CureVolatileStatus()
+    {
+        VolatileStatus = null;
+    }
 
     public Move GetRandomMove()
     {
@@ -170,8 +218,34 @@ public class Animal
         return Moves[r];
     }
 
+    public bool OnBeforeMove()
+    {
+        bool canPerformMove = true;
+        if(Status?.OnBeforeMove != null)
+        {
+            if (!Status.OnBeforeMove(this))
+                canPerformMove = false;
+        }
+
+        if (VolatileStatus?.OnBeforeMove != null)
+        {
+            if (!VolatileStatus.OnBeforeMove(this))
+                canPerformMove = false;
+        }
+
+        return canPerformMove;
+    }
+
+    public void OnAfterTurn()
+    {
+        //Will only invoke/call onAfterTurn action, if it is not null, ?- null coniditon operator
+        Status?.OnAfterTurn?.Invoke(this);
+        VolatileStatus?.OnAfterTurn?.Invoke(this);
+    }
+
     public void OnBattleOver()
     {
+        VolatileStatus = null;
         ResetStatBoost();
     }
 }

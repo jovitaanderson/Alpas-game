@@ -108,49 +108,126 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator RunMove(BattleUnit sourceUnit, BattleUnit targetUnit, Move move)
     {
+        bool canRunMove = sourceUnit.Animal.OnBeforeMove();
+        if (!canRunMove)
+        {
+            yield return ShowStatusChanges(sourceUnit.Animal);
+            yield return sourceUnit.Hud.UpdateHP();
+            yield break;
+        }
+        yield return ShowStatusChanges(sourceUnit.Animal);
+
         move.PP--;
         yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} used {move.Base.Name}");
 
-        sourceUnit.PlayAttackAnimation();
-        yield return new WaitForSeconds(1f);
-        targetUnit.PlayHitAnimation();
+        if (CheckIfMoveHits(move, sourceUnit.Animal, targetUnit.Animal))
+        { 
 
-        if (move.Base.Category == MoveCategory.Status) //Status move doesnt do damage
-        {
-            yield return RunMoveEffects(move, sourceUnit.Animal, targetUnit.Animal);
+            sourceUnit.PlayAttackAnimation();
+            yield return new WaitForSeconds(1f);
+            targetUnit.PlayHitAnimation();
+
+            if (move.Base.Category == MoveCategory.Status) //Status move doesnt do damage
+            {
+                yield return RunMoveEffects(move.Base.Effects, sourceUnit.Animal, targetUnit.Animal, move.Base.Target);
+            }
+            else
+            {
+                var damageDetails = targetUnit.Animal.TakeDamage(move, sourceUnit.Animal);
+                yield return targetUnit.Hud.UpdateHP();
+                yield return ShowDamageDetails(damageDetails);
+            }
+
+            if (move.Base.Secondaries != null && move.Base.Secondaries.Count > 0 && targetUnit.Animal.HP > 0)
+            {
+                foreach (var secondary in move.Base.Secondaries)
+                {
+                    var rnd = UnityEngine.Random.Range(1, 101);
+                    if (rnd <= secondary.Chance)
+                        yield return RunMoveEffects(secondary, sourceUnit.Animal, targetUnit.Animal, secondary.Target);
+                }
+            }
+
+            if (targetUnit.Animal.HP <= 0)
+            {
+                yield return dialogBox.TypeDialog($"{targetUnit.Animal.Base.Name} Fainted");
+                targetUnit.PlayFaintAnimation();
+                yield return new WaitForSeconds(2f);
+
+                CheckForBattleOver(targetUnit);
+            }
         }
         else
         {
-            var damageDetails = targetUnit.Animal.TakeDamage(move, sourceUnit.Animal);
-            yield return targetUnit.Hud.UpdateHP();
-            yield return ShowDamageDetails(damageDetails);
+            yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name}'s attack missed");
+
         }
 
-        if (targetUnit.Animal.HP <=0)
+        //Statuses like burn or psn will hurt the pokemon after the turn
+        sourceUnit.Animal.OnAfterTurn();
+        yield return ShowStatusChanges(sourceUnit.Animal);
+        yield return sourceUnit.Hud.UpdateHP();
+        if (sourceUnit.Animal.HP <= 0)
         {
-            yield return dialogBox.TypeDialog($"{targetUnit.Animal.Base.Name} Fainted");
-            targetUnit.PlayFaintAnimation();
+            yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} Fainted");
+            sourceUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(2f);
 
-            CheckForBattleOver(targetUnit);
+            CheckForBattleOver(sourceUnit);
         }
     }
-    IEnumerator RunMoveEffects(Move move, Animal source, Animal target)
+    IEnumerator RunMoveEffects(MoveEffects effects, Animal source, Animal target, MoveTarget moveTarget)
     {
-        var effects = move.Base.Effects;
+        //Stat Boosting
         if (effects.Boosts != null)
         {
-            if (move.Base.Target == MoveTarget.Self)
+            if (moveTarget == MoveTarget.Self)
                 source.ApplyBoosts(effects.Boosts);
             else
                 target.ApplyBoosts(effects.Boosts);
         }
 
+        //Status Condition
+        if(effects.Status != ConditionID.none)
+        {
+            target.SetStatus(effects.Status);
+        }
+
+        //Volatile Status Condition
+        if (effects.VolatileStatus != ConditionID.none)
+        {
+            target.SetVolatileStatus(effects.VolatileStatus);
+        }
+
+
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);
     }
 
-    IEnumerator ShowStatusChanges(Animal animal)
+    bool CheckIfMoveHits(Move move, Animal source, Animal target)
+    {
+        if (move.Base.AlwaysHits)
+            return true;
+
+        float moveAccuracy = move.Base.Accuracy;
+        int accuracy = source.StatBoosts[Stat.Accuracy];
+        int evasion = target.StatBoosts[Stat.Evasion];
+
+        var boostValues = new float[] { 1f, 4f / 3f, 5f / 3f, 2f, 7f / 3f, 8f / 3f, 3f };
+        if (accuracy > 0)
+            moveAccuracy *= boostValues[accuracy];
+        else
+            moveAccuracy /= boostValues[-accuracy];
+        if (evasion > 0)
+            moveAccuracy /= boostValues[evasion];
+        else
+            moveAccuracy *= boostValues[-evasion];
+
+        return UnityEngine.Random.Range(1, 101) <= moveAccuracy;
+
+    }
+
+        IEnumerator ShowStatusChanges(Animal animal)
     {
         while (animal.StatusChanges.Count > 0)
         {
