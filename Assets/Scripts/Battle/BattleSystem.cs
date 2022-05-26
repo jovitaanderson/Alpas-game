@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //to store battle state
-public enum BattleState { Start, ActionSelection, MoveSelection, PerformMove, Busy, PartyScreen, BattleOver}
+public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, BattleOver}
+public enum BattleAction { Move, SwitchAnimal, UseItem, Run}
 
 //To control the entire battle
 public class BattleSystem : MonoBehaviour
@@ -17,6 +18,7 @@ public class BattleSystem : MonoBehaviour
     public event Action<bool> OnBattleOver;
 
     BattleState state;
+    BattleState? prevState;
     int currentAction;
     int currentMove;
     int currentMember;
@@ -41,15 +43,16 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Animal.Base.Name} appeared.");
 
-        ChooseFirstTurn();
+        ActionSelection();
     }
-    void ChooseFirstTurn()
+
+    /*void ChooseFirstTurn()
     {
         if (playerUnit.Animal.Speed >= enemyUnit.Animal.Speed)
             ActionSelection();
         else
             StartCoroutine(EnemyMove());
-    }
+    }  */
 
     void BattleOver(bool won) //state
     {
@@ -79,30 +82,60 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
     }
-
-    //Player animal will perform move, and enemy will take damage
-    IEnumerator PlayerMove()
+    IEnumerator RunTurns(BattleAction playerAction)
     {
-        state = BattleState.PerformMove;
+        state = BattleState.RunningTurn;
 
-        var move = playerUnit.Animal.Moves[currentMove];
-        yield return RunMove(playerUnit, enemyUnit, move);
+        if (playerAction == BattleAction.Move)
+        {
+            playerUnit.Animal.CurrentMove = playerUnit.Animal.Moves[currentMove];
+            enemyUnit.Animal.CurrentMove = enemyUnit.Animal.GetRandomMove();
 
-        //If the battle stat was not changed by RunMove, then go to next step
-        if(state == BattleState.PerformMove)
-            StartCoroutine(EnemyMove());
-        
-    }
+            int playerMovePriority = playerUnit.Animal.CurrentMove.Base.Priority;
+            int enemyMovePriority = enemyUnit.Animal.CurrentMove.Base.Priority;
 
-    IEnumerator EnemyMove() {
+            // Check who goes first
+            bool playerGoesFirst = true;
+            if (enemyMovePriority > playerMovePriority)
+                playerGoesFirst = false;
+            else if (enemyMovePriority == playerMovePriority)
+                playerGoesFirst = playerUnit.Animal.Speed >= enemyUnit.Animal.Speed;
 
-        state = BattleState.PerformMove;
+            var firstUnit = (playerGoesFirst) ? playerUnit : enemyUnit;
+            var secondUnit = (playerGoesFirst)? enemyUnit: playerUnit;
 
-        var move = enemyUnit.Animal.GetRandomMove();
-        yield return RunMove(enemyUnit, playerUnit, move);
+            var secondAnimal = secondUnit.Animal;
 
-        //If the battle stat was not changed by RunMove, then go to next step
-        if (state == BattleState.PerformMove)
+            // First Turn
+            yield return RunMove(firstUnit, secondUnit, firstUnit.Animal.CurrentMove);
+            yield return RunAfterTurn(firstUnit);
+            if (state == BattleState.BattleOver) yield break;
+
+            if (secondAnimal.HP > 0)
+            {
+                // Second Turn
+                yield return RunMove(secondUnit, firstUnit, secondUnit.Animal.CurrentMove);
+                yield return RunAfterTurn(secondUnit);
+                if (state == BattleState.BattleOver) yield break;
+            }
+        }
+        else
+        {
+            if (playerAction == BattleAction.SwitchAnimal)
+            {   
+                var selectedAnimal = playerParty.Animals[currentMember];
+                state = BattleState.Busy;
+                yield return SwitchAnimal(selectedAnimal);
+            }
+
+            // Enemy Turn
+            var enemyMove = enemyUnit.Animal.GetRandomMove();
+            yield return RunMove(enemyUnit, playerUnit, enemyMove);
+            yield return RunAfterTurn(enemyUnit);
+            if (state == BattleState.BattleOver) yield break;
+        }
+
+        if (state != BattleState.BattleOver)
             ActionSelection();
     }
 
@@ -162,19 +195,6 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name}'s attack missed");
 
         }
-
-        //Statuses like burn or psn will hurt the pokemon after the turn
-        sourceUnit.Animal.OnAfterTurn();
-        yield return ShowStatusChanges(sourceUnit.Animal);
-        yield return sourceUnit.Hud.UpdateHP();
-        if (sourceUnit.Animal.HP <= 0)
-        {
-            yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} Fainted");
-            sourceUnit.PlayFaintAnimation();
-            yield return new WaitForSeconds(2f);
-
-            CheckForBattleOver(sourceUnit);
-        }
     }
     IEnumerator RunMoveEffects(MoveEffects effects, Animal source, Animal target, MoveTarget moveTarget)
     {
@@ -204,6 +224,26 @@ public class BattleSystem : MonoBehaviour
         yield return ShowStatusChanges(target);
     }
 
+    IEnumerator RunAfterTurn(BattleUnit sourceUnit)
+    {
+        if (state == BattleState.BattleOver) yield break;
+        //It pauses the RunAfterTurn until the state is RunningTurn then it will continue to excuted the following lines
+        yield return new WaitUntil(() => state == BattleState.RunningTurn);
+
+        //Statuses like burn or psn will hurt the pokemon after the turn
+        sourceUnit.Animal.OnAfterTurn();
+        yield return ShowStatusChanges(sourceUnit.Animal);
+        yield return sourceUnit.Hud.UpdateHP();
+        if (sourceUnit.Animal.HP <= 0)
+        {
+            yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} Fainted");
+            sourceUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(2f);
+
+            CheckForBattleOver(sourceUnit);
+        }
+    }
+
     bool CheckIfMoveHits(Move move, Animal source, Animal target)
     {
         if (move.Base.AlwaysHits)
@@ -227,7 +267,7 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-        IEnumerator ShowStatusChanges(Animal animal)
+    IEnumerator ShowStatusChanges(Animal animal)
     {
         while (animal.StatusChanges.Count > 0)
         {
@@ -307,6 +347,7 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 2)
             {
                 // Animal
+                prevState = state;
                 OpenPartyScreen();
             }
             else if (currentAction == 3)
@@ -335,9 +376,12 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            var move = playerUnit.Animal.Moves[currentMove];
+            if (move.PP == 0) return;
+
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
-            StartCoroutine(PlayerMove());
+            StartCoroutine(RunTurns(BattleAction.Move));
         }
 
         //When esc key/backspace key press he goes back to selection screen
@@ -382,8 +426,18 @@ public class BattleSystem : MonoBehaviour
             }
 
             partyScreen.gameObject.SetActive(false);
-            state = BattleState.Busy;
-            StartCoroutine(SwitchAnimal(selectedMember));
+
+            if (prevState == BattleState.ActionSelection)
+            {
+                prevState = null;
+                StartCoroutine(RunTurns(BattleAction.SwitchAnimal));
+            }
+            else
+            {
+                state = BattleState.Busy;
+                StartCoroutine(SwitchAnimal(selectedMember));
+            }
+
         }
         //Go back to select action screen if esc or backspace is pressed
         else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
@@ -396,10 +450,8 @@ public class BattleSystem : MonoBehaviour
     //Switch pokemon method
     IEnumerator SwitchAnimal(Animal newAnimal)
     {
-        bool currentAnimalFainted = true;
         if (playerUnit.Animal.HP > 0)
         {
-            currentAnimalFainted = false;
             yield return dialogBox.TypeDialog($"Come back {playerUnit.Animal.Base.Name}");
             playerUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(2f);
@@ -409,10 +461,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(newAnimal.Moves);
         yield return dialogBox.TypeDialog($"Go {newAnimal.Base.Name} !");
 
-        if (currentAnimalFainted)
-            ChooseFirstTurn();
-        else
-            StartCoroutine(EnemyMove());
+        state = BattleState.RunningTurn;
     }
-
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //Calculte all stat values speific to a level
@@ -20,6 +21,8 @@ public class Animal
 
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
+    public Move CurrentMove { get; set; }
+
     //Dictionary to store values of all the stats, Similar to a hashmap with a key and vallue
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
@@ -214,8 +217,13 @@ public class Animal
 
     public Move GetRandomMove()
     {
-        int r = Random.Range(0, Moves.Count);
-        return Moves[r];
+        //will return null if enemy does not have any move with pp,
+        //thus we need to ensure that enemy always have a move with alot of pp to not get any error
+        var movesWithPP = Moves.Where(x => x.PP > 0).ToList();
+
+
+        int r = Random.Range(0, movesWithPP.Count);
+        return movesWithPP[r];
     }
 
     public bool OnBeforeMove()
