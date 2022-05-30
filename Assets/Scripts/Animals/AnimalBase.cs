@@ -95,12 +95,14 @@ public class LearnableMove
 public enum AnimalType
 {
     None,
-    Mammals,
-    Birds,
-    Reptiles,
-    Amphibians,
-    Carnivorous,
-    Herbivorous,
+    Amphibian,
+    Bird,
+    Fish,
+    Insect,
+    Mammal,
+    Reptile,
+    Carnivore,
+    Herbivore,
     Omnivore
 }
 public enum Stat
@@ -120,15 +122,17 @@ public class TypeChart
 {
     static float[][] chart =
     {
-       /*                            MAM   BIR   REP   AMP   CAR   HER   OMI*/
-       /*Mammals*/      new float[] {1f,   0.5f, 2f,   1f,   1f,   1f,   1f},
-       /*Birds*/        new float[] {2f,   1f,   0.5f, 1f,   1f,   1f,   1f},
-       /*Reptiles*/     new float[] {0.5f, 2f,   1f,   1f,   1f,   1f,   1f},
-       /*Amphibians*/   new float[] {1f,   1f,   1f,   1f,   1f,   1f,   1f},
-       /*Carnivous*/    new float[] {1f,   1f,   1f,   1f,   1f,   2f,   0.5f},
-       /*Herbivorous*/  new float[] {1f,   1f,   1f,   1f,   0.5f, 1f,   2f},
-       /*Omivore*/      new float[] {1f,   1f,   1f,   1f,   2f,   0.5f, 1f}
-       /*Test*/
+       /*                            AMP   BIR   FIS   INS   MAM   REP   CAR   HER   OMI*/
+       /*Amphibians*/   new float[] {1f,   0.5f, 1f,   2f,   2f,   0.5f, 1f,   1f,   1f},
+       /*Birds*/        new float[] {1f,   1f,   2f,   2f,   0.5f, 0.5f, 1f,   1f,   1f},
+       /*Fish*/         new float[] {2f,   1f,   1f,   2f,   0.5f, 2f,   1f,   1f,   1f},
+       /*Insects*/      new float[] {0.5f, 0.5f, 1f,   1f,   2f,   2f,   1f,   1f,   1f},
+       /*Mammals*/      new float[] {1f,   2f,   2f,   0.5f, 1f,   1f,   1f,   1f,   1f},
+       /*Reptiles*/     new float[] {2f,   2f,   0.5f, 0.5f, 1f,   1f,   1f,   1f,   1f},
+       /*Carnivore*/    new float[] {1f,   1f,   1f,   1f,   1f,   1f,   1f,   2f,   0.5f},
+       /*Herbivore*/    new float[] {1f,   1f,   1f,   1f,   1f,   1f,   0.5f, 1f,   2f},
+       /*Omivore*/      new float[] {1f,   1f,   1f,   1f,   1f,   1f,   2f,   0.5f, 1f}
+
     };
     public static float GetEffectiveness(AnimalType attackType, AnimalType defenseType)
     {
