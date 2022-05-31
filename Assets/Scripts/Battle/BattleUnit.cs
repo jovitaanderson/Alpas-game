@@ -40,6 +40,7 @@ public class BattleUnit : MonoBehaviour
 
         hud.SetData(animal);
 
+        transform.localScale = new Vector3(1,1,1);
         image.color = originalColor;
         PlayEnterAnimation();
     }
@@ -86,4 +87,21 @@ public class BattleUnit : MonoBehaviour
 
     //we use join instead of append because we want it to fall and go invisible at the same time. 
     //If we use append it will fall then become invisble (not at the same time)
+
+    public IEnumerator PlayCaptureAnimation() 
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(image.DOFade(0,0.5f));
+        sequence.Join(transform.DOLocalMoveY(originalPos.y + 50f, 0.5f));
+        sequence.Join(transform.DOScale(new Vector3(0.3f,0.3f,1f), 0.5f));
+        yield return sequence.WaitForCompletion();
+    }
+    public IEnumerator PlayBreakOutAnimation() 
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(image.DOFade(1,0.5f));
+        sequence.Join(transform.DOLocalMoveY(originalPos.y, 0.5f));
+        sequence.Join(transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f));
+        yield return sequence.WaitForCompletion();
+    }
 }

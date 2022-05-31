@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 //to store battle state
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, BattleOver}
@@ -14,6 +15,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] PartyScreen partyScreen;
+    [SerializeField] GameObject pokeballSprite;
+
 
     public event Action<bool> OnBattleOver;
 
@@ -25,6 +28,8 @@ public class BattleSystem : MonoBehaviour
 
     AnimalParty playerParty;
     Animal wildAnimal;
+
+    int escapeAttempts;
 
     public void StartBattle(AnimalParty playerParty, Animal  wildAnimal)
     {
@@ -42,6 +47,8 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(playerUnit.Animal.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Animal.Base.Name} appeared.");
+
+        escapeAttempts = 0;
 
         ActionSelection();
     }
@@ -128,6 +135,16 @@ public class BattleSystem : MonoBehaviour
                 yield return SwitchAnimal(selectedAnimal);
             }
 
+            else if (playerAction == BattleAction.UseItem) 
+            {
+                dialogBox.EnableActionSelector(false);
+                yield return ThrowPokeball();
+            }
+            else if (playerAction == BattleAction.Run) 
+            {
+                yield return TryToEscape();
+            }
+
             // Enemy Turn
             var enemyMove = enemyUnit.Animal.GetRandomMove();
             yield return RunMove(enemyUnit, playerUnit, enemyMove);
@@ -183,11 +200,7 @@ public class BattleSystem : MonoBehaviour
 
             if (targetUnit.Animal.HP <= 0)
             {
-                yield return dialogBox.TypeDialog($"{targetUnit.Animal.Base.Name} Fainted");
-                targetUnit.PlayFaintAnimation();
-                yield return new WaitForSeconds(2f);
-
-                CheckForBattleOver(targetUnit);
+                yield return HandleAnimalFainted(targetUnit);
             }
         }
         else
@@ -236,11 +249,9 @@ public class BattleSystem : MonoBehaviour
         yield return sourceUnit.Hud.UpdateHP();
         if (sourceUnit.Animal.HP <= 0)
         {
-            yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} Fainted");
-            sourceUnit.PlayFaintAnimation();
-            yield return new WaitForSeconds(2f);
+            yield return HandleAnimalFainted(sourceUnit);
 
-            CheckForBattleOver(sourceUnit);
+            // yield return new WaitUntil(() => state == BattleState.RunningTurn);
         }
     }
 
@@ -274,6 +285,34 @@ public class BattleSystem : MonoBehaviour
             var message = animal.StatusChanges.Dequeue();
             yield return dialogBox.TypeDialog(message);
         }
+    }
+
+    IEnumerator HandleAnimalFainted(BattleUnit faintedUnit) 
+    {
+        yield return dialogBox.TypeDialog($"{faintedUnit.Animal.Base.Name} Fainted");
+        faintedUnit.PlayFaintAnimation();
+        yield return new WaitForSeconds(2f);
+
+        if (!faintedUnit.IsPlayerUnit) //is an enemyunit
+        {
+            //exp gain
+            int expYield = faintedUnit.Animal.Base.ExpYield;
+            int enemyLevel = faintedUnit.Animal.Level;
+            //float trainerBonus = (isTrainerBattle) ? 1.5f : 1f;
+            //ToDo: change when jovita finishes trainer battle
+            int expGain = Mathf.FloorToInt((expYield * enemyLevel * 1f) / 7); //change 1 to trainerBonus
+            playerUnit.Animal.Exp += expGain;
+            yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} gained {expGain} exp");
+            yield return playerUnit.Hud.SetExpSmooth();
+
+            //ToDo: might implement the questions here so that player can answer questions before gaining exp
+            
+            //check level up
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        CheckForBattleOver(faintedUnit);
     }
 
     void CheckForBattleOver(BattleUnit faintedUnit)
@@ -315,6 +354,9 @@ public class BattleSystem : MonoBehaviour
         {
             HandlePartySelection();
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+            StartCoroutine(ThrowPokeball());
     }
     void HandleActionSelection()
     {
@@ -343,6 +385,7 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 1)
             {
                 // Bag
+                StartCoroutine(RunTurns(BattleAction.UseItem));
             }
             else if (currentAction == 2)
             {
@@ -354,6 +397,7 @@ public class BattleSystem : MonoBehaviour
             {
                 // Run
                 //OnBattleOver(false);
+                StartCoroutine(RunTurns(BattleAction.Run));
             }
         }
     }
@@ -462,5 +506,121 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"Go {newAnimal.Base.Name} !");
 
         state = BattleState.RunningTurn;
+    }
+
+    IEnumerator ThrowPokeball() {
+
+        state = BattleState.Busy;
+        // ToDo: Add when Jovita finishes her Trainer Battle
+        // if (isTrainerBattle) {
+        //     yield return dialogBox.TypeDialog($"You cannot steal the trainers' animal!");
+        //     state = BattleState.RunningTurn;
+        //     yield break;
+        // }
+
+        //ToDo: Change playerUnit name to player name cus its nmot the pokemon that throws the ball, its the player
+        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} used CATCH ANIMAL"); //player.Name
+
+        var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2,0), Quaternion.identity);
+        var pokeball = pokeballObj.GetComponent<SpriteRenderer>();
+
+        //Animations
+        yield return pokeball.transform.DOJump(enemyUnit.transform.position + new Vector3(0,1), 2f, 1, 1.5f).WaitForCompletion();
+        yield return enemyUnit.PlayCaptureAnimation();
+        yield return pokeball.transform.DOMoveY(enemyUnit.transform.position.y - 2f, 0.5f).WaitForCompletion();
+
+        int shakeCount = TryToCatchPokemon(enemyUnit.Animal);
+        //shake 3 times:
+        for (int i = 0 ; i < Mathf.Min(shakeCount, 3); ++i)
+        {
+            yield return new WaitForSeconds(0.5f);
+            yield return pokeball.transform.DOPunchRotation(new Vector3(0,0,10f), 0.8f).WaitForCompletion();
+        }
+        if (shakeCount == 4) {
+            //Pokemon is caught
+            yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} was caught");
+            yield return pokeball.DOFade(0, 1.5f).WaitForCompletion();
+            playerParty.AddAnimal(enemyUnit.Animal);
+            yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your party");
+
+            Destroy(pokeball);
+            BattleOver(true);
+        } else {
+            //pokemon broke out
+            yield return new WaitForSeconds(1f);
+            pokeball.DOFade(0, 0.2f);
+            yield return enemyUnit.PlayBreakOutAnimation();
+
+            if (shakeCount < 2) 
+            {
+                yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} broke free");
+            } else {
+                yield return dialogBox.TypeDialog($"Almost caught it");
+            }
+
+            Destroy(pokeball);
+            state = BattleState.RunningTurn;
+        }
+    }
+
+    int TryToCatchPokemon(Animal animal)
+    {
+        float a = (3 * animal.MaxHp - 2 * animal.HP) * animal.Base.CatchRate * ConditionsDB.GetStatusBonus(animal.Status) / (3 * animal.MaxHp);
+
+        if (a >= 255) {
+            return 4; //return number of shake count
+        }
+
+        float b = 1048560 / Mathf.Sqrt(Mathf.Sqrt(16711680 / a));
+
+        int shakeCount = 0;
+        while (shakeCount < 4) 
+        {
+            if (UnityEngine.Random.Range(0, 65535) >= b)
+                break;
+
+            ++shakeCount;
+        }
+        return shakeCount;
+    }
+
+    IEnumerator TryToEscape() 
+    {
+        state = BattleState.Busy;
+
+        //TODO: enable this after jovita finishes her trainer battle
+        // if (isTrainerBattle) 
+        // {
+        //     yield return dialogBox.TypeDialog($"You cannot run from trainer battles!");
+        //     state = BattleState.RunningTurn;
+        //     yield break;
+        // }
+
+        ++escapeAttempts;
+
+        int playerSpeed = playerUnit.Animal.Speed;
+        int enemySpeed = enemyUnit.Animal.Speed;
+
+        if (enemySpeed < playerSpeed)
+        {
+            yield return dialogBox.TypeDialog($"Ran away safely");
+            BattleOver(true);
+        }
+        else 
+        {
+            float f = (playerSpeed * 128) / enemySpeed + 30 * escapeAttempts;
+            f = f % 256;
+
+            if (UnityEngine.Random.Range(0,256) < f)
+            {
+                yield return dialogBox.TypeDialog($"Ran away safely!");
+                BattleOver(true);
+            }
+            else 
+            {
+                yield return dialogBox.TypeDialog($"Failed to escape!");
+                state = BattleState.RunningTurn;
+            }
+        }
     }
 }

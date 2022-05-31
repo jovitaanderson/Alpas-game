@@ -45,7 +45,9 @@ public class GameController : MonoBehaviour
         //FindObjectOfType<MapArea>() will get the reference and return the game object with MapArea
         var wildAnimal = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildAnimal();
 
-        battleSystem.StartBattle(playerParty, wildAnimal);
+        var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
+
+        battleSystem.StartBattle(playerParty, wildAnimalCopy);
     }
     void EndBattle(bool won)
     {

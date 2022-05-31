@@ -12,6 +12,14 @@ public class Animal
     [SerializeField] AnimalBase _base;
     [SerializeField] int level;
 
+    public Animal(AnimalBase pBase, int pLevel) 
+    {
+        _base = pBase;
+        level = pLevel;
+
+        Init();
+    }
+
     public AnimalBase Base {
         get { return _base; }
     } 
@@ -19,6 +27,7 @@ public class Animal
         get {  return level;}
     }
 
+    public int Exp { get; set; }
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
     public Move CurrentMove { get; set; }
@@ -33,7 +42,7 @@ public class Animal
 
     public int VolatileStatusTime { get; set; }
 
-    public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+    public Queue<string> StatusChanges { get; private set; }
     public bool HpChanged { get; set; }
 
     public event System.Action OnStatusChanged;
@@ -51,9 +60,12 @@ public class Animal
             if (Moves.Count >= 4) { break; }
         }
 
+        Exp = Base.GetExpForLevel(Level);
+
         CalculateStats();
         HP = MaxHp;
 
+        StatusChanges = new Queue<string>();
         ResetStatBoost();
         Status = null;
         VolatileStatus = null;

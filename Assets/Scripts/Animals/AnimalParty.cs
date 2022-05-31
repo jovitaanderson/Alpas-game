@@ -30,4 +30,15 @@ public class AnimalParty : MonoBehaviour
         return animals.Where(x => x.HP > 0).FirstOrDefault();
     }
 
+    //add animals into the party only if the party has less than 6 animals
+    public void AddAnimal(Animal newAnimal) 
+    {
+        if (animals.Count < 6)
+        {
+            animals.Add(newAnimal);
+        } else {
+            //TODO: Add to the PC once thats implenmented
+        }
+    }
+
 }
