@@ -89,6 +89,7 @@ public class CharacterAnimator : MonoBehaviour
         if (IsMoving)
             currentAnim.HandleUpdate();
         else
+            //TODO: make idle animations
             //if(currentAnim == walkLeftAnim) { walkLeftAnim.Start(); }
 
             spriteRenderer.sprite = currentAnim.Frames[0];
