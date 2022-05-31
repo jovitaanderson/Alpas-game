@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals:
-  - _base: {fileID: 11400000, guid: 23f12d223a7c5c9469b5746e63132bab, type: 2}
+  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
     level: 10
   - _base: {fileID: 11400000, guid: 23f12d223a7c5c9469b5746e63132bab, type: 2}
     level: 10
@@ -725,7 +725,9 @@ MonoBehaviour:
     level: 5
   - _base: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
     level: 6
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
+  - _base: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
+    level: 7
+  - _base: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
     level: 7
 --- !u!1 &359691601
 GameObject:
@@ -746,7 +748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &359691602
 SpriteRenderer:
   m_ObjectHideFlags: 0

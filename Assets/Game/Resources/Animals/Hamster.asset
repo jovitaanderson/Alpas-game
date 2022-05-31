@@ -10,24 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Cat
+  m_Name: Hamster
   m_EditorClassIdentifier: 
-  name: Cat
+  name: Hamster
   description: 
-  frontSprite: {fileID: 21300000, guid: d88144f0849b1aa4c872a395c69a6187, type: 3}
-  backSprite: {fileID: 21300000, guid: d88144f0849b1aa4c872a395c69a6187, type: 3}
+  frontSprite: {fileID: 21300000, guid: 398681df16274d94ab46dc3fabc86bd9, type: 3}
+  backSprite: {fileID: 21300000, guid: 398681df16274d94ab46dc3fabc86bd9, type: 3}
   type1: 5
   type2: 7
-  maxHp: 46
-  attack: 57
-  defense: 40
-  spAttack: 40
-  spDefense: 40
-  speed: 50
+  maxHp: 30
+  attack: 55
+  defense: 25
+  spAttack: 35
+  spDefense: 45
+  speed: 95
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: bc6a22116d21b464c9192f6d5791652b, type: 2}
-    level: 1
   - moveBase: {fileID: 11400000, guid: 8cd39dea4d986ba438a77e7e35edc3fc, type: 2}
-    level: 4
-  - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
-    level: 5
+    level: 0

@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Frog
   description: 
-  frontSprite: {fileID: 21300000, guid: e079c6927edb26448b1f7cf880bbee22, type: 3}
-  backSprite: {fileID: 21300000, guid: e079c6927edb26448b1f7cf880bbee22, type: 3}
-  type1: 4
-  type2: 5
-  maxHp: 50
-  attack: 50
-  defense: 50
-  spAttack: 50
-  spDefense: 50
-  speed: 50
+  frontSprite: {fileID: 21300000, guid: 60abf551c43103046b0350f570ee146a, type: 3}
+  backSprite: {fileID: 21300000, guid: 60abf551c43103046b0350f570ee146a, type: 3}
+  type1: 1
+  type2: 7
+  maxHp: 40
+  attack: 45
+  defense: 35
+  spAttack: 65
+  spDefense: 55
+  speed: 70
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 4fbcf6224e9e229449256193c7fdb339, type: 2}
     level: 1
