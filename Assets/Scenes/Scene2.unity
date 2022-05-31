@@ -1179,7 +1179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog:
-    lines: []
+    lines:
+    - Hello! Welcome to Alpas! Have you tried walking on the long grass?
+    - There are many animals that need saving!
   movementPattern:
   - {x: 2, y: 0}
   - {x: 0, y: 2}
