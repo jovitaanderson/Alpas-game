@@ -854,9 +854,9 @@ GameObject:
   - component: {fileID: 342249738}
   - component: {fileID: 342249737}
   - component: {fileID: 342249736}
-  - component: {fileID: 342249739}
   - component: {fileID: 342249740}
   - component: {fileID: 342249741}
+  - component: {fileID: 342249739}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -876,16 +876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef557970f499f746a8669073af92c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  solidObjectsLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  grassLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!212 &342249737
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -952,25 +942,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &342249739
-Animator:
-  serializedVersion: 3
+--- !u!114 &342249739
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342249735}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4fa88eb67a2b714abe4eac6ba6afb05, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7607b3c672f6145a7eae7deadc2fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &342249740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +1044,8 @@ GameObject:
   - component: {fileID: 359691602}
   - component: {fileID: 359691605}
   - component: {fileID: 359691604}
+  - component: {fileID: 359691607}
+  - component: {fileID: 359691608}
   - component: {fileID: 359691606}
   m_Layer: 8
   m_Name: NPC
@@ -1127,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359691601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 3.8, z: 0}
+  m_LocalPosition: {x: 9.02, y: 3.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1193,9 +1179,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog:
-    lines:
-    - Hello there! Welcome to Alpas!  Have you tried walking on long grass?
-    - Theres alot of animals that need saving!
+    lines: []
+  movementPattern:
+  - {x: 2, y: 0}
+  - {x: 0, y: 2}
+  timeBetweenPattern: 3
+--- !u!114 &359691607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359691601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7607b3c672f6145a7eae7deadc2fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &359691608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359691601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ee6d9c73e333241b04021a990412e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites:
+  - {fileID: 7152930139536384079, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: -5725962078152895296, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: -8401692288953904933, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: 7888922196035610388, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  walkUpSprites:
+  - {fileID: -4445699719359273135, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: 1892806461834874077, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: -8627026541424588849, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: -6780520195603233165, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  walkRightSprites:
+  - {fileID: -3303779423006393323, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: -790699523677361007, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: 8470420716495695676, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: 6167071470516247665, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  walkLeftSprites:
+  - {fileID: -1038918931832879880, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: 2690600881683387669, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: 6634202828824015816, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  - {fileID: -5008138227279614530, guid: 5ddaad53684e2b149a8b6f308485801e, type: 3}
+  walkDownLeftSprites: []
+  walkDownRightSprites: []
+  walkUpLeftSprites: []
+  walkUpRightSprites: []
 --- !u!1 &386185976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1598,7 @@ GameObject:
   - component: {fileID: 546162191}
   - component: {fileID: 546162190}
   - component: {fileID: 546162192}
+  - component: {fileID: 546162193}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1612,6 +1650,27 @@ MonoBehaviour:
   dialogBox: {fileID: 1729974549}
   dialogText: {fileID: 1328973421}
   lettersPerSecond: 45
+--- !u!114 &546162193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546162189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2388ee72c22715429da6ea98bb4d11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  grassLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &665416599
 GameObject:
   m_ObjectHideFlags: 0
