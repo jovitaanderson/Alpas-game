@@ -89,7 +89,10 @@ public class CharacterAnimator : MonoBehaviour
         if (IsMoving)
             currentAnim.HandleUpdate();
         else
+            //if(currentAnim == walkLeftAnim) { walkLeftAnim.Start(); }
+
             spriteRenderer.sprite = currentAnim.Frames[0];
+
 
         wasPreviouslyMoving = IsMoving;
     }
