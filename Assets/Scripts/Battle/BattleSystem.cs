@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
+
+//ToDo:rewatch ep 37 on bug fixes after jovita has completed Trainer Battle
 
 //to store battle state
-public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, BattleOver}
+public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, MoveToForget, BattleOver}
 public enum BattleAction { Move, SwitchAnimal, UseItem, Run}
 
 //To control the entire battle
@@ -16,6 +19,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] GameObject pokeballSprite;
+    [SerializeField] MoveSelectionUI moveSelectionUI;
 
 
     public event Action<bool> OnBattleOver;
@@ -30,6 +34,7 @@ public class BattleSystem : MonoBehaviour
     Animal wildAnimal;
 
     int escapeAttempts;
+    MoveBase moveToLearn;
 
     public void StartBattle(AnimalParty playerParty, Animal  wildAnimal)
     {
@@ -88,6 +93,17 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
+    }
+
+    IEnumerator ChooseMoveToForget(Animal animal, MoveBase newMove)
+    {
+        state = BattleState.Busy;
+        yield return dialogBox.TypeDialog($"Choose a move you want to forget");
+        moveSelectionUI.gameObject.SetActive(true);
+        moveSelectionUI.SetMoveData(animal.Moves.Select(x => x.Base).ToList(), newMove);
+        moveToLearn = newMove;
+
+        state = BattleState.MoveToForget;
     }
     IEnumerator RunTurns(BattleAction playerAction)
     {
@@ -308,6 +324,34 @@ public class BattleSystem : MonoBehaviour
             //ToDo: might implement the questions here so that player can answer questions before gaining exp
             
             //check level up
+            while (playerUnit.Animal.CheckForLevelUp())
+            {
+                playerUnit.Hud.SetLevel();
+                yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} grew to level {playerUnit.Animal.Level}");
+
+                //try to learn a new move
+                var newMove = playerUnit.Animal.GetLearnableMoveAtCurrLevel();
+                if (newMove != null)
+                {
+                    if (playerUnit.Animal.Moves.Count < AnimalBase.MaxNumOfMoves)
+                    {
+                        playerUnit.Animal.LearnMove(newMove);
+                        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} learned {newMove.Base.Name}");
+                        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+                    } 
+                    else 
+                    {
+                        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} is trying to learn {newMove.Base.Name},");
+                        yield return dialogBox.TypeDialog($"but it cannot learn more than {AnimalBase.MaxNumOfMoves} moves.");
+                        yield return ChooseMoveToForget(playerUnit.Animal, newMove.Base);
+                        yield return new WaitUntil(() => state != BattleState.MoveToForget);
+                        yield return new WaitForSeconds(2f);
+
+                    }
+                }
+
+                yield return playerUnit.Hud.SetExpSmooth(true);
+            }
 
             yield return new WaitForSeconds(1f);
         }
@@ -353,6 +397,27 @@ public class BattleSystem : MonoBehaviour
         else if (state == BattleState.PartyScreen)
         {
             HandlePartySelection();
+        } 
+        else if (state == BattleState.MoveToForget)
+        {
+            Action<int> onMoveSelected = (moveIndex) => {
+                moveSelectionUI.gameObject.SetActive(false);
+                if (moveIndex == AnimalBase.MaxNumOfMoves) 
+                {
+                    //Dont learn new move
+                    StartCoroutine(dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} did not learn {moveToLearn.Name}"));
+                }
+                else 
+                {
+                    //forget selected move and learn the new move
+                    var selectedMove = playerUnit.Animal.Moves[moveIndex].Base;
+                    StartCoroutine(dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} forgot {selectedMove.Name} and learned {moveToLearn.Name}"));
+                    playerUnit.Animal.Moves[moveIndex] = new Move(moveToLearn);
+                }
+                moveToLearn = null;
+                state = BattleState.RunningTurn;
+            };
+            moveSelectionUI.HandleMoveSelection(onMoveSelected);
         }
 
         if (Input.GetKeyDown(KeyCode.T))

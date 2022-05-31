@@ -26,7 +26,7 @@ public class BattleHud : MonoBehaviour
     {
         _animal = animal;
         nameText.text = animal.Base.Name;
-        levelText.text = "Lvl " + animal.Level;
+        SetLevel();
         hpBar.SetHP((float)animal.HP / animal.MaxHp);
         SetExp();
 
@@ -55,6 +55,11 @@ public class BattleHud : MonoBehaviour
         }
     }
 
+    public void SetLevel() 
+    {
+        levelText.text = "Lvl " + _animal.Level;
+    }
+
     public void SetExp() 
     {
         //enemy dosent have exp bar
@@ -64,10 +69,13 @@ public class BattleHud : MonoBehaviour
         expBar.transform.localScale = new Vector3(normalisedExp, 1, 1);
     }
 
-    public IEnumerator SetExpSmooth() 
+    public IEnumerator SetExpSmooth(bool reset=false) 
     {
         //enemy dosent have exp bar
         if (expBar == null) yield break;
+
+        if (reset)
+            expBar.transform.localScale = new Vector3(0, 1, 1);
 
         float normalisedExp = GetNormalisedExp();
         yield return expBar.transform.DOScaleX(normalisedExp, 1.5f).WaitForCompletion();

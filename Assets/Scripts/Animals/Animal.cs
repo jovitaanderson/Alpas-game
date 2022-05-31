@@ -57,7 +57,7 @@ public class Animal
         foreach(var move in Base.LearnableMoves)
         {
             if (move.Level <= Level) { Moves.Add(new Move(move.Base)); }
-            if (Moves.Count >= 4) { break; }
+            if (Moves.Count >= AnimalBase.MaxNumOfMoves) { break; }
         }
 
         Exp = Base.GetExpForLevel(Level);
@@ -132,6 +132,30 @@ public class Animal
 
             Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
         }
+    }
+
+    public bool CheckForLevelUp() 
+    {
+        if (Exp > Base.GetExpForLevel(level + 1))
+        {
+            ++level;
+            return true;
+        }
+
+        return false;
+    }
+
+    public LearnableMove GetLearnableMoveAtCurrLevel()
+    {
+        return Base.LearnableMoves.Where(x => x.Level == level).FirstOrDefault();
+    }
+
+    public void LearnMove(LearnableMove moveToLearn)
+    {
+        if (Moves.Count > AnimalBase.MaxNumOfMoves)
+            return;
+
+        Moves.Add(new Move(moveToLearn.Base));
     }
 
     //Properties of stats
