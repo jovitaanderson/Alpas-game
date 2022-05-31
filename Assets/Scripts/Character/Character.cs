@@ -72,14 +72,14 @@ public class Character : MonoBehaviour
         var xdiff = Mathf.Floor(targetPos.x) - Mathf.Floor(transform.position.x);
         var ydiff = Mathf.Floor(targetPos.y) - Mathf.Floor(transform.position.y);
 
-        //remove if we want diagonally 
-        if (xdiff == 0 || ydiff == 0)
-        {
+        //remove if we want diagonally (prob dont need)
+       // if (xdiff == 0 || ydiff == 0)
+      //  {
             animator.MoveX = Mathf.Clamp(xdiff, -1f, 1f);
             animator.MoveY = Mathf.Clamp(ydiff, -1f, 1f);
-        }
-        else
-            Debug.LogError("Error in Look Towards:You can't ask the character to look diagonally");
+       // }
+       // else
+        //    Debug.LogError("Error in Look Towards:You can't ask the character to look diagonally");
     }
 
     public CharacterAnimator Animator {
