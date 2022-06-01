@@ -58,7 +58,7 @@ public class DialogManager : MonoBehaviour
                 currentLine = 0;
                 IsShowing = false;
                 dialogBox.SetActive(false);
-                onDialogFinished.Invoke();
+                onDialogFinished?.Invoke();
                 OnCloseDialog?.Invoke();
             }
         }

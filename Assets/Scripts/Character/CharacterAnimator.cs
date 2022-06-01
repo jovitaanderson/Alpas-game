@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
 {
+    [SerializeField] FacingDirection defaultDirection = FacingDirection.Down;
     [SerializeField] List<Sprite> walkDownSprites;
     [SerializeField] List<Sprite> walkUpSprites;
     [SerializeField] List<Sprite> walkRightSprites;
@@ -50,6 +51,8 @@ public class CharacterAnimator : MonoBehaviour
         walkUpLeftAnim = new SpriteAnimator(walkUpLeftSprites, spriteRenderer);
         walkUpRightAnim = new SpriteAnimator(walkUpRightSprites, spriteRenderer);
 
+        SetFacingDirection(defaultDirection);
+
         currentAnim = walkDownAnim;
     }
 
@@ -83,7 +86,7 @@ public class CharacterAnimator : MonoBehaviour
                 currentAnim = walkDownLeftAnim;
             else currentAnim = walkDownAnim;
 
-        if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving) 
+        if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
             currentAnim.Start();
 
         if (IsMoving)
@@ -97,4 +100,24 @@ public class CharacterAnimator : MonoBehaviour
 
         wasPreviouslyMoving = IsMoving;
     }
+
+    public void SetFacingDirection(FacingDirection dir)
+    {
+        if (dir == FacingDirection.Right)
+            MoveX = 1;
+        else if (dir == FacingDirection.Left)
+            MoveX = -1;
+        else if (dir == FacingDirection.Down)
+            MoveY = -1;
+        else if (dir == FacingDirection.Up)
+            MoveY = 1;
+    }
+
+    public FacingDirection DefaultDirection
+    {
+        get => defaultDirection;
+    }
 }
+
+public enum FacingDirection { Up, Down, Left, Right }
+

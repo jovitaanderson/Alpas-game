@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Paused}
+public enum GameState { FreeRoam, Battle, Dialog, Cutscene, Paused}
 
 public class GameController : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     GameState state;
     GameState stateBeforePaused;
+
 
     public SceneDetails CurrentScene { get; private set; }
     public SceneDetails PrevScene { get; private set; }
@@ -30,6 +31,15 @@ public class GameController : MonoBehaviour
         battleSystem.OnBattleOver += EndBattle;
 
         //Todo: Remove code -> playerController.OnEnterTrainersView ...
+        playerController.OnEnterTrainersView += (Collider2D trainerCollider) =>
+        {
+            var trainer = trainerCollider.GetComponentInParent<TrainerController>();
+            if (trainer != null)
+            {
+                state = GameState.Cutscene;
+                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+            }
+        };
 
         DialogManager.Instance.OnShowDialog += () =>
         {
@@ -72,15 +82,38 @@ public class GameController : MonoBehaviour
         battleSystem.StartBattle(playerParty, wildAnimalCopy);
     }
 
+    TrainerController trainer;
+    public void StartTrainerBattle(TrainerController trainer)
+    {
+        state = GameState.Battle;
+        battleSystem.gameObject.SetActive(true);
+        worldCamera.gameObject.SetActive(false);
+
+        this.trainer = trainer;
+        var playerParty = playerController.GetComponent<AnimalParty>();
+        var trainerParty = trainer.GetComponent<AnimalParty>();
+        
+        //todo: i not sure if this suppose to be here or not, pls check @shanice
+        //var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
+
+        battleSystem.StartTrainerBattle(playerParty, trainerParty);
+    }
+
     //Todo: aft jovita
     // public void OnEnterTrainersView(TrainerController trainer)
     // {
     //      state = GameState.CutScene;
     //      StartCoroutine(trainer.TriggerTrainerBattle(playerController));
     // } 
-    
+
     void EndBattle(bool won)
     {
+        if(trainer != null && won == true)
+        {
+            trainer.BattleLost();
+            trainer = null;
+        }
+
         state = GameState.FreeRoam;
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Linq;
+using UnityEngine.UI;
 
 //ToDo:rewatch ep 37 on bug fixes after jovita has completed Trainer Battle
 
 //to store battle state
-public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, MoveToForget, BattleOver}
+public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen,AboutToUse, MoveToForget, BattleOver}
 public enum BattleAction { Move, SwitchAnimal, UseItem, Run}
 
 //To control the entire battle
@@ -18,6 +19,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] PartyScreen partyScreen;
+    [SerializeField] Image playerImage;
+    [SerializeField] Image trainerImage;
     [SerializeField] GameObject pokeballSprite;
     [SerializeField] MoveSelectionUI moveSelectionUI;
 
@@ -29,9 +32,15 @@ public class BattleSystem : MonoBehaviour
     int currentAction;
     int currentMove;
     int currentMember;
+    bool aboutToUseChoice = true;
 
     AnimalParty playerParty;
+    AnimalParty trainerParty;
     Animal wildAnimal;
+
+    bool isTrainerBattle = false;
+    PlayerController player;
+    TrainerController trainer;
 
     int escapeAttempts;
     MoveBase moveToLearn;
@@ -42,19 +51,66 @@ public class BattleSystem : MonoBehaviour
         this.wildAnimal = wildAnimal;
         StartCoroutine(SetupBattle());
     }
+
+    public void StartTrainerBattle(AnimalParty playerParty, AnimalParty trainerParty)
+    {
+        this.playerParty = playerParty;
+        this.trainerParty = trainerParty;
+
+        isTrainerBattle = true;
+        player = playerParty.GetComponent<PlayerController>();
+        trainer = trainerParty.GetComponent<TrainerController>();
+
+        StartCoroutine(SetupBattle());
+    }
+
     public IEnumerator SetupBattle()
     {
-        playerUnit.Setup(playerParty.GetHealthyPokemon());
-        enemyUnit.Setup(wildAnimal);
+        playerUnit.Clear();
+        enemyUnit.Clear();
+
+        if (!isTrainerBattle)
+        {
+            //wild pokemon battle
+            playerUnit.Setup(playerParty.GetHealthyAnimal());
+            enemyUnit.Setup(wildAnimal);
+
+            dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+            yield return dialogBox.TypeDialog($"A wild {enemyUnit.Animal.Base.Name} appeared.");
+        } 
+        else
+        {
+            //trainer battle
+
+            //show trainer and player sprites
+            playerUnit.gameObject.SetActive(false);
+            enemyUnit.gameObject.SetActive(false);
+
+            playerImage.gameObject.SetActive(true);
+            trainerImage.gameObject.SetActive(true);
+            playerImage.sprite = player.Sprite;
+            trainerImage.sprite = trainer.Sprite;
+            yield return dialogBox.TypeDialog($"{trainer.Name} wants to battle");
+
+            //send out first pokemon of the trainer
+
+            trainerImage.gameObject.SetActive(false);
+            enemyUnit.gameObject.SetActive(true);
+            var enemyAnimal = trainerParty.GetHealthyAnimal();
+            enemyUnit.Setup(enemyAnimal);
+            yield return dialogBox.TypeDialog($"{trainer.Name} send out {enemyAnimal.Base.Name}");
+
+            // Send out first pokemon of the player
+            playerImage.gameObject.SetActive(false);
+            playerUnit.gameObject.SetActive(true);
+            var playerAnimal = playerParty.GetHealthyAnimal();
+            playerUnit.Setup(playerAnimal);
+            yield return dialogBox.TypeDialog($"Go {playerAnimal.Base.Name} !");
+            dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+        }
 
         partyScreen.Init();
-
-        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
-
-        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Animal.Base.Name} appeared.");
-
         escapeAttempts = 0;
-
         ActionSelection();
     }
 
@@ -93,6 +149,15 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
+    }
+
+    IEnumerator AboutToUse(Animal newAnimal)
+    {
+        state = BattleState.Busy;
+        yield return dialogBox.TypeDialog($"{trainer.Name} is about to use {newAnimal.Base.Name}. Do you want to change a new Animal?");
+
+        state = BattleState.AboutToUse;
+        dialogBox.EnableChoiceBox(true);
     }
 
     IEnumerator ChooseMoveToForget(Animal animal, MoveBase newMove)
@@ -267,7 +332,9 @@ public class BattleSystem : MonoBehaviour
         {
             yield return HandleAnimalFainted(sourceUnit);
 
-            // yield return new WaitUntil(() => state == BattleState.RunningTurn);
+            //todo: I uncommented this -jo
+            yield return new WaitUntil(() => state == BattleState.RunningTurn);
+
         }
     }
 
@@ -364,14 +431,28 @@ public class BattleSystem : MonoBehaviour
         if (faintedUnit.IsPlayerUnit)
         {
             //Check if any other healthy animal before ending the battle
-            var nextPokemon = playerParty.GetHealthyPokemon();
+            var nextPokemon = playerParty.GetHealthyAnimal();
             if (nextPokemon != null)
                 OpenPartyScreen();
             else
                 BattleOver(false);
         }
         else
-            BattleOver(true);
+        {
+            if (!isTrainerBattle)
+            {
+                BattleOver(true);
+            }
+            else
+            {
+                var nextAnimal = trainerParty.GetHealthyAnimal();
+                if (nextAnimal != null)
+                    StartCoroutine(AboutToUse(nextAnimal));
+                else 
+                    BattleOver(true);
+            }
+
+        }
     }
 
     IEnumerator ShowDamageDetails(DamageDetails damageDetails)
@@ -398,6 +479,10 @@ public class BattleSystem : MonoBehaviour
         {
             HandlePartySelection();
         } 
+        else if (state == BattleState.AboutToUse)
+        {
+            HandleAboutToUse();
+        }
         else if (state == BattleState.MoveToForget)
         {
             Action<int> onMoveSelected = (moveIndex) => {
@@ -551,9 +636,49 @@ public class BattleSystem : MonoBehaviour
         //Go back to select action screen if esc or backspace is pressed
         else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
         {
+            if(playerUnit.Animal.HP <= 0)
+            {
+                partyScreen.SetMessageText("You have to choose a pokemon to continue");
+                return;
+            }
             partyScreen.gameObject.SetActive(false);
-            ActionSelection();
+
+            if (prevState == BattleState.AboutToUse)
+            {
+                prevState = null;
+                StartCoroutine(SendNextTrainerAnimal());
+            }
+            else
+                ActionSelection();
         }
+    }
+
+    void HandleAboutToUse()
+    {
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            aboutToUseChoice = !aboutToUseChoice; //since there are only two options yes/no
+
+        dialogBox.UpdateChoiceBox(aboutToUseChoice);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            dialogBox.EnableChoiceBox(false);
+            if(aboutToUseChoice == true)
+            {
+                prevState = BattleState.AboutToUse;
+                OpenPartyScreen();
+            }
+            else
+            {
+                StartCoroutine(SendNextTrainerAnimal());
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            dialogBox.EnableChoiceBox(false);
+            StartCoroutine(SendNextTrainerAnimal());
+        }
+        
     }
 
     //Switch pokemon method
@@ -569,6 +694,25 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Setup(newAnimal);
         dialogBox.SetMoveNames(newAnimal.Moves);
         yield return dialogBox.TypeDialog($"Go {newAnimal.Base.Name} !");
+
+        if (prevState == null)
+        {
+            state = BattleState.RunningTurn;
+        }
+        else if (prevState == BattleState.AboutToUse)
+        {
+            prevState = null;
+            StartCoroutine(SendNextTrainerAnimal());
+        }
+    }
+
+    IEnumerator SendNextTrainerAnimal()
+    {
+        state = BattleState.Busy;
+
+        var nextAnimal = trainerParty.GetHealthyAnimal();
+        enemyUnit.Setup(nextAnimal);
+        yield return dialogBox.TypeDialog($"{trainer.Name} send out {nextAnimal.Base.Name}!");
 
         state = BattleState.RunningTurn;
     }

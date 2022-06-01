@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4201773140602634719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0.5, y: 20.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4201773140779870296}
@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef557970f499f746a8669073af92c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Brendan
+  sprite: {fileID: 21300000, guid: 759dc584fb60b1b4ca7e3148c238943c, type: 3}
 --- !u!114 &4201773140602634708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ee6d9c73e333241b04021a990412e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultDirection: 1
   walkDownSprites:
   - {fileID: -5409399699243270371, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
   - {fileID: 3358272346319122276, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}

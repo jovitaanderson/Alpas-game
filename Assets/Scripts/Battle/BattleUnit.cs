@@ -38,13 +38,19 @@ public class BattleUnit : MonoBehaviour
         if (isPlayerUnit) image.sprite = Animal.Base.BackSprite;
         else image.sprite = Animal.Base.FrontSprite;
 
+        hud.gameObject.SetActive(true);
         hud.SetData(animal);
 
         transform.localScale = new Vector3(1,1,1);
         image.color = originalColor;
         PlayEnterAnimation();
     }
-    
+
+    public void Clear()
+    {
+        hud.gameObject.SetActive(false);
+    }
+
     //To allow animal image to slide in frame
     public void PlayEnterAnimation()
     {

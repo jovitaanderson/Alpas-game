@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] new string name;
+    [SerializeField] Sprite sprite;
 
     public event Action OnEncountered;
+    public event Action<Collider2D>  OnEnterTrainersView;
 
     private Vector2 input;
 
@@ -32,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
-                StartCoroutine(character.Move(input, CheckForEncounters));
+                StartCoroutine(character.Move(input, OnMoveOver));
             }
         }
 
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     //Probability of encountering an animal in a bush
     private void CheckForEncounters()
     {
@@ -68,6 +72,29 @@ public class PlayerController : MonoBehaviour
                 OnEncountered();
             }
         }
+    }
+
+    private void CheckIfInTrainersView()
+    {
+        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.FovLayer);
+        if (collider != null)
+        {
+            character.Animator.IsMoving = false;
+            OnEnterTrainersView?.Invoke(collider);
+        }
+    }
+
+    public string Name{
+        get => name;
+    }
+    public Sprite Sprite{
+        get => sprite;
+    }
+
+    private void OnMoveOver()
+    {
+        CheckForEncounters();
+        CheckIfInTrainersView();
     }
 
     //Todo: add after jovita
@@ -88,8 +115,5 @@ public class PlayerController : MonoBehaviour
     //Check for encounters & Check In Trainers view can be removed
 
     public Character Character => character;
-    
-
-
     
 }

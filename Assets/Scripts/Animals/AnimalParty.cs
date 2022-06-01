@@ -23,7 +23,7 @@ public class AnimalParty : MonoBehaviour
         }
     }
 
-    public Animal GetHealthyPokemon()
+    public Animal GetHealthyAnimal()
     {
         //Get first animal in the party that is no fainted
         //If all animal fainted it will return null
