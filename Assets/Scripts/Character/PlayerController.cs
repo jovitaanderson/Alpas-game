@@ -69,4 +69,27 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    //Todo: add after jovita
+    // private void OnMoveOver() 
+    // {
+    //     var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.i.TriggerableLayers);
+
+    //     foreach(var collider in colliders)
+    //     {
+    //         var triggerable = collider.GetComponent<IPlayerTriggerable>();
+    //         if (triggerable != null) 
+    //         {
+    //             triggerable.OnPlayerTriggered(this);
+    //             break;
+    //         }
+    //     }
+    // }
+    //Check for encounters & Check In Trainers view can be removed
+
+    public Character Character => character;
+    
+
+
+    
 }

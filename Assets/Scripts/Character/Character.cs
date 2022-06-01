@@ -9,12 +9,24 @@ public class Character : MonoBehaviour
 
     public bool IsMoving { get; private set; }
 
+    public float OffsetY { get; private set; } = 0.3f;
+
     CharacterAnimator animator;
     private void Awake()
     {
         animator = GetComponent <CharacterAnimator>();
+        SetPositionAndSnapToTile(transform.position);
     }
 
+    public void SetPositionAndSnapToTile(Vector2 pos)
+    {
+        //2.3 -> floor -> 2 -> 2.5
+        pos.x = Mathf.Floor(pos.x) + 0.5f;
+        pos.y = Mathf.Floor(pos.y) + 0.5f + OffsetY;
+
+        transform.position = pos;
+
+    }
     public IEnumerator Move(Vector2 moveVec, Action OnMoveOver=null)
     {
         animator.MoveX = Mathf.Clamp(moveVec.x, -1f, 1f);
