@@ -6,7 +6,6 @@ using DG.Tweening;
 using System.Linq;
 using UnityEngine.UI;
 
-//ToDo:rewatch ep 37 on bug fixes after jovita has completed Trainer Battle
 
 //to store battle state
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen,AboutToUse, MoveToForget, BattleOver}
@@ -45,10 +44,12 @@ public class BattleSystem : MonoBehaviour
     int escapeAttempts;
     MoveBase moveToLearn;
 
-    public void StartBattle(AnimalParty playerParty, Animal  wildAnimal)
+    public void StartBattle(AnimalParty playerParty, Animal wildAnimal)
     {
         this.playerParty = playerParty;
         this.wildAnimal = wildAnimal;
+        player = playerParty.GetComponent<PlayerController>();
+        isTrainerBattle = false;
         StartCoroutine(SetupBattle());
     }
 

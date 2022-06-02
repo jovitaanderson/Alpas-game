@@ -12,9 +12,10 @@ public class LocationPortal : MonoBehaviour, IPlayerTriggerable
     PlayerController player;
    public void OnPlayerTriggered(PlayerController player) 
    {
-       player.Character.Animator.IsMoving = false;
-       this.player = player;
-       StartCoroutine(Teleport());
+        Debug.Log("Player has stepped on the portal");
+        player.Character.Animator.IsMoving = false;
+        this.player = player;
+        StartCoroutine(Teleport());
    }
 
    Fader fader;
@@ -27,14 +28,14 @@ public class LocationPortal : MonoBehaviour, IPlayerTriggerable
    IEnumerator Teleport() 
    {
 
-       GameController.Instance.PausedGame(true);
+       GameController.Instance.PauseGame(true);
        yield return fader.FadeIn(0.5f);
 
         var destPortal = FindObjectsOfType<LocationPortal>().First(x => x != this && x.destinationPortal == this.destinationPortal);
         player.Character.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
 
         yield return fader.FadeOut(0.5f);
-        GameController.Instance.PausedGame(false);
+        GameController.Instance.PauseGame(false);
 
    }
 

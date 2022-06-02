@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] new string name;
     [SerializeField] Sprite sprite;
 
-    public event Action OnEncountered;
-    public event Action<Collider2D>  OnEnterTrainersView;
-
     private Vector2 input;
 
     private Character character;
@@ -59,31 +56,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    //Probability of encountering an animal in a bush
-    private void CheckForEncounters()
-    {
-        if(Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.GrassLayer) != null)
-        {
-            if (UnityEngine.Random.Range(1, 101) <= 10)
-            {
-                //animator.SetBool("isMoving", false);
-                character.Animator.IsMoving = false;
-                OnEncountered();
-            }
-        }
-    }
-
-    private void CheckIfInTrainersView()
-    {
-        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.FovLayer);
-        if (collider != null)
-        {
-            character.Animator.IsMoving = false;
-            OnEnterTrainersView?.Invoke(collider);
-        }
-    }
-
     public string Name{
         get => name;
     }
@@ -91,28 +63,20 @@ public class PlayerController : MonoBehaviour
         get => sprite;
     }
 
-    private void OnMoveOver()
+    private void OnMoveOver() 
     {
-        CheckForEncounters();
-        CheckIfInTrainersView();
+        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.i.TriggerableLayers);
+
+        foreach(var collider in colliders)
+        {
+            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+            if (triggerable != null) 
+            {
+                triggerable.OnPlayerTriggered(this);
+                break;
+            }
+        }
     }
-
-    //Todo: add after jovita
-    // private void OnMoveOver() 
-    // {
-    //     var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.i.TriggerableLayers);
-
-    //     foreach(var collider in colliders)
-    //     {
-    //         var triggerable = collider.GetComponent<IPlayerTriggerable>();
-    //         if (triggerable != null) 
-    //         {
-    //             triggerable.OnPlayerTriggered(this);
-    //             break;
-    //         }
-    //     }
-    // }
-    //Check for encounters & Check In Trainers view can be removed
 
     public Character Character => character;
     

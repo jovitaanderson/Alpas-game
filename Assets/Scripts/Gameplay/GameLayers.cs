@@ -49,7 +49,7 @@ public class GameLayers : MonoBehaviour
     }
     public LayerMask TriggerableLayers
     {
-        get => grassLayer | portalLayer; //add fovLayer
+        get => grassLayer | portalLayer | fovLayer;
     }
 
 }

@@ -26,20 +26,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        //ToDO: remove this code aft jovita
-        playerController.OnEncountered += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
-
-        //Todo: Remove code -> playerController.OnEnterTrainersView ...
-        playerController.OnEnterTrainersView += (Collider2D trainerCollider) =>
-        {
-            var trainer = trainerCollider.GetComponentInParent<TrainerController>();
-            if (trainer != null)
-            {
-                state = GameState.Cutscene;
-                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
-            }
-        };
 
         DialogManager.Instance.OnShowDialog += () =>
         {
@@ -53,7 +40,7 @@ public class GameController : MonoBehaviour
         };
     }
 
-    public void PausedGame(bool pause) 
+    public void PauseGame(bool pause) 
     {
         if (pause)
         {
@@ -100,11 +87,11 @@ public class GameController : MonoBehaviour
     }
 
     //Todo: aft jovita
-    // public void OnEnterTrainersView(TrainerController trainer)
-    // {
-    //      state = GameState.CutScene;
-    //      StartCoroutine(trainer.TriggerTrainerBattle(playerController));
-    // } 
+    public void OnEnterTrainersView(TrainerController trainer)
+    {
+        state = GameState.Cutscene;
+        StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+    } 
 
     void EndBattle(bool won)
     {
