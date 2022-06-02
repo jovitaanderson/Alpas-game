@@ -382,9 +382,8 @@ public class BattleSystem : MonoBehaviour
             //exp gain
             int expYield = faintedUnit.Animal.Base.ExpYield;
             int enemyLevel = faintedUnit.Animal.Level;
-            //float trainerBonus = (isTrainerBattle) ? 1.5f : 1f;
-            //ToDo: change when jovita finishes trainer battle
-            int expGain = Mathf.FloorToInt((expYield * enemyLevel * 1f) / 7); //change 1 to trainerBonus
+            float trainerBonus = (isTrainerBattle) ? 1.5f : 1f;
+            int expGain = Mathf.FloorToInt((expYield * enemyLevel * trainerBonus) / 7); 
             playerUnit.Animal.Exp += expGain;
             yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} gained {expGain} exp");
             yield return playerUnit.Hud.SetExpSmooth();
@@ -721,15 +720,14 @@ public class BattleSystem : MonoBehaviour
     IEnumerator ThrowPokeball() {
 
         state = BattleState.Busy;
-        // ToDo: Add when Jovita finishes her Trainer Battle
-        // if (isTrainerBattle) {
-        //     yield return dialogBox.TypeDialog($"You cannot steal the trainers' animal!");
-        //     state = BattleState.RunningTurn;
-        //     yield break;
-        // }
+        
+        if (isTrainerBattle) {
+            yield return dialogBox.TypeDialog($"You cannot steal the trainers' animal!");
+            state = BattleState.RunningTurn;
+            yield break;
+        }
 
-        //ToDo: Change playerUnit name to player name cus its nmot the pokemon that throws the ball, its the player
-        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} used CATCH ANIMAL"); //player.Name
+        yield return dialogBox.TypeDialog($"{player.Name} used CATCH ANIMAL"); //player.Name
 
         var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2,0), Quaternion.identity);
         var pokeball = pokeballObj.GetComponent<SpriteRenderer>();
@@ -798,13 +796,12 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.Busy;
 
-        //TODO: enable this after jovita finishes her trainer battle
-        // if (isTrainerBattle) 
-        // {
-        //     yield return dialogBox.TypeDialog($"You cannot run from trainer battles!");
-        //     state = BattleState.RunningTurn;
-        //     yield break;
-        // }
+        if (isTrainerBattle) 
+        {
+            yield return dialogBox.TypeDialog($"You cannot run from trainer battles!");
+            state = BattleState.RunningTurn;
+            yield break;
+        }
 
         ++escapeAttempts;
 
