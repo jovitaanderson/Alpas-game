@@ -332,8 +332,6 @@ public class BattleSystem : MonoBehaviour
         if (sourceUnit.Animal.HP <= 0)
         {
             yield return HandleAnimalFainted(sourceUnit);
-
-            //todo: I uncommented this -jo
             yield return new WaitUntil(() => state == BattleState.RunningTurn);
 
         }
