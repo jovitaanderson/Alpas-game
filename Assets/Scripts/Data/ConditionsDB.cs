@@ -122,7 +122,6 @@ public class ConditionsDB
          },
          {
             //Volatile Status Conditions
-            //TODO: my pokemon doesnt sleep?
             ConditionID.confusion,
             new Condition()
             {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class SceneDetails : MonoBehaviour
 {
     [SerializeField] List<SceneDetails> connectedScenes;
     public bool IsLoaded { get; private set; }
+    List<SavableEntity> savableEntities;
+
    private void OnTriggerEnter2D(Collider2D collision)
    {
        if (collision.tag == "Player")
@@ -22,10 +25,11 @@ public class SceneDetails : MonoBehaviour
                scene.LoadScene();
            }
 
-           //Unload the scenens that are not connected anymore
-           if (GameController.Instance.PrevScene != null)
+            //Unload the scenens that are not connected anymore
+            var prevScene = GameController.Instance.PrevScene;
+           if (prevScene != null)
            {
-               var previouslyLoadedScenes = GameController.Instance.PrevScene.connectedScenes;
+               var previouslyLoadedScenes = prevScene.connectedScenes;
                foreach (var scene in previouslyLoadedScenes)
                {
                    if (!connectedScenes.Contains(scene) && scene != this)
@@ -33,6 +37,9 @@ public class SceneDetails : MonoBehaviour
                        scene.UnloadScene();
                    }
                }
+
+               if(!connectedScenes.Contains(prevScene))
+                prevScene.UnloadScene();
            }
        }
    }
@@ -41,16 +48,36 @@ public class SceneDetails : MonoBehaviour
    {
         if (!IsLoaded)
         {
-            SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
+            var operation = SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
             IsLoaded = true;
+
+            operation.completed += (AsyncOperation op) =>
+            {
+                //These lines will run once var operation is fully completed
+                savableEntities = GetSavableEntitiesInScene();
+                SavingSystem.i.RestoreEntityStates(savableEntities);
+            };
+
+
         }
    }
    public void UnloadScene()
    {
         if (IsLoaded)
         {
+            SavingSystem.i.CaptureEntityStates(savableEntities);
+
             SceneManager.UnloadSceneAsync(gameObject.name);
             IsLoaded = false;
+
+            savableEntities = GetSavableEntitiesInScene();
         }
    }
+
+    List<SavableEntity> GetSavableEntitiesInScene()
+    {
+        var currScene = SceneManager.GetSceneByName(gameObject.name);
+        var saveableEntities = FindObjectsOfType<SavableEntity>().Where(x => x.gameObject.scene == currScene).ToList();
+        return saveableEntities;
+    }
 }
