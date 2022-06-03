@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        AnimalDB.Init();
+        MoveDB.Init();
         ConditionsDB.Init();
     }
 

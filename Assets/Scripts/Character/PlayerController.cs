@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ISavable
@@ -81,17 +82,35 @@ public class PlayerController : MonoBehaviour, ISavable
     //Used to save data
     public object CaptureState()
     {
-        float[] position = new float[] { transform.position.x, transform.position.y };
-        return position;
+        var saveData = new PlayerSaveData()
+        {
+            //Save player position
+            position = new float[] { transform.position.x, transform.position.y},
+            //Save animal party
+            animals = GetComponent<AnimalParty>().Animals.Select( p => p.GetSaveData()).ToList()
+        };
+        return saveData ;
     }
 
     //Used to restore data when game loaded
     public void RestoreState(object state)
     {
-        var position = (float[])state;
-        transform.position = new Vector3(position[0], position[1]);
+        var saveData = (PlayerSaveData)state;
+
+        //Restore position
+        var pos = saveData.position;
+        transform.position = new Vector3(pos[0], pos[1]);
+
+        //Restore Party
+        GetComponent<AnimalParty>().Animals = saveData.animals.Select(s => new Animal(s)).ToList();
     }
 
     public Character Character => character;
-    
+}
+
+[Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public List<AnimalSaveData> animals;
 }

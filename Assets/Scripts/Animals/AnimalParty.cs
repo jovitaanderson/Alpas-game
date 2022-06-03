@@ -13,6 +13,10 @@ public class AnimalParty : MonoBehaviour
         {
             return animals;
         }
+        set
+        {
+            animals = value;
+        }
     }
 
     private void Start()
