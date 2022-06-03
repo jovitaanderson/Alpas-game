@@ -51,7 +51,7 @@ public class Animal
 
     public void Init()
     {
-
+        //Generate Moves
         //Will add moves to the Animal if level is reached [Animal can only have 4 moves]
         Moves = new List<Move>();
         foreach(var move in Base.LearnableMoves)
@@ -69,6 +69,42 @@ public class Animal
         ResetStatBoost();
         Status = null;
         VolatileStatus = null;
+    }
+
+    //Function to restore animal using savable data
+    public Animal(AnimalSaveData saveData)
+    {
+        _base = AnimalDB.GetAnimalByName(saveData.name);
+        HP = saveData.hp;
+        level = saveData.level;
+        Exp = saveData.exp;
+        if (saveData.statusId != null)
+            Status = ConditionsDB.Conditions[saveData.statusId.Value];
+        else
+            Status = null;
+
+        Moves = saveData.moves.Select(s => new Move(s)).ToList();
+
+        CalculateStats();
+        StatusChanges = new Queue<string>();
+        ResetStatBoost();
+        VolatileStatus = null;
+    }
+
+    //Fucntion to get savable data of animal
+    public AnimalSaveData GetSaveData()
+    {
+        var saveData = new AnimalSaveData()
+        {
+            name = Base.Name,
+            hp = HP,
+            level = Level,
+            exp = Exp,
+            statusId = Status?.Id,
+            moves = Moves.Select(m => m.GetSaveData()).ToList()
+        };
+
+        return saveData;
     }
 
     void CalculateStats()
@@ -299,4 +335,15 @@ public class DamageDetails
     public float Critical { get; set; }
     public float TypeEffectiveness { get; set; }
 
+}
+
+[System.Serializable]
+public class AnimalSaveData
+{
+    public string name;
+    public int hp;
+    public int level;
+    public int exp;
+    public ConditionID? statusId;
+    public List<MoveSaveData> moves;
 }
