@@ -7,10 +7,30 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] List<ItemSlot> slots;
+    [SerializeField] List<ItemSlot> animalCaptureSlots;
+    [SerializeField] List<ItemSlot> tmSlots;
+
+    List<List<ItemSlot>> allSlots;
 
     public event Action OnUpdated;
 
-    public List<ItemSlot> Slots => slots;
+    private void Awake()
+    {
+        allSlots = new List<List<ItemSlot>>()
+        {
+            slots, animalCaptureSlots, tmSlots
+        };
+    }
+
+    public static List<string> ItemCategories { get; set; } = new List<string>()
+    {
+        "ITEMS", "ANIMAL CAPTURE", "TMs & HMs"    
+    };
+
+    public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
+    {
+        return allSlots[categoryIndex];
+    }
 
     public ItemBase UseItem(int itemIndex, Animal selectedAnimal)
     {
