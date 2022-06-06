@@ -10,6 +10,7 @@ public class PartyScreen : MonoBehaviour
 
     PartyMemberUI[] memberSlots;
     List<Animal> animals;
+    AnimalParty party;
 
     int selection = 0;
 
@@ -22,17 +23,22 @@ public class PartyScreen : MonoBehaviour
     {
         //Returns all the partyMemberUI components that are attached to the partyScreen
         memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
+
+        party = AnimalParty.GetPlayerParty();
+        SetPartyData();
+
+        party.OnUpdated += SetPartyData;
     }
-    public void SetPartyData(List<Animal> animals)
+    public void SetPartyData()
     {
-        this.animals = animals;
+        animals = party.Animals;
 
         for (int i = 0; i < memberSlots.Length; i++)
         {
         if (i < animals.Count)
         {
             memberSlots[i].gameObject.SetActive(true);
-            memberSlots[i].SetData(animals[i]);
+            memberSlots[i].Init(animals[i]);
         }
         else
             memberSlots[i].gameObject.SetActive(false);
@@ -40,7 +46,7 @@ public class PartyScreen : MonoBehaviour
 
         UpdateMemberSelection(selection);
 
-        messageText.text = "Choose a Pokemon";
+        messageText.text = "Choose a Animal";
     }
 
     //Handles party screen selection

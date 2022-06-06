@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
 
         menuController = GetComponent<MenuController>();
 
+        //TODO: Uncomment this if we want to remove mouse from game
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
         AnimalDB.Init();
         MoveDB.Init();
         ConditionsDB.Init();
@@ -187,7 +191,6 @@ public class GameController : MonoBehaviour
         {
             //Animal
             partyScreen.gameObject.SetActive(true);
-            partyScreen.SetPartyData(playerController.GetComponent<AnimalParty>().Animals);
             state = GameState.PartyScreen;
         }
         else if (selectedItem == 1)

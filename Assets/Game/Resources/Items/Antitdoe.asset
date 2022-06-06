@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd21a2b84800b145b4f41a23c38fe3c, type: 3}
+  m_Name: Antitdoe
+  m_EditorClassIdentifier: 
+  name: Antitdoe
+  description: Cures a Animal that has been posioned
+  usedMessage: revoke posion status
+  icon: {fileID: -1130307063785972239, guid: a24a52f9ba972ec4398c9fa0c752026a, type: 3}
+  hpAmount: 0
+  restoreMaxHP: 0
+  ppAmount: 0
+  restoreMaxPP: 0
+  status: 1
+  recoverAllStatus: 0
+  revive: 0
+  maxRevive: 0

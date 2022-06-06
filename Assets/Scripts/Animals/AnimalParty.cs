@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class AnimalParty : MonoBehaviour
 {
     [SerializeField] List<Animal> animals;
+
+    public event Action OnUpdated;
 
     public List<Animal> Animals
     {
@@ -16,6 +19,7 @@ public class AnimalParty : MonoBehaviour
         set
         {
             animals = value;
+            OnUpdated?.Invoke();
         }
     }
 
@@ -40,9 +44,16 @@ public class AnimalParty : MonoBehaviour
         if (animals.Count < 6)
         {
             animals.Add(newAnimal);
+            OnUpdated?.Invoke();
         } else {
+
             //TODO: Add to the PC once thats implenmented
         }
+    }
+
+    public static AnimalParty GetPlayerParty()
+    {
+        return FindObjectOfType<PlayerController>().GetComponent<AnimalParty>();
     }
 
 }

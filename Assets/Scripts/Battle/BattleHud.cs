@@ -24,6 +24,12 @@ public class BattleHud : MonoBehaviour
 
     public void SetData(Animal animal)
     {
+        if(_animal != null)
+        {
+            _animal.OnStatusChanged -= SetStatusText;
+            _animal.OnHPChanged -= UpdateHP;
+        }
+
         _animal = animal;
         nameText.text = animal.Base.Name;
         SetLevel();
@@ -41,6 +47,7 @@ public class BattleHud : MonoBehaviour
 
         SetStatusText();
         _animal.OnStatusChanged += SetStatusText;
+        _animal.OnHPChanged += UpdateHP;
     }
 
     void SetStatusText()
@@ -89,12 +96,19 @@ public class BattleHud : MonoBehaviour
         return Mathf.Clamp01(normalisedExp);
     }
 
-    public IEnumerator UpdateHP()
+    public void UpdateHP()
     {
-        if (_animal.HpChanged == true)
-        {
-            yield return hpBar.SetHPSmooth((float)_animal.HP / _animal.MaxHp);
-            _animal.HpChanged = false;
-        }
+        StartCoroutine(UpdateHPAsync());
+    }
+
+    public IEnumerator UpdateHPAsync()
+    {
+        yield return hpBar.SetHPSmooth((float)_animal.HP / _animal.MaxHp);
+        
+    }
+
+    public IEnumerator WaitForHPUpdate()
+    {
+        yield return new WaitUntil(() => hpBar.IsUpdating == false);
     }
 }

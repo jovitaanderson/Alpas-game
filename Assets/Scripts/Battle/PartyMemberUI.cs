@@ -10,12 +10,20 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] HPBar hpBar;
 
     Animal _animal;
-    public void SetData(Animal animal)
+    public void Init(Animal animal)
     {
         _animal = animal;
-        nameText.text = animal.Base.Name;
-        levelText.text = "Lvl" + animal.Level;
-        hpBar.SetHP((float)animal.HP / animal.MaxHp);
+        UpdateData();
+
+        _animal.OnHPChanged += UpdateData;
+
+    }
+
+    void UpdateData()
+    {
+        nameText.text = _animal.Base.Name;
+        levelText.text = "Lvl" + _animal.Level;
+        hpBar.SetHP((float)_animal.HP / _animal.MaxHp);
     }
 
     //Change color of selected party member

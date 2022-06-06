@@ -29,7 +29,7 @@ public class ConditionsDB
                 //lamda functions
                 OnAfterTurn = (Animal animal) =>
                 {
-                    animal.UpdateHP(animal.MaxHp / 8);
+                    animal.DecreaseHP(animal.MaxHp / 8);
                     animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to posion");
                 }
 
@@ -45,7 +45,7 @@ public class ConditionsDB
                 //lamda functions
                 OnAfterTurn = (Animal animal) =>
                 {
-                    animal.UpdateHP(animal.MaxHp / 16);
+                    animal.DecreaseHP(animal.MaxHp / 16);
                     animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to burn");
                 }
 
@@ -150,7 +150,7 @@ public class ConditionsDB
 
                     //Hurt by confusion
                     animal.StatusChanges.Enqueue($"{animal.Base.Name} is confused");
-                    animal.UpdateHP(animal.MaxHp / 8);
+                    animal.DecreaseHP(animal.MaxHp / 8);
                     animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to confusion");
                     return false;
                 }

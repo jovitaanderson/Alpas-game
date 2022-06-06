@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 
 //to store battle state
-public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen,AboutToUse, MoveToForget, BattleOver}
+public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, Bag, PartyScreen,AboutToUse, MoveToForget, BattleOver}
 public enum BattleAction { Move, SwitchAnimal, UseItem, Run}
 
 //To control the entire battle
@@ -22,6 +22,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Image trainerImage;
     [SerializeField] GameObject pokeballSprite;
     [SerializeField] MoveSelectionUI moveSelectionUI;
+    [SerializeField] InventoryUI inventoryUI;
 
 
     public event Action<bool> OnBattleOver;
@@ -136,11 +137,18 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetDialog("Choose an action");
         dialogBox.EnableActionSelector(true);
     }
+
+    void OpenBag()
+    {
+        state = BattleState.Bag;
+        inventoryUI.gameObject.SetActive(true);
+
+    }
+
     void OpenPartyScreen()
     {
         partyScreen.CalledFrom = state;
         state = BattleState.PartyScreen;
-        partyScreen.SetPartyData(playerParty.Animals);
         partyScreen.gameObject.SetActive(true);
     }
 
@@ -219,8 +227,9 @@ public class BattleSystem : MonoBehaviour
 
             else if (playerAction == BattleAction.UseItem) 
             {
+                //this is handled from item screen, so do nothing and skip to enemy move
                 dialogBox.EnableActionSelector(false);
-                yield return ThrowPokeball();
+                //yield return ThrowPokeball();
             }
             else if (playerAction == BattleAction.Run) 
             {
@@ -244,7 +253,7 @@ public class BattleSystem : MonoBehaviour
         if (!canRunMove)
         {
             yield return ShowStatusChanges(sourceUnit.Animal);
-            yield return sourceUnit.Hud.UpdateHP();
+            yield return sourceUnit.Hud.WaitForHPUpdate();
             yield break;
         }
         yield return ShowStatusChanges(sourceUnit.Animal);
@@ -266,7 +275,7 @@ public class BattleSystem : MonoBehaviour
             else
             {
                 var damageDetails = targetUnit.Animal.TakeDamage(move, sourceUnit.Animal);
-                yield return targetUnit.Hud.UpdateHP();
+                yield return targetUnit.Hud.WaitForHPUpdate();
                 yield return ShowDamageDetails(damageDetails);
             }
 
@@ -328,7 +337,7 @@ public class BattleSystem : MonoBehaviour
         //Statuses like burn or psn will hurt the pokemon after the turn
         sourceUnit.Animal.OnAfterTurn();
         yield return ShowStatusChanges(sourceUnit.Animal);
-        yield return sourceUnit.Hud.UpdateHP();
+        yield return sourceUnit.Hud.WaitForHPUpdate();
         if (sourceUnit.Animal.HP <= 0)
         {
             yield return HandleAnimalFainted(sourceUnit);
@@ -477,6 +486,22 @@ public class BattleSystem : MonoBehaviour
         {
             HandlePartySelection();
         } 
+        else if (state == BattleState.Bag)
+        {
+            Action onBack = () =>
+            {
+                inventoryUI.gameObject.SetActive(false);
+                state = BattleState.ActionSelection;
+            };
+
+            Action onItemUsed = () =>
+            {
+                state = BattleState.Busy;
+                inventoryUI.gameObject.SetActive(false);
+                StartCoroutine(RunTurns(BattleAction.UseItem));
+            };
+            inventoryUI.HandleUpdate(onBack, onItemUsed);
+        }
         else if (state == BattleState.AboutToUse)
         {
             HandleAboutToUse();
@@ -533,7 +558,8 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 1)
             {
                 // Bag
-                StartCoroutine(RunTurns(BattleAction.UseItem));
+                //StartCoroutine(RunTurns(BattleAction.UseItem));
+                OpenBag();
             }
             else if (currentAction == 2)
             {
