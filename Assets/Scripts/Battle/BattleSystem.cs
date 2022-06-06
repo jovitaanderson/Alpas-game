@@ -27,10 +27,9 @@ public class BattleSystem : MonoBehaviour
     public event Action<bool> OnBattleOver;
 
     BattleState state;
-    BattleState? prevState;
+    
     int currentAction;
     int currentMove;
-    int currentMember;
     bool aboutToUseChoice = true;
 
     AnimalParty playerParty;
@@ -139,6 +138,7 @@ public class BattleSystem : MonoBehaviour
     }
     void OpenPartyScreen()
     {
+        partyScreen.CalledFrom = state;
         state = BattleState.PartyScreen;
         partyScreen.SetPartyData(playerParty.Animals);
         partyScreen.gameObject.SetActive(true);
@@ -212,7 +212,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (playerAction == BattleAction.SwitchAnimal)
             {   
-                var selectedAnimal = playerParty.Animals[currentMember];
+                var selectedAnimal = partyScreen.SelectedMember;
                 state = BattleState.Busy;
                 yield return SwitchAnimal(selectedAnimal);
             }
@@ -538,7 +538,6 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 2)
             {
                 // Animal
-                prevState = state;
                 OpenPartyScreen();
             }
             else if (currentAction == 3)
@@ -589,23 +588,9 @@ public class BattleSystem : MonoBehaviour
     //Handles party screen selection
     void HandlePartySelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++currentMember;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --currentMember;
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            currentMember += 2;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            currentMember -= 2;
-
-        //Restrict value of currentMove between 0 and no. of animals moves
-        currentMember = Mathf.Clamp(currentMember, 0, playerParty.Animals.Count - 1);
-
-        partyScreen.UpdateMemberSelection(currentMember);
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        Action onSelected = () =>
         {
-            var selectedMember = playerParty.Animals[currentMember];
+            var selectedMember = partyScreen.SelectedMember;
             if (selectedMember.HP <= 0)
             {
                 partyScreen.SetMessageText("You can't send out a fainted pokemon");
@@ -619,36 +604,43 @@ public class BattleSystem : MonoBehaviour
 
             partyScreen.gameObject.SetActive(false);
 
-            if (prevState == BattleState.ActionSelection)
+            if (partyScreen.CalledFrom == BattleState.ActionSelection)
             {
-                prevState = null;
                 StartCoroutine(RunTurns(BattleAction.SwitchAnimal));
             }
             else
             {
                 state = BattleState.Busy;
-                StartCoroutine(SwitchAnimal(selectedMember));
+                bool isTrainerAboutToUse = partyScreen.CalledFrom == BattleState.AboutToUse;
+                StartCoroutine(SwitchAnimal(selectedMember, isTrainerAboutToUse));
             }
 
-        }
-        //Go back to select action screen if esc or backspace is pressed
-        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+            partyScreen.CalledFrom = null;
+        };
+
+        Action onBack = () =>
         {
-            if(playerUnit.Animal.HP <= 0)
+            if (playerUnit.Animal.HP <= 0)
             {
                 partyScreen.SetMessageText("You have to choose a pokemon to continue");
                 return;
             }
             partyScreen.gameObject.SetActive(false);
 
-            if (prevState == BattleState.AboutToUse)
+            if (partyScreen.CalledFrom == BattleState.AboutToUse)
             {
-                prevState = null;
                 StartCoroutine(SendNextTrainerAnimal());
             }
             else
                 ActionSelection();
-        }
+
+            partyScreen.CalledFrom = null;
+        };
+        
+        partyScreen.HandleUpdate(onSelected, onBack);
+
+
+        
     }
 
     void HandleAboutToUse()
@@ -663,11 +655,12 @@ public class BattleSystem : MonoBehaviour
             dialogBox.EnableChoiceBox(false);
             if(aboutToUseChoice == true)
             {
-                prevState = BattleState.AboutToUse;
+                //yes Option
                 OpenPartyScreen();
             }
             else
             {
+                //no option
                 StartCoroutine(SendNextTrainerAnimal());
             }
         }
@@ -680,7 +673,7 @@ public class BattleSystem : MonoBehaviour
     }
 
     //Switch pokemon method
-    IEnumerator SwitchAnimal(Animal newAnimal)
+    IEnumerator SwitchAnimal(Animal newAnimal, bool isTrainerAboutToUse = false)
     {
         if (playerUnit.Animal.HP > 0)
         {
@@ -693,15 +686,11 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(newAnimal.Moves);
         yield return dialogBox.TypeDialog($"Go {newAnimal.Base.Name} !");
 
-        if (prevState == null)
-        {
-            state = BattleState.RunningTurn;
-        }
-        else if (prevState == BattleState.AboutToUse)
-        {
-            prevState = null;
+        if (isTrainerAboutToUse)
             StartCoroutine(SendNextTrainerAnimal());
-        }
+        else
+            state = BattleState.RunningTurn;
+        
     }
 
     IEnumerator SendNextTrainerAnimal()
