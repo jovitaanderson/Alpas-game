@@ -6,8 +6,14 @@ using UnityEngine;
 
 public class AnimalCaptureItem : ItemBase
 {
+    [SerializeField] float catchRateModifier = 1;
     public override bool Use(Animal animal)
     {
-        return true;
+        if (GameController.Instance.State == GameState.Battle)
+            return true;
+
+        return false;
     }
+
+    public float CatchRateModifier => catchRateModifier; 
 }

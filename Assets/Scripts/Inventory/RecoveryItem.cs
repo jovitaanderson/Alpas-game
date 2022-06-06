@@ -59,7 +59,7 @@ public class RecoveryItem : ItemBase
         //Recover Status
         if (recoverAllStatus || status != ConditionID.none)
         {
-            if (animal.Status == null && animal.VolatileStatus != null)
+            if (animal.Status == null && animal.VolatileStatus == null)
                 return false;
 
             if (recoverAllStatus)

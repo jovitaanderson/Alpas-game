@@ -23,12 +23,17 @@ public class AnimalParty : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         foreach (var animal in animals) //for loop for every animal in animal list
         {
             animal.Init();
         }
+    }
+
+    private void Start()
+    {
+        
     }
 
     public Animal GetHealthyAnimal()

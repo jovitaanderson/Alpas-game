@@ -24,11 +24,7 @@ public class BattleHud : MonoBehaviour
 
     public void SetData(Animal animal)
     {
-        if(_animal != null)
-        {
-            _animal.OnStatusChanged -= SetStatusText;
-            _animal.OnHPChanged -= UpdateHP;
-        }
+        
 
         _animal = animal;
         nameText.text = animal.Base.Name;
@@ -110,5 +106,14 @@ public class BattleHud : MonoBehaviour
     public IEnumerator WaitForHPUpdate()
     {
         yield return new WaitUntil(() => hpBar.IsUpdating == false);
+    }
+
+    public void ClearData()
+    {
+        if (_animal != null)
+        {
+            _animal.OnStatusChanged -= SetStatusText;
+            _animal.OnHPChanged -= UpdateHP;
+        }
     }
 }

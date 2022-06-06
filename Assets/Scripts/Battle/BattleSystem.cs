@@ -127,6 +127,8 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.BattleOver;
         playerParty.Animals.ForEach(p => p.OnBattleOver());
+        playerUnit.Hud.ClearData();
+        enemyUnit.Hud.ClearData();
         OnBattleOver(won); //event
     }
 
@@ -494,11 +496,9 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.ActionSelection;
             };
 
-            Action onItemUsed = () =>
+            Action<ItemBase> onItemUsed = (ItemBase usedItem) =>
             {
-                state = BattleState.Busy;
-                inventoryUI.gameObject.SetActive(false);
-                StartCoroutine(RunTurns(BattleAction.UseItem));
+                StartCoroutine(OnItemUsed(usedItem));
             };
             inventoryUI.HandleUpdate(onBack, onItemUsed);
         }
@@ -528,8 +528,8 @@ public class BattleSystem : MonoBehaviour
             moveSelectionUI.HandleMoveSelection(onMoveSelected);
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-            StartCoroutine(ThrowPokeball());
+        //if (Input.GetKeyDown(KeyCode.T))
+        //    StartCoroutine(ThrowPokeball());
     }
     void HandleActionSelection()
     {
@@ -730,7 +730,20 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.RunningTurn;
     }
 
-    IEnumerator ThrowPokeball() {
+    IEnumerator OnItemUsed(ItemBase usedItem)
+    {
+        state = BattleState.Busy;
+        inventoryUI.gameObject.SetActive(false);
+
+        if (usedItem is AnimalCaptureItem)
+        {
+            yield return ThrowPokeball((AnimalCaptureItem)(usedItem));
+        }
+
+        StartCoroutine(RunTurns(BattleAction.UseItem));
+    }
+
+    IEnumerator ThrowPokeball(AnimalCaptureItem animalCaptureItem) {
 
         state = BattleState.Busy;
         
@@ -740,17 +753,18 @@ public class BattleSystem : MonoBehaviour
             yield break;
         }
 
-        yield return dialogBox.TypeDialog($"{player.Name} used CATCH ANIMAL"); //player.Name
+        yield return dialogBox.TypeDialog($"{player.Name} used {animalCaptureItem.Name.ToUpper()}"); //player.Name
 
         var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2,0), Quaternion.identity);
         var pokeball = pokeballObj.GetComponent<SpriteRenderer>();
+        pokeball.sprite = animalCaptureItem.Icon;
 
         //Animations
         yield return pokeball.transform.DOJump(enemyUnit.transform.position + new Vector3(0,1), 2f, 1, 1.5f).WaitForCompletion();
         yield return enemyUnit.PlayCaptureAnimation();
         yield return pokeball.transform.DOMoveY(enemyUnit.transform.position.y - 2f, 0.5f).WaitForCompletion();
 
-        int shakeCount = TryToCatchPokemon(enemyUnit.Animal);
+        int shakeCount = TryToCatchPokemon(enemyUnit.Animal, animalCaptureItem);
         //shake 3 times:
         for (int i = 0 ; i < Mathf.Min(shakeCount, 3); ++i)
         {
@@ -784,9 +798,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    int TryToCatchPokemon(Animal animal)
+    int TryToCatchPokemon(Animal animal, AnimalCaptureItem animalCaptureItem)
     {
-        float a = (3 * animal.MaxHp - 2 * animal.HP) * animal.Base.CatchRate * ConditionsDB.GetStatusBonus(animal.Status) / (3 * animal.MaxHp);
+        float a = (3 * animal.MaxHp - 2 * animal.HP) * animal.Base.CatchRate * animalCaptureItem.CatchRateModifier * ConditionsDB.GetStatusBonus(animal.Status) / (3 * animal.MaxHp);
 
         if (a >= 255) {
             return 4; //return number of shake count
