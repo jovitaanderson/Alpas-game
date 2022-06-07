@@ -235,6 +235,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (playerAction == BattleAction.Run) 
             {
+                //TODO: edge case (?) if we run shld all status be gone? e.g. if my animal is sleep and run away
                 yield return TryToEscape();
             }
 

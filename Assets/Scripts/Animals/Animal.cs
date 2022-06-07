@@ -72,7 +72,7 @@ public class Animal
     //Function to restore animal using savable data
     public Animal(AnimalSaveData saveData)
     {
-        _base = AnimalDB.GetAnimalByName(saveData.name);
+        _base = AnimalDB.GetObjectByName(saveData.name);
         HP = saveData.hp;
         level = saveData.level;
         Exp = saveData.exp;
@@ -94,7 +94,7 @@ public class Animal
     {
         var saveData = new AnimalSaveData()
         {
-            name = Base.Name,
+            name = Base.name,
             hp = HP,
             level = Level,
             exp = Exp,
