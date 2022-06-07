@@ -156,7 +156,8 @@ public class InventoryUI : MonoBehaviour
         }
         else 
         {
-            yield return DialogManager.Instance.ShowDialogText($"It won't have any affect!");
+            if (selectedCategory == (int)ItemCategory.Items)
+                yield return DialogManager.Instance.ShowDialogText($"It won't have any affect!");
         }
         ClosePartyScreen();
     }

@@ -40,11 +40,11 @@ public class PlayerController : MonoBehaviour, ISavable
         character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Return)){
-            Interact();
+            StartCoroutine(Interact());
         }
     }
 
-    void Interact()
+    IEnumerator Interact()
     {
         //var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour, ISavable
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer); 
         if (collider != null)
         {
-            collider.GetComponent<Interactable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactable>()?.Interact(transform);
         }
     }
 
