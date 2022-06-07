@@ -139,6 +139,7 @@ public class GameController : MonoBehaviour
             //if user press M key, call menu controller. open menu function
             if (Input.GetKeyDown(KeyCode.M))
             {
+                playerController.Character.Animator.IsMoving = false;
                 menuController.OpenMenu();
                 state = GameState.Menu;
             }
