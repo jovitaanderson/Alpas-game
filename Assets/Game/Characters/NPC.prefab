@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 604246980076941239}
   - component: {fileID: 604246980076941241}
   - component: {fileID: 429167606972576112}
+  - component: {fileID: 4220980286914923127}
   m_Layer: 8
   m_Name: NPC
   m_TagString: Untagged
@@ -215,9 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
     lines:
-    - Hello! Dr. Mary and Dr. Richard has talked alot about you!
-    - Have you tried walking on the long grass? There are many animals that need
-      saving!
+    - 
   movementPattern:
   - {x: 1, y: 0}
   - {x: -1, y: 0}
@@ -234,8 +233,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1393faa886ce4aa0f709c37188677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: a4cc569d115558d408ef6939d202cb72, type: 2}
+  item: {fileID: 0}
+  count: 0
   dialog:
-    lines:
-    - I have just bought MaxEther from the mart
-    - You can have one
+    lines: []
+--- !u!114 &4220980286914923127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604246980076941246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4881f89f8b930e34489bbb86116ccd4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 

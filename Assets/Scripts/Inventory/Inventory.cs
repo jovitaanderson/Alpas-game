@@ -6,11 +6,11 @@ using UnityEngine;
 
 public enum ItemCategory {  Items, AnimalCapture, Tms }
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ISavable
 {
     [SerializeField] List<ItemSlot> slots;
     [SerializeField] List<ItemSlot> animalCaptureSlots;
-    [SerializeField] List<ItemSlot> tmSlots;
+    [SerializeField] List<ItemSlot> tmSlots; //we are not using tm(?)
 
     List<List<ItemSlot>> allSlots;
 
@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
 
     public static List<string> ItemCategories { get; set; } = new List<string>()
     {
-        "ITEMS", "ANIMAL CAPTURE", "TMs & HMs"    
+        "ITEMS", "ANIMAL CAPTURE", "TMs & HMs"     //we are not using tm(?)
     };
 
     public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
@@ -97,6 +97,30 @@ public class Inventory : MonoBehaviour
     {
         return FindObjectOfType<PlayerController>().GetComponent<Inventory>();
     }
+
+    public object CaptureState()
+    {
+        var saveData = new InventorySaveData()
+        {
+            items = slots.Select(i => i.GetSaveData()).ToList(),
+            animalCaptures = animalCaptureSlots.Select(i => i.GetSaveData()).ToList(),
+            tms = tmSlots.Select(i => i.GetSaveData()).ToList() //we are not using tm(?)
+        };
+
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = state as InventorySaveData;
+        slots = saveData.items.Select(i => new ItemSlot(i)).ToList();
+        animalCaptureSlots = saveData.animalCaptures.Select(i => new ItemSlot(i)).ToList();
+        tmSlots = saveData.tms.Select(i => new ItemSlot(i)).ToList(); //we are not using tm(?)
+
+        allSlots = new List<List<ItemSlot>>() { slots, animalCaptureSlots, tmSlots };
+
+        OnUpdated?.Invoke();
+    }
 }
 
 [Serializable]
@@ -104,6 +128,30 @@ public class ItemSlot
 {
     [SerializeField] ItemBase item;
     [SerializeField] int count;
+
+    public ItemSlot()
+    {
+
+    }
+
+    //construtor
+    public ItemSlot (ItemSaveData saveData)
+    {
+        item = ItemDB.GetItemByName(saveData.name);
+        count = saveData.count;
+    }
+
+    //Function to convert the item slot to itemsavedata
+    public ItemSaveData GetSaveData()
+    {
+        var saveData = new ItemSaveData()
+        {
+            name = item.Name,
+            count = count
+        };
+
+        return saveData;
+    }
     public ItemBase Item {
         get => item;
         set => item = value;
@@ -112,4 +160,20 @@ public class ItemSlot
         get => count;
         set => count = value;
     }
+}
+
+[Serializable]
+public class ItemSaveData
+{
+    public string name;
+    public int count;
+}
+
+[Serializable]
+public class InventorySaveData
+{
+    public List<ItemSaveData> items;
+    public List<ItemSaveData> animalCaptures;
+    public List<ItemSaveData> tms;
+
 }

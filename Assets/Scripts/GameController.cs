@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
         AnimalDB.Init();
         MoveDB.Init();
         ConditionsDB.Init();
+        ItemDB.Init();
     }
 
 
