@@ -217,9 +217,8 @@ MonoBehaviour:
   dialog:
     lines:
     - 
-  movementPattern:
-  - {x: 1, y: 0}
-  - {x: -1, y: 0}
+  questToStart: {fileID: 0}
+  movementPattern: []
   timeBetweenPattern: 3
 --- !u!114 &429167606972576112
 MonoBehaviour:

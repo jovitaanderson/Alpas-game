@@ -5,6 +5,12 @@ using UnityEngine;
 public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] Dialog dialog;
+
+    [Header("Quests")]
+    [SerializeField] QuestBase questToStart;
+    [SerializeField] QuestBase questToComplete;
+
+    [Header("Movement")]
     [SerializeField] List<Vector2> movementPattern;
     [SerializeField] float timeBetweenPattern;
 
@@ -12,13 +18,17 @@ public class NPCController : MonoBehaviour, Interactable
     NPCState state;
     float idleTimer = 0f;
     int currentPattern = 0;
+    Quest activeQuest;
 
     Character character;
     ItemGiver itemGiver;
+    AnimalGiver animalGiver;
+
     private void Awake()
     {
         character = GetComponent<Character>();
         itemGiver = GetComponent<ItemGiver>();
+        animalGiver = GetComponent<AnimalGiver>();
     }
 
 
@@ -29,9 +39,46 @@ public class NPCController : MonoBehaviour, Interactable
             state = NPCState.Dialog;
             character.LookTowards(initiator.position);
 
+            if(questToComplete != null)
+            {
+                var quest = new Quest(questToComplete);
+                yield return quest.CompleteQuest(initiator);
+                questToComplete = null;
+
+                Debug.Log($"{quest.Base.Name} completed");
+            }
+
             if (itemGiver != null && itemGiver.CanBeGiven())
             {
                 yield return itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+            }
+            else if (animalGiver != null && animalGiver.CanBeGiven())
+            {
+                yield return animalGiver.GiveAnimal(initiator.GetComponent<PlayerController>());
+            }
+            else if (questToStart != null)
+            {
+                activeQuest = new Quest(questToStart);
+                yield return activeQuest.StartQuest();
+                questToStart = null;
+
+                if (activeQuest.CanBeCompleted())
+                {
+                    yield return activeQuest.CompleteQuest(initiator);
+                    activeQuest = null;
+                }
+            }
+            else if(activeQuest != null)
+            {
+                if (activeQuest.CanBeCompleted())
+                {
+                    yield return activeQuest.CompleteQuest(initiator);
+                    activeQuest = null;
+                }
+                else
+                {
+                    yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
+                }
             }
             else
             {
