@@ -56,6 +56,19 @@ public class AnimalParty : MonoBehaviour
         }
     }
 
+    public IEnumerator CheckForEvolutions()
+    {
+        foreach (var animal in animals)
+        {
+            var evolution = animal.CheckForEvolution();
+            if (evolution != null)
+            {
+                yield return EvolutionManager.i.Evolve(animal, evolution);
+            }
+        }
+
+    }
+
     public static AnimalParty GetPlayerParty()
     {
         return FindObjectOfType<PlayerController>().GetComponent<AnimalParty>();

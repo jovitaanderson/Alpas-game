@@ -29,7 +29,14 @@ public class QuestObject : MonoBehaviour
             foreach (Transform child in transform)
             {
                 if (onStart == ObjectActions.Enable)
+                {
                     child.gameObject.SetActive(true);
+
+                    var savable = child.GetComponent<SavableEntity>();
+                    if (savable != null)
+                        SavingSystem.i.RestoreEntity(savable);
+                }
+                    
                 else if (onStart == ObjectActions.Disable)
                     child.gameObject.SetActive(false);
             }
@@ -39,8 +46,15 @@ public class QuestObject : MonoBehaviour
         {
             foreach (Transform child in transform)
             {
-                if (onComplete == ObjectActions.Enable)
+                if (onComplete == ObjectActions.Enable) 
+                { 
                     child.gameObject.SetActive(true);
+
+                    var savable = child.GetComponent<SavableEntity>();
+                    if (savable != null)
+                        SavingSystem.i.RestoreEntity(savable);
+
+                }
                 else if (onComplete == ObjectActions.Disable)
                     child.gameObject.SetActive(false);
             }

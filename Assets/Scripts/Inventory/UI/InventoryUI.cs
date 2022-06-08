@@ -147,20 +147,44 @@ public class InventoryUI : MonoBehaviour
     {
         state = InventoryUIState.Busy;
 
-        var usedItem =  inventory.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
+        var item = inventory.GetItem(selectedItem, selectedCategory);
+        var animal = partyScreen.SelectedMember;
+
+        //Handle Evolution Items
+        if (item is EvolutionItem)
+        {
+            var evolution = animal.CheckForEvolution(item);
+            if (evolution != null)
+            {
+                yield return EvolutionManager.i.Evolve(animal, evolution);
+            }
+            else
+            {
+                yield return DialogManager.Instance.ShowDialogText($"It won't have any affect!");
+                ClosePartyScreen();
+                yield break;
+            }
+        }
+
+        
+        var usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
         if (usedItem != null)
         {
-            if (!(usedItem is AnimalCaptureItem))
-                yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name} to {usedItem.UsedMessage}");
+            if (usedItem is RecoveryItem)
+                yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}"); //TODO: change the player to player.name, add on to {usedItem.UsedMessage}
             onItemUsed?.Invoke(usedItem);
         }
-        else 
+        else
         {
             if (selectedCategory == (int)ItemCategory.Items)
                 yield return DialogManager.Instance.ShowDialogText($"It won't have any affect!");
         }
         ClosePartyScreen();
+        
+       
     }
+
+    
 
     void UpdateItemSelection()
     {

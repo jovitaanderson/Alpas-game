@@ -34,10 +34,15 @@ public class Inventory : MonoBehaviour, ISavable
         return allSlots[categoryIndex];
     }
 
+    public ItemBase GetItem(int itemIndex, int categoryIndex)
+    {
+        var currentSlots = GetSlotsByCategory(categoryIndex);
+        return currentSlots[itemIndex].Item;
+    }
+
     public ItemBase UseItem(int itemIndex, Animal selectedAnimal, int selectedCategory)
     {
-        var currentSlots = GetSlotsByCategory(selectedCategory);
-        var item = currentSlots[itemIndex].Item;
+        var item = GetItem(itemIndex, selectedCategory);
         bool itemUsed = item.Use(selectedAnimal);
         if (itemUsed)
         {
@@ -94,7 +99,7 @@ public class Inventory : MonoBehaviour, ISavable
 
     ItemCategory GetCategoryFromItem(ItemBase item)
     {
-        if (item is RecoveryItem)
+        if (item is RecoveryItem || item is EvolutionItem)
             return ItemCategory.Items;
         else if (item is AnimalCaptureItem)
             return ItemCategory.AnimalCapture;

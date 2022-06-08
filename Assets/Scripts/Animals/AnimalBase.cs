@@ -38,6 +38,8 @@ public class AnimalBase : ScriptableObject
 
     [SerializeField] List<LearnableMove> learnableMoves;
 
+    [SerializeField] List<Evolution> evolutions;
+
     public static int MaxNumOfMoves {get; set;} = 4;
 
     public int GetExpForLevel(int level) 
@@ -102,6 +104,8 @@ public class AnimalBase : ScriptableObject
         get { return learnableMoves; }
     }
 
+    public List<Evolution> Evolutions => evolutions;
+
 }
 
 [System.Serializable] //Then it will appear in the inspect
@@ -118,6 +122,19 @@ public class LearnableMove
         get { return level;}
     }
 }
+
+[System.Serializable]
+public class Evolution
+{
+    [SerializeField] AnimalBase evolvesinto;
+    [SerializeField] int requiredLevel;
+    [SerializeField] EvolutionItem requiredItem;
+
+    public AnimalBase EvolvesInto => evolvesinto;
+    public int RequiredLevel => requiredLevel;
+    public EvolutionItem RequiredItem => requiredItem;
+}
+
 public enum AnimalType
 {
     None,
