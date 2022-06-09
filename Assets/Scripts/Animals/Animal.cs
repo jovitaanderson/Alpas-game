@@ -201,11 +201,11 @@ public class Animal
         return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel <= level);
     }
 
-    //Todo: might chnage this to and instead of or (need both coins and level to evolve
     public Evolution CheckForEvolution(ItemBase item)
     {
-        return Base.Evolutions.FirstOrDefault(e => e.RequiredItem == item);
+        return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel <= level && e.RequiredItem == item);
     }
+
 
     //make a pokemon evolve using this fn
     //TODO: update by adding qns here

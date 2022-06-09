@@ -60,11 +60,15 @@ public class AnimalParty : MonoBehaviour
     {
         foreach (var animal in animals)
         {
+
             var evolution = animal.CheckForEvolution();
             if (evolution != null)
             {
-                yield return EvolutionManager.i.Evolve(animal, evolution);
+                //dont evolve immediately, give a dialog to say that animal is ready for evolution
+                yield return DialogManager.Instance.ShowDialogText($"{animal.Base.Name} is ready for evolution");
+                //yield return EvolutionManager.i.Evolve(animal, evolution);
             }
+
         }
 
     }

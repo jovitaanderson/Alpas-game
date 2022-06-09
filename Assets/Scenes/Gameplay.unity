@@ -1031,6 +1031,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
     - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[1].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: tmSlots.Array.data[0].item
       value: 
       objectReference: {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}
