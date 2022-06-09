@@ -61,9 +61,24 @@ public class AnimalParty : MonoBehaviour
         foreach (var animal in animals)
         {
             var evolution = animal.CheckForEvolution();
-            if (evolution != null)
+            //return true if player has 1 coin
+            bool hasItem = Inventory.GetInventory().HasItem(evolution.RequiredItem);
+            if (evolution != null) //animal has required lvl to evolve 
             {
-                yield return EvolutionManager.i.Evolve(animal, evolution);
+                if (hasItem)
+                {  //and has 1 coin
+                    //Use one coin to evovle
+                    Inventory.GetInventory().RemoveItem(evolution.RequiredItem);
+
+
+
+                    //run question
+                    yield return EvolutionManager.i.Evolve(animal, evolution);
+                }
+                else
+                {
+                    yield return DialogManager.Instance.ShowDialogText($"You do not have enough coins to evolve your animal!");
+                }
             }
         }
 
