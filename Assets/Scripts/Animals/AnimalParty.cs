@@ -73,6 +73,11 @@ public class AnimalParty : MonoBehaviour
 
     }
 
+    public void PartyUpdated()
+    {
+        OnUpdated?.Invoke();
+    }
+
     public static AnimalParty GetPlayerParty()
     {
         return FindObjectOfType<PlayerController>().GetComponent<AnimalParty>();

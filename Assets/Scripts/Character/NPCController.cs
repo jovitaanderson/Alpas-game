@@ -23,12 +23,14 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     Character character;
     ItemGiver itemGiver;
     AnimalGiver animalGiver;
+    Healer healer;
 
     private void Awake()
     {
         character = GetComponent<Character>();
         itemGiver = GetComponent<ItemGiver>();
         animalGiver = GetComponent<AnimalGiver>();
+        healer = GetComponent<Healer>();
     }
 
 
@@ -79,6 +81,10 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                 {
                     yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
                 }
+            }
+            else if (healer != null)
+            {
+                yield return healer.Heal(initiator, dialog);
             }
             else
             {

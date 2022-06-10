@@ -118,7 +118,8 @@ public class Animal
         int oldMaxHp = MaxHp;
         MaxHp = Mathf.FloorToInt((Base.MaxHp * Level) / 100f) + 10 + Level;
 
-        HP += MaxHp - oldMaxHp;
+        if (oldMaxHp != 0)
+            HP += MaxHp - oldMaxHp;
 
     }
     void ResetStatBoost()
@@ -214,6 +215,12 @@ public class Animal
         _base = evolution.EvolvesInto;
         //recalculate the stats
         CalculateStats();
+    }
+
+    public void Heal()
+    {
+        HP = MaxHp;
+        OnHPChanged?.Invoke();
     }
 
     //Properties of stats
