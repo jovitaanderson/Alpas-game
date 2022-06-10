@@ -14,7 +14,7 @@ public class QuizUI : MonoBehaviour
     private Question question;
     private bool answered;
 
-    public bool CorrectAns { get; private set; }
+    public bool? CorrectAns { get; private set; }
 
   
     // Start is called before the first frame update
@@ -27,7 +27,12 @@ public class QuizUI : MonoBehaviour
         }
     }
 
-   public void SetQuestion(Question question)
+    public void Reset()
+    {
+        CorrectAns = null;
+    }
+
+    public void SetQuestion(Question question)
     {
         this.question = question;
 

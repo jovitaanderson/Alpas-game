@@ -26,18 +26,22 @@ public class EvolutionManager : MonoBehaviour
     //Evolve
     public IEnumerator Evolve(Animal animal, Evolution evolution)
     {
-        OnStartEvolution?.Invoke();
         quizUI.SetActive(true);
-        //yield return new WaitForSeconds(2f);
-        
+
+        quizScript.Reset();
+        yield return new WaitUntil(() => quizScript.CorrectAns != null);
+
         //if qns answered correctly
-        //Todo: fix this null excerption problem
-        if (quizScript?.CorrectAns == true)
+        if (quizScript.CorrectAns == true)
         {
+            yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"Good Job! You have answered correctly!");
+
             quizUI.SetActive(false);
-            
+
+            OnStartEvolution?.Invoke();
             evolutionUI.SetActive(true);
+
 
             //pokemon before evoluion
             animalImage.sprite = animal.Base.FrontSprite;
@@ -52,10 +56,20 @@ public class EvolutionManager : MonoBehaviour
 
             //deactive ui and continue gameplay
             evolutionUI.SetActive(false);
+            OnCompleteEvolution?.Invoke();
+
+        }
+        else {
+            yield return new WaitForSeconds(0.5f);
+            yield return DialogManager.Instance.ShowDialogText($"You got the answer wrong! Try again");
+
+            quizUI.SetActive(false);
+
+
         }
        
         
-        OnCompleteEvolution?.Invoke();
+
 
     }
 
