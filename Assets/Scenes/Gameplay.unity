@@ -1657,6 +1657,10 @@ PrefabInstance:
       propertyPath: animals.Array.data[0].level
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 8846833008974268349, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 24.59999
+      objectReference: {fileID: 0}
     - target: {fileID: 8846833009536501781, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_Name
       value: EssentialObjects
@@ -1708,6 +1712,10 @@ PrefabInstance:
     - target: {fileID: 8846833009544131732, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846833009927781690, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 119.09999
       objectReference: {fileID: 0}
     - target: {fileID: 8870945552094801858, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
