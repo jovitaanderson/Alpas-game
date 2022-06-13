@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e856a46e9a96c5a4e92889b2c827cf19, type: 3}
-  m_Name: Coins
+  m_Name: Token
   m_EditorClassIdentifier: 
-  name: Coins
+  name: Token
   description: Used to evolve all Animals
   usedMessage: 
   icon: {fileID: -1235332431394035030, guid: ad93baabc580b3e47b0046557979553b, type: 3}
+  price: 0
+  isSellable: 0
