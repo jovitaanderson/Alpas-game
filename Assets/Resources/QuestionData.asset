@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a711fb2ae2fbe409177cd6e4651fb1, type: 3}
+  m_Name: QuestionData
+  m_EditorClassIdentifier: 
+  questions:
+  - questionInfo: What is the measurement of the indicated angle assuming the figure
+      is a square?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 2a0539d6443599f428af4689b0739aef, type: 3}
+    options:
+    - 45 degrees
+    - 90 degrees
+    - 60 degrees
+    - 30 degrees
+    correctAns: 90 degrees
+  - questionInfo: 'What is the length of the sides in the triangle above? '
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 136e336d66147e748b7474d6521f6c8c, type: 3}
+    options:
+    - 10
+    - 20
+    - 100
+    - 4
+    correctAns: 10
+  - questionInfo: 'If Lynn can type a page in p minutes, what portion of the page
+      can she do in 5 minutes? '
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - p/5
+    - p-5
+    - p+5
+    - 5/p
+    correctAns: 5/p

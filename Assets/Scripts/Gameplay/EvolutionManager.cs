@@ -8,6 +8,9 @@ public class EvolutionManager : MonoBehaviour
 {
     [SerializeField] GameObject evolutionUI;
     [SerializeField] Image animalImage;
+    [SerializeField] GameObject quizUI;
+
+    private QuizUI quizScript;
 
     public event Action OnStartEvolution;
     public event Action OnCompleteEvolution;
@@ -17,28 +20,56 @@ public class EvolutionManager : MonoBehaviour
     private void Awake()
     {
         i = this;
+        quizScript = quizUI.GetComponent<QuizUI>();
     }
 
     //Evolve
     public IEnumerator Evolve(Animal animal, Evolution evolution)
     {
-        OnStartEvolution?.Invoke();
-        evolutionUI.SetActive(true);
+        quizUI.SetActive(true);
 
-        //pokemon before evoluion
-        animalImage.sprite = animal.Base.FrontSprite;
-        yield return DialogManager.Instance.ShowDialogText($"{animal.Base.Name} is evolving");
-        var oldAnimal = animal.Base;
+        quizScript.Reset();
+        yield return new WaitUntil(() => quizScript.CorrectAns != null);
 
-        animal.Evolve(evolution);
+        //if qns answered correctly
+        if (quizScript.CorrectAns == true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            yield return DialogManager.Instance.ShowDialogText($"Good Job! You have answered correctly!");
 
-        //evolved pokemon
-        animalImage.sprite = animal.Base.FrontSprite;
-        yield return DialogManager.Instance.ShowDialogText($"{oldAnimal.Name} evolved into {animal.Base.Name}");
+            quizUI.SetActive(false);
 
-        //deactive ui and continue gameplay
-        evolutionUI.SetActive(false);
-        OnCompleteEvolution?.Invoke();
+            OnStartEvolution?.Invoke();
+            evolutionUI.SetActive(true);
+
+
+            //pokemon before evoluion
+            animalImage.sprite = animal.Base.FrontSprite;
+            yield return DialogManager.Instance.ShowDialogText($"{animal.Base.Name} is evolving");
+            var oldAnimal = animal.Base;
+
+            animal.Evolve(evolution);
+
+            //evolved pokemon
+            animalImage.sprite = animal.Base.FrontSprite;
+            yield return DialogManager.Instance.ShowDialogText($"{oldAnimal.Name} evolved into {animal.Base.Name}");
+
+            //deactive ui and continue gameplay
+            evolutionUI.SetActive(false);
+            OnCompleteEvolution?.Invoke();
+
+        }
+        else {
+            yield return new WaitForSeconds(0.5f);
+            yield return DialogManager.Instance.ShowDialogText($"You got the answer wrong! Try again");
+
+            quizUI.SetActive(false);
+
+
+        }
+       
+        
+
 
     }
 
