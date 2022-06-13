@@ -16,6 +16,8 @@ MonoBehaviour:
   description: Recovers the health of a Animal by 20 points
   usedMessage: restore 20 HP
   icon: {fileID: 149497545074640929, guid: a24a52f9ba972ec4398c9fa0c752026a, type: 3}
+  price: 100
+  isSellable: 1
   hpAmount: 20
   restoreMaxHP: 0
   ppAmount: 0

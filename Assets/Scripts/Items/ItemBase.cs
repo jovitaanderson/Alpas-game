@@ -8,10 +8,15 @@ public class ItemBase : ScriptableObject
     [SerializeField] string description;
     [SerializeField] string usedMessage;
     [SerializeField] Sprite icon;
+    [SerializeField] float price;
+    [SerializeField] bool isSellable;
     public string Name => name;
     public string Description => description;
     public string UsedMessage => usedMessage;
     public Sprite Icon => icon;
+
+    public float Price => price;
+    public bool IsSellable => isSellable;
 
     public virtual bool Use(Animal animal)
     {

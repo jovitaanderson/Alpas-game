@@ -107,7 +107,7 @@ public class InventoryUI : MonoBehaviour
 
             //open party screen if press enter
             if (Input.GetKeyDown(KeyCode.Return))
-                ItemSelected();
+                StartCoroutine(ItemSelected());
 
             //if press escape, close the bag
             else if (Input.GetKeyDown(KeyCode.Escape))
@@ -130,8 +130,40 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void ItemSelected()
+    IEnumerator ItemSelected()
     {
+        //state = InventoryUIState.Busy;
+
+        var item = inventory.GetItem(selectedItem, selectedCategory);
+
+        if (GameController.Instance.State == GameState.Shop)
+        {
+            onItemUsed?.Invoke(item);
+            state = InventoryUIState.ItemSelection;
+            yield break;
+        }
+
+        //if (GameController.Instance.State == GameState.Battle)
+        //{
+        //    //in battle
+        //    if (!item.CanUseInBattle)
+        //    {
+        //        yield return DialogManager.Instance.ShowDialogText($"this item cannot be used in battle");
+        //        state = InventoryUIState.ItemSelection;
+        //        yield break;
+        //    }
+        //}
+        //else
+        //{
+        //    //outside battle
+        //    if (!item.CanUseOutsideBattle)
+        //    {
+        //        yield return DialogManager.Instance.ShowDialogText($"this item cannot be used outside of battle");
+        //        state = InventoryUIState.ItemSelection;
+        //        yield break;
+        //    }
+        //}
+
         //if curr selected is pokeball
         if (selectedCategory == (int)ItemCategory.AnimalCapture)
         {

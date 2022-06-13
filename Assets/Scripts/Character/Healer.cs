@@ -6,14 +6,30 @@ public class Healer : MonoBehaviour
 {
     public IEnumerator Heal(Transform player, Dialog dialog)
     {
-        yield return DialogManager.Instance.ShowDialog(dialog);
+        int selectedChoice = 0;
 
-        yield return Fader.i.FadeIn(0.5f);
+        yield return DialogManager.Instance.ShowDialogText("You look tired! Would you like to rest here?",
+            choices: new List<string>() { "Yes", "No" }, 
+            onChoiceSelected: (choiceIndex) => selectedChoice = choiceIndex);
 
-        var playerParty = player.GetComponent<AnimalParty>();
-        playerParty.Animals.ForEach(p => p.Heal());
-        playerParty.PartyUpdated();
+        if (selectedChoice == 0)
+        {
+            //choose yes
+            yield return Fader.i.FadeIn(0.5f);
 
-        yield return Fader.i.FadeOut(0.5f);
+            var playerParty = player.GetComponent<AnimalParty>();
+            playerParty.Animals.ForEach(p => p.Heal());
+            playerParty.PartyUpdated();
+
+            yield return Fader.i.FadeOut(0.5f);
+            yield return DialogManager.Instance.ShowDialogText($"Your animals are fully healed!");
+        }
+        else if (selectedChoice == 1)
+        {
+            //choose no
+            yield return DialogManager.Instance.ShowDialogText($"Okay! Come back if you change your mind!");
+        }
+
+        
     }
 }

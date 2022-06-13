@@ -16,6 +16,8 @@ MonoBehaviour:
   description: Cures a Animal that has been posioned
   usedMessage: revoke posion status
   icon: {fileID: -1130307063785972239, guid: a24a52f9ba972ec4398c9fa0c752026a, type: 3}
+  price: 100
+  isSellable: 1
   hpAmount: 0
   restoreMaxHP: 0
   ppAmount: 0

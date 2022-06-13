@@ -221,6 +221,8 @@ public class Animal
     {
         HP = MaxHp;
         OnHPChanged?.Invoke();
+
+        CureStatus();
     }
 
     //Properties of stats

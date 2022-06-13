@@ -354,6 +354,116 @@ MonoBehaviour:
     lines:
     - It is not safe to go out there without an animal
     - You can have this cat
+--- !u!1001 &756155382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 604246980076941239, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: walkDownSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941239, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: walkDownSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 9162393031431230281, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: questToComplete
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: You look tired, please take some rest :)
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: movementPattern.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -70.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -42.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941245, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 9162393031431230281, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
+    - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: m_Name
+      value: Merchant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220980286914923127, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: uniqueId
+      value: e6df1bbf-54bc-4f59-88bd-18ec77723c87
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+--- !u!1 &756155383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+  m_PrefabInstance: {fileID: 756155382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &756155384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756155383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562d22af186001e40b71e7d4046dd4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1177741856
 GameObject:
   m_ObjectHideFlags: 0
