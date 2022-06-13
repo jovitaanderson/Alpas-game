@@ -22,4 +22,8 @@ public class ItemBase : ScriptableObject
     {
         return false;
     }
+
+    //TODO: remove if not used
+    public virtual bool CanUseInBattle => true;
+    public virtual bool CanUseOutsideBattle => true;
 }

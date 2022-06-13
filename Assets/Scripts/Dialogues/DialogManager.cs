@@ -12,7 +12,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] ChoiceBox choiceBox;
 
     public event Action OnShowDialog;
-    public event Action OnCloseDialog;
+    public event Action OnDialogFinished;
 
 
     //Since dialogmanager will be used for NPC/object(signboards) we use the singleton partten to get the instance
@@ -25,8 +25,36 @@ public class DialogManager : MonoBehaviour
     }
 
     public bool IsShowing { get; private set; }
+    public void CloseDialog()
+    {
+        dialogBox.SetActive(false);
+        IsShowing = false;
+    }
 
-    public IEnumerator ShowDialogText(string text, bool waitForInput = true, 
+    public IEnumerator ShowDialog(Dialog dialog, List<string> choices = null, Action<int> onChoiceSelected = null)
+    {
+        yield return new WaitForEndOfFrame();
+        OnShowDialog?.Invoke();
+        IsShowing = true;
+        dialogBox.SetActive(true);
+
+        foreach (var line in dialog.Lines)
+        {
+            yield return TypeDialog(line);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        }
+
+        if (choices != null && choices.Count > 1)
+        {
+            yield return choiceBox.ShowChoices(choices, onChoiceSelected);
+        }
+
+        dialogBox.SetActive(false);
+        IsShowing = false;
+        OnDialogFinished?.Invoke();
+    }
+
+    public IEnumerator ShowDialogText(string text, bool waitForInput = true, bool autoClose = true,
         List<string> choices = null, Action<int> onChoiceSelected = null)
     {
         OnShowDialog?.Invoke();
@@ -44,40 +72,16 @@ public class DialogManager : MonoBehaviour
             yield return choiceBox.ShowChoices(choices, onChoiceSelected);
         }
 
-        dialogBox.SetActive(false);
-        IsShowing = false;
-        OnCloseDialog?.Invoke();
-
-    }
-
-    
-
-    public IEnumerator ShowDialog(Dialog dialog, List<string> choices=null, Action<int> onChoiceSelected=null)
-    {
-        yield return new WaitForEndOfFrame();
-        OnShowDialog?.Invoke();
-        IsShowing = true;
-        dialogBox.SetActive(true);
-
-        foreach (var line in dialog.Lines)
+        if (autoClose)
         {
-            yield return TypeDialog(line);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+            CloseDialog();
         }
-
-        if (choices != null && choices.Count > 1)
-        {
-            yield return choiceBox.ShowChoices(choices, onChoiceSelected);
-        }
-        
-        dialogBox.SetActive(false);
-        IsShowing = false;
-        OnCloseDialog?.Invoke();
+        OnDialogFinished?.Invoke();
     }
 
     public void HandleUpdate()
     {
-        
+
     }
 
     public IEnumerator TypeDialog(string line)
