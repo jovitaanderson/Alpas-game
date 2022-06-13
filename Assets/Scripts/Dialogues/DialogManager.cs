@@ -13,7 +13,6 @@ public class DialogManager : MonoBehaviour
 
     public event Action OnShowDialog;
     public event Action OnDialogFinished;
-    public event Action OnCloseDialog;
 
 
     //Since dialogmanager will be used for NPC/object(signboards) we use the singleton partten to get the instance
@@ -52,7 +51,7 @@ public class DialogManager : MonoBehaviour
 
         dialogBox.SetActive(false);
         IsShowing = false;
-        OnCloseDialog?.Invoke();
+        OnDialogFinished?.Invoke();
     }
 
     public IEnumerator ShowDialogText(string text, bool waitForInput = true, bool autoClose = true,
@@ -82,7 +81,7 @@ public class DialogManager : MonoBehaviour
 
     public void HandleUpdate()
     {
-        
+
     }
 
     public IEnumerator TypeDialog(string line)
