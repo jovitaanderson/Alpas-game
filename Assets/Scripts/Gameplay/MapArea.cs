@@ -8,16 +8,24 @@ public class MapArea : MonoBehaviour
 {
     [SerializeField] List<AnimalEncounterRecord> wildAnimals;
 
-    private void Start()
+    [HideInInspector]
+    [SerializeField] int totalChance = 0;
+
+    private void OnValidate()
     {
-        int totalChance = 0;
-        foreach(var record in wildAnimals)
+        totalChance = 0;
+        foreach (var record in wildAnimals)
         {
             record.chanceLower = totalChance;
             record.chanceUpper = totalChance + record.chancePercentage;
 
             totalChance = totalChance + record.chancePercentage;
         }
+    }
+
+    private void Start()
+    {
+
     }
 
     public Animal GetRandomWildAnimal()

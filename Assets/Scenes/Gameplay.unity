@@ -229,6 +229,7 @@ MonoBehaviour:
   - animal: {fileID: 0}
     levelRange: {x: 0, y: 0}
     chancePercentage: 0
+  totalChance: 0
 --- !u!1001 &917173256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2784,6 +2785,7 @@ MonoBehaviour:
   - animal: {fileID: 0}
     levelRange: {x: 0, y: 0}
     chancePercentage: 0
+  totalChance: 0
 --- !u!114 &1358788680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -2940,6 +2942,7 @@ MonoBehaviour:
   - animal: {fileID: 0}
     levelRange: {x: 0, y: 0}
     chancePercentage: 0
+  totalChance: 0
 --- !u!1001 &1870088528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3041,6 +3044,7 @@ MonoBehaviour:
   - animal: {fileID: 0}
     levelRange: {x: 0, y: 0}
     chancePercentage: 0
+  totalChance: 0
 --- !u!114 &2018835371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -3257,3 +3261,4 @@ MonoBehaviour:
   - animal: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
     levelRange: {x: 2, y: 5}
     chancePercentage: 10
+  totalChance: 100
