@@ -19,6 +19,7 @@ public class CharacterAnimator : MonoBehaviour
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
+    public bool IsJumping { get; set; }
 
     // States
     SpriteAnimator walkDownAnim;
@@ -89,7 +90,9 @@ public class CharacterAnimator : MonoBehaviour
         if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
             currentAnim.Start();
 
-        if (IsMoving)
+        if (IsJumping)
+            spriteRenderer.sprite = currentAnim.Frames[currentAnim.Frames.Count - 1]; //sets the last frame of walking animation as a jumping animation
+        else if (IsMoving)
             currentAnim.HandleUpdate();
         else
             //TODO: make idle animations
