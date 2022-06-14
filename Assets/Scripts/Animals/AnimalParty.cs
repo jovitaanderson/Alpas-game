@@ -56,7 +56,12 @@ public class AnimalParty : MonoBehaviour
         }
     }
 
-    public IEnumerator CheckForEvolutions()
+    public bool CheckForEvolutions()
+    {
+        return animals.Any(p => p.CheckForEvolution() != null);
+    }
+
+    public IEnumerator RunEvolutions()
     {
         foreach (var animal in animals)
         {

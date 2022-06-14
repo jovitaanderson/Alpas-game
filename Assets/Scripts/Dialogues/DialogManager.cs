@@ -40,6 +40,8 @@ public class DialogManager : MonoBehaviour
 
         foreach (var line in dialog.Lines)
         {
+            //play music for each line
+            AudioManager.i.PlaySfx(AudioId.UISelect);
             yield return TypeDialog(line);
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         }
@@ -60,6 +62,9 @@ public class DialogManager : MonoBehaviour
         OnShowDialog?.Invoke();
         IsShowing = true;
         dialogBox.SetActive(true);
+
+        //play sfx music
+        AudioManager.i.PlaySfx(AudioId.UISelect);
 
         yield return TypeDialog(text);
         if (waitForInput)

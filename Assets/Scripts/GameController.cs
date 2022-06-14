@@ -75,6 +75,8 @@ public class GameController : MonoBehaviour
         {
             partyScreen.SetPartyData();
             state = stateBeforeEvolution;
+
+            AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
         };
 
         ShopController.i.OnStart += () => state = GameState.Shop;
@@ -148,7 +150,13 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(true);
 
         var playerParty = playerController.GetComponent<AnimalParty>();
-        StartCoroutine(playerParty.CheckForEvolutions());
+        //changed abit from the tutorial because we dunnid evolve straight away after a battle
+        //var hasEvolutions = playerParty.CheckForEvolutions();
+        //if (hasEvolutions)
+        AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
+        StartCoroutine(playerParty.RunEvolutions());
+        //else
+            
     }
 
     private void Update()

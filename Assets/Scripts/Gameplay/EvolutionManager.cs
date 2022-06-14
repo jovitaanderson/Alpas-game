@@ -10,6 +10,8 @@ public class EvolutionManager : MonoBehaviour
     [SerializeField] Image animalImage;
     [SerializeField] GameObject quizUI;
 
+    [SerializeField] AudioClip evolutionMusic;
+
     private QuizUI quizScript;
 
     public event Action OnStartEvolution;
@@ -27,6 +29,8 @@ public class EvolutionManager : MonoBehaviour
     public IEnumerator Evolve(Animal animal, Evolution evolution)
     {
         quizUI.SetActive(true);
+
+        AudioManager.i.PlayMusic(evolutionMusic);
 
         quizScript.Reset();
         yield return new WaitUntil(() => quizScript.CorrectAns != null);
@@ -67,7 +71,7 @@ public class EvolutionManager : MonoBehaviour
 
 
         }
-       
+        
         
 
 
