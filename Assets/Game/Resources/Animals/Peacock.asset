@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Peacock
   description: 
-  frontSprite: {fileID: 21300000, guid: d23a09ad80428cc4da4831f28e7d3d98, type: 3}
-  backSprite: {fileID: 21300000, guid: d23a09ad80428cc4da4831f28e7d3d98, type: 3}
+  frontSprite: {fileID: 21300000, guid: 187cbeee77fa7694dacf1c103d5b275c, type: 3}
+  backSprite: {fileID: 21300000, guid: 2747b64dd50ce9742b21fbba54cf2d09, type: 3}
   type1: 2
   type2: 8
   maxHp: 40
@@ -24,6 +24,9 @@ MonoBehaviour:
   spAttack: 65
   spDefense: 65
   speed: 45
+  expYield: 0
+  growthRate: 0
+  catchRate: 255
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 513480c7a05d0314280f10c9f431817c, type: 2}
     level: 1
@@ -33,3 +36,4 @@ MonoBehaviour:
     level: 7
   - moveBase: {fileID: 11400000, guid: 582156c26d0db1644b9b2ffafea3db51, type: 2}
     level: 1
+  evolutions: []

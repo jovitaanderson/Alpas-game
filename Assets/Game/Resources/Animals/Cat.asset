@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Cat
   description: 
-  frontSprite: {fileID: 21300000, guid: d88144f0849b1aa4c872a395c69a6187, type: 3}
-  backSprite: {fileID: 21300000, guid: d88144f0849b1aa4c872a395c69a6187, type: 3}
+  frontSprite: {fileID: 21300000, guid: 25da13fe6436e7845b25b529dc71723b, type: 3}
+  backSprite: {fileID: 21300000, guid: 8fa19062365fe4e409984dd278550183, type: 3}
   type1: 5
   type2: 7
   maxHp: 46
@@ -24,6 +24,9 @@ MonoBehaviour:
   spAttack: 40
   spDefense: 40
   speed: 50
+  expYield: 0
+  growthRate: 0
+  catchRate: 255
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: bc6a22116d21b464c9192f6d5791652b, type: 2}
     level: 1
@@ -31,3 +34,4 @@ MonoBehaviour:
     level: 4
   - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
     level: 5
+  evolutions: []
