@@ -223,10 +223,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
 --- !u!1001 &917173256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2776,10 +2778,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
 --- !u!114 &1358788680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -2930,10 +2934,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: cda17cbbbd02f744a9235e88fd1ff84a, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
-    level: 7
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
 --- !u!1001 &1870088528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3029,10 +3035,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
-    level: 7
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
 --- !u!114 &2018835371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -3240,7 +3248,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
+  - animal: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
+    levelRange: {x: 2, y: 4}
+    chancePercentage: 70
+  - animal: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
+    levelRange: {x: 2, y: 5}
+    chancePercentage: 20
+  - animal: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
+    levelRange: {x: 2, y: 5}
+    chancePercentage: 10
