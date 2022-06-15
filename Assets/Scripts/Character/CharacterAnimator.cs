@@ -36,13 +36,11 @@ public class CharacterAnimator : MonoBehaviour
 
     // Walk states
     SpriteAnimator walkDownAnim, walkUpAnim, walkRightAnim, walkLeftAnim;
-
     //Diagonal
     SpriteAnimator walkDownLeftAnim, walkDownRightAnim, walkUpLeftAnim, walkUpRightAnim;
 
     //Run states
     SpriteAnimator runDownAnim, runUpAnim, runRightAnim, runLeftAnim;
-
     //Diagonal
     SpriteAnimator runDownLeftAnim, runDownRightAnim, runUpLeftAnim, runUpRightAnim;
 
