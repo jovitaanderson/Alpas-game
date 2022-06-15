@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] FacingDirection defaultDirection = FacingDirection.Down;
+    [Header("Walk Animation")]
     [SerializeField] List<Sprite> walkDownSprites;
     [SerializeField] List<Sprite> walkUpSprites;
     [SerializeField] List<Sprite> walkRightSprites;
@@ -15,23 +16,35 @@ public class CharacterAnimator : MonoBehaviour
     [SerializeField] List<Sprite> walkUpLeftSprites;
     [SerializeField] List<Sprite> walkUpRightSprites;
 
+    [Header("Run Animation")]
+    [SerializeField] List<Sprite> runDownSprites;
+    [SerializeField] List<Sprite> runUpSprites;
+    [SerializeField] List<Sprite> runRightSprites;
+    [SerializeField] List<Sprite> runLeftSprites;
+
+    [SerializeField] List<Sprite> runDownLeftSprites;
+    [SerializeField] List<Sprite> runDownRightSprites;
+    [SerializeField] List<Sprite> runUpLeftSprites;
+    [SerializeField] List<Sprite> runUpRightSprites;
+
     // Parameters
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
+    public bool IsRunning { get; set; }
     public bool IsJumping { get; set; }
 
-    // States
-    SpriteAnimator walkDownAnim;
-    SpriteAnimator walkUpAnim;
-    SpriteAnimator walkRightAnim;
-    SpriteAnimator walkLeftAnim;
+    // Walk states
+    SpriteAnimator walkDownAnim, walkUpAnim, walkRightAnim, walkLeftAnim;
 
-    //Diagonal states
-    SpriteAnimator walkDownLeftAnim;
-    SpriteAnimator walkDownRightAnim;
-    SpriteAnimator walkUpLeftAnim;
-    SpriteAnimator walkUpRightAnim;
+    //Diagonal
+    SpriteAnimator walkDownLeftAnim, walkDownRightAnim, walkUpLeftAnim, walkUpRightAnim;
+
+    //Run states
+    SpriteAnimator runDownAnim, runUpAnim, runRightAnim, runLeftAnim;
+
+    //Diagonal
+    SpriteAnimator runDownLeftAnim, runDownRightAnim, runUpLeftAnim, runUpRightAnim;
 
     SpriteAnimator currentAnim;
     bool wasPreviouslyMoving;
@@ -42,15 +55,30 @@ public class CharacterAnimator : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        //States
         walkDownAnim = new SpriteAnimator(walkDownSprites, spriteRenderer);
         walkUpAnim = new SpriteAnimator(walkUpSprites, spriteRenderer);
         walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
         walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
 
+        //Diagonal states
         walkDownLeftAnim = new SpriteAnimator(walkDownLeftSprites, spriteRenderer);
         walkDownRightAnim = new SpriteAnimator(walkDownRightSprites, spriteRenderer);
         walkUpLeftAnim = new SpriteAnimator(walkUpLeftSprites, spriteRenderer);
         walkUpRightAnim = new SpriteAnimator(walkUpRightSprites, spriteRenderer);
+
+        //Run states
+        runDownAnim = new SpriteAnimator(runDownSprites, spriteRenderer);
+        runUpAnim = new SpriteAnimator(runUpSprites, spriteRenderer);
+        runRightAnim = new SpriteAnimator(runRightSprites, spriteRenderer);
+        runLeftAnim = new SpriteAnimator(runLeftSprites, spriteRenderer);
+
+        //Diagonal states
+        runDownLeftAnim = new SpriteAnimator(runDownLeftSprites, spriteRenderer);
+        runDownRightAnim = new SpriteAnimator(runDownRightSprites, spriteRenderer);
+        runUpLeftAnim = new SpriteAnimator(runUpLeftSprites, spriteRenderer);
+        runUpRightAnim = new SpriteAnimator(runUpRightSprites, spriteRenderer);
 
         SetFacingDirection(defaultDirection);
 
@@ -60,32 +88,23 @@ public class CharacterAnimator : MonoBehaviour
     private void Update()
     {
         var prevAnim = currentAnim;
-        if (MoveX == 1)
-            if (MoveY == 1)
-                currentAnim = walkUpRightAnim;
-            else if (MoveY == -1)
-                currentAnim = walkDownRightAnim;
-            else currentAnim = walkRightAnim;
 
-        else if (MoveX == -1)
-            if (MoveY == 1)
-                currentAnim = walkUpLeftAnim;
-            else if (MoveY == -1)
-                currentAnim = walkDownLeftAnim;
-            else currentAnim = walkLeftAnim;
-
-        else if (MoveY == 1)
-            if (MoveX == 1)
-                currentAnim = walkUpRightAnim;
-            else if (MoveX == -1)
-                currentAnim = walkUpLeftAnim;
-            else currentAnim = walkUpAnim;
-        else if (MoveY == -1)
-            if (MoveX == 1)
-                currentAnim = walkDownRightAnim;
-            else if (MoveX == -1)
-                currentAnim = walkDownLeftAnim;
-            else currentAnim = walkDownAnim;
+        if(MoveX == 1 && MoveY == 1)
+            currentAnim = IsRunning ? runUpRightAnim : walkUpRightAnim;
+        else if (MoveX == 1 && MoveY == -1)
+            currentAnim = IsRunning ? runDownRightAnim : walkDownRightAnim;
+        else if (MoveX == -1 && MoveY == 1)
+            currentAnim = IsRunning ? runUpLeftAnim : walkUpLeftAnim;
+        else if (MoveX == -1 && MoveY == -1)
+            currentAnim = IsRunning ? runDownLeftAnim : walkDownLeftAnim;
+        else if (MoveX == 1 && MoveY == 0)
+            currentAnim = IsRunning ? runRightAnim : walkRightAnim;
+        else if (MoveX == -1 && MoveY == 0)
+            currentAnim = IsRunning ? runLeftAnim : walkLeftAnim;
+        else if (MoveX == 0 && MoveY == 1)
+            currentAnim = IsRunning ? runUpAnim : walkUpAnim;
+        else if (MoveX == 0 && MoveY == -1)
+            currentAnim = IsRunning ? runDownAnim : walkDownAnim;
 
         if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
             currentAnim.Start();
