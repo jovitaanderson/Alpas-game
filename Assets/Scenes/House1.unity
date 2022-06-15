@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220980286914923127, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: uniqueId
-      value: 77fb7144-5e0b-492a-979a-216fa56e4bcc
+      value: b4ee0c13-a30b-4ae9-9fa0-3dc1deda0180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220980286914923127, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: uniqueId
-      value: e6df1bbf-54bc-4f59-88bd-18ec77723c87
+      value: 6bd1866e-8742-41d7-a66d-832f801df133
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
@@ -8856,10 +8856,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  totalChance: 0
 --- !u!1 &8228974447174759461
 GameObject:
   m_ObjectHideFlags: 0

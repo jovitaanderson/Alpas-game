@@ -11,7 +11,7 @@ public class SpriteAnimator
     int currentFrame;
     float timer;
 
-    public SpriteAnimator(List<Sprite> frames, SpriteRenderer spriteRenderer, float frameRate = 0.12f) //0.16f is 60 fps
+    public SpriteAnimator(List<Sprite> frames, SpriteRenderer spriteRenderer, float frameRate = 0.16f) //0.16f is 60 fps
     {
         this.frames = frames;
         this.spriteRenderer = spriteRenderer;
