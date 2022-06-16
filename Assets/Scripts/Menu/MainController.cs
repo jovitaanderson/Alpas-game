@@ -33,13 +33,13 @@ public class MainController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        AudioManager.i.PlaySfx(AudioId.UISelect);
+        PlaySFX();
         SceneManager.LoadScene(_newGameLevel);
     }
 
     public void LoadGameDialogYes()
     {
-        AudioManager.i.PlaySfx(AudioId.UISelect);
+        PlaySFX();
 
         checkLoadGame = true;
         SceneManager.LoadScene(_newGameLevel);
@@ -58,7 +58,7 @@ public class MainController : MonoBehaviour
 
     public void ExitButton()
     {
-        AudioManager.i.PlaySfx(AudioId.UISelect);
+        PlaySFX();
         Application.Quit();
     }
 
@@ -71,7 +71,7 @@ public class MainController : MonoBehaviour
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
-        AudioManager.i.PlaySfx(AudioId.UISelect);
+        PlaySFX();
         //Show Prompt
         StartCoroutine(ConfirmationBox());
     }
@@ -80,7 +80,7 @@ public class MainController : MonoBehaviour
     {
         if (MenuType == "Audio")
         {
-            AudioManager.i.PlaySfx(AudioId.UISelect);
+            PlaySFX();
             AudioListener.volume = defaultVolume;
             volumeSlider.value = defaultVolume;
             volumeTextValue.text = defaultVolume.ToString("0.0");
