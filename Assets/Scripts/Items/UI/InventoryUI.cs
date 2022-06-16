@@ -132,7 +132,8 @@ public class InventoryUI : MonoBehaviour
 
     IEnumerator ItemSelected()
     {
-        //state = InventoryUIState.Busy;
+        //check this again if got any issues (remove if not used)
+        state = InventoryUIState.Busy;
 
         var item = inventory.GetItem(selectedItem, selectedCategory);
 
@@ -143,26 +144,27 @@ public class InventoryUI : MonoBehaviour
             yield break;
         }
 
-        //if (GameController.Instance.State == GameState.Battle)
-        //{
-        //    //in battle
-        //    if (!item.CanUseInBattle)
-        //    {
-        //        yield return DialogManager.Instance.ShowDialogText($"this item cannot be used in battle");
-        //        state = InventoryUIState.ItemSelection;
-        //        yield break;
-        //    }
-        //}
-        //else
-        //{
-        //    //outside battle
-        //    if (!item.CanUseOutsideBattle)
-        //    {
-        //        yield return DialogManager.Instance.ShowDialogText($"this item cannot be used outside of battle");
-        //        state = InventoryUIState.ItemSelection;
-        //        yield break;
-        //    }
-        //}
+        //Todo: check this again if got any issues (remove if not used)
+        if (GameController.Instance.State == GameState.Battle)
+        {
+            //in battle
+            if (!item.CanUseInBattle)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"this item cannot be used in battle");
+                state = InventoryUIState.ItemSelection;
+                yield break;
+            }
+        }
+        else
+        {
+            //outside battle
+            if (!item.CanUseOutsideBattle)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"this item cannot be used outside of battle");
+                state = InventoryUIState.ItemSelection;
+                yield break;
+            }
+        }
 
         //if curr selected is pokeball
         if (selectedCategory == (int)ItemCategory.AnimalCapture)

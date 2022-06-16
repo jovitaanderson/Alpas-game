@@ -1296,6 +1296,8 @@ MonoBehaviour:
     - Hello! Dr. Mary and Dr. Richard has talked alot about you!
     - Have you tried walking on the long grass? There are many animals that need
       saving!
+  questToStart: {fileID: 0}
+  questToComplete: {fileID: 0}
   movementPattern:
   - {x: 1, y: 0}
   - {x: -1, y: 0}
@@ -1366,6 +1368,14 @@ MonoBehaviour:
   - {fileID: -6557112271642499735, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
   - {fileID: 2882439153834672714, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
   - {fileID: 956620838667478463, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
+  runDownSprites: []
+  runUpSprites: []
+  runRightSprites: []
+  runLeftSprites: []
+  runDownLeftSprites: []
+  runDownRightSprites: []
+  runUpLeftSprites: []
+  runUpRightSprites: []
 --- !u!1 &386185976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1535,14 @@ MonoBehaviour:
   - {fileID: -6557112271642499735, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
   - {fileID: 2882439153834672714, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
   - {fileID: 956620838667478463, guid: ea2071c775e8c2b4786a72cee590195d, type: 3}
+  runDownSprites: []
+  runUpSprites: []
+  runRightSprites: []
+  runLeftSprites: []
+  runDownLeftSprites: []
+  runDownRightSprites: []
+  runUpLeftSprites: []
+  runUpRightSprites: []
 --- !u!114 &676775093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,6 +1692,7 @@ MonoBehaviour:
     - I will train harder to beat you
   exclamation: {fileID: 1032242753}
   fov: {fileID: 1504110774}
+  trainerAppearsClip: {fileID: 0}
 --- !u!114 &676775099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,6 +1747,8 @@ MonoBehaviour:
   dialog:
     lines:
     - Welcome to Ang Mo Kio! Happy exploring!
+  questToStart: {fileID: 0}
+  questToComplete: {fileID: 0}
   movementPattern:
   - {x: 1, y: 0}
   - {x: 0, y: 2}
@@ -1771,6 +1792,14 @@ MonoBehaviour:
   walkDownRightSprites: []
   walkUpLeftSprites: []
   walkUpRightSprites: []
+  runDownSprites: []
+  runUpSprites: []
+  runRightSprites: []
+  runLeftSprites: []
+  runDownLeftSprites: []
+  runDownRightSprites: []
+  runUpLeftSprites: []
+  runUpRightSprites: []
 --- !u!114 &719908695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35248,10 +35277,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 2
-  - _base: {fileID: 11400000, guid: 23f12d223a7c5c9469b5746e63132bab, type: 2}
-    level: 2
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  - animal: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    chancePercentage: 0
+  totalChance: 0
 --- !u!1 &1900093945
 GameObject:
   m_ObjectHideFlags: 0

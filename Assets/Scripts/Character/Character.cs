@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 {
     public float moveSpeed; // variable set a public so we can edit it on unity editor
 
+
     public bool IsMoving { get; private set; }
 
     public float OffsetY { get; private set; } = 0.3f;
@@ -50,12 +51,22 @@ public class Character : MonoBehaviour
 
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                this.Animator.IsRunning = true;
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, (moveSpeed + 2) * Time.deltaTime);
+            }
+            else
+            {
+                this.Animator.IsRunning = false;
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            }
             yield return null;
         }
         transform.position = targetPos;
 
         IsMoving = false;
+        this.Animator.IsRunning = false;
 
         //null conidition operator, if OnMoveOver is null, we wont call(invoke) it
         OnMoveOver?.Invoke();

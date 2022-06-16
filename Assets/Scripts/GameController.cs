@@ -43,6 +43,13 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if (MainController.checkLoadGame == true)
+        {
+            string savedSlotName = PlayerPrefs.GetString("SavedGame");
+            SavingSystem.i.Load(savedSlotName);
+            state = GameState.FreeRoam;
+        }
+
         battleSystem.OnBattleOver += EndBattle;
 
         partyScreen.Init();
@@ -238,6 +245,7 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 2)
         {
             //Save
+            PlayerPrefs.SetString("SavedGame", "saveSlot1");
             SavingSystem.i.Save("saveSlot1");
             state = GameState.FreeRoam;
         }

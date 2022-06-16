@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum ItemCategory {  Items, AnimalCapture, Tms }
+public enum ItemCategory {  Items, AnimalCapture } //, Tms
 
 public class Inventory : MonoBehaviour, ISavable
 {
     [SerializeField] List<ItemSlot> slots;
     [SerializeField] List<ItemSlot> animalCaptureSlots;
-    [SerializeField] List<ItemSlot> tmSlots; //we are not using tm(?)
+    
 
     List<List<ItemSlot>> allSlots;
 
@@ -20,13 +20,13 @@ public class Inventory : MonoBehaviour, ISavable
     {
         allSlots = new List<List<ItemSlot>>()
         {
-            slots, animalCaptureSlots, tmSlots
+            slots, animalCaptureSlots
         };
     }
 
     public static List<string> ItemCategories { get; set; } = new List<string>()
     {
-        "ITEMS", "ANIMAL CAPTURE", "TMs & HMs"     //we are not using tm(?)
+        "ITEMS", "ANIMAL CAPTURE"
     };
 
     public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
@@ -116,10 +116,9 @@ public class Inventory : MonoBehaviour, ISavable
     {
         if (item is RecoveryItem || item is EvolutionItem)
             return ItemCategory.Items;
-        else if (item is AnimalCaptureItem)
+        else 
             return ItemCategory.AnimalCapture;
-        else
-            return ItemCategory.Tms; //Todo: remove this if tms is not used
+        
     }
 
     public static Inventory GetInventory()
@@ -133,7 +132,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             items = slots.Select(i => i.GetSaveData()).ToList(),
             animalCaptures = animalCaptureSlots.Select(i => i.GetSaveData()).ToList(),
-            tms = tmSlots.Select(i => i.GetSaveData()).ToList() //we are not using tm(?)
+            
         };
 
         return saveData;
@@ -144,9 +143,9 @@ public class Inventory : MonoBehaviour, ISavable
         var saveData = state as InventorySaveData;
         slots = saveData.items.Select(i => new ItemSlot(i)).ToList();
         animalCaptureSlots = saveData.animalCaptures.Select(i => new ItemSlot(i)).ToList();
-        tmSlots = saveData.tms.Select(i => new ItemSlot(i)).ToList(); //we are not using tm(?)
+        
 
-        allSlots = new List<List<ItemSlot>>() { slots, animalCaptureSlots, tmSlots };
+        allSlots = new List<List<ItemSlot>>() { slots, animalCaptureSlots };
 
         OnUpdated?.Invoke();
     }
@@ -203,6 +202,5 @@ public class InventorySaveData
 {
     public List<ItemSaveData> items;
     public List<ItemSaveData> animalCaptures;
-    public List<ItemSaveData> tms;
-
+    
 }
