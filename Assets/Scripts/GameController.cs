@@ -43,6 +43,12 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if (MainController.checkLoadGame == true)
+        {
+            SavingSystem.i.Load("saveSlot1");
+            state = GameState.FreeRoam;
+        }
+
         battleSystem.OnBattleOver += EndBattle;
 
         partyScreen.Init();

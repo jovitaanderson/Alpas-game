@@ -22,6 +22,9 @@ public class MainController : MonoBehaviour
     private string levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;
 
+
+    public static bool checkLoadGame = false;
+
     private void Awake()
     {
         if (sceneMusic != null)
@@ -37,7 +40,11 @@ public class MainController : MonoBehaviour
     public void LoadGameDialogYes()
     {
         AudioManager.i.PlaySfx(AudioId.UISelect);
-        if (PlayerPrefs.HasKey("SavedLevel"))
+
+        checkLoadGame = true;
+        SceneManager.LoadScene(_newGameLevel);
+
+        /*if (PlayerPrefs.HasKey("SavedLevel"))
         {
             levelToLoad = PlayerPrefs.GetString("SavedLevel");
             SceneManager.LoadScene(levelToLoad);
@@ -45,7 +52,7 @@ public class MainController : MonoBehaviour
         else
         {
             noSavedGameDialog.SetActive(true);
-        }
+        }*/
     }
 
 
