@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 604246980076941245, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 9162393031431230281, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
+      objectReference: {fileID: 1554383793582291090, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
     - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_Name
       value: Healer
@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4220980286914923127, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: uniqueId
@@ -436,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 604246980076941245, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 9162393031431230281, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
+      objectReference: {fileID: 5457238550514530988, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
     - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_Name
       value: Merchant
@@ -4045,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4220980286914923127, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: uniqueId
