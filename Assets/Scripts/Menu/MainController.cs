@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
+    [Header("Audio Settings")]
+    [SerializeField] AudioClip sceneMusic;
+
     [Header("Volume Settings")]
     [SerializeField] private Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
@@ -19,13 +22,21 @@ public class MainController : MonoBehaviour
     private string levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;
 
+    private void Awake()
+    {
+        if (sceneMusic != null)
+            AudioManager.i.PlayMusic(sceneMusic, fade: true);
+    }
+
     public void NewGameDialogYes()
     {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
         SceneManager.LoadScene(_newGameLevel);
     }
 
     public void LoadGameDialogYes()
     {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
         if (PlayerPrefs.HasKey("SavedLevel"))
         {
             levelToLoad = PlayerPrefs.GetString("SavedLevel");
@@ -40,6 +51,7 @@ public class MainController : MonoBehaviour
 
     public void ExitButton()
     {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
         Application.Quit();
     }
 
@@ -52,6 +64,7 @@ public class MainController : MonoBehaviour
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+        AudioManager.i.PlaySfx(AudioId.UISelect);
         //Show Prompt
         StartCoroutine(ConfirmationBox());
     }
@@ -60,6 +73,7 @@ public class MainController : MonoBehaviour
     {
         if (MenuType == "Audio")
         {
+            AudioManager.i.PlaySfx(AudioId.UISelect);
             AudioListener.volume = defaultVolume;
             volumeSlider.value = defaultVolume;
             volumeTextValue.text = defaultVolume.ToString("0.0");
@@ -72,5 +86,10 @@ public class MainController : MonoBehaviour
         confirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(2f);
         confirmationPrompt.SetActive(false);
+    }
+
+    public void PlaySFX()
+    {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
     }
 }
