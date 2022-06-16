@@ -41,18 +41,17 @@ public class MainController : MonoBehaviour
     {
         PlaySFX();
 
-        checkLoadGame = true;
-        SceneManager.LoadScene(_newGameLevel);
-
-        /*if (PlayerPrefs.HasKey("SavedLevel"))
+        if (PlayerPrefs.HasKey("SavedGame"))
         {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
+            checkLoadGame = true;
+            SceneManager.LoadScene(_newGameLevel);
+            //levelToLoad = PlayerPrefs.GetString("SavedLevel");
+            //SceneManager.LoadScene(levelToLoad);
         }
         else
         {
             noSavedGameDialog.SetActive(true);
-        }*/
+        }
     }
 
 

@@ -693,7 +693,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3788495601239259942, guid: c550f2615a944cb46b53ad9ca2fc6580, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2087,6 +2087,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1342053210110440169, guid: 1b9b9e03cf3e3bf448c657bced31e5a5, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342053210110440169, guid: 1b9b9e03cf3e3bf448c657bced31e5a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3788495601239259942, guid: c550f2615a944cb46b53ad9ca2fc6580, type: 3}
     - target: {fileID: 1342053210110440175, guid: 1b9b9e03cf3e3bf448c657bced31e5a5, type: 3}
       propertyPath: m_Name
       value: BG_UI
@@ -2594,7 +2602,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3788495601239259942, guid: c550f2615a944cb46b53ad9ca2fc6580, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3153,7 +3161,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3788495601239259942, guid: c550f2615a944cb46b53ad9ca2fc6580, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4429,7 +4437,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3788495601239259942, guid: c550f2615a944cb46b53ad9ca2fc6580, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4912,7 +4920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6465271316976419069, guid: 42099b32365d29c4b8b26884c5e3b1d2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5280,6 +5288,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1342053210110440169, guid: 1b9b9e03cf3e3bf448c657bced31e5a5, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342053210110440169, guid: 1b9b9e03cf3e3bf448c657bced31e5a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3788495601239259942, guid: c550f2615a944cb46b53ad9ca2fc6580, type: 3}
     - target: {fileID: 1342053210110440175, guid: 1b9b9e03cf3e3bf448c657bced31e5a5, type: 3}
       propertyPath: m_Name
       value: BG_UI
