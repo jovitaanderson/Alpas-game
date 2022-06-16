@@ -25,6 +25,17 @@ public class MainController : MonoBehaviour
 
     public static bool checkLoadGame = false;
 
+    private void Start()
+    {
+        //TODO: remove if audio is still saved (when restarting game) without this code
+        if (PlayerPrefs.HasKey("masterVolume"))
+        {
+            SetVolume(PlayerPrefs.GetFloat("masterVolume"));
+            volumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        }
+
+    }
+
     private void Awake()
     {
         if (sceneMusic != null)
