@@ -223,13 +223,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
+  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
+    levelRange: {x: 1, y: 4}
+    chancePercentage: 70
+  - animal: {fileID: 11400000, guid: a8dccafcc799f25499a5809d1b22c534, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 30
+  totalChance: 100
 --- !u!1001 &917173256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3396,13 +3396,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
+  - animal: {fileID: 11400000, guid: 639657b7a1e83d04e974e8eff751d9ba, type: 2}
+    levelRange: {x: 1, y: 4}
+    chancePercentage: 50
+  - animal: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 40
+  totalChance: 90
 --- !u!114 &1358788680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -3564,13 +3564,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
+  - animal: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
+    levelRange: {x: 1, y: 4}
+    chancePercentage: 70
+  - animal: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 20
+  totalChance: 90
 --- !u!1001 &1870088528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3666,13 +3666,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
+  - animal: {fileID: 11400000, guid: c9c29e844c924f24b998b9be1a364d91, type: 2}
+    levelRange: {x: 1, y: 20}
+    chancePercentage: 50
+  - animal: {fileID: 11400000, guid: 5d25802e10f36984e8eabe842077d4d1, type: 2}
+    levelRange: {x: 1, y: 20}
+    chancePercentage: 50
+  totalChance: 100
 --- !u!114 &2018835371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}

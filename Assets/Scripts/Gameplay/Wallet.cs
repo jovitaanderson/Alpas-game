@@ -44,4 +44,5 @@ public class Wallet : MonoBehaviour, ISavable
     }
 
     public float Money => money;
+
 }
