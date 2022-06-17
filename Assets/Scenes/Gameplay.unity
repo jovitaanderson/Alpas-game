@@ -145,6 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4695b461dc18a1442b66618c0ad5de5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &264173238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2969906141094480928, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &300816170 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1003510642941263713, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
@@ -2089,6 +2094,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8095254973478114380, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 8104734820078287768, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3438,6 +3447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505508e4ce516664d82b19b81c92c589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1501688202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1524256589868172491, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1549925391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8846833008561578892, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
@@ -3460,6 +3474,8 @@ MonoBehaviour:
   shopUI: {fileID: 917173261}
   walletUI: {fileID: 219293179}
   countSelectorUI: {fileID: 1242823216}
+  miniMapWindow: {fileID: 1501688202}
+  walletUITwo: {fileID: 264173238}
 --- !u!114 &1549925393
 MonoBehaviour:
   m_ObjectHideFlags: 0
