@@ -29,4 +29,9 @@ public class WalletUI : MonoBehaviour
         moneyText.text = "X " + Wallet.i.Money;
     }
 
+    public void SetPosition(Vector2 moveOffset)
+    {
+        this.transform.position += new Vector3(moveOffset.x, moveOffset.y);
+    }
+
 }

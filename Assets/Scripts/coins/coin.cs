@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class coin : MonoBehaviour
+public class Coin : MonoBehaviour
 {
    
     public int coinValue = 1;
@@ -11,7 +11,6 @@ public class coin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-           
             AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
             //coinsManager.instance.ChangeMoney(coinValue);
             Wallet.i.AddMoney(coinValue);

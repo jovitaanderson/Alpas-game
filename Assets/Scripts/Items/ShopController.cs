@@ -9,13 +9,12 @@ public class ShopController : MonoBehaviour
 {
     //script to put all the code to buy and sell items
     [SerializeField] Vector2 shopCameraOffset;
+    [SerializeField] Vector2 walletUIOffset;
     [SerializeField] InventoryUI inventoryUI;
     [SerializeField] ShopUI shopUI;
     [SerializeField] WalletUI walletUI;
     [SerializeField] CountSelectorUI countSelectorUI;
-
     [SerializeField] GameObject miniMapWindow;
-    [SerializeField] GameObject walletUITwo;
 
     public event Action OnStart;
     public event Action OnFinish;
@@ -57,11 +56,10 @@ public class ShopController : MonoBehaviour
         {
             //buy
             yield return GameController.Instance.MoveCamera(shopCameraOffset);
-
+            walletUI.transform.position += new Vector3(walletUIOffset.x, walletUIOffset.y);
             miniMapWindow.SetActive(false);
-            //todo: maybe merge wallet to one (instead of setactive = false, we change  transform)
-            walletUITwo.SetActive(false);
-            walletUI.Show();
+
+            //walletUI.Show();
 
             shopUI.Show(merchant.AvaiableItems, (item) => StartCoroutine(BuyItem(item)),
                 () => StartCoroutine(OnBackFromBuying()));
@@ -71,8 +69,8 @@ public class ShopController : MonoBehaviour
         else if (selectedChoice == 1)
         {
             //sell
+            walletUI.transform.position += new Vector3(walletUIOffset.x, walletUIOffset.y);
             miniMapWindow.SetActive(false);
-            walletUITwo.SetActive(false);
 
             state = ShopState.Selling;
             inventoryUI.gameObject.SetActive(true);
@@ -100,8 +98,8 @@ public class ShopController : MonoBehaviour
 
     void OnBackFromSelling()
     {
+        walletUI.transform.position -= new Vector3(walletUIOffset.x, walletUIOffset.y);
         miniMapWindow.SetActive(true);
-        walletUITwo.SetActive(true);
         inventoryUI.gameObject.SetActive(false);
         StartCoroutine(StartMenuState());
     }
@@ -118,7 +116,7 @@ public class ShopController : MonoBehaviour
             yield break;
         }
 
-        walletUI.Show();
+        //walletUI.Show();
 
         float sellingPrice = Mathf.Round(item.Price / 2);
         int countToSell = 1;
@@ -152,7 +150,7 @@ public class ShopController : MonoBehaviour
             yield return DialogManager.Instance.ShowDialogText($"Sold {item.Name} and received {sellingPrice}!");
         }
 
-        walletUI.Close();
+        //walletUI.Close();
 
         state = ShopState.Selling;
     }
@@ -196,10 +194,10 @@ public class ShopController : MonoBehaviour
     {
 
         yield return GameController.Instance.MoveCamera(-shopCameraOffset);
+        walletUI.transform.position -= new Vector3(walletUIOffset.x, walletUIOffset.y);
         miniMapWindow.SetActive(true);
-        walletUITwo.SetActive(true);
         shopUI.Close();
-        walletUI.Close();
+        //walletUI.Close();
         StartCoroutine(StartMenuState());
     }
 }

@@ -14,7 +14,8 @@ public class GameController : MonoBehaviour
     [SerializeField] InventoryUI inventoryUI;
 
     [SerializeField] GameObject miniMapWindow;
-    [SerializeField] GameObject walletUITwo;
+    [SerializeField] GameObject walletUI;
+
     GameState state;
     GameState prevState;
     GameState stateBeforeEvolution;
@@ -110,7 +111,7 @@ public class GameController : MonoBehaviour
     {
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
-        walletUITwo.SetActive(false);
+        walletUI.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
         
@@ -129,7 +130,7 @@ public class GameController : MonoBehaviour
     {
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
-        walletUITwo.SetActive(false);
+        walletUI.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
@@ -161,7 +162,7 @@ public class GameController : MonoBehaviour
 
         state = GameState.FreeRoam;
         miniMapWindow.SetActive(true);
-        walletUITwo.SetActive(true);
+        walletUI.SetActive(true);
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
 
