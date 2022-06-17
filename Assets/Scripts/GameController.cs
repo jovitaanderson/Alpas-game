@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
+
+    [SerializeField] GameObject miniMapWindow;
+    [SerializeField] GameObject walletUITwo;
     GameState state;
     GameState prevState;
     GameState stateBeforeEvolution;
@@ -106,9 +109,11 @@ public class GameController : MonoBehaviour
     public void StartBattle()
     {
         state = GameState.Battle;
+        miniMapWindow.SetActive(false);
+        walletUITwo.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
-
+        
         //We can get animalparty from plaayercontroller since they are both components of the player game object
         var playerParty = playerController.GetComponent<AnimalParty>();
         //FindObjectOfType<MapArea>() will get the reference and return the game object with MapArea
@@ -123,6 +128,8 @@ public class GameController : MonoBehaviour
     public void StartTrainerBattle(TrainerController trainer)
     {
         state = GameState.Battle;
+        miniMapWindow.SetActive(false);
+        walletUITwo.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
@@ -153,8 +160,11 @@ public class GameController : MonoBehaviour
         partyScreen.SetPartyData();
 
         state = GameState.FreeRoam;
+        miniMapWindow.SetActive(true);
+        walletUITwo.SetActive(true);
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
+
 
         var playerParty = playerController.GetComponent<AnimalParty>();
         //changed abit from the tutorial because we dunnid evolve straight away after a battle

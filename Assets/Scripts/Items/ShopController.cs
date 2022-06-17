@@ -14,6 +14,9 @@ public class ShopController : MonoBehaviour
     [SerializeField] WalletUI walletUI;
     [SerializeField] CountSelectorUI countSelectorUI;
 
+    [SerializeField] GameObject miniMapWindow;
+    [SerializeField] GameObject walletUITwo;
+
     public event Action OnStart;
     public event Action OnFinish;
 
@@ -54,7 +57,12 @@ public class ShopController : MonoBehaviour
         {
             //buy
             yield return GameController.Instance.MoveCamera(shopCameraOffset);
+
+            miniMapWindow.SetActive(false);
+            //todo: maybe merge wallet to one (instead of setactive = false, we change  transform)
+            walletUITwo.SetActive(false);
             walletUI.Show();
+
             shopUI.Show(merchant.AvaiableItems, (item) => StartCoroutine(BuyItem(item)),
                 () => StartCoroutine(OnBackFromBuying()));
 
@@ -63,6 +71,9 @@ public class ShopController : MonoBehaviour
         else if (selectedChoice == 1)
         {
             //sell
+            miniMapWindow.SetActive(false);
+            walletUITwo.SetActive(false);
+
             state = ShopState.Selling;
             inventoryUI.gameObject.SetActive(true);
 
@@ -89,12 +100,15 @@ public class ShopController : MonoBehaviour
 
     void OnBackFromSelling()
     {
+        miniMapWindow.SetActive(true);
+        walletUITwo.SetActive(true);
         inventoryUI.gameObject.SetActive(false);
         StartCoroutine(StartMenuState());
     }
 
     IEnumerator SellItem(ItemBase item)
     {
+
         state = ShopState.Busy;
 
         if (!item.IsSellable)
@@ -180,6 +194,9 @@ public class ShopController : MonoBehaviour
 
     IEnumerator OnBackFromBuying()
     {
+        miniMapWindow.SetActive(true);
+        walletUITwo.SetActive(true);
+
         yield return GameController.Instance.MoveCamera(-shopCameraOffset);
         shopUI.Close();
         walletUI.Close();
