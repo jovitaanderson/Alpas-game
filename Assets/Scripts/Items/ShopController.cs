@@ -194,10 +194,10 @@ public class ShopController : MonoBehaviour
 
     IEnumerator OnBackFromBuying()
     {
-        miniMapWindow.SetActive(true);
-        walletUITwo.SetActive(true);
 
         yield return GameController.Instance.MoveCamera(-shopCameraOffset);
+        miniMapWindow.SetActive(true);
+        walletUITwo.SetActive(true);
         shopUI.Close();
         walletUI.Close();
         StartCoroutine(StartMenuState());
