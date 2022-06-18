@@ -51,7 +51,12 @@ public class GameController : MonoBehaviour
         {
             string savedSlotName = PlayerPrefs.GetString("SavedGame");
             SavingSystem.i.Load(savedSlotName);
-            state = GameState.FreeRoam;
+            state = GameState.FreeRoam; //todo: remove this line(?)
+        }
+        else 
+        {
+            PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            SavingSystem.i.Save("saveSlot1");
         }
 
         battleSystem.OnBattleOver += EndBattle;
@@ -256,7 +261,8 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 2)
         {
             //Save
-            PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            if(!PlayerPrefs.HasKey("SavedGame"))
+                PlayerPrefs.SetString("SavedGame", "saveSlot1");
             SavingSystem.i.Save("saveSlot1");
             state = GameState.FreeRoam;
         }

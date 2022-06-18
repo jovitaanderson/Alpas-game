@@ -364,6 +364,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1147832211}
+        m_TargetAssemblyTypeName: MainController, Assembly-CSharp
+        m_MethodName: NewGameDialogText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &184677367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,8 +453,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 307, y: 171}
-  m_SizeDelta: {x: 464.084, y: 180.5657}
+  m_AnchoredPosition: {x: 300.7694, y: 110}
+  m_SizeDelta: {x: 468, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190296131
 MonoBehaviour:
@@ -828,8 +840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 771.07996, y: 171}
-  m_SizeDelta: {x: 464.084, y: 180.5657}
+  m_AnchoredPosition: {x: 769.0031, y: 110}
+  m_SizeDelta: {x: 468, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338968089
 MonoBehaviour:
@@ -1282,7 +1294,7 @@ RectTransform:
   m_Children:
   - {fileID: 184677365}
   m_Father: {fileID: 1669312710}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2659,8 +2671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 307, y: 171}
-  m_SizeDelta: {x: 464.084, y: 180.5657}
+  m_AnchoredPosition: {x: 300.7694, y: 110}
+  m_SizeDelta: {x: 468, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122045324
 MonoBehaviour:
@@ -3211,9 +3223,17 @@ MonoBehaviour:
   volumeTextValue: {fileID: 1128899049}
   volumeSlider: {fileID: 1231889640}
   defaultVolume: 1
+  newGameDialogText: {fileID: 2022252895}
+  defaultTextColor: {r: 0.08235294, g: 0.24705882, b: 0.02745098, a: 1}
+  warningTextColor: {r: 0.5660378, g: 0, b: 0, a: 1}
+  NoExistingSavedGameText: Do you want to start a new game?
+  HaveExistingSavedGameText: Your existing saved game will be overwritten, are you
+    sure?
   confirmationPrompt: {fileID: 2093564912}
   _newGameLevel: GamePlay
+  gameToLoad: SavedGame
   noSavedGameDialog: {fileID: 1711599580}
+  loadGameDialog: {fileID: 1088254384}
 --- !u!4 &1147832212
 Transform:
   m_ObjectHideFlags: 0
@@ -3306,7 +3326,7 @@ RectTransform:
   m_Children:
   - {fileID: 1221993332}
   m_Father: {fileID: 1669312710}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3641,10 +3661,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1088254384}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1147832211}
+        m_TargetAssemblyTypeName: MainController, Assembly-CSharp
+        m_MethodName: LoadGameDialogCheckState
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4052,8 +4072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000020504, y: -148}
-  m_SizeDelta: {x: 995.4927, y: 115.61578}
+  m_AnchoredPosition: {x: 0.000017405, y: -165}
+  m_SizeDelta: {x: 1000, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1523697718
 MonoBehaviour:
@@ -4341,8 +4361,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 449134854}
   - {fileID: 1178742144}
+  - {fileID: 449134854}
   m_Father: {fileID: 1082090480}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4796,7 +4816,7 @@ GameObject:
   - component: {fileID: 2022252896}
   - component: {fileID: 2022252895}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NewGameDialogText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4818,8 +4838,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000020504, y: -152}
-  m_SizeDelta: {x: 995.4927, y: 115.61578}
+  m_AnchoredPosition: {x: 0.000017405, y: -165}
+  m_SizeDelta: {x: 1000, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022252895
 MonoBehaviour:
@@ -4973,8 +4993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 771.07996, y: 171}
-  m_SizeDelta: {x: 464.084, y: 180.5657}
+  m_AnchoredPosition: {x: 769.00305, y: 110}
+  m_SizeDelta: {x: 468, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2145915214
 MonoBehaviour:
