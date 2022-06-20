@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions}
 
 public class GameController : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
+    [SerializeField] GameObject instructionsPanel;
 
     GameState state;
     GameState prevState;
@@ -114,6 +115,7 @@ public class GameController : MonoBehaviour
 
     public void StartBattle()
     {
+        instructionsPanel.SetActive(false);
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
@@ -236,6 +238,15 @@ public class GameController : MonoBehaviour
         {
             ShopController.i.HandleUpdate();
         }
+        else if (state == GameState.Instructions)
+        {
+            if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
+                || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                instructionsPanel.SetActive(false);
+                state = GameState.FreeRoam;
+            }
+        }
     }
 
     public void SetCurrentScene(SceneDetails currScene)
@@ -271,6 +282,13 @@ public class GameController : MonoBehaviour
             //Load
             SavingSystem.i.Load("saveSlot1");
             state = GameState.FreeRoam;
+        } 
+        else if (selectedItem == 4)
+        {
+            //instructions
+            state = GameState.Instructions;
+            instructionsPanel.SetActive(true);
+            
         }
 
         
