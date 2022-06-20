@@ -34,8 +34,8 @@ public class GameController : MonoBehaviour
         menuController = GetComponent<MenuController>();
 
         //TODO: Uncomment this if we want to remove mouse from game
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         AnimalDB.Init();
         MoveDB.Init();
