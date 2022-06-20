@@ -59,6 +59,8 @@ public class EvolutionManager : MonoBehaviour
             animalImage.sprite = animal.Base.FrontSprite;
             yield return DialogManager.Instance.ShowDialogText($"{oldAnimal.Name} evolved into {animal.Base.Name}");
 
+           
+
             //deactive ui and continue gameplay
             evolutionUI.SetActive(false);
             

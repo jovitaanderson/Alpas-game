@@ -1328,6 +1328,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -175
       objectReference: {fileID: 0}
+    - target: {fileID: 4067883626822412221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 1639664251}
+    - target: {fileID: 4067883626822412221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: itemSlotUI
+      value: 
+      objectReference: {fileID: 8228849952473837296, guid: 620030d6bd4140e45963ead8793706e2, type: 3}
     - target: {fileID: 4085899807584163366, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3380,6 +3388,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16.300026
       objectReference: {fileID: 0}
+    - target: {fileID: 8846833009012008680, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8846833009182673574, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 15
@@ -3894,6 +3906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505508e4ce516664d82b19b81c92c589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1639664251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8632878573810365038, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1807331939
 PrefabInstance:
   m_ObjectHideFlags: 0

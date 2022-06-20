@@ -67,11 +67,16 @@ public class AnimalParty : MonoBehaviour
         {
 
             var evolution = animal.CheckForEvolution();
+            //Debug.Log(evolution.evolutionMessageState);
             if (evolution != null)
             {
-                //dont evolve immediately, give a dialog to say that animal is ready for evolution
-                yield return DialogManager.Instance.ShowDialogText($"{animal.Base.Name} is ready for evolution");
-                //yield return EvolutionManager.i.Evolve(animal, evolution);
+                if (evolution.evolutionMessageState == false)
+                {
+                    //dont evolve immediately, give a dialog to say that animal is ready for evolution
+                    yield return DialogManager.Instance.ShowDialogText($"{animal.Base.Name} is ready for evolution");
+                    evolution.evolutionMessageState = true;
+                    //yield return EvolutionManager.i.Evolve(animal, evolution);
+                }
             }
 
         }
