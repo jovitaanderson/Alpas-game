@@ -69,10 +69,6 @@ public class QuizUI : MonoBehaviour
         }
     }
 
-    //options[currentAction].color = normalCol;
-    //        ++currentAction;
-    //        options[currentAction].color = selectedColor;
-
     public void Reset()
     {
         CorrectAns = null;
