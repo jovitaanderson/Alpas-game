@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PartyMemberUI : MonoBehaviour
 {
+    [SerializeField] Image image;
+    [SerializeField] Image imageBorder;
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
     [SerializeField] HPBar hpBar;
@@ -21,6 +23,7 @@ public class PartyMemberUI : MonoBehaviour
 
     void UpdateData()
     {
+        image.sprite = _animal.Base.FrontSprite;
         nameText.text = _animal.Base.Name;
         levelText.text = "Lvl" + _animal.Level;
         hpBar.SetHP((float)_animal.HP / _animal.MaxHp);
@@ -30,9 +33,20 @@ public class PartyMemberUI : MonoBehaviour
     public void SetSelected(bool selected)
     {
         if (selected)
+        {
             nameText.color = GlobalSettings.i.HighlightedColor;
-        else         
+            var borderColor = imageBorder.color;
+            borderColor.a = 1f;
+            imageBorder.color = borderColor;
+        }
+
+        else
+        {
             nameText.color = Color.black;
+            var borderColor = imageBorder.color;
+            borderColor.a = 0f;
+            imageBorder.color = borderColor;
+        }
     }
 
 }
