@@ -38,6 +38,7 @@ public class EvolutionManager : MonoBehaviour
         //if qns answered correctly
         if (quizScript.CorrectAns == true)
         {
+            Debug.Log("Qn is answered correctly");
             yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"Good Job! You have answered correctly!");
 
@@ -60,19 +61,20 @@ public class EvolutionManager : MonoBehaviour
 
             //deactive ui and continue gameplay
             evolutionUI.SetActive(false);
-            OnCompleteEvolution?.Invoke();
+            
 
         }
         else {
+            Debug.Log("Qn is answered wrongly");
             yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"You got the answer wrong! Try again");
 
             quizUI.SetActive(false);
 
-
         }
-        
-        
+
+        OnCompleteEvolution?.Invoke();
+
 
 
     }
