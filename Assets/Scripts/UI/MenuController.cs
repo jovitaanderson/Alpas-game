@@ -14,7 +14,8 @@ public class MenuController : MonoBehaviour
 
     List<Text> menuItems;
 
-    int selectedItem = 0;
+    public int selectedItem = 0;
+
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class MenuController : MonoBehaviour
         //if press enter then go do action
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            Debug.Log(selectedItem);
             onMenuSelected?.Invoke(selectedItem);
             CloseMenu();
         }
@@ -57,6 +59,16 @@ public class MenuController : MonoBehaviour
             CloseMenu();
         }
     }
+
+    //TODO: implement method for mouse, this method has error
+    /*
+    public void MenuMouseSelect(int selectedItem)
+    {
+        this.selectedItem = selectedItem;
+        UpdateItemSelection();
+        onMenuSelected?.Invoke(selectedItem);
+        CloseMenu();
+    } */
 
     void UpdateItemSelection()
     {

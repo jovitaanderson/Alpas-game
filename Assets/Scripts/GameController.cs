@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest}
 
 public class GameController : MonoBehaviour
 {
@@ -12,6 +12,11 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
+
+    [SerializeField] GameObject miniMapWindow;
+    [SerializeField] GameObject walletUI;
+    [SerializeField] GameObject instructionsPanel;
+
     GameState state;
     GameState prevState;
     GameState stateBeforeEvolution;
@@ -47,7 +52,12 @@ public class GameController : MonoBehaviour
         {
             string savedSlotName = PlayerPrefs.GetString("SavedGame");
             SavingSystem.i.Load(savedSlotName);
-            state = GameState.FreeRoam;
+            state = GameState.FreeRoam; //todo: remove this line(?)
+        }
+        else 
+        {
+            PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            SavingSystem.i.Save("saveSlot1");
         }
 
         battleSystem.OnBattleOver += EndBattle;
@@ -86,6 +96,9 @@ public class GameController : MonoBehaviour
             AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
         };
 
+        TreasureChestManager.i.OnStartTreasureChest += () => state = GameState.TreasureChest;
+        TreasureChestManager.i.OnCompleteTreasureChest += () => state = GameState.FreeRoam;
+
         ShopController.i.OnStart += () => state = GameState.Shop;
         ShopController.i.OnFinish += () => state = GameState.FreeRoam;
     }
@@ -105,10 +118,13 @@ public class GameController : MonoBehaviour
 
     public void StartBattle()
     {
+        instructionsPanel.SetActive(false);
         state = GameState.Battle;
+        miniMapWindow.SetActive(false);
+        walletUI.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
-
+        
         //We can get animalparty from plaayercontroller since they are both components of the player game object
         var playerParty = playerController.GetComponent<AnimalParty>();
         //FindObjectOfType<MapArea>() will get the reference and return the game object with MapArea
@@ -123,6 +139,8 @@ public class GameController : MonoBehaviour
     public void StartTrainerBattle(TrainerController trainer)
     {
         state = GameState.Battle;
+        miniMapWindow.SetActive(false);
+        walletUI.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
@@ -153,8 +171,11 @@ public class GameController : MonoBehaviour
         partyScreen.SetPartyData();
 
         state = GameState.FreeRoam;
+        miniMapWindow.SetActive(true);
+        walletUI.SetActive(true);
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
+
 
         var playerParty = playerController.GetComponent<AnimalParty>();
         //changed abit from the tutorial because we dunnid evolve straight away after a battle
@@ -220,6 +241,16 @@ public class GameController : MonoBehaviour
         {
             ShopController.i.HandleUpdate();
         }
+        else if (state == GameState.Instructions)
+        {
+            if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
+                || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                instructionsPanel.SetActive(false);
+                state = GameState.FreeRoam;
+            }
+        } 
+        
     }
 
     public void SetCurrentScene(SceneDetails currScene)
@@ -245,7 +276,8 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 2)
         {
             //Save
-            PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            if(!PlayerPrefs.HasKey("SavedGame"))
+                PlayerPrefs.SetString("SavedGame", "saveSlot1");
             SavingSystem.i.Save("saveSlot1");
             state = GameState.FreeRoam;
         }
@@ -254,6 +286,22 @@ public class GameController : MonoBehaviour
             //Load
             SavingSystem.i.Load("saveSlot1");
             state = GameState.FreeRoam;
+        } 
+        else if (selectedItem == 4)
+        {
+            //instructions
+            state = GameState.Instructions;
+            instructionsPanel.SetActive(true);
+            
+        } 
+        else if (selectedItem == 5)
+        {
+            //save game
+            if (!PlayerPrefs.HasKey("SavedGame"))
+                PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            SavingSystem.i.Save("saveSlot1");
+            //quit game
+            Application.Quit();
         }
 
         

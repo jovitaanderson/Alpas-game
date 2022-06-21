@@ -46,7 +46,7 @@ public class PartyScreen : MonoBehaviour
 
         UpdateMemberSelection(selection);
 
-        messageText.text = "Choose a Animal";
+        messageText.text = "Choose an Animal";
     }
 
     //Handles party screen selection

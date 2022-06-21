@@ -9,6 +9,7 @@ public class WalletUI : MonoBehaviour
 
     private void Start()
     {
+        SetMoneyText();
         Wallet.i.OnMoneyChanged += SetMoneyText;
     }
 
@@ -25,6 +26,12 @@ public class WalletUI : MonoBehaviour
 
     void SetMoneyText()
     {
-        moneyText.text = "$" + Wallet.i.Money;
+        moneyText.text = "X " + Wallet.i.Money;
     }
+
+    public void SetPosition(Vector2 moveOffset)
+    {
+        this.transform.position += new Vector3(moveOffset.x, moveOffset.y);
+    }
+
 }

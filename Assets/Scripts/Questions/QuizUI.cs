@@ -8,22 +8,64 @@ public class QuizUI : MonoBehaviour
     [SerializeField] private QuizManager quizManager;
     [SerializeField] private Text questionText;
     [SerializeField] private Image questionImage;
-    [SerializeField] private List<Button> options;
-    [SerializeField] private Color correctCol, wrongCol, normalCol;
+    //[SerializeField] private List<Button> options;
+    [SerializeField] private List<Image> options;
+    [SerializeField] private Color correctCol, wrongCol, normalCol, selectedColor;
 
     private Question question;
     private bool answered;
+    int currentAction;
 
     public bool? CorrectAns { get; private set; }
 
-  
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        for (int i = 0; i < options.Count; i++)
+        options[0].color = selectedColor;
+    }
+    private void Update()
+    {
+        HandleActionSelector();    
+    }
+
+    void HandleActionSelector()
+    {
+        if (!answered)
+            options[currentAction].color = normalCol;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            ++currentAction;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            --currentAction;
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            currentAction += 2;
+        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            currentAction -= 2;
+
+        //Restrict value of currentAction between 0 and 3
+        currentAction = Mathf.Clamp(currentAction, 0, 3);
+
+        if (!answered)
+            options[currentAction].color = selectedColor;
+
+        if (Input.GetKeyDown(KeyCode.Return)) //return = enter key
         {
-            Button localBtn = options[i];
-            localBtn.onClick.AddListener(() => OnClick(localBtn));
+            if (!answered)
+            {
+                answered = true;
+                bool val = quizManager.Answer(options[currentAction].GetComponentInChildren<Text>().text);
+
+                if (val)
+                {
+                    options[currentAction].color = correctCol;
+                    CorrectAns = true;
+
+                }
+                else
+                {
+                    options[currentAction].color = wrongCol;
+                    CorrectAns = false;
+                }
+            }
         }
     }
 
@@ -56,7 +98,7 @@ public class QuizUI : MonoBehaviour
         {
             options[i].GetComponentInChildren<Text>().text = answerList[i];
             options[i].name = answerList[i];
-            options[i].image.color = normalCol;
+            options[i].color = normalCol;
         }
 
         answered = false;
@@ -66,26 +108,6 @@ public class QuizUI : MonoBehaviour
     {
         questionImage.transform.parent.gameObject.SetActive(true);
         questionImage.transform.gameObject.SetActive(true);
-    }
-
-    private void OnClick(Button btn)
-    {
-        if (!answered)
-        {
-            answered = true;
-            bool val = quizManager.Answer(btn.name);
-
-            if (val)
-            {
-                btn.image.color = correctCol;
-                CorrectAns = true;
-
-            } else
-            {
-                btn.image.color = wrongCol;
-                CorrectAns = false;
-            }
-        }
     }
 
 }

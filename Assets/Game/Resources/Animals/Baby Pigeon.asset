@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: King Pigeon
+  m_Name: Baby Pigeon
   m_EditorClassIdentifier: 
-  name: King Pigeon
+  name: Baby Pigeon
   description: 
-  frontSprite: {fileID: 21300000, guid: 1c7395c7c03e30c41887cd3ce3a66f96, type: 3}
-  backSprite: {fileID: 21300000, guid: aafdbea988d2ff9419db16221033ea86, type: 3}
+  frontSprite: {fileID: 21300000, guid: 6d2a18e43d90bcf4f9e326702fbfd732, type: 3}
+  backSprite: {fileID: 21300000, guid: 22e054e3d7d8bf5408c165b1021de34e, type: 3}
   type1: 2
   type2: 9
-  maxHp: 60
-  attack: 72
-  defense: 63
-  spAttack: 80
-  spDefense: 70
-  speed: 85
-  expYield: 80
+  maxHp: 40
+  attack: 45
+  defense: 40
+  spAttack: 35
+  spDefense: 35
+  speed: 56
+  expYield: 500
   growthRate: 1
   catchRate: 255
   learnableMoves:
@@ -38,4 +38,7 @@ MonoBehaviour:
     level: 12
   - moveBase: {fileID: 11400000, guid: c3863ce4dc6143f4eb7eac4d0c802444, type: 2}
     level: 7
-  evolutions: []
+  evolutions:
+  - evolvesinto: {fileID: 11400000, guid: e4562e15286cd124893cc9465170806b, type: 2}
+    requiredLevel: 12
+    requiredItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}

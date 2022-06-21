@@ -44,6 +44,16 @@ public class PlayerController : MonoBehaviour, ISavable
         }
     }
 
+    //for collecting coins
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coins"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
+
     IEnumerator Interact()
     {
         //var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));

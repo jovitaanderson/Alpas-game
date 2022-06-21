@@ -14,16 +14,30 @@ public class MainController : MonoBehaviour
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
 
+    [Header("New Game Dialog")]
+    [SerializeField] private Text newGameDialogText = null;
+    [SerializeField] Color defaultTextColor;
+    [SerializeField] Color warningTextColor;
+    [SerializeField] string NoExistingSavedGameText;
+    [SerializeField] string HaveExistingSavedGameText;
+
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPrompt = null;
 
-    [Header("Levels To Load")]
+    [Header("Game to Load")]
     public string _newGameLevel;
-    private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
+    public string gameToLoad;
 
+    [SerializeField] private GameObject noSavedGameDialog = null;
+    [SerializeField] private GameObject loadGameDialog = null;
 
     public static bool checkLoadGame = false;
+
+    private void Awake()
+    {
+        if (sceneMusic != null)
+            AudioManager.i.PlayMusic(sceneMusic, fade: true);
+    }
 
     private void Start()
     {
@@ -36,10 +50,18 @@ public class MainController : MonoBehaviour
 
     }
 
-    private void Awake()
+    public void NewGameDialogText()
     {
-        if (sceneMusic != null)
-            AudioManager.i.PlayMusic(sceneMusic, fade: true);
+        if (PlayerPrefs.HasKey(gameToLoad))
+        {
+            newGameDialogText.color = warningTextColor;
+            newGameDialogText.text = HaveExistingSavedGameText;      
+        }
+        else
+        {
+            newGameDialogText.color = defaultTextColor;
+            newGameDialogText.text = NoExistingSavedGameText;
+        }
     }
 
     public void NewGameDialogYes()
@@ -48,21 +70,19 @@ public class MainController : MonoBehaviour
         SceneManager.LoadScene(_newGameLevel);
     }
 
+    public void LoadGameDialogCheckState()
+    {
+        if (PlayerPrefs.HasKey(gameToLoad))
+            loadGameDialog.SetActive(true);
+        else
+            noSavedGameDialog.SetActive(true);
+    }
+
     public void LoadGameDialogYes()
     {
         PlaySFX();
-
-        if (PlayerPrefs.HasKey("SavedGame"))
-        {
-            checkLoadGame = true;
-            SceneManager.LoadScene(_newGameLevel);
-            //levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            //SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
-            noSavedGameDialog.SetActive(true);
-        }
+        checkLoadGame = true;
+        SceneManager.LoadScene(_newGameLevel);
     }
 
 
