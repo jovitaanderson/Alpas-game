@@ -75,10 +75,6 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetupBattle());
     }
 
-    public IEnumerator CantStartBattle()
-    {
-        yield return DialogManager.Instance.ShowDialogText("cannot start battle");
-    }
 
     public IEnumerator SetupBattle()
     {

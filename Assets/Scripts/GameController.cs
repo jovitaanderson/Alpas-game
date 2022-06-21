@@ -117,22 +117,28 @@ public class GameController : MonoBehaviour
     }
 
     public void StartBattle()
-    {
-        instructionsPanel.SetActive(false);
-        state = GameState.Battle;
-        miniMapWindow.SetActive(false);
-        walletUI.SetActive(false);
-        battleSystem.gameObject.SetActive(true);
-        worldCamera.gameObject.SetActive(false);
-        
+    {   
         //We can get animalparty from plaayercontroller since they are both components of the player game object
         var playerParty = playerController.GetComponent<AnimalParty>();
         //FindObjectOfType<MapArea>() will get the reference and return the game object with MapArea
         var wildAnimal = CurrentScene.GetComponent<MapArea>().GetRandomWildAnimal();
-
         var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
 
-        battleSystem.StartBattle(playerParty, wildAnimalCopy);
+        if (playerParty.GetHealthyAnimal() == null)
+        {
+            StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight wild animals."));
+        }
+        else
+        {
+            instructionsPanel.SetActive(false);
+            state = GameState.Battle;
+            miniMapWindow.SetActive(false);
+            walletUI.SetActive(false);
+            battleSystem.gameObject.SetActive(true);
+            worldCamera.gameObject.SetActive(false);
+
+            battleSystem.StartBattle(playerParty, wildAnimalCopy);
+        }
     }
 
     TrainerController trainer;
@@ -141,15 +147,13 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
+        walletUI.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
         this.trainer = trainer;
         var playerParty = playerController.GetComponent<AnimalParty>();
         var trainerParty = trainer.GetComponent<AnimalParty>();
-        
-        //todo: i not sure if this suppose to be here or not, pls check @shanice
-        //var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
 
         battleSystem.StartTrainerBattle(playerParty, trainerParty);
     }
