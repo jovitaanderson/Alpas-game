@@ -293,6 +293,15 @@ public class GameController : MonoBehaviour
             state = GameState.Instructions;
             instructionsPanel.SetActive(true);
             
+        } 
+        else if (selectedItem == 5)
+        {
+            //save game
+            if (!PlayerPrefs.HasKey("SavedGame"))
+                PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            SavingSystem.i.Save("saveSlot1");
+            //quit game
+            Application.Quit();
         }
 
         
