@@ -22,3 +22,22 @@ MonoBehaviour:
     - 5133
     - 6895
     correctAns: 3527
+  - questionInfo: What number should replace the question mark?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: ef30611c82b086d429f147adc082181c, type: 3}
+    options:
+    - 0
+    - 5
+    - 7
+    - 6
+    correctAns: 0
+  - questionInfo: What letter is directly opposite the letter that is two letters
+      away clockwise from the letter that is directly opposite the letter E?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 64061c431ade219459f87947d5b95588, type: 3}
+    options:
+    - G
+    - A
+    - C
+    - H
+    correctAns: G
