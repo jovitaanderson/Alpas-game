@@ -451,19 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119a5e090017fbb4ebee04d46a0390c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 12
-  - _base: {fileID: 11400000, guid: 23f12d223a7c5c9469b5746e63132bab, type: 2}
-    level: 10
-  - _base: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
-    level: 6
-  - _base: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
-    level: 7
+  animals: []
 --- !u!114 &4201773140602634709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +646,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9956ebe0723287847bc375eb5532f26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: []
+  slots:
+  - item: {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: c8c0014cdf29f364599bedfeaba49c8b, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: 6df98afd3c42bc742a64ed672988d553, type: 2}
+    count: 6
+  - item: {fileID: 11400000, guid: a4cc569d115558d408ef6939d202cb72, type: 2}
+    count: 2
+  - item: {fileID: 11400000, guid: 6c2c71af0a7c8864d84ee32e58aa720d, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: db6f2ce00e3089048955ed6e6a77b023, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: d23567f2625b0ad40b5904a5431d351b, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: 0176ceed4fdc31f44b94160c51d96bb5, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
+    count: 1
   animalCaptureSlots: []
 --- !u!114 &2112548606203843202
 MonoBehaviour:
@@ -684,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be5cdd81ef2fa143afe93c5159b5648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 300
 --- !u!1 &4201773140779870372
 GameObject:
   m_ObjectHideFlags: 0
