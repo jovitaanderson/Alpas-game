@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestObject
       objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -356,6 +360,10 @@ PrefabInstance:
     - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_Name
       value: QuestObject (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_RootOrder
