@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest}
 
 public class GameController : MonoBehaviour
 {
@@ -95,6 +95,9 @@ public class GameController : MonoBehaviour
 
             AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
         };
+
+        TreasureChestManager.i.OnStartTreasureChest += () => state = GameState.TreasureChest;
+        TreasureChestManager.i.OnCompleteTreasureChest += () => state = GameState.FreeRoam;
 
         ShopController.i.OnStart += () => state = GameState.Shop;
         ShopController.i.OnFinish += () => state = GameState.FreeRoam;
@@ -246,7 +249,8 @@ public class GameController : MonoBehaviour
                 instructionsPanel.SetActive(false);
                 state = GameState.FreeRoam;
             }
-        }
+        } 
+        
     }
 
     public void SetCurrentScene(SceneDetails currScene)

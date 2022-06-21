@@ -110,24 +110,4 @@ public class QuizUI : MonoBehaviour
         questionImage.transform.gameObject.SetActive(true);
     }
 
-    private void OnClick(Button btn)
-    {
-        if (!answered)
-        {
-            answered = true;
-            bool val = quizManager.Answer(options[currentAction].GetComponentInChildren<Text>().text);
-
-            if (val)
-            {
-                btn.image.color = correctCol;
-                CorrectAns = true;
-
-            } else
-            {
-                btn.image.color = wrongCol;
-                CorrectAns = false;
-            }
-        }
-    }
-
 }
