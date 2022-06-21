@@ -164,27 +164,30 @@ public class ShopController : MonoBehaviour
         yield return countSelectorUI.ShowSelector(100, item.Price,
         (selectedCount) => countToBuy = selectedCount);
         DialogManager.Instance.CloseDialog();
-        float totalPrice = item.Price * countToBuy;
-
-        if (Wallet.i.HasMoney(totalPrice))
+        if (countToBuy > 0)
         {
-            int selectedChoice = 0;
-            yield return DialogManager.Instance.ShowDialogText($"That will be {totalPrice}",
-                waitForInput: false,
-                choices: new List<string>() { "Yes", "No" },
-                onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+            float totalPrice = item.Price * countToBuy;
 
-            if (selectedChoice == 0)
+            if (Wallet.i.HasMoney(totalPrice))
             {
-                //selected yes
-                inventory.AddItem(item, countToBuy);
-                Wallet.i.TakeMoney(totalPrice);
-                yield return DialogManager.Instance.ShowDialogText("Thank you for shopping with us!");
+                int selectedChoice = 0;
+                yield return DialogManager.Instance.ShowDialogText($"That will be {totalPrice}",
+                    waitForInput: false,
+                    choices: new List<string>() { "Yes", "No" },
+                    onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+
+                if (selectedChoice == 0)
+                {
+                    //selected yes
+                    inventory.AddItem(item, countToBuy);
+                    Wallet.i.TakeMoney(totalPrice);
+                    yield return DialogManager.Instance.ShowDialogText("Thank you for shopping with us!");
+                }
             }
-        }
-        else
-        {
-            yield return DialogManager.Instance.ShowDialogText(" Not enough money for that ! ");
+            else
+            {
+                yield return DialogManager.Instance.ShowDialogText(" Not enough money for that ! ");
+            }
         }
 
         state = ShopState.Buying;

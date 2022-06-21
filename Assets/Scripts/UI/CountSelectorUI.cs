@@ -9,6 +9,7 @@ public class CountSelectorUI : MonoBehaviour
     [SerializeField] Text countTxt;
     [SerializeField] Text priceTxt;
     bool selected;
+    bool exit;
     int currentCount;
     int maxCount;
     float pricePerUnit;
@@ -18,12 +19,18 @@ public class CountSelectorUI : MonoBehaviour
         this.pricePerUnit = pricePerUnit;
 
         selected = false;
+        exit = false;
         currentCount = 1;
         gameObject.SetActive(true);
         SetValues();
-        yield return new WaitUntil(( ) => selected == true);
+        yield return new WaitUntil(( ) => selected || exit == true);
 
-        onCountSelected?.Invoke(currentCount);
+        if (selected)
+            onCountSelected?.Invoke(currentCount);
+        else
+            onCountSelected?.Invoke(-1);
+
+
         gameObject.SetActive(false);
 
 
@@ -46,6 +53,9 @@ public class CountSelectorUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
             selected = true;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            exit = true;
 
 
     }
