@@ -33,18 +33,22 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
     public IEnumerator Interact(Transform initiator)
     {
-        character.LookTowards(initiator.position);
-
         if (!battleLost)
         {
-            AudioManager.i.PlayMusic(trainerAppearsClip);
-
-            yield return DialogManager.Instance.ShowDialog(dialog);
-            GameController.Instance.StartTrainerBattle(this);
+            if (initiator.GetComponent<AnimalParty>().GetHealthyAnimal() != null)
+            {
+                character.LookTowards(initiator.position);
+                AudioManager.i.PlayMusic(trainerAppearsClip);
+                yield return DialogManager.Instance.ShowDialog(dialog);
+                GameController.Instance.StartTrainerBattle(this);
+            }
+            else 
+                yield return DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight with trainer.");
            
         }
         else
         {
+            character.LookTowards(initiator.position);
             yield return DialogManager.Instance.ShowDialog(dialogAfterBattle);
         }
 

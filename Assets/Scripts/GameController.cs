@@ -160,8 +160,16 @@ public class GameController : MonoBehaviour
 
     public void OnEnterTrainersView(TrainerController trainer)
     {
-        state = GameState.Cutscene;
-        StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+        var playerParty = playerController.GetComponent<AnimalParty>();
+        if (playerParty.GetHealthyAnimal() == null)
+        {
+            StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight with trainer."));
+        } else
+        {
+            state = GameState.Cutscene;
+            StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+        }
+
     } 
 
     void EndBattle(bool won)
