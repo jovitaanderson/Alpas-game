@@ -3918,14 +3918,14 @@ PrefabInstance:
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: questToComplete
       value: 
-      objectReference: {fileID: 11400000, guid: 5e2a283105d568d468cfec18c5939745, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Hello! Welcome to Alpas!
+      value: Go and explore Alpas!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[1]
