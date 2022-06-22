@@ -31,7 +31,7 @@ public class MapArea : MonoBehaviour
     public Animal GetRandomWildAnimal()
     {
         int randVal = Random.Range(1, 101);
-        var animalRecord = wildAnimals.First(p => randVal >= p.chanceLower && randVal <= p.chanceUpper);
+        var animalRecord = wildAnimals.FirstOrDefault(p => randVal >= p.chanceLower && randVal <= p.chanceUpper);
 
         var levelRange = animalRecord.levelRange;
         int level = levelRange.y == 0 ? levelRange.x : Random.Range(levelRange.x, levelRange.y + 1);

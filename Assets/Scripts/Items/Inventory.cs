@@ -94,7 +94,7 @@ public class Inventory : MonoBehaviour, ISavable
         int category = (int)GetCategoryFromItem(item);
         var currentSlots = GetSlotsByCategory(category);
 
-        var itemSlot = currentSlots.First(slot => slot.Item == item);
+        var itemSlot = currentSlots.FirstOrDefault(slot => slot.Item == item);
         itemSlot.Count -= countToRemove;
         if(itemSlot.Count == 0)
         {
