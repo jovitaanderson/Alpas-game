@@ -3750,8 +3750,8 @@ MonoBehaviour:
     chancePercentage: 50
   - animal: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
     levelRange: {x: 1, y: 5}
-    chancePercentage: 40
-  totalChance: 90
+    chancePercentage: 50
+  totalChance: 100
 --- !u!114 &1358788680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -3879,8 +3879,8 @@ MonoBehaviour:
     chancePercentage: 70
   - animal: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
     levelRange: {x: 1, y: 5}
-    chancePercentage: 20
-  totalChance: 90
+    chancePercentage: 30
+  totalChance: 100
 --- !u!1001 &1870088528
 PrefabInstance:
   m_ObjectHideFlags: 0
