@@ -25,6 +25,12 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("masterVolume"))
+        {
+            musicPlayer.volume = PlayerPrefs.GetFloat("masterVolume");
+        }
+        
+
         originalMusicVol = musicPlayer.volume;
         sfxLookUp = sfxList.ToDictionary(x => x.id);
     }
