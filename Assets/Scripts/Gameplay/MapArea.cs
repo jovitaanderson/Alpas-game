@@ -25,7 +25,14 @@ public class MapArea : MonoBehaviour
 
     private void Start()
     {
+        totalChance = 0;
+        foreach (var record in wildAnimals)
+        {
+            record.chanceLower = totalChance;
+            record.chanceUpper = totalChance + record.chancePercentage;
 
+            totalChance = totalChance + record.chancePercentage;
+        }
     }
 
     public Animal GetRandomWildAnimal()

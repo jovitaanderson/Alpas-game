@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 570643727378431571}
   - component: {fileID: 4345704701966104950}
-  - component: {fileID: 4535864439478698375}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -47,23 +46,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &4535864439478698375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314681785691492947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3d46a3a14374d4e9f54c13a0e23656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wildAnimals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 7
 --- !u!1 &2986924348358362969
 GameObject:
   m_ObjectHideFlags: 0

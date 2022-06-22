@@ -8210,7 +8210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5331158114969731545}
   - component: {fileID: 8239417001872410364}
-  - component: {fileID: 8135156593905909261}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -9441,26 +9440,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8135156593905909261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5353293519075749337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3d46a3a14374d4e9f54c13a0e23656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
 --- !u!1 &8228974447174759461
 GameObject:
   m_ObjectHideFlags: 0
