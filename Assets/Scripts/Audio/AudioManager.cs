@@ -26,10 +26,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         if (PlayerPrefs.HasKey("masterVolume"))
-        {
             musicPlayer.volume = PlayerPrefs.GetFloat("masterVolume");
-        }
-        
 
         originalMusicVol = musicPlayer.volume;
         sfxLookUp = sfxList.ToDictionary(x => x.id);
@@ -43,7 +40,6 @@ public class AudioManager : MonoBehaviour
         {
             musicPlayer.Pause();
             StartCoroutine(UnPauseMusic(clip.length));
-
         }
 
         //playing this clip wont cancel any current music that is played

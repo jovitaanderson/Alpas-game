@@ -43,10 +43,9 @@ public class MainController : MonoBehaviour
     {
         //TODO: remove if audio is still saved (when restarting game) without this code
         if (PlayerPrefs.HasKey("masterVolume"))
-        {
             SetVolume(PlayerPrefs.GetFloat("masterVolume"));
-            volumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
-        }
+        else
+            SetVolume(defaultVolume);
 
     }
 
@@ -96,6 +95,7 @@ public class MainController : MonoBehaviour
     {
         AudioListener.volume = volume;
         volumeTextValue.text = volume.ToString("0.0");
+        volumeSlider.value = volume;
     }
 
     public void VolumeApply()
