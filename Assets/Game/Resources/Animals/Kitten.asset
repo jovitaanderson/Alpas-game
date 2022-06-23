@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Kitten
   description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: ffacfc25b6bebe64ca54b667fa693e48, type: 3}
+  backSprite: {fileID: 21300000, guid: 9aa3c1d12302bff49bbd61128ded8d66, type: 3}
   type1: 0
   type2: 0
-  maxHp: 0
-  attack: 0
-  defense: 0
-  spAttack: 0
-  spDefense: 0
-  speed: 0
-  expYield: 0
-  growthRate: 0
+  maxHp: 46
+  attack: 57
+  defense: 40
+  spAttack: 40
+  spDefense: 40
+  speed: 50
+  expYield: 27
+  growthRate: 1
   catchRate: 255
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: bc6a22116d21b464c9192f6d5791652b, type: 2}
@@ -36,6 +36,8 @@ MonoBehaviour:
     level: 4
   - moveBase: {fileID: 11400000, guid: 582156c26d0db1644b9b2ffafea3db51, type: 2}
     level: 6
+  - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
+    level: 8
   evolutions:
   - evolvesinto: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
     requiredLevel: 10

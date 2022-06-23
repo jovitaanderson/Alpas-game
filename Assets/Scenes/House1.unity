@@ -295,10 +295,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 604246980076941245, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 9162393031431230281, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
     - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_Name
       value: Dr. Richard
@@ -331,13 +327,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalToGive:
-    _base: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
+    _base: {fileID: 11400000, guid: b2c0aa4a40870044eb4fb0b74db56047, type: 2}
     level: 1
   dialog:
     lines:
     - Dr Doom has infected all the animals outside!
     - It is not safe to go out there without an animal
-    - You can have this cat
+    - You can have this kitten
 --- !u!1001 &953919080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3945,7 +3941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Go and explore Alpas!
+      value: Go and explore Singapore!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[1]
