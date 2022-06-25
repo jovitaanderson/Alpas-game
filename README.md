@@ -1,5 +1,5 @@
 # Alpas-game
-Alpas is a 2D top-down RPG Singapore themed game inspired by "Pokémon". 
+Alpas is a 2D top-down RPG game inspired by "Pokémon". What makes Alpas unique is it's Singapore themed maps, NPCs, animals and incorporation of learning elements. The purpose of the game is to encourage students to learn well having fun as well as understand Singapore's landscape and dynamics through the game.
 
 # Motivation
 As gamers ourselves, we decided that since games are already so addictive why not benefit ourselves from them? When we were young, we did not have much interest in reading a variety of books to expand our knowledge, but instead, would prefer spending our time playing video games. At that point in time, the video games that we played were not developed for educational purposes. We played it just because it was fun. As a result, we were often lacking behind our peers academically in school because we spent too much time on games that did not benefit us in the long run. 
