@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script to handle selection difficulty and question of treasure chest
 public class TreasureChestManager : MonoBehaviour
 {
     [SerializeField] GameObject chestUI;
@@ -67,8 +68,8 @@ public class TreasureChestManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             CloseMenu();
-            StartCoroutine(onChestSelected(selectedItem));
             OnSelectTreasureChest?.Invoke();
+            StartCoroutine(onChestSelected(selectedItem));
         }
     }
 

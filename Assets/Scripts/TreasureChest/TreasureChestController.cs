@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script to control interaction between player and treasure chest
 public class TreasureChestController : MonoBehaviour, Interactable
 {
     [SerializeField] TreasureChestSpawn treasureChestSpawn;
@@ -19,19 +20,11 @@ public class TreasureChestController : MonoBehaviour, Interactable
     {
         treasureChestSpawn.chestDestoryed();
         spriteRenderer.sprite = newSprite;
-        //spriteRenderer.sprite = newSprite;
         TreasureChestManager.i.OpenMenu();
-        //if answer correctly give coins
-        //if answer wrongly no reward
-        //yield return new WaitForSeconds(0.5f);
-        //yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
-        //yield return TreasureChestManager.i.TreasureChest();
         Destroy(gameObject);
         yield return null;
     }
 
 }
-
-public enum ChestState { Idle, Question }
 
 
