@@ -19,7 +19,7 @@ Firstly, you will have to defeat Echo the lab assistant in the Central map to un
 
 # How to play the game
 As the game is still under development, our game is currently hosted on Itch.io. <br />
-Link to play the game :  https://joderson.itch.io/alpas
+Web browser to play the game :  https://joderson.itch.io/alpas
 
 # Tech Stack
 * Github (Collaboration)
