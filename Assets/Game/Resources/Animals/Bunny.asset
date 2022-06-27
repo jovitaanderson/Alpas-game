@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Otter
+  m_Name: Bunny
   m_EditorClassIdentifier: 
-  name: Otter
+  name: Bunny
   description: 
-  frontSprite: {fileID: 21300000, guid: d65353ad51bdc6a4caab37be79274cc5, type: 3}
-  backSprite: {fileID: 21300000, guid: d65353ad51bdc6a4caab37be79274cc5, type: 3}
+  frontSprite: {fileID: 21300000, guid: 1d3e42a4a80e04441a7b96f01a34e482, type: 3}
+  backSprite: {fileID: 21300000, guid: 1d3e42a4a80e04441a7b96f01a34e482, type: 3}
   type1: 5
-  type2: 7
-  maxHp: 60
-  attack: 62
-  defense: 63
-  spAttack: 80
-  spDefense: 80
-  speed: 60
-  expYield: 50
+  type2: 8
+  maxHp: 35
+  attack: 55
+  defense: 40
+  spAttack: 50
+  spDefense: 50
+  speed: 90
+  expYield: 28
   growthRate: 1
   catchRate: 255
   learnableMoves:

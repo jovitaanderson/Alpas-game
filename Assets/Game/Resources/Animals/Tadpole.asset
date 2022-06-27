@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Frog
+  m_Name: Tadpole
   m_EditorClassIdentifier: 
-  name: Frog
+  name: Tadpole
   description: 
   frontSprite: {fileID: 21300000, guid: 60abf551c43103046b0350f570ee146a, type: 3}
   backSprite: {fileID: 21300000, guid: 60abf551c43103046b0350f570ee146a, type: 3}
   type1: 1
   type2: 7
-  maxHp: 50
-  attack: 65
-  defense: 45
-  spAttack: 85
-  spDefense: 65
-  speed: 95
-  expYield: 50
+  maxHp: 40
+  attack: 45
+  defense: 35
+  spAttack: 65
+  spDefense: 55
+  speed: 70
+  expYield: 20
   growthRate: 0
   catchRate: 255
   learnableMoves:

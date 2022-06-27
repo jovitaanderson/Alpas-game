@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest, AnimalList}
 
 public class GameController : MonoBehaviour
 {
@@ -12,10 +12,12 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
+    [SerializeField] AnimalListUI AnimalListUI;
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
+    [SerializeField] GameObject AnimalList;
 
     GameState state;
     GameState prevState;
@@ -301,12 +303,19 @@ public class GameController : MonoBehaviour
         } 
         else if (selectedItem == 4)
         {
+            //animal List
+            state = GameState.AnimalList;
+            AnimalList.SetActive(true);
+            AnimalListUI.HandleUpdate();
+        }
+        else if (selectedItem == 5)
+        {
             //instructions
             state = GameState.Instructions;
             instructionsPanel.SetActive(true);
             
         } 
-        else if (selectedItem == 5)
+        else if (selectedItem == 6)
         {
             //save game
             if (!PlayerPrefs.HasKey("SavedGame"))

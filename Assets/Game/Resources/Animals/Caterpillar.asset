@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Pigeon
+  m_Name: Caterpillar
   m_EditorClassIdentifier: 
-  name: Pigeon
+  name: Caterpillar
   description: 
-  frontSprite: {fileID: 21300000, guid: 1c7395c7c03e30c41887cd3ce3a66f96, type: 3}
-  backSprite: {fileID: 21300000, guid: aafdbea988d2ff9419db16221033ea86, type: 3}
-  type1: 2
-  type2: 9
-  maxHp: 63
-  attack: 60
-  defense: 55
-  spAttack: 50
-  spDefense: 50
-  speed: 71
-  expYield: 50
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
+  type1: 4
+  type2: 8
+  maxHp: 45
+  attack: 30
+  defense: 35
+  spAttack: 20
+  spDefense: 20
+  speed: 45
+  expYield: 21
   growthRate: 0
   catchRate: 255
-  learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 582156c26d0db1644b9b2ffafea3db51, type: 2}
-    level: 12
+  learnableMoves: []
   evolutions: []

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Peacock
+  m_Name: Peachick
   m_EditorClassIdentifier: 
-  name: Peacock
+  name: Peachick
   description: 
   frontSprite: {fileID: 21300000, guid: 187cbeee77fa7694dacf1c103d5b275c, type: 3}
   backSprite: {fileID: 21300000, guid: 2747b64dd50ce9742b21fbba54cf2d09, type: 3}
   type1: 2
   type2: 8
-  maxHp: 55
-  attack: 55
-  defense: 47
-  spAttack: 59
-  spDefense: 65
-  speed: 60
-  expYield: 48
+  maxHp: 40
+  attack: 49
+  defense: 40
+  spAttack: 55
+  spDefense: 55
+  speed: 45
+  expYield: 25
   growthRate: 0
   catchRate: 255
   learnableMoves:

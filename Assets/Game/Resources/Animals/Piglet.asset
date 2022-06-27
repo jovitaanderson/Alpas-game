@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Otter
+  m_Name: Piglet
   m_EditorClassIdentifier: 
-  name: Otter
+  name: Piglet
   description: 
-  frontSprite: {fileID: 21300000, guid: d65353ad51bdc6a4caab37be79274cc5, type: 3}
-  backSprite: {fileID: 21300000, guid: d65353ad51bdc6a4caab37be79274cc5, type: 3}
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
   type1: 5
-  type2: 7
-  maxHp: 60
-  attack: 62
-  defense: 63
-  spAttack: 80
-  spDefense: 80
-  speed: 60
-  expYield: 50
+  type2: 9
+  maxHp: 50
+  attack: 75
+  defense: 85
+  spAttack: 20
+  spDefense: 30
+  speed: 40
+  expYield: 30
   growthRate: 1
   catchRate: 255
-  learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 8cd39dea4d986ba438a77e7e35edc3fc, type: 2}
-    level: 0
+  learnableMoves: []
   evolutions: []

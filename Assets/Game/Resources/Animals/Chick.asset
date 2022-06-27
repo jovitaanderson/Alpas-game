@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
-  m_Name: Boar
+  m_Name: Chick
   m_EditorClassIdentifier: 
-  name: Boar
+  name: Chick
   description: 
-  frontSprite: {fileID: 21300000, guid: 93eda9546ef241e41ada378e13e18fb9, type: 3}
-  backSprite: {fileID: 21300000, guid: 93eda9546ef241e41ada378e13e18fb9, type: 3}
-  type1: 5
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
+  type1: 2
   type2: 9
-  maxHp: 75
-  attack: 100
-  defense: 110
-  spAttack: 45
-  spDefense: 55
-  speed: 65
-  expYield: 59
-  growthRate: 1
+  maxHp: 40
+  attack: 60
+  defense: 30
+  spAttack: 31
+  spDefense: 31
+  speed: 70
+  expYield: 25
+  growthRate: 0
   catchRate: 255
-  learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 8cd39dea4d986ba438a77e7e35edc3fc, type: 2}
-    level: 0
+  learnableMoves: []
   evolutions: []
