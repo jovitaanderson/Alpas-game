@@ -12,6 +12,7 @@ public class AnimalCharacterManager : MonoBehaviour
     public Text type1;
     public Text type2;
     public Image animalSprite;
+    public Text locationText;
 
     private int selectedOption = 0;
 
@@ -49,5 +50,6 @@ public class AnimalCharacterManager : MonoBehaviour
         nameText.text = character.animalName;
         type1.text = character.type1.ToString();
         type2.text = character.type2.ToString();
+        locationText.text = character.locations;
     }
 }

@@ -9,4 +9,5 @@ public class AnimalCharacter
     public AnimalType type1;
     public AnimalType type2;
     public Sprite animalSprite;
+    public string locations;
 }
