@@ -18,8 +18,8 @@ After obtaining and training these strong animals, you are then ready to battle 
 Firstly, you will have to defeat Echo the lab assistant in the Central map to unlock the next battle arena which is in the North map where Eve is conquering. After successfully battling Eve in the North map, the next battle arena in the South map will be unlocked. Then after successfully battling Pyro in the South map, the next battle arena in the West map will be unlocked. Then after successfully battling Viper in the West map, the next battle arena in the East map will be unlocked. After successfully battling all 4 lab assistants, you are ready to battle Doctor Doom, the true evil scientist who has created this all and he will be in the East map. Doctor Doom will be the last level of the game. You must successfully battle against Doctor Doom’s animals to win the game :)
 
 # How to play the game
-As the game is still under development, our game is currently hosted on Itch.io. <br />
-Web browser to play the game :  https://joderson.itch.io/alpas
+As the game is still under development, our game is currently hosted on a web brower, Itch.io. <br />
+Link to play the game :  https://joderson.itch.io/alpas
 
 # Tech Stack
 * Github (Collaboration)
