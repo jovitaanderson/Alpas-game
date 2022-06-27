@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e6e6d98b48d3844b6f47306a9a1fd9, type: 3}
+  m_Name: New Animal Character Database
+  m_EditorClassIdentifier: 
+  animalCharacter:
+  - animalName: Baby Bat
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Bat
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: f3c80df2effa6b14699d8f45eee64061, type: 3}
+  - animalName: Larva
+    type1: 4
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Bee
+    type1: 4
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: 96846938554463f49977c0bfeb387683, type: 3}
+  - animalName: Piglet
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Boar
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: 93eda9546ef241e41ada378e13e18fb9, type: 3}
+  - animalName: Caterpillar
+    type1: 4
+    type2: 8
+    animalSprite: {fileID: 0}
+  - animalName: Butterfly
+    type1: 4
+    type2: 8
+    animalSprite: {fileID: 21300000, guid: 64da374ac09199248b8813bb7bf8e20b, type: 3}
+  - animalName: Kitten
+    type1: 5
+    type2: 7
+    animalSprite: {fileID: 21300000, guid: ffacfc25b6bebe64ca54b667fa693e48, type: 3}
+  - animalName: Cat
+    type1: 5
+    type2: 7
+    animalSprite: {fileID: 21300000, guid: 25da13fe6436e7845b25b529dc71723b, type: 3}
+  - animalName: Chick
+    type1: 2
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Chicken
+    type1: 2
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: a86654898d0a07f428aa372beb8cf14f, type: 3}
+  - animalName: Puppy
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Dog
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: 9eced3c9938b61a49b861c659631238a, type: 3}
+  - animalName: Baby Dolphin
+    type1: 5
+    type2: 7
+    animalSprite: {fileID: 0}
+  - animalName: Dolphin
+    type1: 5
+    type2: 7
+    animalSprite: {fileID: 21300000, guid: 2621ba3a861f5b045b1158ea9b1283f7, type: 3}
+  - animalName: Tadpole
+    type1: 1
+    type2: 7
+    animalSprite: {fileID: 0}
+  - animalName: Frog
+    type1: 1
+    type2: 7
+    animalSprite: {fileID: 21300000, guid: 60abf551c43103046b0350f570ee146a, type: 3}
+  - animalName: Baby Hamster
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Hamster
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Baby Monkey
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Monkey
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: 703927fb843de374f911abf787acdecb, type: 3}
+  - animalName: Baby Otter
+    type1: 5
+    type2: 7
+    animalSprite: {fileID: 0}
+  - animalName: Otter
+    type1: 5
+    type2: 7
+    animalSprite: {fileID: 21300000, guid: d65353ad51bdc6a4caab37be79274cc5, type: 3}
+  - animalName: Peachick
+    type1: 2
+    type2: 8
+    animalSprite: {fileID: 0}
+  - animalName: Peacock
+    type1: 2
+    type2: 8
+    animalSprite: {fileID: 0}
+  - animalName: Baby Pigeon
+    type1: 2
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: 6d2a18e43d90bcf4f9e326702fbfd732, type: 3}
+  - animalName: Pigeon
+    type1: 2
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: 1c7395c7c03e30c41887cd3ce3a66f96, type: 3}
+  - animalName: Bunny
+    type1: 5
+    type2: 8
+    animalSprite: {fileID: 0}
+  - animalName: Rabbit
+    type1: 5
+    type2: 8
+    animalSprite: {fileID: 21300000, guid: 1d3e42a4a80e04441a7b96f01a34e482, type: 3}
+  - animalName: Baby Rat
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Rat
+    type1: 5
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Snakelets
+    type1: 6
+    type2: 7
+    animalSprite: {fileID: 0}
+  - animalName: Snake
+    type1: 6
+    type2: 7
+    animalSprite: {fileID: 0}
+  - animalName: Hatchling
+    type1: 6
+    type2: 9
+    animalSprite: {fileID: 0}
+  - animalName: Turtle
+    type1: 6
+    type2: 9
+    animalSprite: {fileID: 21300000, guid: a9c7a25c1b4ba60448f38212086c96d5, type: 3}

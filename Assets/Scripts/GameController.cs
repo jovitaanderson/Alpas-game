@@ -12,12 +12,12 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
-    [SerializeField] AnimalListUI AnimalListUI;
+    [SerializeField] AnimalCharacterManager animalCharacterManager;
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
-    [SerializeField] GameObject AnimalList;
+    
 
     GameState state;
     GameState prevState;
@@ -264,6 +264,15 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             }
         } 
+        else if (state == GameState.AnimalList)
+        {
+            Action onBack = () =>
+            {
+                animalCharacterManager.gameObject.SetActive(false);
+                state = GameState.FreeRoam;
+            };
+            animalCharacterManager.HandleUpdate(onBack);
+        }
         
     }
 
@@ -305,8 +314,8 @@ public class GameController : MonoBehaviour
         {
             //animal List
             state = GameState.AnimalList;
-            AnimalList.SetActive(true);
-            AnimalListUI.HandleUpdate();
+            animalCharacterManager.gameObject.SetActive(true);
+            //AnimalListUI.HandleUpdate();
         }
         else if (selectedItem == 5)
         {
