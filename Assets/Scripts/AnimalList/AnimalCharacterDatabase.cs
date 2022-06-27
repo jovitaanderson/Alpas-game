@@ -20,3 +20,21 @@ public class AnimalCharacterDatabase : ScriptableObject
         return animalCharacter[index];
     }
 }
+
+[System.Serializable]
+public class AnimalCharacter
+{
+    public string name;
+    public AnimalBase _base;
+
+    public string locations;
+
+    /*public string animalName;
+    public AnimalType type1;
+    public AnimalType type2;
+    public Sprite animalSprite;*/
+
+}
+
+
+

@@ -13,183 +13,111 @@ MonoBehaviour:
   m_Name: New Animal Character Database
   m_EditorClassIdentifier: 
   animalCharacter:
-  - animalName: Baby Bat
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Baby Bat
+    _base: {fileID: 11400000, guid: cc1f110990a524441b9f86a51fffb605, type: 2}
     locations: North, South, East, West
-  - animalName: Bat
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: f3c80df2effa6b14699d8f45eee64061, type: 3}
+  - name: Bat
+    _base: {fileID: 11400000, guid: 132f213b25cfb8f4581f8e24f8682b7b, type: 2}
     locations: North, South, East, West
-  - animalName: Larva
-    type1: 4
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Larva
+    _base: {fileID: 11400000, guid: 638267fa1565cb643a9140df18a2b16f, type: 2}
     locations: North, East
-  - animalName: Bee
-    type1: 4
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: 96846938554463f49977c0bfeb387683, type: 3}
+  - name: Bee
+    _base: {fileID: 11400000, guid: f694682ce702246458616a7e2993ea36, type: 2}
     locations: North, East
-  - animalName: Piglet
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Piglet
+    _base: {fileID: 11400000, guid: ca468149226716749b086594eb5ebaa7, type: 2}
     locations: North
-  - animalName: Boar
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: 93eda9546ef241e41ada378e13e18fb9, type: 3}
+  - name: Boar
+    _base: {fileID: 11400000, guid: cda17cbbbd02f744a9235e88fd1ff84a, type: 2}
     locations: North
-  - animalName: Caterpillar
-    type1: 4
-    type2: 8
-    animalSprite: {fileID: 0}
+  - name: Caterpillar
+    _base: {fileID: 11400000, guid: 47b81084e7639cc479aa10d85525f5c6, type: 2}
     locations: Central, West
-  - animalName: Butterfly
-    type1: 4
-    type2: 8
-    animalSprite: {fileID: 21300000, guid: 64da374ac09199248b8813bb7bf8e20b, type: 3}
+  - name: Butterfly
+    _base: {fileID: 11400000, guid: c9c29e844c924f24b998b9be1a364d91, type: 2}
     locations: Central, West
-  - animalName: Kitten
-    type1: 5
-    type2: 7
-    animalSprite: {fileID: 21300000, guid: ffacfc25b6bebe64ca54b667fa693e48, type: 3}
+  - name: Kitten
+    _base: {fileID: 11400000, guid: b2c0aa4a40870044eb4fb0b74db56047, type: 2}
     locations: North, South, East, West
-  - animalName: Cat
-    type1: 5
-    type2: 7
-    animalSprite: {fileID: 21300000, guid: 25da13fe6436e7845b25b529dc71723b, type: 3}
+  - name: Cat
+    _base: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
     locations: North, South, East, West
-  - animalName: Chick
-    type1: 2
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Chick
+    _base: {fileID: 11400000, guid: c4c1f0436041be34f91733db5ddf14f3, type: 2}
     locations: Central
-  - animalName: Chicken
-    type1: 2
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: a86654898d0a07f428aa372beb8cf14f, type: 3}
+  - name: Chicken
+    _base: {fileID: 11400000, guid: a5d8b8a11c57deb4facd311c000d7a45, type: 2}
     locations: Central
-  - animalName: Puppy
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Puppy
+    _base: {fileID: 11400000, guid: fe035f31cc880d849ba4cdfec3f771c3, type: 2}
     locations: North, South, East, West
-  - animalName: Dog
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: 9eced3c9938b61a49b861c659631238a, type: 3}
+  - name: Dog
+    _base: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
     locations: North, South, East, West
-  - animalName: Baby Dolphin
-    type1: 5
-    type2: 7
-    animalSprite: {fileID: 0}
+  - name: Baby Dolphin
+    _base: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
     locations: South
-  - animalName: Dolphin
-    type1: 5
-    type2: 7
-    animalSprite: {fileID: 21300000, guid: 2621ba3a861f5b045b1158ea9b1283f7, type: 3}
+  - name: Dolphin
+    _base: {fileID: 11400000, guid: 2b53f24865385ae4e8b83919f5193b12, type: 2}
     locations: South
-  - animalName: Tadpole
-    type1: 1
-    type2: 7
-    animalSprite: {fileID: 0}
+  - name: Tadpole
+    _base: {fileID: 11400000, guid: b43c41dad4c64ca4ab8bdbdd4637ecc9, type: 2}
     locations: South
-  - animalName: Frog
-    type1: 1
-    type2: 7
-    animalSprite: {fileID: 21300000, guid: 60abf551c43103046b0350f570ee146a, type: 3}
+  - name: Frog
+    _base: {fileID: 11400000, guid: a8dccafcc799f25499a5809d1b22c534, type: 2}
     locations: South
-  - animalName: Baby Hamster
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Baby Hamster
+    _base: {fileID: 11400000, guid: 44bf70839331ec548b08065ddcb4a9ec, type: 2}
     locations: North, South, East, West
-  - animalName: Hamster
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Hamster
+    _base: {fileID: 11400000, guid: 38ea44a9f98d29245890b17246a51e25, type: 2}
     locations: North, South, East, West
-  - animalName: Baby Monkey
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Baby Monkey
+    _base: {fileID: 11400000, guid: 27dbdeb540ce0d14494b13dc3f1ecc9b, type: 2}
     locations: Central, South
-  - animalName: Monkey
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: 703927fb843de374f911abf787acdecb, type: 3}
+  - name: Monkey
+    _base: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
     locations: Central, South
-  - animalName: Baby Otter
-    type1: 5
-    type2: 7
-    animalSprite: {fileID: 0}
+  - name: Baby Otter
+    _base: {fileID: 11400000, guid: 67b729d79e5b2604eb4076940fc6df18, type: 2}
     locations: Central, East
-  - animalName: Otter
-    type1: 5
-    type2: 7
-    animalSprite: {fileID: 21300000, guid: d65353ad51bdc6a4caab37be79274cc5, type: 3}
+  - name: Otter
+    _base: {fileID: 11400000, guid: 5d25802e10f36984e8eabe842077d4d1, type: 2}
     locations: Central, East
-  - animalName: Peachick
-    type1: 2
-    type2: 8
-    animalSprite: {fileID: 0}
+  - name: Peachick
+    _base: {fileID: 11400000, guid: f3ad456cc9e7de84e9af3c7d327b47b0, type: 2}
     locations: East
-  - animalName: Peacock
-    type1: 2
-    type2: 8
-    animalSprite: {fileID: 0}
+  - name: Peacock
+    _base: {fileID: 11400000, guid: 23f12d223a7c5c9469b5746e63132bab, type: 2}
     locations: East
-  - animalName: Baby Pigeon
-    type1: 2
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: 6d2a18e43d90bcf4f9e326702fbfd732, type: 3}
+  - name: Baby Pigeon
+    _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
     locations: North, South, East, West
-  - animalName: Pigeon
-    type1: 2
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: 1c7395c7c03e30c41887cd3ce3a66f96, type: 3}
+  - name: Pigeon
+    _base: {fileID: 11400000, guid: e4562e15286cd124893cc9465170806b, type: 2}
     locations: North, South, East, West
-  - animalName: Bunny
-    type1: 5
-    type2: 8
-    animalSprite: {fileID: 0}
+  - name: Bunny
+    _base: {fileID: 11400000, guid: 66cd4190d35754c428e347afbf12f898, type: 2}
     locations: West
-  - animalName: Rabbit
-    type1: 5
-    type2: 8
-    animalSprite: {fileID: 21300000, guid: 1d3e42a4a80e04441a7b96f01a34e482, type: 3}
+  - name: Rabbit
+    _base: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
     locations: West
-  - animalName: Baby Rat
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Baby Rat
+    _base: {fileID: 11400000, guid: f3597ee46b80d984992b441101ef8ebe, type: 2}
     locations: North, South, East, West
-  - animalName: Rat
-    type1: 5
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Rat
+    _base: {fileID: 11400000, guid: 0315c4cfdbf89eb449ff45f8e4480267, type: 2}
     locations: North, South, East, West
-  - animalName: Snakelets
-    type1: 6
-    type2: 7
-    animalSprite: {fileID: 0}
+  - name: Snakelets
+    _base: {fileID: 11400000, guid: c28f5908038dfb2409437f0c060d7dda, type: 2}
     locations: West, South
-  - animalName: Snake
-    type1: 6
-    type2: 7
-    animalSprite: {fileID: 0}
+  - name: Snake
+    _base: {fileID: 11400000, guid: 639657b7a1e83d04e974e8eff751d9ba, type: 2}
     locations: West, South
-  - animalName: Hatchling
-    type1: 6
-    type2: 9
-    animalSprite: {fileID: 0}
+  - name: Hatchling
+    _base: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
     locations: West
-  - animalName: Turtle
-    type1: 6
-    type2: 9
-    animalSprite: {fileID: 21300000, guid: a9c7a25c1b4ba60448f38212086c96d5, type: 3}
+  - name: Turtle
+    _base: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
     locations: West

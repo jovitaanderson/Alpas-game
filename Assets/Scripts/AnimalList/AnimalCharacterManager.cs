@@ -10,9 +10,10 @@ public class AnimalCharacterManager : MonoBehaviour
 
     public Text nameText;
     public Text type1;
-    public Text type2;
+    //public Text type2;
     public Image animalSprite;
     public Text locationText;
+    public Text descrtipionText;
 
     private int selectedOption = 0;
 
@@ -46,10 +47,16 @@ public class AnimalCharacterManager : MonoBehaviour
     private void UpdateCharacter(int selectedOption)
     {
         AnimalCharacter character = characterDB.GetCharacter(selectedOption);
-        animalSprite.sprite = character.animalSprite;
-        nameText.text = character.animalName;
-        type1.text = character.type1.ToString();
-        type2.text = character.type2.ToString();
-        locationText.text = character.locations;
+        animalSprite.sprite = character._base.FrontSprite;
+        //animalSprite.sprite = character.animalSprite;
+        //nameText.text = character.animalName;
+        nameText.text = $"Name: {character._base.Name}";
+        //type1.text = character.type1.ToString();
+        type1.text = $"Type: {character._base.Type1}, {character._base.Type2}";
+        //type2.text = character.type2.ToString();
+        //type2.text = character._base.Type2.ToString();
+        locationText.text = $"Map locations: {character.locations}";
+        descrtipionText.text = character._base.Description;
+
     }
 }
