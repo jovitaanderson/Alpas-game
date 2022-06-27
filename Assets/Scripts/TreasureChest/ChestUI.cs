@@ -9,19 +9,6 @@ public class ChestUI : MonoBehaviour
     [SerializeField] Image backgroundImage;
     [SerializeField] Text chestText;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetSelected(bool selected)
     {
         if (selected)

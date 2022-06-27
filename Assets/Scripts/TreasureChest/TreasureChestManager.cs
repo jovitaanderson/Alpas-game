@@ -6,41 +6,37 @@ using UnityEngine.UI;
 
 public class TreasureChestManager : MonoBehaviour
 {
-    [SerializeField] GameObject selectChest;
+    [SerializeField] GameObject chestUI;
+    [SerializeField] private TreasureChestDataScriptable treasureChestData;
 
+    GameObject selectChest;
+    //GameObject treasureChest;
+    private TreasureChestUI treasureChestUI;
 
     ChestUI[] chestChildren;
-
     public int selectedItem = 0;
 
-
-    [SerializeField] private TreasureChestDataScriptable treasureChestData;
     private List<TreasureChestQuestion> questions;
     private TreasureChestQuestion selectedQuestion;
-
-    [SerializeField] GameObject treasureChest;
-    [SerializeField] TreasureChestUI treasureChestUI;
+    private float rewardedMoney = 10f;
 
     public event Action OnStartTreasureChest;
+    public event Action OnSelectTreasureChest;
     public event Action OnCompleteTreasureChest;
 
-    private TreasureChestUI treasureChestScript;
-
-    private float rewardedMoney = 10f;
 
     public static TreasureChestManager i { get; private set; }
 
     private void Awake()
     {
         i = this;
-        treasureChestScript = treasureChest.GetComponent<TreasureChestUI>();
+        selectChest = chestUI.transform.Find("TreasureChestSelectionUI").gameObject;
         chestChildren = selectChest.GetComponentsInChildren<ChestUI>();
-        Debug.Log(chestChildren.Length);
-
+        //treasureChest = chestUI.transform.Find("TreasureChestQuestionUI").gameObject;
+        treasureChestUI = chestUI.transform.Find("TreasureChestQuestionUI").gameObject.GetComponent<TreasureChestUI>();
     }
 
-    //Select Chest type code
-
+    //Select chest type section
     public void OpenMenu()
     {
         selectedItem = 0;
@@ -52,7 +48,6 @@ public class TreasureChestManager : MonoBehaviour
     {
         selectChest.SetActive(false);
     }
-
 
     public void HandleUpdate()
     {
@@ -71,18 +66,10 @@ public class TreasureChestManager : MonoBehaviour
         //if press enter then go do action
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log(selectedItem);
-            onChestSelected(selectedItem);
             CloseMenu();
-            //open question
-
+            StartCoroutine(onChestSelected(selectedItem));
+            OnSelectTreasureChest?.Invoke();
         }
-        //else, if press escape, then go back
-        /*else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            onBack?.Invoke();
-            CloseMenu();
-        }*/
     }
 
     public void UpdateChestSelection(int selectedMember)
@@ -109,37 +96,40 @@ public class TreasureChestManager : MonoBehaviour
         {
             //Medium chest
             Debug.Log("Medium chest");
+            //todo: remove below line once medium questions r implmented
+            OnCompleteTreasureChest?.Invoke();
         }
         else if (selectedItem == 2)
         {
             //Big chest
             Debug.Log("Big chest");
+            //todo: remove below line once medium questions r implmented
+            OnCompleteTreasureChest?.Invoke();
         }
     }
 
 
-    //Question related code
-
+    //Question for chest section
     public IEnumerator TreasureChest()
     {
         questions = treasureChestData.questions;
-        treasureChest.SetActive(true);
+        treasureChestUI.gameObject.SetActive(true);
 
         SelectQuestion();
 
         //AudioManager.i.PlayMusic(evolutionMusic);
 
-        treasureChestScript.Reset();
-        yield return new WaitUntil(() => treasureChestScript.CorrectAns != null);
+        treasureChestUI.Reset();
+        yield return new WaitUntil(() => treasureChestUI.CorrectAns != null);
 
         //if qns answered correctly
-        if (treasureChestScript.CorrectAns == true)
+        if (treasureChestUI.CorrectAns == true)
         {
             //Debug.Log("Qn is answered correctly");
             yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"Good Job! You have answered correctly!");
 
-            treasureChest.SetActive(false);
+            treasureChestUI.gameObject.SetActive(false);
 
             //reward coins into wallet
             Wallet.i.AddMoney(rewardedMoney);
@@ -152,7 +142,7 @@ public class TreasureChestManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"You got the answer wrong! Try again next time!");
 
-            treasureChest.SetActive(false);
+            treasureChestUI.gameObject.SetActive(false);
 
         }
 

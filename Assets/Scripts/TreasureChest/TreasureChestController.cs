@@ -23,11 +23,11 @@ public class TreasureChestController : MonoBehaviour, Interactable
         TreasureChestManager.i.OpenMenu();
         //if answer correctly give coins
         //if answer wrongly no reward
-        yield return new WaitForSeconds(0.5f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
-        yield return TreasureChestManager.i.TreasureChest();
-
+        //yield return new WaitForSeconds(0.5f);
+        //yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        //yield return TreasureChestManager.i.TreasureChest();
         Destroy(gameObject);
+        yield return null;
     }
 
 }

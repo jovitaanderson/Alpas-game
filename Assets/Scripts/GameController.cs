@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest, AnimalList}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest, Question, AnimalList}
 
 public class GameController : MonoBehaviour
 {
@@ -99,6 +99,7 @@ public class GameController : MonoBehaviour
         };
 
         TreasureChestManager.i.OnStartTreasureChest += () => state = GameState.TreasureChest;
+        TreasureChestManager.i.OnSelectTreasureChest += () => state = GameState.Question;
         TreasureChestManager.i.OnCompleteTreasureChest += () => state = GameState.FreeRoam;
 
         ShopController.i.OnStart += () => state = GameState.Shop;
@@ -259,6 +260,10 @@ public class GameController : MonoBehaviour
         else if (state == GameState.TreasureChest)
         {
             TreasureChestManager.i.HandleUpdate();
+        }
+        else if (state == GameState.Question)
+        {
+            
         }
         else if (state == GameState.Instructions)
         {
