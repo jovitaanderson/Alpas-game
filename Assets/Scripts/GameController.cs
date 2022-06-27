@@ -103,6 +103,7 @@ public class GameController : MonoBehaviour
 
         ShopController.i.OnStart += () => state = GameState.Shop;
         ShopController.i.OnFinish += () => state = GameState.FreeRoam;
+
     }
 
     public void PauseGame(bool pause) 
@@ -255,6 +256,10 @@ public class GameController : MonoBehaviour
         {
             ShopController.i.HandleUpdate();
         }
+        else if (state == GameState.TreasureChest)
+        {
+            TreasureChestManager.i.HandleUpdate();
+        }
         else if (state == GameState.Instructions)
         {
             if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
@@ -273,7 +278,7 @@ public class GameController : MonoBehaviour
             };
             animalCharacterManager.HandleUpdate(onBack);
         }
-        
+
     }
 
     public void SetCurrentScene(SceneDetails currScene)
@@ -281,6 +286,7 @@ public class GameController : MonoBehaviour
         PrevScene = CurrentScene;
         CurrentScene = currScene;
     }
+
 
     void OnMenuSelected(int selectedItem)
     {

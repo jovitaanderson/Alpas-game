@@ -2,9 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TreasureChestManager : MonoBehaviour
 {
+    [SerializeField] GameObject selectChest;
+
+
+    ChestUI[] chestChildren;
+
+    public int selectedItem = 0;
+
+
     [SerializeField] private TreasureChestDataScriptable treasureChestData;
     private List<TreasureChestQuestion> questions;
     private TreasureChestQuestion selectedQuestion;
@@ -25,12 +34,94 @@ public class TreasureChestManager : MonoBehaviour
     {
         i = this;
         treasureChestScript = treasureChest.GetComponent<TreasureChestUI>();
+        chestChildren = selectChest.GetComponentsInChildren<ChestUI>();
+        Debug.Log(chestChildren.Length);
 
     }
 
+    //Select Chest type code
+
+    public void OpenMenu()
+    {
+        selectedItem = 0;
+        OnStartTreasureChest?.Invoke();
+        selectChest.SetActive(true);
+        UpdateChestSelection(selectedItem);
+    }
+    public void CloseMenu()
+    {
+        selectChest.SetActive(false);
+    }
+
+
+    public void HandleUpdate()
+    {
+        int prevSelection = selectedItem;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++selectedItem;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --selectedItem;
+
+        selectedItem = Mathf.Clamp(selectedItem, 0, chestChildren.Length - 1);
+
+        if (prevSelection != selectedItem)
+            UpdateChestSelection(selectedItem);
+
+        //if press enter then go do action
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log(selectedItem);
+            onChestSelected(selectedItem);
+            CloseMenu();
+            //open question
+
+        }
+        //else, if press escape, then go back
+        /*else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            onBack?.Invoke();
+            CloseMenu();
+        }*/
+    }
+
+    public void UpdateChestSelection(int selectedMember)
+    {
+        for (int i = 0; i < chestChildren.Length; i++)
+        {
+            if (i == selectedMember)
+                chestChildren[i].SetSelected(true);
+            else
+                chestChildren[i].SetSelected(false);
+        }
+    }
+
+    public IEnumerator onChestSelected(int selectedItem)
+    {
+        if (selectedItem == 0)
+        {
+            //small chest
+            Debug.Log("Small chest");
+            yield return TreasureChest();
+
+        }
+        else if (selectedItem == 1)
+        {
+            //Medium chest
+            Debug.Log("Medium chest");
+        }
+        else if (selectedItem == 2)
+        {
+            //Big chest
+            Debug.Log("Big chest");
+        }
+    }
+
+
+    //Question related code
+
     public IEnumerator TreasureChest()
     {
-        OnStartTreasureChest?.Invoke();
         questions = treasureChestData.questions;
         treasureChest.SetActive(true);
 

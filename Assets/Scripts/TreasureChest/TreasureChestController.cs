@@ -8,6 +8,7 @@ public class TreasureChestController : MonoBehaviour, Interactable
     public Sprite newSprite;
 
     private SpriteRenderer spriteRenderer;
+
     
     public void Start()
     {
@@ -16,17 +17,16 @@ public class TreasureChestController : MonoBehaviour, Interactable
 
     public IEnumerator Interact(Transform initiator)
     {
-        //open chest
         treasureChestSpawn.chestDestoryed();
         spriteRenderer.sprite = newSprite;
-        //todo: insert IQ questions
-        //yield return DialogManager.Instance.ShowDialogText("insert IQ question");
-        
+        //spriteRenderer.sprite = newSprite;
+        TreasureChestManager.i.OpenMenu();
         //if answer correctly give coins
-        yield return TreasureChestManager.i.TreasureChest();
         //if answer wrongly no reward
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return TreasureChestManager.i.TreasureChest();
 
-        //destory chest
         Destroy(gameObject);
     }
 
