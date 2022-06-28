@@ -14,7 +14,7 @@ public class EndCreditsController : MonoBehaviour
     private void Awake()
     {
         if (sceneMusic != null)
-            AudioManager.i.Play(sceneMusic); //TODO:, fade: true
+            AudioManager.i.Play(sceneMusic, fade: true); 
     }
 
     public void ExitButton()

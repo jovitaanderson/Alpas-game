@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
 
     string currMusic;
     float originalMusicVol;
+    float originalSFXVol;
+    string prevMusic;
     Dictionary<AudioId, AudioData> sfxLookUp;
 
     public static AudioManager i { get; private set; }
@@ -50,11 +52,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //if (PlayerPrefs.HasKey("masterVolume"))
-        //    musicPlayer.volume = PlayerPrefs.GetFloat("masterVolume");
-
-        //originalMusicVol = musicPlayer.volume;
-
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
+        {
+            originalMusicVol = PlayerPrefs.GetFloat("masterVolume");
+            originalSFXVol = PlayerPrefs.GetFloat("masterSFX");
+        }
         sfxLookUp = sfxList.ToDictionary(x => x.id);
     }
 
@@ -67,11 +69,12 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Sound: " + clipname + "does not exist!");
             return;
         }
-        //if (pauseMusic)
-        //{
-        //    s.source.Pause();
-        //    StartCoroutine(UnPauseMusic(s.AudioClip.length, s));
-        //}
+        if (pauseMusic && prevMusic != null)
+        {
+            Sound prevSound = Array.Find(sounds, dummySound => dummySound.clipName == prevMusic);
+            prevSound.source.Pause();
+            StartCoroutine(UnPauseMusic(s.AudioClip.length, prevSound));
+        }
 
         //playing this clip wont cancel any current music that is played
         s.source.PlayOneShot(s.AudioClip);
@@ -85,22 +88,46 @@ public class AudioManager : MonoBehaviour
         PlaySfx(audioData.clip, pauseMusic);
     }
 
-   
+    
 
-    public void Play(string clipname, bool loop = true)
+    public void Play(string clipname, bool loop = true, bool fade = false)
     {
         if (clipname == null || clipname == currMusic) return;
-        currMusic = clipname;
+            currMusic = clipname;
 
+        StartCoroutine(PlayMusicAsync(clipname, loop, fade));
+    }
+
+    IEnumerator PlayMusicAsync(string clipname, bool loop, bool fade)
+    {
+        prevMusic = currMusic;
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
         if (s == null)
         {
             Debug.LogError("Sound: " + clipname + "does not exist!");
-            return;
+            yield break;
         }
+        if (fade)
+            yield return s.source.DOFade(0, fadeDuration).WaitForCompletion();
+
+        currMusic = clipname;
         s.source.loop = loop;
-            
         s.source.Play();
+
+        if (fade)
+            yield return s.source.DOFade(originalMusicVol, fadeDuration).WaitForCompletion();
+    }
+
+
+    public void Stop()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+        }
     }
 
     public void UpdateMixerVolume(float musicVolume, float sfxVolume)
@@ -109,51 +136,15 @@ public class AudioManager : MonoBehaviour
         soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", Mathf.Log10(sfxVolume) * 20);
     }
 
-    //IEnumerator UnPauseMusic(float delay, Sound s)
-    //{
-    //    yield return new WaitForSeconds(delay);
+    IEnumerator UnPauseMusic(float delay, Sound s)
+    {
+        yield return new WaitForSeconds(delay);
 
-    //    s.volume = 0;
-    //    s.source.UnPause();
-    //    s.DOFade(originalMusicVol, fadeDuration);
-    //}
+        s.source.volume = 0;
+        s.source.UnPause();
+        s.source.DOFade(originalMusicVol, fadeDuration);
+    }
 
-    //public void PlayMusic(AudioClip clip, bool loop = true, bool fade = false)
-    //{
-    //    //if (clip == null || clip == currMusic) return;
-
-    //    //currMusic = clip;
-
-    //    //StartCoroutine(PlayMusicAsync(clip, loop, fade));
-    //}
-
-    //IEnumerator PlayMusicAsync(AudioClip clip, bool loop, bool fade)
-    //{
-    //    //if (fade)
-    //    //    yield return musicPlayer.DOFade(0, fadeDuration).WaitForCompletion();
-
-    //    //musicPlayer.clip = clip;
-    //    //musicPlayer.loop = loop;
-    //    //musicPlayer.Play();
-
-    //    //if (fade)
-    //    //    yield return musicPlayer.DOFade(originalMusicVol, fadeDuration).WaitForCompletion();
-
-    //}
-
-    //public void PlaySfx(AudioClip clip, bool pauseMusic = false)
-    //{
-    //    //if (clip == null) return;
-
-    //    //if (pauseMusic)
-    //    //{
-    //    //    musicPlayer.Pause();
-    //    //    StartCoroutine(UnPauseMusic(clip.length));
-    //    //}
-
-    //    ////playing this clip wont cancel any current music that is played
-    //    //sfxPlayer.PlayOneShot(clip);
-    //}
 
 }
 

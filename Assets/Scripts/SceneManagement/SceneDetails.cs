@@ -23,7 +23,7 @@ public class SceneDetails : MonoBehaviour
 
             //play the music of the scene
             if (sceneMusic != null)
-                AudioManager.i.Play(sceneMusic); //TODO: , fade: true
+                AudioManager.i.Play(sceneMusic, fade: true);  
 
             //Load alll connected scenes
             foreach (var scene in connectedScenes)

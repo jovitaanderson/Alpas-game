@@ -55,7 +55,7 @@ public class BattleSystem : MonoBehaviour
         this.wildAnimal = wildAnimal;
         player = playerParty.GetComponent<PlayerController>();
         isTrainerBattle = false;
-
+        AudioManager.i.Stop();
         AudioManager.i.Play(wildBattleMusic);
 
         StartCoroutine(SetupBattle());
@@ -69,7 +69,7 @@ public class BattleSystem : MonoBehaviour
         isTrainerBattle = true;
         player = playerParty.GetComponent<PlayerController>();
         trainer = trainerParty.GetComponent<TrainerController>();
-
+        AudioManager.i.Stop();
         AudioManager.i.Play(trainerBattleMusic);
 
         StartCoroutine(SetupBattle());
@@ -136,6 +136,7 @@ public class BattleSystem : MonoBehaviour
 
     void BattleOver(bool won) //state
     {
+        AudioManager.i.Stop();
         state = BattleState.BattleOver;
         playerParty.Animals.ForEach(p => p.OnBattleOver());
         playerUnit.Hud.ClearData();
@@ -409,7 +410,10 @@ public class BattleSystem : MonoBehaviour
                 battleWon = trainerParty.GetHealthyAnimal() == null;
 
             if (battleWon)
+            {
+                AudioManager.i.Stop();
                 AudioManager.i.Play(battleVictoryMusic);
+            }
 
             //exp gain
             int expYield = faintedUnit.Animal.Base.ExpYield;

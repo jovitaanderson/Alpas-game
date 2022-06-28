@@ -54,10 +54,10 @@ public class MainController : MonoBehaviour
     private void Start()
     {
         //TODO: remove if audio is still saved (when restarting game) without this code
-        if (PlayerPrefs.HasKey("masterVolume"))
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
         {
             SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
-            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterVolume"));
+            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
         }
 
         else
@@ -117,7 +117,6 @@ public class MainController : MonoBehaviour
         musicTextValue.text = ((int)(volume * 100)).ToString();
         musicSlider.value = volume;
         AudioManager.i.UpdateMixerVolume(volume, soundEffectsVolume);
-        PlaySFX();
     }
 
     public void SetSoundEffectsVolume(float volume)
@@ -132,7 +131,8 @@ public class MainController : MonoBehaviour
 
     public void VolumeApply()
     {
-        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+        PlayerPrefs.SetFloat("masterVolume", musicVolume);
+        PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
         PlaySFX();
         //Show Prompt
         StartCoroutine(ConfirmationBox());

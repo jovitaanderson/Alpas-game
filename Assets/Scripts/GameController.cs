@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour
             partyScreen.SetPartyData();
             state = stateBeforeEvolution;
 
-            AudioManager.i.Play(CurrentScene.SceneMusic); //, fade: true
+            AudioManager.i.Play(CurrentScene.SceneMusic, fade: true); 
         };
 
         TreasureChestManager.i.OnStartTreasureChest += () => state = GameState.TreasureChest;
@@ -197,7 +197,7 @@ public class GameController : MonoBehaviour
         //changed abit from the tutorial because we dunnid evolve straight away after a battle
         //var hasEvolutions = playerParty.CheckForEvolutions();
         //if (hasEvolutions)
-        AudioManager.i.Play(CurrentScene.SceneMusic); //, fade: true
+        AudioManager.i.Play(CurrentScene.SceneMusic, fade: true); 
         StartCoroutine(playerParty.RunEvolutions());
         //else
             
