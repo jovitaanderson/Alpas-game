@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Add, Remove}
+public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Add, Remove, Busy}
 
 public class PartyScreen : MonoBehaviour
 {
     [SerializeField] Text messageText;
     [SerializeField] GameObject choiceBox;
-
 
     PartyMemberUI[] memberSlots;
     List<Animal> animals;
@@ -45,6 +44,7 @@ public class PartyScreen : MonoBehaviour
         choices = choiceBox.GetComponentsInChildren<Text>();
         UpdateChoiceBox(choiceSelection);
     }
+
     public void SetPartyData()
     {
         animals = party.Animals;
@@ -113,7 +113,7 @@ public class PartyScreen : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.UpArrow))
                 --choiceSelection;
 
-            choiceSelection = Mathf.Clamp(choiceSelection, 0, 2);
+            choiceSelection = Mathf.Clamp(choiceSelection, 0, choices.Length-1);
 
             if (choiceSelection != prevChoiceSelection)
                 UpdateChoiceBox(choiceSelection);
@@ -156,51 +156,8 @@ public class PartyScreen : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
             {
-                EnableChoiceBox(false);
+                ResetSelection();
             }
-        }
-    }
-
-    public void UpdateMemberSelection(int selectedMember)
-    {
-        for (int i = 0; i < animals.Count; i++)
-        {
-            if (i == selectedMember)
-                memberSlots[i].SetSelected(true);
-            else
-                memberSlots[i].SetSelected(false);
-        }
-    }
-
-    //Set text on partyScreen
-    public void SetMessageText(string message)
-    {
-        messageText.text = message;
-    }
-
-
-    public void EnableChoiceBox(bool enable)
-    {
-        choiceBox.SetActive(enable);
-        if (enable)
-        {
-            state = PartyScreenState.ChoiceBox;
-            messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
-        }
-        else
-        {
-            state = PartyScreenState.PartyScreen;
-            messageText.text = "Choose an Animal";
-        }
-    }
-    void UpdateChoiceBox(int selectedChoice)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-           if (i == selectedChoice)
-                choices[i].color = GlobalSettings.i.HighlightedColor;
-           else
-                choices[i].color = Color.black;
         }
     }
 
@@ -208,14 +165,12 @@ public class PartyScreen : MonoBehaviour
     {
         if(selection == 0)
         {
-            if( state == PartyScreenState.ChoiceBox)
-            {
-                state = PartyScreenState.Swap;
-                messageText.text = $"Chosen animal to swap: {SelectedMember.Base.Name}";
-                yield return new WaitForSeconds(0.5f);
-            }
+            memberSlots[this.selection].SetSelectedSwap(true);
+            messageText.text = $"Chosen animal to swap: {SelectedMember.Base.Name}";
+            UpdateMemberSelection(swapSelection);
+            yield return new WaitForSeconds(0.2f);
+            state = PartyScreenState.Swap;
 
-            //swap
         }
         else if (selection == 1)
         {
@@ -232,12 +187,61 @@ public class PartyScreen : MonoBehaviour
         var tempAnimal = animals[currentIndex];
         animals[currentIndex] = animals[swapIndex];
         animals[swapIndex] = tempAnimal;
+        ResetSelection();
+    }
+
+    void ResetSelection()
+    {
+        memberSlots[this.selection].SetSelectedSwap(false);
         SetPartyData();
-
         EnableChoiceBox(false);
-
         selection = 0;
         choiceSelection = 0;
         swapSelection = 0;
+        UpdateMemberSelection(selection);
+        UpdateChoiceBox(choiceSelection);
+    }
+    public void EnableChoiceBox(bool enable)
+    {
+        choiceBox.SetActive(enable);
+        if (enable)
+        {
+            state = PartyScreenState.ChoiceBox;
+            messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
+        }
+        else
+        {
+            state = PartyScreenState.PartyScreen;
+            messageText.text = "Choose an Animal";
+        }
+    }
+
+    public void UpdateMemberSelection(int selectedMember)
+    {
+        for (int i = 0; i < animals.Count; i++)
+        {
+            if (i == selectedMember)
+                memberSlots[i].SetSelected(true);
+            else
+                memberSlots[i].SetSelected(false);
+        }
+    }
+
+    void UpdateChoiceBox(int selectedChoice)
+    {
+        for (int i = 0; i < choices.Length; i++)
+        {
+            if (i == selectedChoice)
+                choices[i].color = GlobalSettings.i.HighlightedColor;
+            else
+                choices[i].color = Color.black;
+        }
+    }
+
+
+    //Set text on partyScreen
+    public void SetMessageText(string message)
+    {
+        messageText.text = message;
     }
 }

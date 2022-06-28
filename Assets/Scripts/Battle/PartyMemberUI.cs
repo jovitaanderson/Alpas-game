@@ -60,4 +60,25 @@ public class PartyMemberUI : MonoBehaviour
         }
     }
 
+    public void SetSelectedSwap(bool selected)
+    {
+        if (selected)
+        {
+            gameObject.GetComponent<Image>().color = Color.grey;
+            nameText.color = Color.white;
+            var borderColor = imageBorder.color;
+            borderColor.a = 0f;
+            imageBorder.color = borderColor; ;
+        }
+
+        else
+        {
+            gameObject.GetComponent<Image>().color = Color.white;
+            nameText.color = Color.black;
+            var borderColor = imageBorder.color;
+            borderColor.a = 0f;
+            imageBorder.color = borderColor;
+        }
+    }
+
 }
