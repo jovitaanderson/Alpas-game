@@ -176,7 +176,9 @@ public class ConditionsDB
 public enum ConditionID
 {
     none,psn,brn,slp,par,frz,
-    confusion
+    confusion,
+    chp,sng,bld,ice,slr,snc,bbl
+
 
     //par - 1/4 chance pokemon wont perform a move
 }

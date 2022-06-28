@@ -15,17 +15,17 @@ MonoBehaviour:
   name: Chirp
   description: 
   type: 2
-  power: 0
+  power: 20
   accuracy: 100
   alwaysHits: 0
-  pp: 40
+  pp: 15
   priority: 0
-  category: 2
+  category: 0
   effects:
     boosts:
     - stat: 0
       boost: -1
-    status: 0
+    status: 7
     volatileStatus: 0
   secondaries:
   - boosts: []

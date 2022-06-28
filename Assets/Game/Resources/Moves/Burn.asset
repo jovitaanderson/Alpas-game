@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Burn
   description: 
-  type: 6
-  power: 0
-  accuracy: 100
+  type: 5
+  power: 40
+  accuracy: 90
   alwaysHits: 0
-  pp: 30
+  pp: 5
   priority: 0
-  category: 0
+  category: 2
   effects:
     boosts: []
     status: 2
