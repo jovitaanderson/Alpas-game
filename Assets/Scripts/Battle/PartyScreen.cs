@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Add, Remove, Busy}
+public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Replace, Release, Busy}
 
 public class PartyScreen : MonoBehaviour
 {
     [SerializeField] Text messageText;
     [SerializeField] GameObject choiceBox;
+    [SerializeField] GameObject animalStorage;
 
     PartyMemberUI[] memberSlots;
     List<Animal> animals;
@@ -22,7 +23,10 @@ public class PartyScreen : MonoBehaviour
     int choiceSelection = 0;
     int swapSelection = 0;
 
-    public Animal SelectedMember => animals[selection];
+    public Animal SelectedMember {
+        get=> animals [selection];
+        set => animals[selection] = value;
+    }
 
     //Party Screen can be called from different states like ActionSelection, RunningTurn, AboutToUse
     public BattleState? CalledFrom { get; set; }
@@ -174,11 +178,14 @@ public class PartyScreen : MonoBehaviour
         }
         else if (selection == 1)
         {
-            //add
+            //Replace
+            state = PartyScreenState.Replace;
+            animalStorage.SetActive(true);
         }
         else if (selection == 2)
         {
-            //remove
+            //Release
+            state = PartyScreenState.Release;
         }
     }
 
@@ -190,7 +197,7 @@ public class PartyScreen : MonoBehaviour
         ResetSelection();
     }
 
-    void ResetSelection()
+    public void ResetSelection()
     {
         memberSlots[this.selection].SetSelectedSwap(false);
         SetPartyData();
@@ -237,7 +244,6 @@ public class PartyScreen : MonoBehaviour
                 choices[i].color = Color.black;
         }
     }
-
 
     //Set text on partyScreen
     public void SetMessageText(string message)

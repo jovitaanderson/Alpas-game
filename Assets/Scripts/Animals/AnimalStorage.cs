@@ -10,16 +10,25 @@ public class AnimalStorage : MonoBehaviour
     [SerializeField] Text messageText;
     [SerializeField] PartyScreen partyScreen;
     PartyMemberUI[] memberSlots;
+    //maybe will create StorageMemberUI if got alot of difference
 
     int selection = 0;
-    int maxAnimalsInStorage = 20;
+    int maxAnimalsInStorage = 6;
 
+
+    private void Awake()
+    {
+        foreach (var animal in animals) //for loop for every animal in animal list
+        {
+            animal.Init();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
-
+        SetStorageData();
     }
 
     public void SetStorageData()
@@ -34,6 +43,8 @@ public class AnimalStorage : MonoBehaviour
             else
                 memberSlots[i].gameObject.SetActive(false);
         }
+
+        UpdateMemberSelection(selection);
     }
 
     public void AddAnimalStorage(Animal newAnimal)
@@ -46,7 +57,6 @@ public class AnimalStorage : MonoBehaviour
         else
         {
             messageText.text = "The storage is full, cannot add more animals.";
-            //TODO: Add to the PC once thats implenmented
         }
     }
 
@@ -57,14 +67,18 @@ public class AnimalStorage : MonoBehaviour
 
     public void SwapAnimalStorage(Animal inParty, Animal inStorage)
     {
-
+        var tempAnimal = inStorage;
+        animals[selection] = inParty;
+        partyScreen.SelectedMember = tempAnimal;
+        SetStorageData();
+        partyScreen.SetPartyData();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
+        HandleUpdate(null, null);
     }
 
     public void HandleUpdate(Action onSelected, Action onBack)
@@ -88,8 +102,15 @@ public class AnimalStorage : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 SwapAnimalStorage(partyScreen.SelectedMember, animals[selection]);
+                gameObject.SetActive(false);
+                partyScreen.ResetSelection();
             }
-        }
+            else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                gameObject.SetActive(false);
+                partyScreen.ResetSelection();
+            }
+    }
     public void UpdateMemberSelection(int selectedMember)
     {
         for (int i = 0; i < animals.Count; i++)
