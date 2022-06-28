@@ -103,8 +103,7 @@ public class TreasureChestManager : MonoBehaviour
             treasureChest = 1;
             Debug.Log("Medium chest");
             yield return TreasureChest();
-            //todo: remove below line once medium questions r implmented
-            //OnCompleteTreasureChest?.Invoke();
+            
         }
         else if (selectedItem == 2)
         {
@@ -112,8 +111,7 @@ public class TreasureChestManager : MonoBehaviour
             treasureChest = 2;
             Debug.Log("Big chest");
             yield return TreasureChest();
-            //todo: remove below line once medium questions r implmented
-            //OnCompleteTreasureChest?.Invoke();
+            
         }
     }
 
@@ -140,7 +138,7 @@ public class TreasureChestManager : MonoBehaviour
 
         SelectQuestion();
 
-        //AudioManager.i.PlayMusic(evolutionMusic);
+        AudioManager.i.PlaySfx(AudioId.OpenChest);
 
         treasureChestUI.Reset();
         yield return new WaitUntil(() => treasureChestUI.CorrectAns != null);

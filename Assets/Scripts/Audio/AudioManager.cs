@@ -148,7 +148,7 @@ public class AudioManager : MonoBehaviour
 
 }
 
-public enum AudioId { UISelect, Hit, Faint, ExpGain, ItemObtained, AnimalObtained }
+public enum AudioId { UISelect, Hit, Faint, ExpGain, ItemObtained, AnimalObtained, OpenChest }
 
 [System.Serializable]
 public class AudioData
