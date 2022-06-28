@@ -20,6 +20,7 @@ public class PartyScreen : MonoBehaviour
     PartyScreenState state;
 
     int selection = 0;
+    int choiceSelection = 0;
 
     public Animal SelectedMember => animals[selection];
 
@@ -41,6 +42,7 @@ public class PartyScreen : MonoBehaviour
     {
         //get the children in choicebox
          choices = choiceBox.GetComponentsInChildren<Text>();
+        UpdateChoiceBox(choiceSelection);
     }
     public void SetPartyData()
     {
@@ -90,6 +92,7 @@ public class PartyScreen : MonoBehaviour
                 if (onSelected == null)
                 {
                     EnableChoiceBox(true);
+                    messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
                 }
 
             }
@@ -102,23 +105,24 @@ public class PartyScreen : MonoBehaviour
         } 
         else if (state == PartyScreenState.ChoiceBox)
         {
-            var prevSelection = selection;
+            var prevChoiceSelection = choiceSelection;
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
-                ++selection;
+                ++choiceSelection;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
-                --selection;
+                --choiceSelection;
 
-            selection = Mathf.Clamp(selection, 0, 2);
+            choiceSelection = Mathf.Clamp(choiceSelection, 0, 2);
 
-            if (selection != prevSelection)
-                UpdateChoiceBox(selection);
+            if (choiceSelection != prevChoiceSelection)
+                UpdateChoiceBox(choiceSelection);
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 //swap
                 //delete 
                 //add
+                Debug.Log(choiceSelection);
             }
             //else, if press escape, then go back
             else if (Input.GetKeyDown(KeyCode.Escape))
@@ -148,11 +152,17 @@ public class PartyScreen : MonoBehaviour
 
     public void EnableChoiceBox(bool enable)
     {
-        choiceBox.SetActive(enabled);
-        if(enable)
+        choiceBox.SetActive(enable);
+        if (enable)
+        {
             state = PartyScreenState.ChoiceBox;
+            messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
+        }
         else
+        {
             state = PartyScreenState.PartyScreen;
+            messageText.text = "Choose an Animal";
+        }
     }
     void UpdateChoiceBox(int selectedChoice)
     {
