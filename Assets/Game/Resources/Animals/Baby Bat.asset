@@ -33,4 +33,7 @@ MonoBehaviour:
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: bc6a22116d21b464c9192f6d5791652b, type: 2}
     level: 0
-  evolutions: []
+  evolutions:
+  - evolvesinto: {fileID: 11400000, guid: 132f213b25cfb8f4581f8e24f8682b7b, type: 2}
+    requiredLevel: 10
+    requiredItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}

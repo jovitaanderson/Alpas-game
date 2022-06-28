@@ -31,4 +31,7 @@ MonoBehaviour:
   growthRate: 0
   catchRate: 255
   learnableMoves: []
-  evolutions: []
+  evolutions:
+  - evolvesinto: {fileID: 11400000, guid: f694682ce702246458616a7e2993ea36, type: 2}
+    requiredLevel: 10
+    requiredItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
