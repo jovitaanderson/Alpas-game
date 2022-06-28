@@ -4484,8 +4484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.3077, y: 0}
-  m_SizeDelta: {x: -20.6153, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3380848464822452828
 CanvasRenderer:
@@ -4517,7 +4517,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 720937755be832f4398f37f161693da8, type: 3}
-    m_FontSize: 35
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4528,10 +4528,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '10, 30, 32, 96, 98, 294, 296, ?, ?
-
-    What two numbers should replace
-    the question marks?'
+  m_Text: Our story begins in 1299, from the early records of the Malay Annals. Back
+    then, Singapore was just a simple fishing and trade port founded by the Srivijiya
+    prince Sang Nila Utama. The nation was known by another name though. What was
+    it known as?
 --- !u!1 &3965310438473719039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5529,7 +5529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 360.8, y: -7.3462}
+  m_AnchoredPosition: {x: 374, y: -0.0000090599}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4942104962122406800
@@ -7025,7 +7025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7589199540148401975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8222,8 +8222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.78, y: 107.3461}
-  m_SizeDelta: {x: 391.57, y: 214.6923}
+  m_AnchoredPosition: {x: -117.93278, y: 107.35}
+  m_SizeDelta: {x: 536.0888, y: 214.6923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8800818149089323293
 GameObject:

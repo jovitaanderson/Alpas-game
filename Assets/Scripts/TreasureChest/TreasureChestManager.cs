@@ -8,7 +8,9 @@ using UnityEngine.UI;
 public class TreasureChestManager : MonoBehaviour
 {
     [SerializeField] GameObject chestUI;
-    [SerializeField] private TreasureChestDataScriptable treasureChestData;
+    [SerializeField] private TreasureChestDataScriptable easyChestData;
+    [SerializeField] private TreasureChestDataScriptable mediumChestData;
+    [SerializeField] private TreasureChestDataScriptable hardChestData;
 
     GameObject selectChest;
     //GameObject treasureChest;
@@ -16,6 +18,7 @@ public class TreasureChestManager : MonoBehaviour
 
     ChestUI[] chestChildren;
     public int selectedItem = 0;
+    public int treasureChest = 0;
 
     private List<TreasureChestQuestion> questions;
     private TreasureChestQuestion selectedQuestion;
@@ -89,6 +92,7 @@ public class TreasureChestManager : MonoBehaviour
         if (selectedItem == 0)
         {
             //small chest
+            treasureChest = 0;
             Debug.Log("Small chest");
             yield return TreasureChest();
 
@@ -96,16 +100,20 @@ public class TreasureChestManager : MonoBehaviour
         else if (selectedItem == 1)
         {
             //Medium chest
+            treasureChest = 1;
             Debug.Log("Medium chest");
+            yield return TreasureChest();
             //todo: remove below line once medium questions r implmented
-            OnCompleteTreasureChest?.Invoke();
+            //OnCompleteTreasureChest?.Invoke();
         }
         else if (selectedItem == 2)
         {
             //Big chest
+            treasureChest = 2;
             Debug.Log("Big chest");
+            yield return TreasureChest();
             //todo: remove below line once medium questions r implmented
-            OnCompleteTreasureChest?.Invoke();
+            //OnCompleteTreasureChest?.Invoke();
         }
     }
 
@@ -113,7 +121,21 @@ public class TreasureChestManager : MonoBehaviour
     //Question for chest section
     public IEnumerator TreasureChest()
     {
-        questions = treasureChestData.questions;
+        switch (treasureChest)
+        {
+            case 0:
+                questions = easyChestData.questions;
+                break;
+            case 1:
+                questions = mediumChestData.questions;
+                break;
+            case 2:
+                questions = hardChestData.questions;
+                break;
+            default:
+                yield break;
+        }
+        
         treasureChestUI.gameObject.SetActive(true);
 
         SelectQuestion();

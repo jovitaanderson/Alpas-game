@@ -1533,8 +1533,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestUI: {fileID: 7705907714933671849}
-  treasureChestData: {fileID: 11400000, guid: 9a96772c9869ec94cbfb490fa18500c0, type: 2}
+  easyChestData: {fileID: 11400000, guid: 9a96772c9869ec94cbfb490fa18500c0, type: 2}
+  mediumChestData: {fileID: 11400000, guid: 9fc4bc189c7e988449b551605e62066f, type: 2}
+  hardChestData: {fileID: 11400000, guid: 83e061e9d06a2a44ebe092f74eda4327, type: 2}
   selectedItem: 0
+  treasureChest: 0
 --- !u!1 &8846833008601748342
 GameObject:
   m_ObjectHideFlags: 0

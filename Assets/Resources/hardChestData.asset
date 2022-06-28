@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf51f50309acb14fa76adf0ea077e0c, type: 3}
+  m_Name: hardChestData
+  m_EditorClassIdentifier: 
+  questions:
+  - questionInfo: Our story begins in 1299, from the early records of the Malay Annals.
+      Back then, Singapore was just a simple fishing and trade port founded by the
+      Srivijiya prince Sang Nila Utama. The nation was known by another name though.
+      What was it known as?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Singapura
+    - Temasek
+    - Peninsula
+    - Singapore
+    correctAns: Temasek
+  - questionInfo: With the old kingdoms disappearing, a new superpower would rise
+      to take over. A statesman named Stamford Raffles claimed the island on behalf
+      of a massive trade monopoly of the 19th century. An area in Singapore is named
+      after him, where he supposedly first arrived. What is this place called?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Johor
+    - Raffles Place
+    - Singapore River
+    - Stamford
+    correctAns: Raffles Place
+  - questionInfo: The name Singapore was attributed to this 14th century Sumatran
+      prince. What was his name?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Sang Nila Utama
+    - Iskanda Shah
+    - Srivijaya
+    - Hayam
+    correctAns: Sang Nila Utama
