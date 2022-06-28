@@ -9,12 +9,18 @@ public class AnimalStorage : MonoBehaviour
     [SerializeField] List<Animal> animals;
     [SerializeField] Text messageText;
     [SerializeField] PartyScreen partyScreen;
-    PartyMemberUI[] memberSlots;
+
+    [SerializeField] Image image;
+    [SerializeField] GameObject lvlUpObj;
+    [SerializeField] Text nameText;
+    [SerializeField] Text levelText;
+    [SerializeField] HPBar hpBar;
+
+    StorageMemberUI[] memberSlots;
     //maybe will create StorageMemberUI if got alot of difference
 
     int selection = 0;
-    int maxAnimalsInStorage = 6;
-
+    int maxAnimalsInStorage = 20;
 
     private void Awake()
     {
@@ -27,7 +33,7 @@ public class AnimalStorage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
+        memberSlots = GetComponentsInChildren<StorageMemberUI>(true);
         SetStorageData();
     }
 
@@ -45,24 +51,6 @@ public class AnimalStorage : MonoBehaviour
         }
 
         UpdateMemberSelection(selection);
-    }
-
-    public void AddAnimalStorage(Animal newAnimal)
-    {
-        if (animals.Count < maxAnimalsInStorage)
-        {
-            animals.Add(newAnimal);
-            //OnUpdated?.Invoke();
-        }
-        else
-        {
-            messageText.text = "The storage is full, cannot add more animals.";
-        }
-    }
-
-    public void RemoveAnimalStorage(Animal newAnimal)
-    {
-        animals.Remove(newAnimal);
     }
 
     public void SwapAnimalStorage(Animal inParty, Animal inStorage)
@@ -111,12 +99,20 @@ public class AnimalStorage : MonoBehaviour
                 partyScreen.ResetSelection();
             }
     }
+
     public void UpdateMemberSelection(int selectedMember)
     {
         for (int i = 0; i < animals.Count; i++)
         {
             if (i == selectedMember)
+            {
+                image.sprite = animals[selectedMember].Base.FrontSprite;
+                nameText.text = animals[selectedMember].Base.Name;
+                levelText.text = "Lvl" + animals[selectedMember].Level;
+                hpBar.SetHP((float)animals[selectedMember].HP / animals[selectedMember].MaxHp);
                 memberSlots[i].SetSelected(true);
+            }
+
             else
                 memberSlots[i].SetSelected(false);
         }
