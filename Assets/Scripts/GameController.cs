@@ -232,16 +232,19 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.PartyScreen)
         {
-            Action onSelected = () =>
+           /* Action onSelected = () =>
             {
+
                 //Todo: Go to Summary Screen
-            };
+                //option to swap or remove
+                partyScreen.EnableChoiceBox();
+            };*/
             Action onBack = () =>
             {
                 partyScreen.gameObject.SetActive(false);
                 state = GameState.FreeRoam;
             };
-            partyScreen.HandleUpdate(onSelected, onBack);
+            partyScreen.HandleUpdate(null, onBack);
         }
         else if (state == GameState.Bag)
         {
