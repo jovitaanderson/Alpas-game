@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PartyScreenState { PartyScreen, ChoiceBox, Busy }
+public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Add, Remove}
 
 public class PartyScreen : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class PartyScreen : MonoBehaviour
 
     int selection = 0;
     int choiceSelection = 0;
+    int swapSelection = 0;
 
     public Animal SelectedMember => animals[selection];
 
@@ -41,7 +42,7 @@ public class PartyScreen : MonoBehaviour
     private void Start()
     {
         //get the children in choicebox
-         choices = choiceBox.GetComponentsInChildren<Text>();
+        choices = choiceBox.GetComponentsInChildren<Text>();
         UpdateChoiceBox(choiceSelection);
     }
     public void SetPartyData()
@@ -119,13 +120,41 @@ public class PartyScreen : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                //swap
-                //delete 
-                //add
-                Debug.Log(choiceSelection);
+                StartCoroutine(ChoiceSelection(choiceSelection));
             }
             //else, if press escape, then go back
             else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                choiceSelection = 0;
+                EnableChoiceBox(false);
+            }
+        }
+        if (state == PartyScreenState.Swap)
+        {
+            var prevSelection = swapSelection;
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                ++swapSelection;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                --swapSelection;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                swapSelection += 2;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                swapSelection -= 2;
+
+            swapSelection = Mathf.Clamp(swapSelection, 0, animals.Count - 1);
+
+            if (swapSelection != prevSelection)
+                UpdateMemberSelection(swapSelection);
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (selection == swapSelection)
+                    messageText.text = "Cannot swap with same animal";
+                else
+                    SwapAnimal(swapSelection, selection);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
             {
                 EnableChoiceBox(false);
             }
@@ -175,4 +204,40 @@ public class PartyScreen : MonoBehaviour
         }
     }
 
+    IEnumerator ChoiceSelection(int selection)
+    {
+        if(selection == 0)
+        {
+            if( state == PartyScreenState.ChoiceBox)
+            {
+                state = PartyScreenState.Swap;
+                messageText.text = $"Chosen animal to swap: {SelectedMember.Base.Name}";
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            //swap
+        }
+        else if (selection == 1)
+        {
+            //add
+        }
+        else if (selection == 2)
+        {
+            //remove
+        }
+    }
+
+    void SwapAnimal(int currentIndex, int swapIndex)
+    {
+        var tempAnimal = animals[currentIndex];
+        animals[currentIndex] = animals[swapIndex];
+        animals[swapIndex] = tempAnimal;
+        SetPartyData();
+
+        EnableChoiceBox(false);
+
+        selection = 0;
+        choiceSelection = 0;
+        swapSelection = 0;
+    }
 }
