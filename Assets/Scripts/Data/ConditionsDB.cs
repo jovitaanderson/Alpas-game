@@ -158,6 +158,8 @@ public class ConditionsDB
 
          }
 
+        //Todo: add all others move that have status
+
     };
 
     public static float GetStatusBonus(Condition condition) 
