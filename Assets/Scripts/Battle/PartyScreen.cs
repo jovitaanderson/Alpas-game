@@ -185,7 +185,10 @@ public class PartyScreen : MonoBehaviour
         else if (selection == 2)
         {
             //Release
-            state = PartyScreenState.Release;
+            //todo: add comfirmation dialogue before releasing
+            animals.Remove(SelectedMember);
+            ResetSelection();
+
         }
     }
 
