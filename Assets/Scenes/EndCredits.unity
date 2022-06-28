@@ -968,6 +968,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sfxList.Array.data[0].clip
+      value: select
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[0].clipName
+      value: select
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[1].clipName
+      value: endCreditsMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[0].AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3da52f533b75ae145ba1ec8b41770bcd, type: 3}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[1].AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7dd3bd7cf6943354bb0c2dc7cc8da9de, type: 3}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds.Array.data[1].audioType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7755694543632092375, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1043,7 +1079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e0ffda6e6506745bfeeb42b3ffd106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusic: {fileID: 8300000, guid: 7dd3bd7cf6943354bb0c2dc7cc8da9de, type: 3}
+  sceneMusic: endCreditsMusic
 --- !u!4 &1888441866
 Transform:
   m_ObjectHideFlags: 0

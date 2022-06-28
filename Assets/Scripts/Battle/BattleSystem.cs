@@ -25,9 +25,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] InventoryUI inventoryUI;
 
     [Header("Audio")]
-    [SerializeField] AudioClip wildBattleMusic;
-    [SerializeField] AudioClip trainerBattleMusic;
-    [SerializeField] AudioClip battleVictoryMusic;
+    [SerializeField] string wildBattleMusic;
+    [SerializeField] string trainerBattleMusic;
+    [SerializeField] string battleVictoryMusic;
 
 
     public event Action<bool> OnBattleOver;
@@ -56,7 +56,7 @@ public class BattleSystem : MonoBehaviour
         player = playerParty.GetComponent<PlayerController>();
         isTrainerBattle = false;
 
-        AudioManager.i.PlayMusic(wildBattleMusic);
+        AudioManager.i.Play(wildBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
@@ -70,7 +70,7 @@ public class BattleSystem : MonoBehaviour
         player = playerParty.GetComponent<PlayerController>();
         trainer = trainerParty.GetComponent<TrainerController>();
 
-        AudioManager.i.PlayMusic(trainerBattleMusic);
+        AudioManager.i.Play(trainerBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
@@ -409,7 +409,7 @@ public class BattleSystem : MonoBehaviour
                 battleWon = trainerParty.GetHealthyAnimal() == null;
 
             if (battleWon)
-                AudioManager.i.PlayMusic(battleVictoryMusic);
+                AudioManager.i.Play(battleVictoryMusic);
 
             //exp gain
             int expYield = faintedUnit.Animal.Base.ExpYield;

@@ -15,6 +15,7 @@ public class DialogManager : MonoBehaviour
     public event Action OnDialogFinished;
 
 
+
     //Since dialogmanager will be used for NPC/object(signboards) we use the singleton partten to get the instance
     //and use it in other classes
     public static DialogManager Instance { get; private set; }
