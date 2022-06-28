@@ -15,8 +15,10 @@ public class AnimalStorage : MonoBehaviour
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
     [SerializeField] HPBar hpBar;
+    [SerializeField] GameObject movesTextContainer;
 
     StorageMemberUI[] memberSlots;
+    Text[] moveTexts;
     //maybe will create StorageMemberUI if got alot of difference
 
     int selection = 0;
@@ -34,6 +36,7 @@ public class AnimalStorage : MonoBehaviour
     void Start()
     {
         memberSlots = GetComponentsInChildren<StorageMemberUI>(true);
+        moveTexts = movesTextContainer.GetComponentsInChildren<Text>();
         SetStorageData();
     }
 
@@ -78,9 +81,9 @@ public class AnimalStorage : MonoBehaviour
            else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 --selection;
            else if (Input.GetKeyDown(KeyCode.DownArrow))
-                selection += 2;
+                selection += 5;
            else if (Input.GetKeyDown(KeyCode.UpArrow))
-                selection -= 2;
+                selection -= 5;
 
            selection = Mathf.Clamp(selection, 0, animals.Count - 1);
 
@@ -108,13 +111,25 @@ public class AnimalStorage : MonoBehaviour
             {
                 image.sprite = animals[selectedMember].Base.FrontSprite;
                 nameText.text = animals[selectedMember].Base.Name;
-                levelText.text = "Lvl" + animals[selectedMember].Level;
+                levelText.text = "Lvl " + animals[selectedMember].Level;
                 hpBar.SetHP((float)animals[selectedMember].HP / animals[selectedMember].MaxHp);
                 memberSlots[i].SetSelected(true);
+                SetMoves(animals[selectedMember].Moves);
             }
 
             else
                 memberSlots[i].SetSelected(false);
+        }
+    }
+
+    void SetMoves(List<Move> moves)
+    {
+        for (int i = 0; i < 4; i++) 
+        {
+            if(i < moves.Count)
+                moveTexts[i].text = moves[i].Base.Name;
+            else
+                moveTexts[i].text = "-";
         }
     }
 
