@@ -7654,6 +7654,14 @@ PrefabInstance:
       value: southScene
       objectReference: {fileID: 0}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 715a92746ed1a814cae457c315a971bb, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattleImage
+      value: 
+      objectReference: {fileID: 1879236401}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7791,6 +7799,14 @@ PrefabInstance:
       value: northScene
       objectReference: {fileID: 0}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 7076a245be5162b4a9be98a694e02284, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattleImage
+      value: 
+      objectReference: {fileID: 1879236401}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7893,6 +7909,14 @@ PrefabInstance:
       value: eastScene
       objectReference: {fileID: 0}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 867b67d2607fe2e4393cba4a33b2a86d, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattleImage
+      value: 
+      objectReference: {fileID: 1879236401}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7983,6 +8007,17 @@ MonoBehaviour:
     levelRange: {x: 1, y: 20}
     chancePercentage: 50
   totalChance: 100
+--- !u!114 &1879236401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8846833009186887135, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2018835371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -8005,6 +8040,14 @@ PrefabInstance:
       propertyPath: sceneMusic
       value: westScene
       objectReference: {fileID: 0}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 49413cccfeaf1d744b33f4ecde0a71fa, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattleImage
+      value: 
+      objectReference: {fileID: 1879236401}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
@@ -8090,6 +8133,14 @@ PrefabInstance:
       propertyPath: sceneMusic
       value: centralScene
       objectReference: {fileID: 0}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d2fc5191a3da5a4da2080b3c4bb544f, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattleImage
+      value: 
+      objectReference: {fileID: 1879236401}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 6
