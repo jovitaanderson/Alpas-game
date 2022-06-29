@@ -10,7 +10,7 @@ public class PartyScreen : MonoBehaviour
 {
     [SerializeField] Text messageText;
     [SerializeField] GameObject choiceBox;
-    [SerializeField] GameObject animalStorage;
+    [SerializeField] StorageScreen animalStorage;
 
     PartyMemberUI[] memberSlots;
     List<Animal> animals;
@@ -40,6 +40,7 @@ public class PartyScreen : MonoBehaviour
         SetPartyData();
 
         party.OnUpdated += SetPartyData;
+        //animalStorage.Init();
     }
 
     private void Start()
@@ -180,7 +181,7 @@ public class PartyScreen : MonoBehaviour
         {
             //Replace
             state = PartyScreenState.Replace;
-            animalStorage.SetActive(true);
+            animalStorage.gameObject.SetActive(true);
         }
         else if (selection == 2)
         {

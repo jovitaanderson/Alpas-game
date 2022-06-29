@@ -811,8 +811,17 @@ public class BattleSystem : MonoBehaviour
             //Pokemon is caught
             yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} was caught");
             yield return pokeball.DOFade(0, 1.5f).WaitForCompletion();
+            if (playerParty.Animals.Count < 6)
+            {
+                yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your party");
+            } else if (playerParty.animalStorage.Animals.Count < playerParty.animalStorage.maxAnimalsInStorage)
+            {
+                yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your storage");
+            } else
+            {
+                yield return dialogBox.TypeDialog($"Party and storage is full! {enemyUnit.Animal.Base.Name} cannot be caught");
+            }
             playerParty.AddAnimal(enemyUnit.Animal);
-            yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your party");
 
             Destroy(pokeball);
             BattleOver(true);

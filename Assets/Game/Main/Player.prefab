@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 4201773140602634705}
   - component: {fileID: 4201773140602634704}
   - component: {fileID: 4201773140602634708}
+  - component: {fileID: 6987082975107881324}
   - component: {fileID: 4201773140602634709}
   - component: {fileID: 4201773140602634707}
   - component: {fileID: 4201773140602634711}
@@ -452,6 +453,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals: []
+--- !u!114 &6987082975107881324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4201773140602634719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd86e9c18f49364499df7e3134aa64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animals:
+  - _base: {fileID: 11400000, guid: cc1f110990a524441b9f86a51fffb605, type: 2}
+    level: 4
+  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
+    level: 10
+  - _base: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
+    level: 15
 --- !u!114 &4201773140602634709
 MonoBehaviour:
   m_ObjectHideFlags: 0

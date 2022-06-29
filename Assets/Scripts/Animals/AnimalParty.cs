@@ -10,6 +10,8 @@ public class AnimalParty : MonoBehaviour
 
     public event Action OnUpdated;
 
+    public AnimalStorage animalStorage;
+
     public List<Animal> Animals
     {
         get
@@ -33,7 +35,7 @@ public class AnimalParty : MonoBehaviour
 
     private void Start()
     {
-        
+        animalStorage = GetComponent<AnimalStorage>();
     }
 
     public Animal GetHealthyAnimal()
@@ -50,9 +52,9 @@ public class AnimalParty : MonoBehaviour
         {
             animals.Add(newAnimal);
             OnUpdated?.Invoke();
-        } else {
 
-            //TODO: Add to the PC once thats implenmented
+        } else {
+            animalStorage.AddAnimal(newAnimal);
         }
     }
 

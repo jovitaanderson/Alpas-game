@@ -7618,9 +7618,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6912494726120420075}
-  - component: {fileID: 4615558904774891813}
   - component: {fileID: 320123250482602409}
   - component: {fileID: 1774389978510306563}
+  - component: {fileID: 8271552684626626335}
   m_Layer: 5
   m_Name: AnimalStorageScreen
   m_TagString: Untagged
@@ -7649,41 +7649,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4615558904774891813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6100769763751770381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd86e9c18f49364499df7e3134aa64b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animals:
-  - _base: {fileID: 11400000, guid: 44bf70839331ec548b08065ddcb4a9ec, type: 2}
-    level: 3
-  - _base: {fileID: 11400000, guid: 47b81084e7639cc479aa10d85525f5c6, type: 2}
-    level: 1
-  - _base: {fileID: 11400000, guid: cda17cbbbd02f744a9235e88fd1ff84a, type: 2}
-    level: 2
-  - _base: {fileID: 11400000, guid: 38ea44a9f98d29245890b17246a51e25, type: 2}
-    level: 4
-  - _base: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
-    level: 8
-  messageText: {fileID: 0}
-  partyScreen: {fileID: 15202797266711097}
-  image: {fileID: 219558156750709294}
-  lvlUpObj: {fileID: 2304682179470367615}
-  nameText: {fileID: 1976229902359321645}
-  levelText: {fileID: 8345129172830775730}
-  type1: {fileID: 5974522997661646461}
-  type2: {fileID: 1644422394162623932}
-  hpBar: {fileID: 6898290372669940958}
-  movesTextContainer: {fileID: 7200511737118482463}
 --- !u!222 &320123250482602409
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7722,6 +7687,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8271552684626626335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100769763751770381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0bd00935a761a4f8736fe528c03462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partyScreen: {fileID: 15202797266711097}
+  image: {fileID: 219558156750709294}
+  lvlUpObj: {fileID: 2304682179470367615}
+  nameText: {fileID: 1976229902359321645}
+  levelText: {fileID: 8345129172830775730}
+  type1: {fileID: 5974522997661646461}
+  type2: {fileID: 1644422394162623932}
+  hpBar: {fileID: 6898290372669940958}
+  movesTextContainer: {fileID: 7200511737118482463}
 --- !u!1 &6101416205110290346
 GameObject:
   m_ObjectHideFlags: 0
@@ -11058,7 +11044,7 @@ PrefabInstance:
     - target: {fileID: 2954320458820053309, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
       propertyPath: animalStorage
       value: 
-      objectReference: {fileID: 6100769763751770381}
+      objectReference: {fileID: 0}
     - target: {fileID: 2954320458820053310, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
       propertyPath: m_Name
       value: PartyScreen
