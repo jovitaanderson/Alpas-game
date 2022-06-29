@@ -22,7 +22,9 @@ public class TreasureChestManager : MonoBehaviour
 
     private List<TreasureChestQuestion> questions;
     private TreasureChestQuestion selectedQuestion;
-    private float rewardedMoney = 10f;
+    private float rewardedEasyMoney = 10f;
+    private float rewardedMediumMoney = 50f;
+    private float rewardedHardMoney = 100f;
 
     public event Action OnStartTreasureChest;
     public event Action OnSelectTreasureChest;
@@ -119,15 +121,19 @@ public class TreasureChestManager : MonoBehaviour
     //Question for chest section
     public IEnumerator TreasureChest()
     {
+        float rewardedMoney = 0f;
         switch (treasureChest)
         {
             case 0:
+                rewardedMoney = rewardedEasyMoney;
                 questions = easyChestData.questions;
                 break;
             case 1:
+                rewardedMoney = rewardedMediumMoney;
                 questions = mediumChestData.questions;
                 break;
             case 2:
+                rewardedMoney = rewardedHardMoney;
                 questions = hardChestData.questions;
                 break;
             default:
