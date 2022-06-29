@@ -47,16 +47,23 @@ public class AnimalCharacterManager : MonoBehaviour
     private void UpdateCharacter(int selectedOption)
     {
         AnimalCharacter character = characterDB.GetCharacter(selectedOption);
-        animalSprite.sprite = character._base.FrontSprite;
-        //animalSprite.sprite = character.animalSprite;
-        //nameText.text = character.animalName;
-        nameText.text = $"Name: {character._base.Name}";
-        //type1.text = character.type1.ToString();
-        type1.text = $"Type: {character._base.Type1}, {character._base.Type2}";
-        //type2.text = character.type2.ToString();
-        //type2.text = character._base.Type2.ToString();
-        locationText.text = $"Map locations: {character.locations}";
-        descrtipionText.text = character._base.Description;
-
+        if (character.seen == true)
+        {
+            animalSprite.sprite = character._base.FrontSprite;
+            animalSprite.color = Color.white;
+            nameText.text = $"Name: {character._base.Name}";
+            type1.text = $"Type: {character._base.Type1}, {character._base.Type2}";
+            locationText.text = $"Map locations: {character.locations}";
+            descrtipionText.text = character._base.Description;
+        }
+        else {
+            animalSprite.sprite = character._base.FrontSprite;
+            animalSprite.color = Color.black;
+            nameText.text = $"Name: ????";
+            type1.text = $"Type: ????, ????";
+            locationText.text = $"Map locations: {character.locations}";
+            descrtipionText.text = "????";
+        }
     }
+
 }

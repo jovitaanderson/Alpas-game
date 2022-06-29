@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [CreateAssetMenu]
 public class AnimalCharacterDatabase : ScriptableObject
 {
     public AnimalCharacter[] animalCharacter;
+
 
     public int CharacterCount
     {
@@ -19,6 +22,18 @@ public class AnimalCharacterDatabase : ScriptableObject
     {
         return animalCharacter[index];
     }
+
+    public void AnimalSeen(Animal animal)
+    {
+        foreach(var animalChar in animalCharacter)
+        {
+            if(animalChar._base.Name == animal.Base.Name)
+            {
+                animalChar.seen = true;
+                break;
+            }
+        }
+    }
 }
 
 [System.Serializable]
@@ -28,6 +43,7 @@ public class AnimalCharacter
     public AnimalBase _base;
 
     public string locations;
+    public bool seen;
 
     /*public string animalName;
     public AnimalType type1;
