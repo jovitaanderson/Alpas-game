@@ -12,5 +12,6 @@ public class Condition
 
     public Action<Animal> OnStart { get; set; }
     public Func<Animal, bool> OnBeforeMove { get; set; } //use Func because we want to return a bool
+    public Func<Animal, bool> OnHealingMove { get; set; } //use Func because we want to return a bool
     public Action<Animal> OnAfterTurn { get; set; } //use Action when we dont need to return a value
 }

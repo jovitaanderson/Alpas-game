@@ -15,16 +15,16 @@ MonoBehaviour:
   name: Solar Beam
   description: 
   type: 8
-  power: 60
+  power: 0
   accuracy: 80
   alwaysHits: 0
-  pp: 10
+  pp: 5
   priority: 0
   category: 2
   effects:
     boosts: []
-    status: 11
+    status: 9
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: 
+  sound: solarBeam

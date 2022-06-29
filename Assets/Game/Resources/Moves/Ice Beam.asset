@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 
   description: 
   type: 1
-  power: 20
+  power: 0
   accuracy: 100
   alwaysHits: 0
   pp: 15
@@ -23,8 +23,8 @@ MonoBehaviour:
   category: 2
   effects:
     boosts: []
-    status: 10
+    status: 5
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: 
+  sound: iceBeam

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Sing
   description: 
   type: 2
-  power: 30
+  power: 0
   accuracy: 95
   alwaysHits: 0
   pp: 10
@@ -23,8 +23,8 @@ MonoBehaviour:
   category: 2
   effects:
     boosts: []
-    status: 8
+    status: 7
     volatileStatus: 0
   secondaries: []
-  target: 0
-  sound: 
+  target: 1
+  sound: sing

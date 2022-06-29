@@ -156,6 +156,112 @@ public class ConditionsDB
                 }
             }
 
+         },
+         {
+            ConditionID.sng,
+            new Condition()
+            {
+                Name = "Sing",
+                StartMessage = "is singing",
+                //lamda functions
+                 OnStart = (Animal animal) =>
+                {
+                    //Sleep for  a random no. of turns between 1-4
+                    animal.StatusTime = Random.Range(1,5);
+                    Debug.Log($"Will be self-healing for {animal.StatusTime} moves");
+                },
+                OnAfterTurn = (Animal animal) =>
+                {
+                    if(animal.StatusTime <= 0)
+                   {
+                       animal.CureStatus();
+                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has finished singing!");
+                   }
+
+                    animal.StatusTime--;
+                    animal.IncreaseHP(animal.MaxHp / 8);
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} heal itself due to the melodious singing");
+                }
+
+            }
+
+         },
+         {
+            ConditionID.bld,
+            new Condition()
+            {
+                Name = "Blood Bath",
+                StartMessage = "is blood bathing",
+                //lamda functions
+                OnAfterTurn = (Animal animal) =>
+                {
+                    animal.DecreaseHP(animal.MaxHp / 16);
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to the blood bath");
+                }
+
+            }
+
+         },
+         {
+            ConditionID.slr,
+            new Condition()
+            {
+                Name = "Solar Beam",
+                StartMessage = "is using solar beaming",
+                //lamda functions
+               OnStart = (Animal animal) =>
+                {
+                    //Sleep for  a random no. of turns between 1-4
+                    animal.StatusTime = Random.Range(1,5);
+                    Debug.Log($"Will be solar beamed for {animal.StatusTime} moves");
+                },
+                OnAfterTurn = (Animal animal) =>
+                {
+                   if(animal.StatusTime <= 0)
+                   {
+                       animal.CureStatus();
+                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has recovered from solar beam!");
+                       
+                   }
+
+                    animal.StatusTime--;
+                    animal.DecreaseHP(animal.MaxHp / 12);
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt its eyes due to solar beam");
+                    
+                }
+
+            }
+
+         },
+         {
+            ConditionID.bbl,
+            new Condition()
+            {
+                Name = "Bubble Beam",
+                StartMessage = "is using bubble beaming",
+                //lamda functions
+                OnStart = (Animal animal) =>
+                {
+                    //Sleep for  a random no. of turns between 1-4
+                    animal.StatusTime = Random.Range(1,5);
+                    Debug.Log($"Will be bubble beamed for {animal.StatusTime} moves");
+                },
+                OnAfterTurn = (Animal animal) =>
+                {
+                   if(animal.StatusTime <= 0)
+                   {
+                       animal.CureStatus();
+                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has recovered from bubble beam!");
+                    }
+
+                    animal.StatusTime--;
+                    animal.DecreaseHP(animal.MaxHp / 12);
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} cannot breathe due to bubble beam");
+                    
+                }
+
+            }
+
          }
 
         //Todo: add all others move that have status
@@ -166,9 +272,11 @@ public class ConditionsDB
     {
         if (condition == null) 
             return 1f;
-        else if (condition.Id == ConditionID.slp || condition.Id == ConditionID.frz)
+        else if (condition.Id == ConditionID.slp || condition.Id == ConditionID.frz || condition.Id == ConditionID.sng 
+            || condition.Id == ConditionID.bld)
             return 2f;
-        else if (condition.Id == ConditionID.par || condition.Id == ConditionID.psn || condition.Id == ConditionID.brn)
+        else if (condition.Id == ConditionID.par || condition.Id == ConditionID.psn || condition.Id == ConditionID.brn 
+            || condition.Id == ConditionID.slr || condition.Id == ConditionID.bbl)
             return 1.5f;
 
         return 1f;
@@ -179,7 +287,7 @@ public enum ConditionID
 {
     none,psn,brn,slp,par,frz,
     confusion,
-    chp,sng,bld,ice,slr,snc,bbl
+    sng,bld,slr,bbl
 
 
     //par - 1/4 chance pokemon wont perform a move

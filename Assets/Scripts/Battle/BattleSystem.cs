@@ -271,6 +271,8 @@ public class BattleSystem : MonoBehaviour
             yield return sourceUnit.Hud.WaitForHPUpdate();
             yield break;
         }
+
+
         yield return ShowStatusChanges(sourceUnit.Animal);
 
         move.PP--;
@@ -333,7 +335,14 @@ public class BattleSystem : MonoBehaviour
         //Status Condition
         if(effects.Status != ConditionID.none)
         {
-            target.SetStatus(effects.Status);
+            if (moveTarget == MoveTarget.Self)
+            {
+                source.SetStatus(effects.Status);
+            }
+            else
+            {
+                target.SetStatus(effects.Status);
+            }
         }
 
         //Volatile Status Condition
