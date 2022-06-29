@@ -1,0 +1,270 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8083fbac6f06443823daae90f2a44b, type: 3}
+  m_Name: AllMusic
+  m_EditorClassIdentifier: 
+  sounds:
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: select
+    AudioClip: {fileID: 8300000, guid: 3da52f533b75ae145ba1ec8b41770bcd, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: hit
+    AudioClip: {fileID: 8300000, guid: a5e1a63c22a1ca94c90f3ffde04e53f1, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: itemObtained
+    AudioClip: {fileID: 8300000, guid: 88b4c7b7b12c02b4fbbe1818c5c4d071, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: animalObtained
+    AudioClip: {fileID: 8300000, guid: 82c9e5b24f0b8f04ab5079da5f7dca04, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: evolutionMusic
+    AudioClip: {fileID: 8300000, guid: ef52cb0b40383b94fb74d27ceeb2c1b0, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: wildBattleMusic
+    AudioClip: {fileID: 8300000, guid: d2aa14775f0313743ab373370e48e9fc, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: trainerBattleMusic
+    AudioClip: {fileID: 8300000, guid: f9280c1da9c7ec54d89143542b6b56bd, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: victoryMusic
+    AudioClip: {fileID: 8300000, guid: 78b0974c09182d44fae9cf96d4617a4d, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: centralScene
+    AudioClip: {fileID: 8300000, guid: 2bd125969c339ca4fb0d43454cf253f0, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: northScene
+    AudioClip: {fileID: 8300000, guid: df1b75b223543474f976d48e5f5ba16a, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: westScene
+    AudioClip: {fileID: 8300000, guid: 5b63925ee13d3934e8ad243c3a527540, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: eastScene
+    AudioClip: {fileID: 8300000, guid: c648ae1f9cdf32741a716741c36b8165, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: southScene
+    AudioClip: {fileID: 8300000, guid: 09e1a58d88b3b9b4abde931eac849430, type: 3}
+    volume: 1
+  - audioType: 1
+    source: {fileID: 0}
+    clipName: trainerAppearsMusic
+    AudioClip: {fileID: 8300000, guid: 15a21ec3d8976fb4ca5817e0d862907e, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: chest
+    AudioClip: {fileID: 8300000, guid: 05d914a82f0cac448bc04548561ae789, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: thunder
+    AudioClip: {fileID: 8300000, guid: 39ccc57ea84565f45822312d2310b08c, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: acid
+    AudioClip: {fileID: 8300000, guid: b43cee19bed9c7040aab3d46703ec847, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: airCutter
+    AudioClip: {fileID: 8300000, guid: 603e97f7c77a4ab4cbcaf59914223e51, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: armThrust
+    AudioClip: {fileID: 8300000, guid: a5e1a63c22a1ca94c90f3ffde04e53f1, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: fireBlast
+    AudioClip: {fileID: 8300000, guid: f3c31b9ba1d8e164383bc9f60b76e1c3, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: poisonGas
+    AudioClip: {fileID: 8300000, guid: 7c41abb6569dbfc4a80af74f3d3311f5, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: thunderBolt
+    AudioClip: {fileID: 8300000, guid: 8966e578772bfe44083d617ce1f4c812, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: voltTackle
+    AudioClip: {fileID: 8300000, guid: 537d0efe364b7a444869de8a06094c32, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: waterSport
+    AudioClip: {fileID: 8300000, guid: d6913ad7ecd48c24299535d2c2161d68, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: whirlpoolTurnDamage
+    AudioClip: {fileID: 8300000, guid: 2db886fc61c6e494497102ff9539da22, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: wish
+    AudioClip: {fileID: 8300000, guid: 5412fd744ad2228448f77500a188f28f, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: yawn
+    AudioClip: {fileID: 8300000, guid: 05b1de9d98071994a9e607b42855e79f, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: sing
+    AudioClip: {fileID: 8300000, guid: eab97b1465afbce41b137909a4b2b931, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: slash
+    AudioClip: {fileID: 8300000, guid: 003c128fa1ce23c41b6e3d407a7aea17, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: headButt
+    AudioClip: {fileID: 8300000, guid: aaad852b1f84b90419cb8426e16a4b1e, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: hydroPump
+    AudioClip: {fileID: 8300000, guid: 05dad56f79c619e4f9ff6bd095eacd1b, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: iceBeam
+    AudioClip: {fileID: 8300000, guid: 7de957306570e1a48b0c313beb7b2a43, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: waterfall
+    AudioClip: {fileID: 8300000, guid: ae8a0712610dd964c80d88d926756608, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: bubbleBeam
+    AudioClip: {fileID: 8300000, guid: 85549acdd8627834b832deb43513fc00, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: karateChop
+    AudioClip: {fileID: 8300000, guid: c94e5f8adbde5d547935bc8793b11fa4, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: bodySlam
+    AudioClip: {fileID: 8300000, guid: 68a156304da2c4b47b81257bb8c78ba7, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: bite
+    AudioClip: {fileID: 8300000, guid: 2032f32cebe80ff4394807e3a8965612, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: supersonic
+    AudioClip: {fileID: 8300000, guid: 4046a5d04545ce541a6287d529935758, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: flameThrower
+    AudioClip: {fileID: 8300000, guid: 8fa86ded1d2fd854c826deb1c4cab917, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: firePunch
+    AudioClip: {fileID: 8300000, guid: fab2116e538aac3488db8e301859dcd4, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: solarBeam
+    AudioClip: {fileID: 8300000, guid: f7a7e23414f1ce34185fe50250d86203, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: auroraBeam
+    AudioClip: {fileID: 8300000, guid: dac71ffc1ea0703449120d591f0132e7, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: waterGun
+    AudioClip: {fileID: 8300000, guid: 9f2fdcfd81c8e9c4c83d07b9281599a9, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: surf
+    AudioClip: {fileID: 8300000, guid: 4cd15d37dbb9d2544bda0b482d2998eb, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: quickEye
+    AudioClip: {fileID: 8300000, guid: 5debe2eb203f77c4fa2df6678fffcf24, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: bloodBath
+    AudioClip: {fileID: 8300000, guid: f545bee2252d06b439bcf3811ab0c4d9, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: flap
+    AudioClip: {fileID: 8300000, guid: 5a1ce44ee6c7d7e48b074499a0e07f70, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: crawl
+    AudioClip: {fileID: 8300000, guid: 1cb4bab175fe2af4c954096cad9cc51c, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: drown
+    AudioClip: {fileID: 8300000, guid: 79b7c46a7d82410469e43991d2a56a5d, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: squeeze
+    AudioClip: {fileID: 8300000, guid: 1bc6cb3fd4c144e4785248b122c8fa19, type: 3}
+    volume: 1
+  - audioType: 0
+    source: {fileID: 0}
+    clipName: solarBeam
+    AudioClip: {fileID: 8300000, guid: 8e02fdb2e34a1c340abf4589d10402d4, type: 3}
+    volume: 1

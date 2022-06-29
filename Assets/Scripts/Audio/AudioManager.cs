@@ -8,12 +8,13 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public AllMusic sounds;
     [SerializeField] List<AudioData> sfxList;
 
     [SerializeField] private AudioMixerGroup musicMixerGroup;
     [SerializeField] private AudioMixerGroup soundEffectsMixerGroup;
 
-    [SerializeField] private Sound[] sounds;
+    
     
     //[SerializeField] AudioSource musicPlayer;
     //[SerializeField] AudioSource sfxPlayer;
@@ -31,19 +32,20 @@ public class AudioManager : MonoBehaviour
     {
         i = this;
 
-        foreach (Sound s in sounds)
+        for(int s = 0; s < sounds.SoundCount; s++)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.AudioClip;
-            s.source.volume = s.volume;
+            Sound sound = sounds.GetSoundIndex(s);
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.AudioClip;
+            sound.source.volume = sound.volume;
 
-            switch (s.audioType)
+            switch (sound.audioType)
             {
                 case Sound.AudioTypes.soundEffect:
-                    s.source.outputAudioMixerGroup = soundEffectsMixerGroup;
+                    sound.source.outputAudioMixerGroup = soundEffectsMixerGroup;
                     break;
                 case Sound.AudioTypes.music:
-                    s.source.outputAudioMixerGroup = musicMixerGroup;
+                    sound.source.outputAudioMixerGroup = musicMixerGroup;
                     break;
             }
 
@@ -63,7 +65,8 @@ public class AudioManager : MonoBehaviour
     public void PlaySfx(string clipname, bool pauseMusic = false)
     {
         if (clipname == null) return;
-        Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
+        Sound s = sounds.GetSound(clipname);
+        //Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
         if (s == null)
         {
             Debug.LogError("Sound: " + clipname + "does not exist!");
@@ -71,7 +74,7 @@ public class AudioManager : MonoBehaviour
         }
         if (pauseMusic && prevMusic != null)
         {
-            Sound prevSound = Array.Find(sounds, dummySound => dummySound.clipName == prevMusic);
+            Sound prevSound = sounds.GetSound(prevMusic);
             prevSound.source.Pause();
             StartCoroutine(UnPauseMusic(s.AudioClip.length, prevSound));
         }
@@ -93,7 +96,7 @@ public class AudioManager : MonoBehaviour
     public void Play(string clipname, bool loop = true, bool fade = false)
     {
         if (clipname == null || clipname == currMusic) return;
-            currMusic = clipname;
+        currMusic = clipname;
 
         StartCoroutine(PlayMusicAsync(clipname, loop, fade));
     }
@@ -101,7 +104,8 @@ public class AudioManager : MonoBehaviour
     IEnumerator PlayMusicAsync(string clipname, bool loop, bool fade)
     {
         prevMusic = currMusic;
-        Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
+        Sound s = sounds.GetSound(clipname);
+        //Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
         if (s == null)
         {
             Debug.LogError("Sound: " + clipname + "does not exist!");
@@ -121,11 +125,12 @@ public class AudioManager : MonoBehaviour
 
     public void Stop()
     {
-        foreach (Sound s in sounds)
+        for (int s = 0; s < sounds.SoundCount; s++)
         {
-            if (s.source.isPlaying)
+            Sound sound = sounds.GetSoundIndex(s);
+            if (sound.source.isPlaying)
             {
-                s.source.Stop();
+                sound.source.Stop();
             }
         }
     }
