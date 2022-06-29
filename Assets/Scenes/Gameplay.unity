@@ -174,10 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
+  - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
     levelRange: {x: 1, y: 4}
     chancePercentage: 70
-  - animal: {fileID: 11400000, guid: a8dccafcc799f25499a5809d1b22c534, type: 2}
+  - animal: {fileID: 11400000, guid: b43c41dad4c64ca4ab8bdbdd4637ecc9, type: 2}
     levelRange: {x: 1, y: 5}
     chancePercentage: 30
   totalChance: 100
@@ -7753,10 +7753,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: 639657b7a1e83d04e974e8eff751d9ba, type: 2}
+  - animal: {fileID: 11400000, guid: c28f5908038dfb2409437f0c060d7dda, type: 2}
     levelRange: {x: 1, y: 4}
     chancePercentage: 50
-  - animal: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
+  - animal: {fileID: 11400000, guid: 27dbdeb540ce0d14494b13dc3f1ecc9b, type: 2}
     levelRange: {x: 1, y: 5}
     chancePercentage: 50
   totalChance: 100
@@ -7890,10 +7890,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
+  - animal: {fileID: 11400000, guid: fe035f31cc880d849ba4cdfec3f771c3, type: 2}
     levelRange: {x: 1, y: 4}
     chancePercentage: 70
-  - animal: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
+  - animal: {fileID: 11400000, guid: 66cd4190d35754c428e347afbf12f898, type: 2}
     levelRange: {x: 1, y: 5}
     chancePercentage: 30
   totalChance: 100
@@ -8000,11 +8000,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: c9c29e844c924f24b998b9be1a364d91, type: 2}
-    levelRange: {x: 1, y: 20}
+  - animal: {fileID: 11400000, guid: 638267fa1565cb643a9140df18a2b16f, type: 2}
+    levelRange: {x: 1, y: 10}
     chancePercentage: 50
-  - animal: {fileID: 11400000, guid: 5d25802e10f36984e8eabe842077d4d1, type: 2}
-    levelRange: {x: 1, y: 20}
+  - animal: {fileID: 11400000, guid: 67b729d79e5b2604eb4076940fc6df18, type: 2}
+    levelRange: {x: 1, y: 10}
     chancePercentage: 50
   totalChance: 100
 --- !u!114 &1879236401 stripped
