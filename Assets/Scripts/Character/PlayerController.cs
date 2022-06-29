@@ -104,9 +104,10 @@ public class PlayerController : MonoBehaviour, ISavable
         var saveData = new PlayerSaveData()
         {
             //Save player position
-            position = new float[] { transform.position.x, transform.position.y},
+            position = new float[] { transform.position.x, transform.position.y },
             //Save animal party
-            animals = GetComponent<AnimalParty>().Animals.Select( p => p.GetSaveData()).ToList()
+            animals = GetComponent<AnimalParty>().Animals.Select(p => p.GetSaveData()).ToList(),
+            storage = GetComponent<AnimalStorage>().Animals.Select(p => p.GetSaveData()).ToList()
         };
         return saveData ;
     }
@@ -122,6 +123,7 @@ public class PlayerController : MonoBehaviour, ISavable
 
         //Restore Party
         GetComponent<AnimalParty>().Animals = saveData.animals.Select(s => new Animal(s)).ToList();
+        GetComponent<AnimalStorage>().Animals = saveData.storage.Select(s => new Animal(s)).ToList();
     }
 
     public Character Character => character;
@@ -132,4 +134,5 @@ public class PlayerSaveData
 {
     public float[] position;
     public List<AnimalSaveData> animals;
+    public List<AnimalSaveData> storage;
 }
