@@ -6534,6 +6534,10 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
+      propertyPath: sounds
+      value: 
+      objectReference: {fileID: 11400000, guid: 63bb587dc8d4dbd4482ee9ff77bb473c, type: 2}
+    - target: {fileID: 7755694543632092374, guid: 6420b82cf33dcd34c8bf30cc878a82ac, type: 3}
       propertyPath: musicMixerGroup
       value: 
       objectReference: {fileID: 6517520092302637368, guid: 7b9c7249d2f62504f979a54a7d8c212d, type: 2}

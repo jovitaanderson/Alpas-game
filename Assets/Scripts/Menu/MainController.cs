@@ -9,7 +9,7 @@ public class MainController : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] AudioClip sceneMusic;
     [SerializeField] string playSceneMusic;
-    [SerializeField] string sfx;
+    //[SerializeField] string sfx;
 
     [Header("Volume Settings")]
     [SerializeField] private Text musicTextValue = null;
@@ -54,9 +54,9 @@ public class MainController : MonoBehaviour
     private void Start()
     {
         //TODO: remove if audio is still saved (when restarting game) without this code
-        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
+        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
         {
-            SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
+            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
             SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
         }
 
@@ -131,7 +131,7 @@ public class MainController : MonoBehaviour
 
     public void VolumeApply()
     {
-        PlayerPrefs.SetFloat("masterVolume", musicVolume);
+        PlayerPrefs.SetFloat("masterMusic", musicVolume);
         PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
         PlaySFX();
         //Show Prompt
@@ -143,9 +143,12 @@ public class MainController : MonoBehaviour
         if (MenuType == "Audio")
         {
             PlaySFX();
-            AudioListener.volume = defaultVolume;
+            musicVolume = defaultVolume;
+            soundEffectsVolume = defaultVolume;
             musicSlider.value = defaultVolume;
             musicTextValue.text = ((int)(defaultVolume * 100)).ToString();
+            sfxTextSlider.value = defaultVolume;
+            sfxTextValue.text = ((int)(defaultVolume * 100)).ToString();
             VolumeApply();
         }
     }
