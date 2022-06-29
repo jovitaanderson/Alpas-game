@@ -10,7 +10,7 @@ public class EvolutionManager : MonoBehaviour
     [SerializeField] Image animalImage;
     [SerializeField] GameObject quizUI;
 
-    [SerializeField] AudioClip evolutionMusic;
+    [SerializeField] string evolutionMusic;
 
     private QuizUI quizScript;
 
@@ -30,7 +30,7 @@ public class EvolutionManager : MonoBehaviour
     {
         quizUI.SetActive(true);
 
-        AudioManager.i.PlayMusic(evolutionMusic);
+        AudioManager.i.Play(evolutionMusic);
 
         quizScript.Reset();
         yield return new WaitUntil(() => quizScript.CorrectAns != null);

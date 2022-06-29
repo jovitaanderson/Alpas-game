@@ -25,9 +25,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] InventoryUI inventoryUI;
 
     [Header("Audio")]
-    [SerializeField] AudioClip wildBattleMusic;
-    [SerializeField] AudioClip trainerBattleMusic;
-    [SerializeField] AudioClip battleVictoryMusic;
+    [SerializeField] string wildBattleMusic;
+    [SerializeField] string trainerBattleMusic;
+    [SerializeField] string battleVictoryMusic;
 
 
     public event Action<bool> OnBattleOver;
@@ -55,8 +55,8 @@ public class BattleSystem : MonoBehaviour
         this.wildAnimal = wildAnimal;
         player = playerParty.GetComponent<PlayerController>();
         isTrainerBattle = false;
-
-        AudioManager.i.PlayMusic(wildBattleMusic);
+        AudioManager.i.Stop();
+        AudioManager.i.Play(wildBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
@@ -69,11 +69,12 @@ public class BattleSystem : MonoBehaviour
         isTrainerBattle = true;
         player = playerParty.GetComponent<PlayerController>();
         trainer = trainerParty.GetComponent<TrainerController>();
-
-        AudioManager.i.PlayMusic(trainerBattleMusic);
+        AudioManager.i.Stop();
+        AudioManager.i.Play(trainerBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
+
 
     public IEnumerator SetupBattle()
     {
@@ -135,6 +136,7 @@ public class BattleSystem : MonoBehaviour
 
     void BattleOver(bool won) //state
     {
+        AudioManager.i.Stop();
         state = BattleState.BattleOver;
         playerParty.Animals.ForEach(p => p.OnBattleOver());
         playerUnit.Hud.ClearData();
@@ -269,6 +271,8 @@ public class BattleSystem : MonoBehaviour
             yield return sourceUnit.Hud.WaitForHPUpdate();
             yield break;
         }
+
+
         yield return ShowStatusChanges(sourceUnit.Animal);
 
         move.PP--;
@@ -331,7 +335,14 @@ public class BattleSystem : MonoBehaviour
         //Status Condition
         if(effects.Status != ConditionID.none)
         {
-            target.SetStatus(effects.Status);
+            if (moveTarget == MoveTarget.Self)
+            {
+                source.SetStatus(effects.Status);
+            }
+            else
+            {
+                target.SetStatus(effects.Status);
+            }
         }
 
         //Volatile Status Condition
@@ -408,7 +419,10 @@ public class BattleSystem : MonoBehaviour
                 battleWon = trainerParty.GetHealthyAnimal() == null;
 
             if (battleWon)
-                AudioManager.i.PlayMusic(battleVictoryMusic);
+            {
+                AudioManager.i.Stop();
+                AudioManager.i.Play(battleVictoryMusic);
+            }
 
             //exp gain
             int expYield = faintedUnit.Animal.Base.ExpYield;

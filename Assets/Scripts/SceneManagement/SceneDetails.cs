@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneDetails : MonoBehaviour
 {
     [SerializeField] List<SceneDetails> connectedScenes;
-    [SerializeField] AudioClip sceneMusic;
+    [SerializeField] string sceneMusic;
+    [SerializeField] Sprite backgroundBattle;
+    [SerializeField] Image backgroundBattleImage;
 
     public bool IsLoaded { get; private set; }
     List<SavableEntity> savableEntities;
@@ -23,10 +26,17 @@ public class SceneDetails : MonoBehaviour
 
             //play the music of the scene
             if (sceneMusic != null)
-                AudioManager.i.PlayMusic(sceneMusic, fade: true);
+            {
+                AudioManager.i.Stop();
+                AudioManager.i.Play(sceneMusic, fade: true);
+            }
 
-           //Load alll connected scenes
-           foreach (var scene in connectedScenes)
+            //change background battle
+            if (backgroundBattle != null)
+                backgroundBattleImage.sprite = backgroundBattle;
+
+            //Load alll connected scenes
+            foreach (var scene in connectedScenes)
            {
                scene.LoadScene();
            }
@@ -87,5 +97,5 @@ public class SceneDetails : MonoBehaviour
         return saveableEntities;
     }
 
-    public AudioClip SceneMusic => sceneMusic;
+    public string SceneMusic => sceneMusic;
 }

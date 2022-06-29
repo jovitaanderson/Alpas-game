@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf51f50309acb14fa76adf0ea077e0c, type: 3}
+  m_Name: easyChestData
+  m_EditorClassIdentifier: 
+  questions:
+  - questionInfo: Which number is the odd one out?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 9678
+    - 3527
+    - 5133
+    - 6895
+    correctAns: 3527
+  - questionInfo: What number should replace the question mark?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: ef30611c82b086d429f147adc082181c, type: 3}
+    options:
+    - 0
+    - 5
+    - 7
+    - 6
+    correctAns: 0
+  - questionInfo: What letter is directly opposite the letter that is two letters
+      away clockwise from the letter that is directly opposite the letter E?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 64061c431ade219459f87947d5b95588, type: 3}
+    options:
+    - G
+    - A
+    - C
+    - H
+    correctAns: G
+  - questionInfo: Which number should come next in the pattern? 37, 34, 31, 28
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 20
+    - 21
+    - 25
+    - 27
+    correctAns: 25
+  - questionInfo: 'Find the answer that best completes the analogy: Book is to Reading
+      as Fork is to:'
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - drawing
+    - writing
+    - stirring
+    - eating
+    correctAns: eating
+  - questionInfo: You are in a dark room with a candle, a wood stove, and a gas lamp.
+      If you only have one match, what do you light first?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - match
+    - candle
+    - wood stove
+    - gas lamp
+    correctAns: match
+  - questionInfo: You answer me although I never ask you questions. What am I?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - rock
+    - telephone
+    - teacher
+    - book
+    correctAns: telephone
+  - questionInfo: Some months have 31 days. Some have 30. How many have 28?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 1
+    - 11
+    - 10
+    - 12
+    correctAns: 12
+  - questionInfo: ' I have three apples. If YOU take away two from me, how many do
+      YOU have?'
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 1
+    - 0
+    - 2
+    - 3
+    correctAns: 2
+  - questionInfo: ' I have three apples. If YOU take away two from me, how many do
+      YOU have?'
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 1
+    - 0
+    - 2
+    - 3
+    correctAns: 2
+  - questionInfo: The day before yesterday, Suzie was 17. Next year, she will be
+      20. What day is her birthday?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 31 December
+    - 25 December
+    - 1 January
+    - 30 December
+    correctAns: 31 December
+  - questionInfo: A farmer has 17 sheep; all but nine dies. How many are left?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 8
+    - 9
+    - 17
+    - 0
+    correctAns: 9
+  - questionInfo: A doctor gives you three pills telling you to take one every half
+      hour. How long would the pills last?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 0.5 hours
+    - 1 hour
+    - 1.5 hours
+    - 3 hours
+    correctAns: 1 hour
+  - questionInfo: Divide 30 by 1/2 and add 10. What is the answer?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 35
+    - 3.5
+    - 70
+    - 7
+    correctAns: 70
+  - questionInfo: "You are my son, but I\u2019m not your father. Who says that?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Uncle
+    - Mother
+    - Brother
+    - Sister
+    correctAns: Mother
+  - questionInfo: At a conference, 12 members shook hands with each other before
+      & after the meeting. How many total number of hand shakes occurred?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 100
+    - 132
+    - 144
+    - 121
+    correctAns: 132
+  - questionInfo: The day after the day after tomorrow is four days before Monday.
+      What day is it today?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    correctAns: Monday
+  - questionInfo: Forest is to tree as tree is to ?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - plant
+    - leaf
+    - branch
+    - mangrove
+    correctAns: leaf
+  - questionInfo: I am a mother's child and a father's child but nobody's son. What
+      am I?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - grandson
+    - daughter
+    - father
+    - uncle
+    correctAns: daughter
+  - questionInfo: If POST is 1234 and FLIRT is 56784, what is FROST?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 58234
+    - 58243
+    - 52384
+    - 43285
+    correctAns: 58234

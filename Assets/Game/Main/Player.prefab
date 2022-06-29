@@ -393,7 +393,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -451,19 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119a5e090017fbb4ebee04d46a0390c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animals:
-  - _base: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    level: 12
-  - _base: {fileID: 11400000, guid: 23f12d223a7c5c9469b5746e63132bab, type: 2}
-    level: 10
-  - _base: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
-    level: 6
-  - _base: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
-    level: 7
+  animals: []
 --- !u!114 &4201773140602634709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,59 +508,43 @@ MonoBehaviour:
   runDownSprites:
   - {fileID: 4729958203124835492, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 2023388368799676934, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: -4649683912599120847, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -7588421497118903741, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 8798925181734385872, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 3247613615588643491, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runUpSprites:
   - {fileID: -2110869666472284630, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -2459803812409443651, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 83936891862420259, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 1792446218612649848, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -2964736655008849243, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 6360752124289167806, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runRightSprites:
   - {fileID: 4540125790094277029, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -864203103293624034, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 2430398865935187042, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 313772172704667481, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -3856126637538691776, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: -265349373440738637, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runLeftSprites:
   - {fileID: -7273833375494310349, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -5842661398014234411, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 5745331325883359826, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -2681594565503833634, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 4769517867174394138, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 1347822668414397327, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runDownLeftSprites:
   - {fileID: -9205813621494929914, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -7565786115231762484, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 8273967293302961906, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 8194328878738167138, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -5288617867512748918, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: -1303407759044246307, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runDownRightSprites:
   - {fileID: 4014616990771689087, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -4585263531758071419, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 6981941942846634953, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 1193009537363524612, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 5756605838901452704, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 5401087349081388407, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runUpLeftSprites:
   - {fileID: 6815041230885084686, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: -5497432237625174052, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 2238731045175602598, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 5761744008986139864, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 708955971814094497, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 1149479352836214839, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   runUpRightSprites:
   - {fileID: 6193265921238401708, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 6061193177749981608, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: -3934839258008899768, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 3472270671181414768, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 6234804370496863701, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
-  - {fileID: 1315465046878785441, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
 --- !u!114 &4201773140602634707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +630,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9956ebe0723287847bc375eb5532f26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: []
+  slots:
+  - item: {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: c8c0014cdf29f364599bedfeaba49c8b, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: 6df98afd3c42bc742a64ed672988d553, type: 2}
+    count: 6
+  - item: {fileID: 11400000, guid: a4cc569d115558d408ef6939d202cb72, type: 2}
+    count: 2
+  - item: {fileID: 11400000, guid: 6c2c71af0a7c8864d84ee32e58aa720d, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: db6f2ce00e3089048955ed6e6a77b023, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: d23567f2625b0ad40b5904a5431d351b, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: 0176ceed4fdc31f44b94160c51d96bb5, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
+    count: 1
   animalCaptureSlots: []
 --- !u!114 &2112548606203843202
 MonoBehaviour:
@@ -684,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be5cdd81ef2fa143afe93c5159b5648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 300
 --- !u!1 &4201773140779870372
 GameObject:
   m_ObjectHideFlags: 0

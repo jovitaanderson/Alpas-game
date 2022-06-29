@@ -10,7 +10,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     [SerializeField] Dialog dialogAfterBattle;
     [SerializeField] GameObject exclamation;
     [SerializeField] GameObject fov;
-    [SerializeField] AudioClip trainerAppearsClip;
+    [SerializeField] string trainerAppearsClip; //a trainer appears(bad guy version)
 
     //State
     bool battleLost = false;
@@ -33,18 +33,22 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
     public IEnumerator Interact(Transform initiator)
     {
-        character.LookTowards(initiator.position);
-
         if (!battleLost)
         {
-            AudioManager.i.PlayMusic(trainerAppearsClip);
-
-            yield return DialogManager.Instance.ShowDialog(dialog);
-            GameController.Instance.StartTrainerBattle(this);
+            if (initiator.GetComponent<AnimalParty>().GetHealthyAnimal() != null)
+            {
+                character.LookTowards(initiator.position);
+                AudioManager.i.Play(trainerAppearsClip);
+                yield return DialogManager.Instance.ShowDialog(dialog);
+                GameController.Instance.StartTrainerBattle(this);
+            }
+            else 
+                yield return DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight with trainer.");
            
         }
         else
         {
+            character.LookTowards(initiator.position);
             yield return DialogManager.Instance.ShowDialog(dialogAfterBattle);
         }
 
@@ -52,7 +56,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
     public IEnumerator TriggerTrainerBattle(PlayerController player)
     {
-        AudioManager.i.PlayMusic(trainerAppearsClip);
+        AudioManager.i.Play(trainerAppearsClip);
 
         // Show Exclamation
         exclamation.SetActive(true);

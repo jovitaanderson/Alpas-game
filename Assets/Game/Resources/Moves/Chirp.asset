@@ -15,12 +15,12 @@ MonoBehaviour:
   name: Chirp
   description: 
   type: 2
-  power: 0
+  power: 20
   accuracy: 100
   alwaysHits: 0
-  pp: 40
+  pp: 15
   priority: 0
-  category: 2
+  category: 0
   effects:
     boosts:
     - stat: 0
@@ -34,4 +34,4 @@ MonoBehaviour:
     chance: 10
     target: 0
   target: 0
-  sound: {fileID: 8300000, guid: 5412fd744ad2228448f77500a188f28f, type: 3}
+  sound: wish

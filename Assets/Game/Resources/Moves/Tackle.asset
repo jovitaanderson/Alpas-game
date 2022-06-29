@@ -15,10 +15,10 @@ MonoBehaviour:
   name: Tackle
   description: 
   type: 5
-  power: 50
-  accuracy: 80
+  power: 20
+  accuracy: 100
   alwaysHits: 0
-  pp: 20
+  pp: 15
   priority: 0
   category: 0
   effects:
@@ -27,4 +27,4 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: {fileID: 8300000, guid: a5e1a63c22a1ca94c90f3ffde04e53f1, type: 3}
+  sound: voltTackle

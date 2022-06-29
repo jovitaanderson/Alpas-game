@@ -4,17 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Replace, Release, Busy}
+
 public class PartyScreen : MonoBehaviour
 {
     [SerializeField] Text messageText;
+    [SerializeField] GameObject choiceBox;
+    [SerializeField] GameObject animalStorage;
 
     PartyMemberUI[] memberSlots;
     List<Animal> animals;
     AnimalParty party;
+    Text[] choices;
+
+    PartyScreenState state;
 
     int selection = 0;
+    int choiceSelection = 0;
+    int swapSelection = 0;
 
-    public Animal SelectedMember => animals[selection];
+    public Animal SelectedMember {
+        get=> animals [selection];
+        set => animals[selection] = value;
+    }
 
     //Party Screen can be called from different states like ActionSelection, RunningTurn, AboutToUse
     public BattleState? CalledFrom { get; set; }
@@ -29,6 +41,14 @@ public class PartyScreen : MonoBehaviour
 
         party.OnUpdated += SetPartyData;
     }
+
+    private void Start()
+    {
+        //get the children in choicebox
+        choices = choiceBox.GetComponentsInChildren<Text>();
+        UpdateChoiceBox(choiceSelection);
+    }
+
     public void SetPartyData()
     {
         animals = party.Animals;
@@ -52,32 +72,157 @@ public class PartyScreen : MonoBehaviour
     //Handles party screen selection
     public void HandleUpdate(Action onSelected, Action onBack)
     {
-        var prevSelection = selection;
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++selection;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --selection;
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            selection += 2;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            selection -= 2;
-
-        //Restrict value of currentMove between 0 and no. of animals moves
-        selection = Mathf.Clamp(selection, 0, animals.Count - 1);
-
-        if (selection != prevSelection)
-            UpdateMemberSelection(selection);
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (state == PartyScreenState.PartyScreen)
         {
-            onSelected?.Invoke();
+            var prevSelection = selection;
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                ++selection;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                --selection;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                selection += 2;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                selection -= 2;
+
+            //Restrict value of currentMove between 0 and no. of animals moves
+            selection = Mathf.Clamp(selection, 0, animals.Count - 1);
+
+            if (selection != prevSelection)
+                UpdateMemberSelection(selection);
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                onSelected?.Invoke();
+                if (onSelected == null)
+                {
+                    EnableChoiceBox(true);
+                    messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
+                }
+
+            }
+            //Go back to select action screen if esc or backspace is pressed
+            else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                onBack?.Invoke();
+
+            }
+        } 
+        else if (state == PartyScreenState.ChoiceBox)
+        {
+            var prevChoiceSelection = choiceSelection;
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                ++choiceSelection;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                --choiceSelection;
+
+            choiceSelection = Mathf.Clamp(choiceSelection, 0, choices.Length-1);
+
+            if (choiceSelection != prevChoiceSelection)
+                UpdateChoiceBox(choiceSelection);
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                StartCoroutine(ChoiceSelection(choiceSelection));
+            }
+            //else, if press escape, then go back
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                choiceSelection = 0;
+                EnableChoiceBox(false);
+            }
         }
-        //Go back to select action screen if esc or backspace is pressed
-        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        if (state == PartyScreenState.Swap)
         {
-            onBack?.Invoke();
+            var prevSelection = swapSelection;
 
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                ++swapSelection;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                --swapSelection;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                swapSelection += 2;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                swapSelection -= 2;
+
+            swapSelection = Mathf.Clamp(swapSelection, 0, animals.Count - 1);
+
+            if (swapSelection != prevSelection)
+                UpdateMemberSelection(swapSelection);
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (selection == swapSelection)
+                    messageText.text = "Cannot swap with same animal";
+                else
+                    SwapAnimal(swapSelection, selection);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                ResetSelection();
+            }
+        }
+    }
+
+    IEnumerator ChoiceSelection(int selection)
+    {
+        if(selection == 0)
+        {
+            memberSlots[this.selection].SetSelectedSwap(true);
+            messageText.text = $"Chosen animal to swap: {SelectedMember.Base.Name}";
+            UpdateMemberSelection(swapSelection);
+            yield return new WaitForSeconds(0.2f);
+            state = PartyScreenState.Swap;
+
+        }
+        else if (selection == 1)
+        {
+            //Replace
+            state = PartyScreenState.Replace;
+            animalStorage.SetActive(true);
+        }
+        else if (selection == 2)
+        {
+            //Release
+            //todo: add comfirmation dialogue before releasing
+            animals.Remove(SelectedMember);
+            ResetSelection();
+
+        }
+    }
+
+    void SwapAnimal(int currentIndex, int swapIndex)
+    {
+        var tempAnimal = animals[currentIndex];
+        animals[currentIndex] = animals[swapIndex];
+        animals[swapIndex] = tempAnimal;
+        ResetSelection();
+    }
+
+    public void ResetSelection()
+    {
+        memberSlots[this.selection].SetSelectedSwap(false);
+        SetPartyData();
+        EnableChoiceBox(false);
+        selection = 0;
+        choiceSelection = 0;
+        swapSelection = 0;
+        UpdateMemberSelection(selection);
+        UpdateChoiceBox(choiceSelection);
+    }
+    public void EnableChoiceBox(bool enable)
+    {
+        choiceBox.SetActive(enable);
+        if (enable)
+        {
+            state = PartyScreenState.ChoiceBox;
+            messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
+        }
+        else
+        {
+            state = PartyScreenState.PartyScreen;
+            messageText.text = "Choose an Animal";
         }
     }
 
@@ -89,6 +234,17 @@ public class PartyScreen : MonoBehaviour
                 memberSlots[i].SetSelected(true);
             else
                 memberSlots[i].SetSelected(false);
+        }
+    }
+
+    void UpdateChoiceBox(int selectedChoice)
+    {
+        for (int i = 0; i < choices.Length; i++)
+        {
+            if (i == selectedChoice)
+                choices[i].color = GlobalSettings.i.HighlightedColor;
+            else
+                choices[i].color = Color.black;
         }
     }
 

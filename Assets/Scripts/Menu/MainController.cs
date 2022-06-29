@@ -8,10 +8,14 @@ public class MainController : MonoBehaviour
 {
     [Header("Audio Settings")]
     [SerializeField] AudioClip sceneMusic;
+    [SerializeField] string playSceneMusic;
+    //[SerializeField] string sfx;
 
     [Header("Volume Settings")]
-    [SerializeField] private Text volumeTextValue = null;
-    [SerializeField] private Slider volumeSlider = null;
+    [SerializeField] private Text musicTextValue = null;
+    [SerializeField] private Slider musicSlider = null;
+    [SerializeField] private Text sfxTextValue = null;
+    [SerializeField] private Slider sfxTextSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
 
     [Header("New Game Dialog")]
@@ -33,19 +37,33 @@ public class MainController : MonoBehaviour
 
     public static bool checkLoadGame = false;
 
+    public static float musicVolume { get; private set; }
+
+    public static float soundEffectsVolume { get; private set; }
+
+    //public static float noChange = 0f;
+
     private void Awake()
     {
-        if (sceneMusic != null)
-            AudioManager.i.PlayMusic(sceneMusic, fade: true);
+        //if (sceneMusic != null)
+        //    AudioManager.i.PlayMusic(sceneMusic, fade: true);
+        if (playSceneMusic != null)
+            AudioManager.i.Play(playSceneMusic);
     }
 
     private void Start()
     {
         //TODO: remove if audio is still saved (when restarting game) without this code
-        if (PlayerPrefs.HasKey("masterVolume"))
+        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
         {
-            SetVolume(PlayerPrefs.GetFloat("masterVolume"));
-            volumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
+            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
+        }
+
+        else
+        {
+            SetMusicVolume(defaultVolume);
+            SetSoundEffectsVolume(defaultVolume);
         }
 
     }
@@ -92,15 +110,29 @@ public class MainController : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetVolume(float volume)
+    public void SetMusicVolume(float volume)
     {
-        AudioListener.volume = volume;
-        volumeTextValue.text = volume.ToString("0.0");
+        //AudioListener.volume = volume;
+        musicVolume = volume;
+        musicTextValue.text = ((int)(volume * 100)).ToString();
+        musicSlider.value = volume;
+        AudioManager.i.UpdateMixerVolume(volume, soundEffectsVolume);
+    }
+
+    public void SetSoundEffectsVolume(float volume)
+    {
+        //AudioListener.volume = volume;
+        soundEffectsVolume = volume;
+        sfxTextValue.text = ((int)(volume * 100)).ToString();
+        sfxTextSlider.value = volume;
+        AudioManager.i.UpdateMixerVolume(musicVolume, volume);
+        PlaySFX();
     }
 
     public void VolumeApply()
     {
-        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+        PlayerPrefs.SetFloat("masterMusic", musicVolume);
+        PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
         PlaySFX();
         //Show Prompt
         StartCoroutine(ConfirmationBox());
@@ -111,9 +143,12 @@ public class MainController : MonoBehaviour
         if (MenuType == "Audio")
         {
             PlaySFX();
-            AudioListener.volume = defaultVolume;
-            volumeSlider.value = defaultVolume;
-            volumeTextValue.text = defaultVolume.ToString("0.0");
+            musicVolume = defaultVolume;
+            soundEffectsVolume = defaultVolume;
+            musicSlider.value = defaultVolume;
+            musicTextValue.text = ((int)(defaultVolume * 100)).ToString();
+            sfxTextSlider.value = defaultVolume;
+            sfxTextValue.text = ((int)(defaultVolume * 100)).ToString();
             VolumeApply();
         }
     }

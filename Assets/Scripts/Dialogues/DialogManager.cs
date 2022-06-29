@@ -15,6 +15,7 @@ public class DialogManager : MonoBehaviour
     public event Action OnDialogFinished;
 
 
+
     //Since dialogmanager will be used for NPC/object(signboards) we use the singleton partten to get the instance
     //and use it in other classes
     public static DialogManager Instance { get; private set; }
@@ -86,16 +87,33 @@ public class DialogManager : MonoBehaviour
 
     public void HandleUpdate()
     {
-
     }
 
     public IEnumerator TypeDialog(string line)
     {
         dialogText.text = "";
-        foreach (var letter in line.ToCharArray())
+        char[] lineCharArray = line.ToCharArray();
+       /* foreach (var letter in line.ToCharArray())
         {
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / lettersPerSecond);
+        }*/
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            dialogText.text += lineCharArray[i];
+            yield return new WaitForSeconds(1f / lettersPerSecond);
+            Debug.Log("print");
+
+            if (Input.GetKey(KeyCode.Return) && i >=6)
+            {
+                Debug.Log("Return pressed");
+                string remainingString = line.Substring(i+1);
+                dialogText.text += remainingString;
+                i = line.Length - 1;
+                yield return new WaitForSeconds(0.5f);
+            }
         }
+
     }
 }

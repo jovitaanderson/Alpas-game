@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sleep
   description: 
-  type: 0
+  type: 5
   power: 0
   accuracy: 100
   alwaysHits: 0
-  pp: 5
+  pp: 20
   priority: 0
   category: 2
   effects:
@@ -27,4 +27,4 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: {fileID: 8300000, guid: 05b1de9d98071994a9e607b42855e79f, type: 3}
+  sound: yawn

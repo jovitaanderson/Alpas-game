@@ -8,12 +8,13 @@ public class EndCreditsController : MonoBehaviour
 {
     private string levelToLoad;
     [Header("Audio Settings")]
-    [SerializeField] AudioClip sceneMusic;
+    [SerializeField] string sceneMusic;
+
 
     private void Awake()
     {
         if (sceneMusic != null)
-            AudioManager.i.PlayMusic(sceneMusic, fade: true);
+            AudioManager.i.Play(sceneMusic, fade: true); 
     }
 
     public void ExitButton()

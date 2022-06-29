@@ -1,47 +1,86 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public AllMusic sounds;
     [SerializeField] List<AudioData> sfxList;
 
-    [SerializeField] AudioSource musicPlayer;
-    [SerializeField] AudioSource sfxPlayer;
+    [SerializeField] private AudioMixerGroup musicMixerGroup;
+    [SerializeField] private AudioMixerGroup soundEffectsMixerGroup;
+
+    
+    
+    //[SerializeField] AudioSource musicPlayer;
+    //[SerializeField] AudioSource sfxPlayer;
 
     [SerializeField] float fadeDuration;
 
-    AudioClip currMusic;
+    string currMusic;
     float originalMusicVol;
+    float originalSFXVol;
+    string prevMusic;
     Dictionary<AudioId, AudioData> sfxLookUp;
 
     public static AudioManager i { get; private set; }
     private void Awake()
     {
         i = this;
+
+        for(int s = 0; s < sounds.SoundCount; s++)
+        {
+            Sound sound = sounds.GetSoundIndex(s);
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.AudioClip;
+            sound.source.volume = sound.volume;
+
+            switch (sound.audioType)
+            {
+                case Sound.AudioTypes.soundEffect:
+                    sound.source.outputAudioMixerGroup = soundEffectsMixerGroup;
+                    break;
+                case Sound.AudioTypes.music:
+                    sound.source.outputAudioMixerGroup = musicMixerGroup;
+                    break;
+            }
+
+        }
     }
 
     private void Start()
     {
-        originalMusicVol = musicPlayer.volume;
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
+        {
+            originalMusicVol = PlayerPrefs.GetFloat("masterVolume");
+            originalSFXVol = PlayerPrefs.GetFloat("masterSFX");
+        }
         sfxLookUp = sfxList.ToDictionary(x => x.id);
     }
 
-    public void PlaySfx(AudioClip clip, bool pauseMusic = false)
+    public void PlaySfx(string clipname, bool pauseMusic = false)
     {
-        if (clip == null) return;
-
-        if (pauseMusic)
+        if (clipname == null) return;
+        Sound s = sounds.GetSound(clipname);
+        //Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
+        if (s == null)
         {
-            musicPlayer.Pause();
-            StartCoroutine(UnPauseMusic(clip.length));
-
+            Debug.LogError("Sound: " + clipname + "does not exist!");
+            return;
+        }
+        if (pauseMusic && prevMusic != null)
+        {
+            Sound prevSound = sounds.GetSound(prevMusic);
+            prevSound.source.Pause();
+            StartCoroutine(UnPauseMusic(s.AudioClip.length, prevSound));
         }
 
         //playing this clip wont cancel any current music that is played
-        sfxPlayer.PlayOneShot(clip);
+        s.source.PlayOneShot(s.AudioClip);
     }
 
     public void PlaySfx(AudioId audioId, bool pauseMusic=false)
@@ -52,45 +91,73 @@ public class AudioManager : MonoBehaviour
         PlaySfx(audioData.clip, pauseMusic);
     }
 
-    public void PlayMusic(AudioClip clip, bool loop = true, bool fade=false)
+    
+
+    public void Play(string clipname, bool loop = true, bool fade = false)
     {
-        if (clip == null || clip == currMusic) return;
+        if (clipname == null || clipname == currMusic) return;
+        currMusic = clipname;
 
-        currMusic = clip;
-
-        StartCoroutine(PlayMusicAsync(clip, loop, fade));
+        StartCoroutine(PlayMusicAsync(clipname, loop, fade));
     }
 
-    IEnumerator PlayMusicAsync(AudioClip clip, bool loop, bool fade)
+    IEnumerator PlayMusicAsync(string clipname, bool loop, bool fade)
     {
+        prevMusic = currMusic;
+        Sound s = sounds.GetSound(clipname);
+        //Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipname);
+        if (s == null)
+        {
+            Debug.LogError("Sound: " + clipname + "does not exist!");
+            yield break;
+        }
         if (fade)
-            yield return musicPlayer.DOFade(0, fadeDuration).WaitForCompletion();
+            yield return s.source.DOFade(0, fadeDuration).WaitForCompletion();
 
-        musicPlayer.clip = clip;
-        musicPlayer.loop = loop;
-        musicPlayer.Play();
+        currMusic = clipname;
+        s.source.loop = loop;
+        s.source.Play();
 
         if (fade)
-            yield return musicPlayer.DOFade(originalMusicVol, fadeDuration).WaitForCompletion();
-
+            yield return s.source.DOFade(originalMusicVol, fadeDuration).WaitForCompletion();
     }
 
-    IEnumerator UnPauseMusic(float delay)
+
+    public void Stop()
+    {
+        for (int s = 0; s < sounds.SoundCount; s++)
+        {
+            Sound sound = sounds.GetSoundIndex(s);
+            if (sound.source.isPlaying)
+            {
+                sound.source.Stop();
+            }
+        }
+    }
+
+    public void UpdateMixerVolume(float musicVolume, float sfxVolume)
+    {
+        musicMixerGroup.audioMixer.SetFloat("Music Volume", Mathf.Log10(musicVolume) * 20);
+        soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", Mathf.Log10(sfxVolume) * 20);
+    }
+
+    IEnumerator UnPauseMusic(float delay, Sound s)
     {
         yield return new WaitForSeconds(delay);
 
-        musicPlayer.volume = 0;
-        musicPlayer.UnPause();
-        musicPlayer.DOFade(originalMusicVol, fadeDuration);
+        s.source.volume = 0;
+        s.source.UnPause();
+        s.source.DOFade(originalMusicVol, fadeDuration);
     }
+
 
 }
 
-public enum AudioId { UISelect, Hit, Faint, ExpGain, ItemObtained, AnimalObtained }
+public enum AudioId { UISelect, Hit, Faint, ExpGain, ItemObtained, AnimalObtained, OpenChest }
 
 [System.Serializable]
 public class AudioData
 {
     public AudioId id;
-    public AudioClip clip;
+    public string clip;
 }

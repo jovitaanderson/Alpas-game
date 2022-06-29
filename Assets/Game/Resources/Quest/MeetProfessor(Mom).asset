@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
+  m_Name: MeetProfessor(Mom)
+  m_EditorClassIdentifier: 
+  name: MeetProfessor(Mom)
+  description: 
+  startDialogue:
+    lines:
+    - Dr Doom has infected the animals outside, save them!
+    - I've packed some supplies to start off your journey
+  inProgressDialogue:
+    lines: []
+  completedDialogue:
+    lines:
+    - Here is a token. Tokens are used to evolve your animal once they reach the
+      required level
+    - Press "M" to open the menu page to open your bag and read the Instruction for
+      the controls
+    - Happy exploring!
+  requiredItem: {fileID: 0}
+  rewardItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}

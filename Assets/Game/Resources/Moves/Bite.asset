@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bite
   description: 
-  type: 5
-  power: 30
+  type: 4
+  power: 15
   accuracy: 100
   alwaysHits: 0
   pp: 20
@@ -27,4 +27,4 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: {fileID: 8300000, guid: 39ccc57ea84565f45822312d2310b08c, type: 3}
+  sound: bite

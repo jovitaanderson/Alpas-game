@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MaxPotion
   m_EditorClassIdentifier: 
   name: Max Potion
-  description: Recovers the health of a Animal by fully
+  description: Recovers the health of an Animal by fully
   usedMessage: restore max HP
   icon: {fileID: -6090256331845058582, guid: a24a52f9ba972ec4398c9fa0c752026a, type: 3}
-  price: 100
+  price: 200
   isSellable: 1
   hpAmount: 0
   restoreMaxHP: 1

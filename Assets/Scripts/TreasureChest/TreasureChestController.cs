@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script to control interaction between player and treasure chest
 public class TreasureChestController : MonoBehaviour, Interactable
 {
     [SerializeField] TreasureChestSpawn treasureChestSpawn;
     public Sprite newSprite;
 
     private SpriteRenderer spriteRenderer;
+
     
     public void Start()
     {
@@ -16,22 +18,13 @@ public class TreasureChestController : MonoBehaviour, Interactable
 
     public IEnumerator Interact(Transform initiator)
     {
-        //open chest
         treasureChestSpawn.chestDestoryed();
         spriteRenderer.sprite = newSprite;
-        //todo: insert IQ questions
-        //yield return DialogManager.Instance.ShowDialogText("insert IQ question");
-        
-        //if answer correctly give coins
-        yield return TreasureChestManager.i.TreasureChest();
-        //if answer wrongly no reward
-
-        //destory chest
+        TreasureChestManager.i.OpenMenu();
         Destroy(gameObject);
+        yield return null;
     }
 
 }
-
-public enum ChestState { Idle, Question }
 
 

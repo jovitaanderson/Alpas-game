@@ -123,6 +123,99 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &179539777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4218428537694305410, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779664380451472901, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127471524260201249, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Talk to Dr Mary (Mom) before going outside!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_Name
+      value: QuestObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -141.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -107
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: onComplete
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: questToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e2a283105d568d468cfec18c5939745, type: 2}
+    - target: {fileID: 8529975477947624592, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529975477947624592, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120027102222490776, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
 --- !u!1001 &417556802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Now you can save the animals outside!
+      value: Save Alpas!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[1]
@@ -164,11 +257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -82.44
+      value: -139.64
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -43.8
+      value: -69.8
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.z
@@ -202,10 +295,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 604246980076941245, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 9162393031431230281, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
     - target: {fileID: 604246980076941246, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_Name
       value: Dr. Richard
@@ -238,12 +327,98 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalToGive:
-    _base: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
+    _base: {fileID: 11400000, guid: b2c0aa4a40870044eb4fb0b74db56047, type: 2}
     level: 1
   dialog:
     lines:
+    - Dr Doom has infected all the animals outside!
     - It is not safe to go out there without an animal
-    - You can have this cat
+    - You can have this kitten
+--- !u!1001 &953919080
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4218428537694305410, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779664380451472901, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127471524260201249, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Talk to Dr Richard (Dad) before going outside!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_Name
+      value: QuestObject (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -141.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -107
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: onComplete
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: questToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: a3789d4a45fdbd2458a966b7add04590, type: 2}
+    - target: {fileID: 9120027102222490776, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
 --- !u!1 &1177741856
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +470,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -607,7 +782,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2375,7 +2550,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 690611616793354649, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5050072673323274322, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: destinationPortal
@@ -2386,12 +2561,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.2
+      value: -131.34
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -51.43
+      value: -77.26
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2619,7 +2798,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3732,6 +3911,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 429167606972576112, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 604246980076941239, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: walkDownSprites.Array.size
       value: 1
@@ -3745,16 +3928,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: questToStart
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e2a283105d568d468cfec18c5939745, type: 2}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: questToComplete
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Please help stop Dr Doom!
+      value: Go and explore Singapore!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[1]
-      value: 
+      value: Press "M" to open the menu page and read the Instruction for the controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+      propertyPath: dialog.lines.Array.data[2]
+      value: Happy exploring!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: movementPattern.Array.size
@@ -3766,11 +3961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.12
+      value: -131.32
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.8
+      value: -67.8
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7045,7 +7240,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7239,7 +7434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5353293519075749337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74.6, y: -46, z: 0}
+  m_LocalPosition: {x: -131.83, y: -71.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4850721486259886044}
@@ -7261,7 +7456,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5331158114969731545}
   - component: {fileID: 8239417001872410364}
-  - component: {fileID: 8135156593905909261}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -7288,7 +7482,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8562,7 +8756,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8612,26 +8806,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8135156593905909261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5353293519075749337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3d46a3a14374d4e9f54c13a0e23656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
 --- !u!1 &8228974447174759461
 GameObject:
   m_ObjectHideFlags: 0

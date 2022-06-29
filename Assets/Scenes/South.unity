@@ -174,7 +174,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -407,7 +407,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6010,7 +6010,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7092,7 +7092,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7925,7 +7925,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1611106093}
   - component: {fileID: 1611106092}
-  - component: {fileID: 1611106094}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -7964,26 +7963,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1611106094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611106091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3d46a3a14374d4e9f54c13a0e23656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
 --- !u!1 &1900093945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8035,7 +8014,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

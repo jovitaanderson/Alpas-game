@@ -164,11 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 89.3
+      value: 133.22
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42.91
+      value: -77.28
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.z
@@ -519,7 +519,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1309,11 +1309,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 95.5
+      value: 139.42
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50.5
+      value: -84.87
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1410,11 +1410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.52
+      value: 142.43999
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.8
+      value: -76.17
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1489,15 +1489,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableItems:
   - {fileID: 11400000, guid: db6f2ce00e3089048955ed6e6a77b023, type: 2}
-  - {fileID: 11400000, guid: 6c2c71af0a7c8864d84ee32e58aa720d, type: 2}
   - {fileID: 11400000, guid: 0176ceed4fdc31f44b94160c51d96bb5, type: 2}
+  - {fileID: 11400000, guid: 6c2c71af0a7c8864d84ee32e58aa720d, type: 2}
   - {fileID: 11400000, guid: c8c0014cdf29f364599bedfeaba49c8b, type: 2}
   - {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}
   - {fileID: 11400000, guid: 6df98afd3c42bc742a64ed672988d553, type: 2}
   - {fileID: 11400000, guid: a4cc569d115558d408ef6939d202cb72, type: 2}
   - {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
-  - {fileID: 11400000, guid: 0bbf73bfee6ab0c46b81aa81094b8e0c, type: 2}
   - {fileID: 11400000, guid: 8c206661b3587424599ac5d5cb42dc4f, type: 2}
+  - {fileID: 11400000, guid: 0bbf73bfee6ab0c46b81aa81094b8e0c, type: 2}
 --- !u!1 &1177741856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1549,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1871,7 +1871,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4112,7 +4112,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7683,7 +7683,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8187,7 +8187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5353293519075749337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 95, y: -45, z: 0}
+  m_LocalPosition: {x: 138.9, y: -79.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4850721486259886044}
@@ -8210,7 +8210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5331158114969731545}
   - component: {fileID: 8239417001872410364}
-  - component: {fileID: 8135156593905909261}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -8237,7 +8236,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9391,7 +9390,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 671ba2b8a4c996b4ea8b62a273f5f3fe, type: 2}
+  - {fileID: 2100000, guid: ef1dafca77179c04b95e1c61604a21d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9441,26 +9440,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8135156593905909261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5353293519075749337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3d46a3a14374d4e9f54c13a0e23656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wildAnimals:
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  - animal: {fileID: 0}
-    levelRange: {x: 0, y: 0}
-    chancePercentage: 0
-  totalChance: 0
 --- !u!1 &8228974447174759461
 GameObject:
   m_ObjectHideFlags: 0

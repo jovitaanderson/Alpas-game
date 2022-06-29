@@ -13,17 +13,32 @@ MonoBehaviour:
   m_Name: Bee
   m_EditorClassIdentifier: 
   name: Bee
-  description: 
+  description: The most common bee in Singapore, the Asian Honey Bee can be found
+    in urban parks and even roof-top gardens. Their hives are often constructed within
+    sheltered spaces, like tree holes but in urban areas, these bees might also use
+    upturned pots and the eaves of roofs.
   frontSprite: {fileID: 21300000, guid: 96846938554463f49977c0bfeb387683, type: 3}
   backSprite: {fileID: 21300000, guid: 96846938554463f49977c0bfeb387683, type: 3}
   type1: 4
   type2: 9
-  maxHp: 40
-  attack: 35
-  defense: 30
-  spAttack: 20
-  spDefense: 20
-  speed: 50
+  maxHp: 45
+  attack: 25
+  defense: 50
+  spAttack: 25
+  spDefense: 25
+  speed: 35
+  expYield: 49
+  growthRate: 0
+  catchRate: 255
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 8cd39dea4d986ba438a77e7e35edc3fc, type: 2}
-    level: 0
+    level: 10
+  - moveBase: {fileID: 11400000, guid: fff032be00558aa4082fbe15f63d1a4b, type: 2}
+    level: 12
+  - moveBase: {fileID: 11400000, guid: 09c32946b606ae5499ccaf0b857854e5, type: 2}
+    level: 14
+  - moveBase: {fileID: 11400000, guid: 85f3437748e078d419efb57d37b81da6, type: 2}
+    level: 18
+  - moveBase: {fileID: 11400000, guid: 4fc3c97a8d266714b8f5d1152583698e, type: 2}
+    level: 20
+  evolutions: []

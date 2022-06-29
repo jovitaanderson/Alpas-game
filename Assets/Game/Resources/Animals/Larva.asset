@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
+  m_Name: Larva
+  m_EditorClassIdentifier: 
+  name: Larva
+  description: The bee larva is a legless and featureless white grub. It is specialized
+    to eat and never leaves the individual wax cell. Larvae grow at a rapid rate
+    in a five-step development called metamorphosis, increasing 1500 times the original
+    size
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
+  type1: 4
+  type2: 9
+  maxHp: 40
+  attack: 35
+  defense: 30
+  spAttack: 20
+  spDefense: 20
+  speed: 50
+  expYield: 22
+  growthRate: 0
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 8cd39dea4d986ba438a77e7e35edc3fc, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: fff032be00558aa4082fbe15f63d1a4b, type: 2}
+    level: 2
+  - moveBase: {fileID: 11400000, guid: 09c32946b606ae5499ccaf0b857854e5, type: 2}
+    level: 4
+  - moveBase: {fileID: 11400000, guid: 85f3437748e078d419efb57d37b81da6, type: 2}
+    level: 6
+  - moveBase: {fileID: 11400000, guid: 4fc3c97a8d266714b8f5d1152583698e, type: 2}
+    level: 8
+  evolutions:
+  - evolvesinto: {fileID: 11400000, guid: f694682ce702246458616a7e2993ea36, type: 2}
+    requiredLevel: 10
+    requiredItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}

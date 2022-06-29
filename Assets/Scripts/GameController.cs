@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest, Question, AnimalList}
 
 public class GameController : MonoBehaviour
 {
@@ -12,10 +12,12 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
+    [SerializeField] AnimalCharacterManager animalCharacterManager;
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
+    
 
     GameState state;
     GameState prevState;
@@ -93,14 +95,16 @@ public class GameController : MonoBehaviour
             partyScreen.SetPartyData();
             state = stateBeforeEvolution;
 
-            AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
+            AudioManager.i.Play(CurrentScene.SceneMusic, fade: true); 
         };
 
         TreasureChestManager.i.OnStartTreasureChest += () => state = GameState.TreasureChest;
+        TreasureChestManager.i.OnSelectTreasureChest += () => state = GameState.Question;
         TreasureChestManager.i.OnCompleteTreasureChest += () => state = GameState.FreeRoam;
 
         ShopController.i.OnStart += () => state = GameState.Shop;
         ShopController.i.OnFinish += () => state = GameState.FreeRoam;
+
     }
 
     public void PauseGame(bool pause) 
@@ -117,22 +121,28 @@ public class GameController : MonoBehaviour
     }
 
     public void StartBattle()
-    {
-        instructionsPanel.SetActive(false);
-        state = GameState.Battle;
-        miniMapWindow.SetActive(false);
-        walletUI.SetActive(false);
-        battleSystem.gameObject.SetActive(true);
-        worldCamera.gameObject.SetActive(false);
-        
+    {   
         //We can get animalparty from plaayercontroller since they are both components of the player game object
         var playerParty = playerController.GetComponent<AnimalParty>();
         //FindObjectOfType<MapArea>() will get the reference and return the game object with MapArea
         var wildAnimal = CurrentScene.GetComponent<MapArea>().GetRandomWildAnimal();
-
         var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
 
-        battleSystem.StartBattle(playerParty, wildAnimalCopy);
+        if (playerParty.GetHealthyAnimal() == null)
+        {
+            StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight wild animals."));
+        }
+        else
+        {
+            instructionsPanel.SetActive(false);
+            state = GameState.Battle;
+            miniMapWindow.SetActive(false);
+            walletUI.SetActive(false);
+            battleSystem.gameObject.SetActive(true);
+            worldCamera.gameObject.SetActive(false);
+
+            battleSystem.StartBattle(playerParty, wildAnimalCopy);
+        }
     }
 
     TrainerController trainer;
@@ -141,23 +151,29 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
+        walletUI.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
         this.trainer = trainer;
         var playerParty = playerController.GetComponent<AnimalParty>();
         var trainerParty = trainer.GetComponent<AnimalParty>();
-        
-        //todo: i not sure if this suppose to be here or not, pls check @shanice
-        //var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
 
         battleSystem.StartTrainerBattle(playerParty, trainerParty);
     }
 
     public void OnEnterTrainersView(TrainerController trainer)
     {
-        state = GameState.Cutscene;
-        StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+        var playerParty = playerController.GetComponent<AnimalParty>();
+        if (playerParty.GetHealthyAnimal() == null)
+        {
+            StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight with trainer."));
+        } else
+        {
+            state = GameState.Cutscene;
+            StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+        }
+
     } 
 
     void EndBattle(bool won)
@@ -181,7 +197,7 @@ public class GameController : MonoBehaviour
         //changed abit from the tutorial because we dunnid evolve straight away after a battle
         //var hasEvolutions = playerParty.CheckForEvolutions();
         //if (hasEvolutions)
-        AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
+        AudioManager.i.Play(CurrentScene.SceneMusic, fade: true); 
         StartCoroutine(playerParty.RunEvolutions());
         //else
             
@@ -216,16 +232,19 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.PartyScreen)
         {
-            Action onSelected = () =>
+           /* Action onSelected = () =>
             {
+
                 //Todo: Go to Summary Screen
-            };
+                //option to swap or remove
+                partyScreen.EnableChoiceBox();
+            };*/
             Action onBack = () =>
             {
                 partyScreen.gameObject.SetActive(false);
                 state = GameState.FreeRoam;
             };
-            partyScreen.HandleUpdate(onSelected, onBack);
+            partyScreen.HandleUpdate(null, onBack);
         }
         else if (state == GameState.Bag)
         {
@@ -241,6 +260,14 @@ public class GameController : MonoBehaviour
         {
             ShopController.i.HandleUpdate();
         }
+        else if (state == GameState.TreasureChest)
+        {
+            TreasureChestManager.i.HandleUpdate();
+        }
+        else if (state == GameState.Question)
+        {
+            
+        }
         else if (state == GameState.Instructions)
         {
             if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
@@ -250,7 +277,16 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             }
         } 
-        
+        else if (state == GameState.AnimalList)
+        {
+            Action onBack = () =>
+            {
+                animalCharacterManager.gameObject.SetActive(false);
+                state = GameState.FreeRoam;
+            };
+            animalCharacterManager.HandleUpdate(onBack);
+        }
+
     }
 
     public void SetCurrentScene(SceneDetails currScene)
@@ -258,6 +294,7 @@ public class GameController : MonoBehaviour
         PrevScene = CurrentScene;
         CurrentScene = currScene;
     }
+
 
     void OnMenuSelected(int selectedItem)
     {
@@ -289,12 +326,19 @@ public class GameController : MonoBehaviour
         } 
         else if (selectedItem == 4)
         {
+            //animal List
+            state = GameState.AnimalList;
+            animalCharacterManager.gameObject.SetActive(true);
+            //AnimalListUI.HandleUpdate();
+        }
+        else if (selectedItem == 5)
+        {
             //instructions
             state = GameState.Instructions;
             instructionsPanel.SetActive(true);
             
         } 
-        else if (selectedItem == 5)
+        else if (selectedItem == 6)
         {
             //save game
             if (!PlayerPrefs.HasKey("SavedGame"))

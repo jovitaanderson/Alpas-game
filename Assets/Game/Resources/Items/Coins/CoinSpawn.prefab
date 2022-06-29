@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2480439791399647051}
-  - component: {fileID: 2480439791399647048}
+  - component: {fileID: 1102193556271868691}
   m_Layer: 0
   m_Name: CoinSpawn
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2480439791399647048
+--- !u!114 &1102193556271868691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,21 +79,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2480439791399647049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc79b43e19d52c4a9fe7e6260db159a, type: 3}
+  m_Script: {fileID: 11500000, guid: 02eda5b6d3062a243ab236a334b455b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoints:
-  - {fileID: 2480439791962818350}
-  - {fileID: 2480439791962818350}
-  - {fileID: 2480439791441713715}
-  - {fileID: 2480439791396150282}
-  - {fileID: 2480439792000192508}
-  - {fileID: 2480439792029810197}
-  - {fileID: 2480439791837980770}
-  - {fileID: 2480439792689309951}
-  - {fileID: 2480439792324906146}
-  spawnTime: 60
-  Coins: {fileID: 5771733266285255951, guid: 0e5782fd03807534199d4169cd6f4eb4, type: 3}
+  coin: {fileID: 5771733266285255951, guid: 0e5782fd03807534199d4169cd6f4eb4, type: 3}
+  maxCoinInMap: 5
+  minPosition: {x: -59.5, y: -29.5}
+  maxPosition: {x: 79.5, y: 29.5}
+  Timer: 0
+  TimeForNextCoinSpawn: 60
 --- !u!1 &2480439791441713712
 GameObject:
   m_ObjectHideFlags: 0
