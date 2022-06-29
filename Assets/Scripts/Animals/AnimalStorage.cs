@@ -14,6 +14,8 @@ public class AnimalStorage : MonoBehaviour
     [SerializeField] GameObject lvlUpObj;
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
+    [SerializeField] Text type1;
+    [SerializeField] Text type2;
     [SerializeField] HPBar hpBar;
     [SerializeField] GameObject movesTextContainer;
 
@@ -112,6 +114,8 @@ public class AnimalStorage : MonoBehaviour
                 image.sprite = animals[selectedMember].Base.FrontSprite;
                 nameText.text = animals[selectedMember].Base.Name;
                 levelText.text = "Lvl " + animals[selectedMember].Level;
+                type1.text = animals[selectedMember].Base.Type1.ToString();
+                type2.text = animals[selectedMember].Base.Type2.ToString();
                 hpBar.SetHP((float)animals[selectedMember].HP / animals[selectedMember].MaxHp);
                 memberSlots[i].SetSelected(true);
                 SetMoves(animals[selectedMember].Moves);
