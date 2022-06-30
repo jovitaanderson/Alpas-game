@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest, Question, AnimalList}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, Controls, TreasureChest, Question, AnimalList}
 
 public class GameController : MonoBehaviour
 {
@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
-    
+    [SerializeField] GameObject keybindUI;
+
 
     GameState state;
     GameState prevState;
@@ -146,7 +147,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            instructionsPanel.SetActive(false);
+            //instructionsPanel.SetActive(false);
+            keybindUI.SetActive(false);
             state = GameState.Battle;
             miniMapWindow.SetActive(false);
             walletUI.SetActive(false);
@@ -244,13 +246,13 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.PartyScreen)
         {
-           /* Action onSelected = () =>
-            {
+            /* Action onSelected = () =>
+             {
 
-                //Todo: Go to Summary Screen
-                //option to swap or remove
-                partyScreen.EnableChoiceBox();
-            };*/
+                 //Todo: Go to Summary Screen
+                 //option to swap or remove
+                 partyScreen.EnableChoiceBox();
+             };*/
             Action onBack = () =>
             {
                 partyScreen.gameObject.SetActive(false);
@@ -267,7 +269,7 @@ public class GameController : MonoBehaviour
             };
 
             inventoryUI.HandleUpdate(onBack);
-        } 
+        }
         else if (state == GameState.Shop)
         {
             ShopController.i.HandleUpdate();
@@ -278,17 +280,26 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Question)
         {
-            
+
         }
         else if (state == GameState.Instructions)
         {
             if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
                 || Input.GetKeyDown(KeyCode.Backspace))
             {
-                instructionsPanel.SetActive(false);
+                // instructionsPanel.SetActive(false);
+                keybindUI.SetActive(false);
                 state = GameState.FreeRoam;
             }
-        } 
+        }
+        else if (state == GameState.Controls)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                keybindUI.SetActive(false);
+                state = GameState.FreeRoam;
+            }
+        }
         else if (state == GameState.AnimalList)
         {
             Action onBack = () =>
@@ -346,9 +357,12 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 5)
         {
             //instructions
-            state = GameState.Instructions;
-            instructionsPanel.SetActive(true);
-            
+            //state = GameState.Instructions;
+            //instructionsPanel.SetActive(true);
+            state = GameState.Controls;
+            keybindUI.SetActive(true);
+
+
         } 
         else if (selectedItem == 6)
         {
