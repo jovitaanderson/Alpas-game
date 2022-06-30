@@ -5,14 +5,19 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ControlState { Unselected, Selected}
+
 public class KeybindManager : MonoBehaviour
 {
     [SerializeField] Text errorMessage;
     [SerializeField] Button[] keybindButtons;
+    [SerializeField] GameObject keybindUI;
+    public event Action onBack;
 
     private Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
 
     private GameObject currentKey;
+    ControlState state;
 
     private Color32 normal = new Color32(255, 255, 255, 255);
     //private Color32 selected = new Color32(239, 116, 36, 255);
@@ -37,7 +42,13 @@ public class KeybindManager : MonoBehaviour
 
     private void OnGUI()
     {
-        if(currentKey != null)
+        updateAllKeyText();
+        if (Input.GetKeyDown(KeyCode.Escape) && currentKey == null)
+        {
+            onBack?.Invoke();
+        }
+
+        if (currentKey != null)
         {
             Event e = Event.current;
             if (e.isKey)
@@ -54,6 +65,7 @@ public class KeybindManager : MonoBehaviour
                 updateKeyText(currentKey.name, keys[currentKey.name]);
                 currentKey.GetComponent<Image>().color = normal;
                 currentKey = null;
+                state = ControlState.Unselected;
             }
         }
     }
@@ -61,7 +73,10 @@ public class KeybindManager : MonoBehaviour
     public void updateAllKeyText()
     {
         foreach (var keyButton in keybindButtons)
+        {
             keyButton.GetComponentInChildren<Text>().text = keys[keyButton.name].ToString();
+            //keyButton.GetComponentInChildren<Text>().text = "wee";
+        }
     }
 
     public void updateKeyText(string key, KeyCode code)
@@ -78,6 +93,20 @@ public class KeybindManager : MonoBehaviour
         }
         currentKey = clicked;
         currentKey.GetComponent<Image>().color = GlobalSettings.i.HighlightedColor;
+        state = ControlState.Selected;
+    }
+
+    public void HandleUpdate(Action onBack)
+    {
+        Debug.Log(currentKey);
+        Debug.Log(state);
+        if (state == ControlState.Unselected)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                onBack?.Invoke();
+
+        }
+
     }
 
     public void SaveKeys()
@@ -96,5 +125,17 @@ public class KeybindManager : MonoBehaviour
             }
             PlayerPrefs.Save();
         }
+    }
+
+    public void openKeybindUI()
+    {
+        updateAllKeyText();
+        keybindUI.SetActive(true);
+
+    }
+
+    public void closeKeybindUI()
+    {
+        keybindUI.SetActive(false);
     }
 }
