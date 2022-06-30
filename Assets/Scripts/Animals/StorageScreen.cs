@@ -81,13 +81,13 @@ public class StorageScreen : MonoBehaviour
     {
         var prevSelection = selection;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeybindManager.i.keys["RIGHT"]))
             ++selection;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]))
             --selection;
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
             selection += 5;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
             selection -= 5;
 
         selection = Mathf.Clamp(selection, 0, animals.Count - 1);
@@ -95,13 +95,13 @@ public class StorageScreen : MonoBehaviour
         if (selection != prevSelection)
             UpdateMemberSelection(selection);
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]))
         {
             SwapAnimalStorage(partyScreen.SelectedMember, animals[selection]);
             gameObject.SetActive(false);
             partyScreen.ResetSelection();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]) || Input.GetKeyDown(KeyCode.Backspace))
         {
             gameObject.SetActive(false);
             partyScreen.ResetSelection();

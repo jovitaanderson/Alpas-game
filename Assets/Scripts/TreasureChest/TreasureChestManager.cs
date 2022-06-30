@@ -59,9 +59,9 @@ public class TreasureChestManager : MonoBehaviour
     {
         int prevSelection = selectedItem;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeybindManager.i.keys["RIGHT"]))
             ++selectedItem;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]))
             --selectedItem;
 
         selectedItem = Mathf.Clamp(selectedItem, 0, chestChildren.Length - 1);
@@ -70,7 +70,7 @@ public class TreasureChestManager : MonoBehaviour
             UpdateChestSelection(selectedItem);
 
         //if press enter then go do action
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]))
         {
             CloseMenu();
             OnSelectTreasureChest?.Invoke();

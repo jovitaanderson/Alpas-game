@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, TreasureChest, Question, AnimalList}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, Controls, TreasureChest, Question, AnimalList}
 
 public class GameController : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
-    
+
 
     GameState state;
     GameState prevState;
@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     public SceneDetails PrevScene { get; private set; }
 
     MenuController menuController;
+    KeybindManager keybindManager;
 
     public static GameController Instance {get; private set;}
     private void Awake()
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
         Instance = this;
 
         menuController = GetComponent<MenuController>();
+        keybindManager = GetComponent<KeybindManager>();
 
         //TODO: Uncomment this if we want to remove mouse from game
         //Cursor.lockState = CursorLockMode.Locked;
@@ -84,6 +86,12 @@ public class GameController : MonoBehaviour
         };
 
         menuController.onMenuSelected += OnMenuSelected;
+
+        keybindManager.onBack += () =>
+        {
+            keybindManager.closeKeybindUI();
+            state = GameState.FreeRoam;
+        };
 
         EvolutionManager.i.OnStartEvolution += () =>
         {
@@ -146,7 +154,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            instructionsPanel.SetActive(false);
+            //instructionsPanel.SetActive(false);
+            keybindManager.closeKeybindUI();
             state = GameState.Battle;
             miniMapWindow.SetActive(false);
             walletUI.SetActive(false);
@@ -160,6 +169,7 @@ public class GameController : MonoBehaviour
     TrainerController trainer;
     public void StartTrainerBattle(TrainerController trainer)
     {
+        keybindManager.closeKeybindUI();
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
@@ -221,8 +231,7 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
 
-            //if user press M key, call menu controller. open menu function
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeybindManager.i.keys["MENU"]) || Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
             {
                 playerController.Character.Animator.IsMoving = false;
                 menuController.OpenMenu();
@@ -244,13 +253,13 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.PartyScreen)
         {
-           /* Action onSelected = () =>
-            {
+            /* Action onSelected = () =>
+             {
 
-                //Todo: Go to Summary Screen
-                //option to swap or remove
-                partyScreen.EnableChoiceBox();
-            };*/
+                 //Todo: Go to Summary Screen
+                 //option to swap or remove
+                 partyScreen.EnableChoiceBox();
+             };*/
             Action onBack = () =>
             {
                 partyScreen.gameObject.SetActive(false);
@@ -267,7 +276,7 @@ public class GameController : MonoBehaviour
             };
 
             inventoryUI.HandleUpdate(onBack);
-        } 
+        }
         else if (state == GameState.Shop)
         {
             ShopController.i.HandleUpdate();
@@ -278,17 +287,21 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Question)
         {
-            
+
         }
         else if (state == GameState.Instructions)
         {
-            if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
-                || Input.GetKeyDown(KeyCode.Backspace))
+            if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
             {
-                instructionsPanel.SetActive(false);
+                // instructionsPanel.SetActive(false);
+                //keybindUI.SetActive(false);
                 state = GameState.FreeRoam;
             }
-        } 
+        }
+        else if (state == GameState.Controls)
+        {
+
+        }
         else if (state == GameState.AnimalList)
         {
             Action onBack = () =>
@@ -346,9 +359,11 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 5)
         {
             //instructions
-            state = GameState.Instructions;
-            instructionsPanel.SetActive(true);
-            
+            //state = GameState.Instructions;
+            //instructionsPanel.SetActive(true);
+            //Controls
+            state = GameState.Controls;
+            keybindManager.openKeybindUI();
         } 
         else if (selectedItem == 6)
         {

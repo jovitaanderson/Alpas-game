@@ -35,9 +35,9 @@ public class MenuController : MonoBehaviour
     {
         int prevSelection = selectedItem;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
             ++selectedItem;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
             --selectedItem;
 
         selectedItem = Mathf.Clamp(selectedItem, 0, menuItems.Count - 1);
@@ -46,14 +46,14 @@ public class MenuController : MonoBehaviour
             UpdateItemSelection();
 
         //if press enter then go do action
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]))
         {
             Debug.Log(selectedItem);
             onMenuSelected?.Invoke(selectedItem);
             CloseMenu();
         }
         //else, if press escape, then go back
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
         {
             onBack?.Invoke();
             CloseMenu();

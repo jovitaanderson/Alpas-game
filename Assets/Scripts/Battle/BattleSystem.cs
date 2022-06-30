@@ -572,13 +572,13 @@ public class BattleSystem : MonoBehaviour
     void HandleActionSelection()
     {
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeybindManager.i.keys["RIGHT"]) || Input.GetKeyDown(KeyCode.D))
             ++currentAction;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]) || Input.GetKeyDown(KeyCode.A))
             --currentAction;
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]) || Input.GetKeyDown(KeyCode.S))
             currentAction += 2;
-        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeyCode.W))
             currentAction -= 2;
 
         //Restrict value of currentAction between 0 and 3
@@ -586,7 +586,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateActionSelection(currentAction);
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) //return = enter key
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]) || Input.GetKeyDown(KeyCode.Space)) //return = enter key
         {
             if (currentAction == 0)
             {
@@ -615,13 +615,13 @@ public class BattleSystem : MonoBehaviour
 
     void HandleMoveSelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeybindManager.i.keys["RIGHT"]) || Input.GetKeyDown(KeyCode.D))
             ++currentMove;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]) || Input.GetKeyDown(KeyCode.A))
             --currentMove;
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]) || Input.GetKeyDown(KeyCode.S))
             currentMove += 2;
-        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeyCode.W))
             currentMove -= 2;
 
         //Restrict value of currentMove between 0 and no. of animals moves
@@ -629,7 +629,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Animal.Moves[currentMove]);
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]) || Input.GetKeyDown(KeyCode.Space))
         {
             var move = playerUnit.Animal.Moves[currentMove];
             if (move.PP == 0) return;
@@ -640,7 +640,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         //When esc key/backspace key press he goes back to selection screen
-        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]) || Input.GetKeyDown(KeyCode.Backspace))
         {
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
@@ -709,12 +709,12 @@ public class BattleSystem : MonoBehaviour
 
     void HandleAboutToUse()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeybindManager.i.keys["Down"]))
             aboutToUseChoice = !aboutToUseChoice; //since there are only two options yes/no
 
         dialogBox.UpdateChoiceBox(aboutToUseChoice);
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]))
         {
             dialogBox.EnableChoiceBox(false);
             if(aboutToUseChoice == true)
@@ -728,7 +728,7 @@ public class BattleSystem : MonoBehaviour
                 StartCoroutine(SendNextTrainerAnimal());
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
         {
             dialogBox.EnableChoiceBox(false);
             StartCoroutine(SendNextTrainerAnimal());
