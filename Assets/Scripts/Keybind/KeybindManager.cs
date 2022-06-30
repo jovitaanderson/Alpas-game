@@ -10,7 +10,7 @@ public enum ControlState { Unselected, Selected}
 public class KeybindManager : MonoBehaviour
 {
     [SerializeField] Text errorMessage;
-    [SerializeField] Button[] keybindButtons;
+    public GameObject[] keybindButtons;
     [SerializeField] GameObject keybindUI;
     public event Action onBack;
 
@@ -25,7 +25,6 @@ public class KeybindManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         keys.Add("UP", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("UP", "W")));
         keys.Add("LEFT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("LEFT", "A")));
         keys.Add("DOWN", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("DOWN", "S")));
@@ -37,35 +36,34 @@ public class KeybindManager : MonoBehaviour
         keys.Add("BACK", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("BACK", "Escape")));
         errorMessage.text = "";
         updateAllKeyText();
-
     }
 
     private void OnGUI()
     {
-        updateAllKeyText();
-        if (Input.GetKeyDown(KeyCode.Escape) && currentKey == null)
+        if (GetComponent<GameController>().State == GameState.Controls)
         {
-            onBack?.Invoke();
-        }
+            if (Input.GetKeyDown(KeyCode.Escape) && currentKey == null)
+                onBack?.Invoke();
 
-        if (currentKey != null)
-        {
-            Event e = Event.current;
-            if (e.isKey)
+            if (currentKey != null)
             {
-                if (keys.ContainsValue(e.keyCode))
+                Event e = Event.current;
+                if (e.isKey)
                 {
-                    string myKey = keys.FirstOrDefault(x => x.Value == e.keyCode).Key;
-                    keys[myKey] = KeyCode.None;
-                    updateKeyText(myKey, keys[myKey]);
+                    if (keys.ContainsValue(e.keyCode))
+                    {
+                        string myKey = keys.FirstOrDefault(x => x.Value == e.keyCode).Key;
+                        keys[myKey] = KeyCode.None;
+                        updateKeyText(myKey, keys[myKey]);
 
+                    }
+
+                    keys[currentKey.name] = e.keyCode;
+                    updateKeyText(currentKey.name, keys[currentKey.name]);
+                    currentKey.GetComponent<Image>().color = normal;
+                    currentKey = null;
+                    state = ControlState.Unselected;
                 }
-
-                keys[currentKey.name] = e.keyCode;
-                updateKeyText(currentKey.name, keys[currentKey.name]);
-                currentKey.GetComponent<Image>().color = normal;
-                currentKey = null;
-                state = ControlState.Unselected;
             }
         }
     }
@@ -74,7 +72,8 @@ public class KeybindManager : MonoBehaviour
     {
         foreach (var keyButton in keybindButtons)
         {
-            keyButton.GetComponentInChildren<Text>().text = keys[keyButton.name].ToString();
+            //keyButton.GetComponentInChildren<Text>().text = keys[keyButton.name].ToString();
+            keyButton.GetComponentInChildren<Text>().text = PlayerPrefs.GetString(keyButton.name);
             //keyButton.GetComponentInChildren<Text>().text = "wee";
         }
     }
