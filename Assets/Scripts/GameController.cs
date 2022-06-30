@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
-    [SerializeField] GameObject keybindUI;
 
 
     GameState state;
@@ -303,17 +302,7 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Controls)
         {
-            /*if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                keybindUI.SetActive(false);
-                state = GameState.FreeRoam;
-            }*/
-            /*Action onBack = () =>
-            {
-                keybindUI.SetActive(false);
-                state = GameState.FreeRoam;
-            };
-            gameObject.GetComponent<KeybindManager>().HandleUpdate(onBack);*/
+
         }
         else if (state == GameState.AnimalList)
         {
@@ -376,9 +365,6 @@ public class GameController : MonoBehaviour
             //instructionsPanel.SetActive(true);
             state = GameState.Controls;
             keybindManager.openKeybindUI();
-            //keybindUI.SetActive(true);
-
-
         } 
         else if (selectedItem == 6)
         {

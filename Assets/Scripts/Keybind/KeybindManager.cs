@@ -9,7 +9,7 @@ public enum ControlState { Unselected, Selected}
 
 public class KeybindManager : MonoBehaviour
 {
-    [SerializeField] Text errorMessage;
+    [SerializeField] Text messageText;
     public GameObject[] keybindButtons;
     [SerializeField] GameObject keybindUI;
     public event Action onBack;
@@ -25,17 +25,37 @@ public class KeybindManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        keys.Add("UP", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("UP", "W")));
-        keys.Add("LEFT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("LEFT", "A")));
-        keys.Add("DOWN", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("DOWN", "S")));
-        keys.Add("RIGHT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("RIGHT", "D")));
-        keys.Add("SPRINT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("SPRINT", "RightShift")));
+        if (!PlayerPrefs.HasKey("UP"))
+        {
+            setDefaultKeybinds();
+        }
+
+        keys.Add("UP", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("UP", "UpArrow")));
+        keys.Add("LEFT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("LEFT", "LeftArrow")));
+        keys.Add("DOWN", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("DOWN", "DownArrow")));
+        keys.Add("RIGHT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("RIGHT", "RightArrow")));
+        keys.Add("SPRINT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("SPRINT", "LeftShift")));
 
         keys.Add("MENU", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("MENU", "M")));
         keys.Add("CONFIRM", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("CONFIRM", "Return")));
         keys.Add("BACK", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("BACK", "Escape")));
-        errorMessage.text = "";
+        messageText.text = "";
         updateAllKeyText();
+    }
+
+    public void setDefaultKeybinds()
+    {
+        PlayerPrefs.SetString("UP", "UpArrow");
+        PlayerPrefs.SetString("LEFT", "LeftArrow");
+        PlayerPrefs.SetString("DOWN", "DownArrow");
+        PlayerPrefs.SetString("RIGHT", "RightArrow");
+        PlayerPrefs.SetString("SPRINT", "LeftShift");
+        PlayerPrefs.SetString("MENU", "M");
+        PlayerPrefs.SetString("CONFIRM", "Return");
+        PlayerPrefs.SetString("BACK", "Escape");
+        updateAllKeyText();
+        messageText.text = "Default keybinds set";
+        messageText.color = new Color32(0, 0, 0, 255);
     }
 
     private void OnGUI()
@@ -72,9 +92,7 @@ public class KeybindManager : MonoBehaviour
     {
         foreach (var keyButton in keybindButtons)
         {
-            //keyButton.GetComponentInChildren<Text>().text = keys[keyButton.name].ToString();
             keyButton.GetComponentInChildren<Text>().text = PlayerPrefs.GetString(keyButton.name);
-            //keyButton.GetComponentInChildren<Text>().text = "wee";
         }
     }
 
@@ -95,34 +113,23 @@ public class KeybindManager : MonoBehaviour
         state = ControlState.Selected;
     }
 
-    public void HandleUpdate(Action onBack)
-    {
-        Debug.Log(currentKey);
-        Debug.Log(state);
-        if (state == ControlState.Unselected)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-                onBack?.Invoke();
-
-        }
-
-    }
-
     public void SaveKeys()
     {
         if (keys.ContainsValue(KeyCode.None))
         {
-            errorMessage.text = "cannot save, all keys must be binded";
-            Debug.Log("cannot save, all keys must be binded");
+            messageText.text = "Cannot save. All keys must be binded";
+            messageText.color = new Color32(255, 25, 25, 255);
         }
         else
         {
-            errorMessage.text = "";
+            messageText.text = "";
             foreach (var key in keys)
             {
                 PlayerPrefs.SetString(key.Key, key.Value.ToString());
             }
             PlayerPrefs.Save();
+            messageText.text = "Saved";
+            messageText.color = new Color32(0, 0, 0, 255);
         }
     }
 
@@ -135,6 +142,7 @@ public class KeybindManager : MonoBehaviour
 
     public void closeKeybindUI()
     {
+        messageText.text = "";
         keybindUI.SetActive(false);
     }
 }
