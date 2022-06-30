@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
-    [SerializeField] AnimalCharacterManager animalCharacterManager;
+    [SerializeField] public AnimalCharacterManager animalCharacterManager;
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
@@ -104,6 +104,18 @@ public class GameController : MonoBehaviour
 
         ShopController.i.OnStart += () => state = GameState.Shop;
         ShopController.i.OnFinish += () => state = GameState.FreeRoam;
+
+
+        //todo: Remove once finish testing game
+        //Auto set preadded animals in party/storage to seen since we manaually added them
+        foreach (var animalInParty in playerController.GetComponent<AnimalParty>().Animals)
+        {
+            animalCharacterManager.characterDB.AnimalSeen(animalInParty);
+        }
+        foreach (var animalInStorage in playerController.GetComponent<AnimalStorage>().Animals)
+        {
+            animalCharacterManager.characterDB.AnimalSeen(animalInStorage);
+        }
 
     }
 

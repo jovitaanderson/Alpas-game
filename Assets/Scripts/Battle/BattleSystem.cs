@@ -53,6 +53,7 @@ public class BattleSystem : MonoBehaviour
     {
         this.playerParty = playerParty;
         this.wildAnimal = wildAnimal;
+        GameObject.Find("GameController").GetComponent<GameController>().animalCharacterManager.characterDB.AnimalSeen(wildAnimal);
         player = playerParty.GetComponent<PlayerController>();
         isTrainerBattle = false;
         AudioManager.i.Stop();
@@ -109,6 +110,7 @@ public class BattleSystem : MonoBehaviour
             trainerImage.gameObject.SetActive(false);
             enemyUnit.gameObject.SetActive(true);
             var enemyAnimal = trainerParty.GetHealthyAnimal();
+            GameObject.Find("GameController").GetComponent<GameController>().animalCharacterManager.characterDB.AnimalSeen(enemyAnimal);
             enemyUnit.Setup(enemyAnimal);
             yield return dialogBox.TypeDialog($"{trainer.Name} send out {enemyAnimal.Base.Name}");
 
@@ -811,8 +813,17 @@ public class BattleSystem : MonoBehaviour
             //Pokemon is caught
             yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} was caught");
             yield return pokeball.DOFade(0, 1.5f).WaitForCompletion();
+            if (playerParty.Animals.Count < 6)
+            {
+                yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your party");
+            } else if (playerParty.animalStorage.Animals.Count < playerParty.animalStorage.maxAnimalsInStorage)
+            {
+                yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your storage");
+            } else
+            {
+                yield return dialogBox.TypeDialog($"Party and storage is full! {enemyUnit.Animal.Base.Name} cannot be caught");
+            }
             playerParty.AddAnimal(enemyUnit.Animal);
-            yield return dialogBox.TypeDialog($"{enemyUnit.Animal.Base.Name} has been added to your party");
 
             Destroy(pokeball);
             BattleOver(true);

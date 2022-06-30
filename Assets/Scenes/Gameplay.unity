@@ -7090,7 +7090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.data[0]._base
@@ -7114,6 +7114,22 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: a5d8b8a11c57deb4facd311c000d7a45, type: 2}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.data[2].level
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[3]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: a5d8b8a11c57deb4facd311c000d7a45, type: 2}
+    - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[3].level
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[4]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: a5d8b8a11c57deb4facd311c000d7a45, type: 2}
+    - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[4].level
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008663385036, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
@@ -8245,13 +8261,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
-    levelRange: {x: 1, y: 2}
+  - animal: {fileID: 11400000, guid: a8dccafcc799f25499a5809d1b22c534, type: 2}
+    levelRange: {x: 12, y: 16}
     chancePercentage: 60
   - animal: {fileID: 11400000, guid: b2c0aa4a40870044eb4fb0b74db56047, type: 2}
     levelRange: {x: 1, y: 3}
     chancePercentage: 30
-  - animal: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
+  - animal: {fileID: 11400000, guid: f3ad456cc9e7de84e9af3c7d327b47b0, type: 2}
     levelRange: {x: 2, y: 5}
     chancePercentage: 10
   totalChance: 100

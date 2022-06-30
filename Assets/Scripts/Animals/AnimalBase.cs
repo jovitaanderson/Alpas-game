@@ -134,12 +134,6 @@ public class Evolution
     public int RequiredLevel => requiredLevel;
     public EvolutionItem RequiredItem => requiredItem;
 
-    /*public bool evolutionMessageState 
-    {
-        get { return evolutionMessageState; }
-        set { evolutionMessageState = false; }
-    }*/
-
     public bool evolutionMessageState { get; set; }
 }
 

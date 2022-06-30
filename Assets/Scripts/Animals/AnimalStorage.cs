@@ -1,30 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AnimalStorage : MonoBehaviour
 {
     [SerializeField] List<Animal> animals;
-    [SerializeField] Text messageText;
-    [SerializeField] PartyScreen partyScreen;
 
-    [SerializeField] Image image;
-    [SerializeField] GameObject lvlUpObj;
-    [SerializeField] Text nameText;
-    [SerializeField] Text levelText;
-    [SerializeField] Text type1;
-    [SerializeField] Text type2;
-    [SerializeField] HPBar hpBar;
-    [SerializeField] GameObject movesTextContainer;
+    public int maxAnimalsInStorage = 20;
+    public event Action OnUpdated;
 
-    StorageMemberUI[] memberSlots;
-    Text[] moveTexts;
-    //maybe will create StorageMemberUI if got alot of difference
-
-    int selection = 0;
-    int maxAnimalsInStorage = 20;
+    public List<Animal> Animals
+    {
+        get
+        {
+            return animals;
+        }
+        set
+        {
+            animals = value;
+            OnUpdated?.Invoke();
+        }
+    }
 
     private void Awake()
     {
@@ -34,107 +32,55 @@ public class AnimalStorage : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        memberSlots = GetComponentsInChildren<StorageMemberUI>(true);
-        moveTexts = movesTextContainer.GetComponentsInChildren<Text>();
-        SetStorageData();
+
     }
 
-    public void SetStorageData()
+    //add animals into the party only if the party has less than 6 animals
+    public void AddAnimal(Animal newAnimal)
     {
-        for (int i = 0; i < memberSlots.Length; i++)
+        if (animals.Count < maxAnimalsInStorage)
         {
-            if (i < animals.Count)
-            {
-                memberSlots[i].gameObject.SetActive(true);
-                memberSlots[i].Init(animals[i]);
-            }
-            else
-                memberSlots[i].gameObject.SetActive(false);
+            animals.Add(newAnimal);
+            OnUpdated?.Invoke();
         }
-
-        UpdateMemberSelection(selection);
-    }
-
-    public void SwapAnimalStorage(Animal inParty, Animal inStorage)
-    {
-        var tempAnimal = inStorage;
-        animals[selection] = inParty;
-        partyScreen.SelectedMember = tempAnimal;
-        SetStorageData();
-        partyScreen.SetPartyData();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        HandleUpdate(null, null);
-    }
-
-    public void HandleUpdate(Action onSelected, Action onBack)
-    {
-           var prevSelection = selection;
-
-           if (Input.GetKeyDown(KeyCode.RightArrow))
-                ++selection;
-           else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                --selection;
-           else if (Input.GetKeyDown(KeyCode.DownArrow))
-                selection += 5;
-           else if (Input.GetKeyDown(KeyCode.UpArrow))
-                selection -= 5;
-
-           selection = Mathf.Clamp(selection, 0, animals.Count - 1);
-
-            if (selection != prevSelection)
-                UpdateMemberSelection(selection);
-
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                SwapAnimalStorage(partyScreen.SelectedMember, animals[selection]);
-                gameObject.SetActive(false);
-                partyScreen.ResetSelection();
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
-            {
-                gameObject.SetActive(false);
-                partyScreen.ResetSelection();
-            }
-    }
-
-    public void UpdateMemberSelection(int selectedMember)
-    {
-        for (int i = 0; i < animals.Count; i++)
+        else
         {
-            if (i == selectedMember)
-            {
-                image.sprite = animals[selectedMember].Base.FrontSprite;
-                nameText.text = animals[selectedMember].Base.Name;
-                levelText.text = "Lvl " + animals[selectedMember].Level;
-                type1.text = animals[selectedMember].Base.Type1.ToString();
-                type2.text = animals[selectedMember].Base.Type2.ToString();
-                hpBar.SetHP((float)animals[selectedMember].HP / animals[selectedMember].MaxHp);
-                memberSlots[i].SetSelected(true);
-                SetMoves(animals[selectedMember].Moves);
-            }
-
-            else
-                memberSlots[i].SetSelected(false);
+            StartCoroutine("Release some animals to capture more animals.");
         }
     }
 
-    void SetMoves(List<Move> moves)
+    public bool CheckForEvolutions()
     {
-        for (int i = 0; i < 4; i++) 
+        return animals.Any(p => p.CheckForEvolution() != null);
+    }
+
+    public IEnumerator RunEvolutions()
+    {
+        foreach (var animal in animals)
         {
-            if(i < moves.Count)
-                moveTexts[i].text = moves[i].Base.Name;
-            else
-                moveTexts[i].text = "-";
+
+            var evolution = animal.CheckForEvolution();
+            if (evolution != null)
+            {
+                if (evolution.evolutionMessageState == false)
+                {
+                    yield return DialogManager.Instance.ShowDialogText($"{animal.Base.Name} is ready for evolution");
+                    evolution.evolutionMessageState = true;
+                }
+            }
         }
+    }
+
+    public void StorageUpdated()
+    {
+        OnUpdated?.Invoke();
+    }
+
+    public static AnimalStorage GetPlayerStorage()
+    {
+        return FindObjectOfType<PlayerController>().GetComponent<AnimalStorage>();
     }
 
 }
