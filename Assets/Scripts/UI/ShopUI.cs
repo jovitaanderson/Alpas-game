@@ -55,9 +55,9 @@ public class ShopUI : MonoBehaviour
         if (selectedItem != prevSelection)
             UpdateItemSelection();
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]))
             onItemSelected?.Invoke(availableItems[selectedItem]);
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
             onBack?.Invoke();
     }
 

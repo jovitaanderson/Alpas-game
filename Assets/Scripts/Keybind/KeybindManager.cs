@@ -69,7 +69,7 @@ public class KeybindManager : MonoBehaviour
     {
         if (GetComponent<GameController>().State == GameState.Controls)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && currentKey == null)
+            if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]) && currentKey == null)
                 onBack?.Invoke();
 
             if (currentKey != null)

@@ -44,7 +44,7 @@ public class DialogManager : MonoBehaviour
             //play music for each line
             AudioManager.i.PlaySfx(AudioId.UISelect);
             yield return TypeDialog(line);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]));
         }
 
         if (choices != null && choices.Count > 1)
@@ -70,7 +70,7 @@ public class DialogManager : MonoBehaviour
         yield return TypeDialog(text);
         if (waitForInput)
         {
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"]));
         }
 
         if (choices != null && choices.Count > 1)
@@ -105,7 +105,7 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
             Debug.Log("print");
 
-            if (Input.GetKey(KeyCode.Return) && i >=6)
+            if (Input.GetKey(KeybindManager.i.keys["CONFIRM"]) && i >=6)
             {
                 Debug.Log("Return pressed");
                 string remainingString = line.Substring(i+1);

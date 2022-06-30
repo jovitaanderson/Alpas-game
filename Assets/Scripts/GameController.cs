@@ -231,7 +231,7 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
 
-            if (Input.GetKeyDown(KeybindManager.i.keys["MENU"]) || Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeybindManager.i.keys["MENU"]) || Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
             {
                 playerController.Character.Animator.IsMoving = false;
                 menuController.OpenMenu();
@@ -291,8 +291,7 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Instructions)
         {
-            if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape)
-                || Input.GetKeyDown(KeyCode.Backspace))
+            if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
             {
                 // instructionsPanel.SetActive(false);
                 //keybindUI.SetActive(false);
