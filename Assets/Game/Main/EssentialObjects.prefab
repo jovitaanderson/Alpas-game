@@ -1413,7 +1413,6 @@ MonoBehaviour:
   miniMapWindow: {fileID: 3537467831157558593}
   walletUI: {fileID: 6649716921478798236}
   instructionsPanel: {fileID: 1401127463202878042}
-  keybindUI: {fileID: 0}
 --- !u!114 &8846833008561578897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdea82b1436d1347ad41425f65fccc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  errorMessage: {fileID: 582647647307597984}
+  messageText: {fileID: 582647647307597984}
   keybindButtons:
   - {fileID: 6786888957473900070}
   - {fileID: 5686905458666528229}

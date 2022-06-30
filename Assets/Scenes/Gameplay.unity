@@ -797,16 +797,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 582647647307597984, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_Text
+      value: Message
+      objectReference: {fileID: 0}
+    - target: {fileID: 582647647307597984, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_Color.b
-      value: 0.0990566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 582647647307597984, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_Color.g
-      value: 0.0990566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 582647647307597984, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 671466907719509386, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y

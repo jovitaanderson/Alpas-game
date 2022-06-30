@@ -231,8 +231,7 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
 
-            //if user press M key, call menu controller. open menu function
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeybindManager.i.keys["MENU"]) || Input.GetKeyDown(KeyCode.Escape))
             {
                 playerController.Character.Animator.IsMoving = false;
                 menuController.OpenMenu();
@@ -363,6 +362,7 @@ public class GameController : MonoBehaviour
             //instructions
             //state = GameState.Instructions;
             //instructionsPanel.SetActive(true);
+            //Controls
             state = GameState.Controls;
             keybindManager.openKeybindUI();
         } 

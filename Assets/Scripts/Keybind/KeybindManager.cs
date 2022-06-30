@@ -14,13 +14,20 @@ public class KeybindManager : MonoBehaviour
     [SerializeField] GameObject keybindUI;
     public event Action onBack;
 
-    private Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
+    public Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
 
     private GameObject currentKey;
     ControlState state;
 
     private Color32 normal = new Color32(255, 255, 255, 255);
     //private Color32 selected = new Color32(239, 116, 36, 255);
+
+    public static KeybindManager i { get; private set; }
+
+    private void Awake()
+    {
+        i = this;
+    }
 
     // Start is called before the first frame update
     void Start()
