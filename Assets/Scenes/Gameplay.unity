@@ -1924,10 +1924,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1371142294809266394, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: easyChestData
-      value: 
-      objectReference: {fileID: 11400000, guid: 3a2a094bd8d99174d94f8fb9d4c132aa, type: 2}
     - target: {fileID: 1411705149213328120, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9934,7 +9930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.data[0]._base
@@ -9975,6 +9971,14 @@ PrefabInstance:
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.data[4].level
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[5]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 44bf70839331ec548b08065ddcb4a9ec, type: 2}
+    - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[5].level
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008561578895, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: keybindUI

@@ -13,6 +13,7 @@ public class QuizUI : MonoBehaviour
     [SerializeField] private Color correctCol, wrongCol, normalCol, selectedColor;
 
     private Question question;
+    private Question prevQuestion;
     private bool answered;
     int currentAction;
 
@@ -76,14 +77,23 @@ public class QuizUI : MonoBehaviour
 
     public void SetQuestion(Question question)
     {
+        if (this.question != null)
+            prevQuestion = this.question;
         this.question = question;
 
         switch (question.questionType)
         {
             case QuestionType.TEXT:
+                questionText.rectTransform.localPosition = new Vector3(-25f, 0, 0);
+                questionText.rectTransform.sizeDelta = new Vector2(700f, questionText.preferredHeight);
                 questionImage.transform.parent.gameObject.SetActive(false);
                 break;
             case QuestionType.IMAGE:
+                if (prevQuestion != null && prevQuestion.questionType == QuestionType.TEXT)
+                {
+                    questionText.rectTransform.localPosition = new Vector3(-125f, 0, 0);
+                }
+                questionText.rectTransform.sizeDelta = new Vector2(500f, questionText.preferredHeight);
                 ImageHolder();
                 questionImage.sprite = question.questionImg;
                 break;
