@@ -191,12 +191,12 @@ public class SettingsManager : MonoBehaviour
     public void openSettingsUI()
     {
         updateAllKeyText();
-        keybindUI.SetActive(true);
+        settingsUI.SetActive(true);
     }
 
     public void closeSettingsUI()
     {
         messageText.text = "";
-        keybindUI.SetActive(false);
+        settingsUI.SetActive(false);
     }
 }
