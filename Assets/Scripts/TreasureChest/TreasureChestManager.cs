@@ -22,6 +22,7 @@ public class TreasureChestManager : MonoBehaviour
 
     private List<TreasureChestQuestion> questions;
     private TreasureChestQuestion selectedQuestion;
+    private TreasureChestQuestion prevQuestion;
     private float rewardedEasyMoney = 10f;
     private float rewardedMediumMoney = 50f;
     private float rewardedHardMoney = 100f;
@@ -178,8 +179,16 @@ public class TreasureChestManager : MonoBehaviour
 
     void SelectQuestion()
     {
+        if (selectedQuestion != null)
+            prevQuestion = selectedQuestion;
         int val = UnityEngine.Random.Range(0, questions.Count);
         selectedQuestion = questions[val];
+
+        while (prevQuestion == selectedQuestion)
+        {
+            int newVal = UnityEngine.Random.Range(0, questions.Count);
+            selectedQuestion = questions[newVal];
+        }
 
         treasureChestUI.SetQuestion(selectedQuestion);
     }
