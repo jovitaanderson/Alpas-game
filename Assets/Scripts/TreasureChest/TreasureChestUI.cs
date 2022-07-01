@@ -12,6 +12,7 @@ public class TreasureChestUI : MonoBehaviour
     [SerializeField] private Color correctCol, wrongCol, normalCol, selectedColor;
 
     private TreasureChestQuestion question;
+    private TreasureChestQuestion prevQuestion;
     private bool answered;
     int currentAction;
 
@@ -79,14 +80,23 @@ public class TreasureChestUI : MonoBehaviour
 
     public void SetQuestion(TreasureChestQuestion question)
     {
+        if (this.question != null)
+            prevQuestion = this.question;
         this.question = question;
 
         switch (question.questionType)
         {
             case TreasureChestQuestionType.TEXT:
+                questionText.rectTransform.localPosition = new Vector3(-25f, 0, 0);
+                questionText.rectTransform.sizeDelta = new Vector2(700f, questionText.preferredHeight);
                 questionImage.transform.parent.gameObject.SetActive(false);
                 break;
             case TreasureChestQuestionType.IMAGE:
+                if (prevQuestion != null && prevQuestion.questionType == TreasureChestQuestionType.TEXT)
+                {
+                    questionText.rectTransform.localPosition = new Vector3(-125f, 0, 0);
+                }
+                questionText.rectTransform.sizeDelta = new Vector2(500f, questionText.preferredHeight);
                 ImageHolder();
                 questionImage.sprite = question.questionImg;
                 break;

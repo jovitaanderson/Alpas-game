@@ -190,6 +190,7 @@ public class TreasureChestManager : MonoBehaviour
             selectedQuestion = questions[newVal];
         }
 
+
         treasureChestUI.SetQuestion(selectedQuestion);
     }
 
