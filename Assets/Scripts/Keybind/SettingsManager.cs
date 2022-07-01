@@ -10,7 +10,7 @@ public class SettingsManager : MonoBehaviour
 {
     [SerializeField] Text messageText;
     public GameObject[] keybindButtons;
-    [SerializeField] GameObject keybindUI;
+    [SerializeField] GameObject settingsUI;
     public event Action onBack;
 
     public Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
