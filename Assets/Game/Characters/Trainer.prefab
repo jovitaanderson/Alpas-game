@@ -235,7 +235,7 @@ MonoBehaviour:
     - I will train harder to beat you
   exclamation: {fileID: 609922825824147843}
   fov: {fileID: 609922827365562228}
-  trainerAppearsClip: {fileID: 8300000, guid: 15a21ec3d8976fb4ca5817e0d862907e, type: 3}
+  trainerAppearsClip: trainerAppears
 --- !u!114 &609922825468681081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   animals:
   - _base: {fileID: 11400000, guid: 0315c4cfdbf89eb449ff45f8e4480267, type: 2}
     level: 1
+  animalStorage: {fileID: 0}
 --- !u!114 &-1346580744127624244
 MonoBehaviour:
   m_ObjectHideFlags: 0

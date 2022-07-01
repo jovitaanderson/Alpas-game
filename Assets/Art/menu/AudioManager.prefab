@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbd81f73417ab64da9a0497cd8b61fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds: {fileID: 0}
   sfxList:
   - id: 0
-    clip: {fileID: 8300000, guid: 3da52f533b75ae145ba1ec8b41770bcd, type: 3}
+    clip: 
   musicMixerGroup: {fileID: 6517520092302637368, guid: 7b9c7249d2f62504f979a54a7d8c212d, type: 2}
   soundEffectsMixerGroup: {fileID: 7627464749390449563, guid: 7b9c7249d2f62504f979a54a7d8c212d, type: 2}
-  sounds: []
   musicPlayer: {fileID: 7755694544582852837}
   sfxPlayer: {fileID: 7755694545036824428}
   fadeDuration: 0.75

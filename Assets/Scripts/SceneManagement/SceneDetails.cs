@@ -26,10 +26,7 @@ public class SceneDetails : MonoBehaviour
 
             //play the music of the scene
             if (sceneMusic != null)
-            {
-                AudioManager.i.Stop();
                 AudioManager.i.Play(sceneMusic, fade: true);
-            }
 
             //change background battle
             if (backgroundBattle != null)
