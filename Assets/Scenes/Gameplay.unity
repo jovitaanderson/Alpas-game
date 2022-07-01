@@ -3952,22 +3952,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3460945715262932970, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 663848044}
-    - target: {fileID: 3460945715262932970, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: setDefaultKeybinds
-      objectReference: {fileID: 0}
-    - target: {fileID: 3460945715262932970, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: KeybindManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3460945715262932970, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3469054747616728078, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_RootOrder
       value: 1

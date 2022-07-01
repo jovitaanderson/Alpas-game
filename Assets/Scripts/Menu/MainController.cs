@@ -9,7 +9,6 @@ public class MainController : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] AudioClip sceneMusic;
     [SerializeField] string playSceneMusic;
-    //[SerializeField] string sfx;
 
     [Header("Volume Settings")]
     [SerializeField] private Text musicTextValue = null;

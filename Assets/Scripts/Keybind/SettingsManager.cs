@@ -20,6 +20,15 @@ public class SettingsManager : MonoBehaviour
 
     private Color32 normal = new Color32(255, 255, 255, 255);
 
+    [Header("Volume Settings")]
+    [SerializeField] private Text musicTextValue = null;
+    [SerializeField] private Slider musicSlider = null;
+    [SerializeField] private Text sfxTextValue = null;
+    [SerializeField] private Slider sfxTextSlider = null;
+    [SerializeField] private float defaultVolume = 1.0f;
+    public static float musicVolume { get; private set; }
+    public static float soundEffectsVolume { get; private set; }
+
     public static SettingsManager i { get; private set; }
 
     private void Awake()
@@ -56,6 +65,18 @@ public class SettingsManager : MonoBehaviour
 
         messageText.text = "test";
         updateAllKeyText();
+
+        //audio settings
+        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
+        {
+            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
+            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
+        }
+        else
+        {
+            SetMusicVolume(defaultVolume);
+            SetSoundEffectsVolume(defaultVolume);
+        }
     }
 
     public KeyCode getKey(string key)
@@ -85,6 +106,7 @@ public class SettingsManager : MonoBehaviour
         updateAllKeyText();
         messageText.text = "Default keybinds set";
         messageText.color = new Color32(0, 0, 0, 255);
+        
     }
 
     private void OnGUI()
@@ -186,6 +208,7 @@ public class SettingsManager : MonoBehaviour
             messageText.text = "Saved";
             messageText.color = new Color32(0, 0, 0, 255);
         }
+        VolumeApply();
     }
 
     public void openSettingsUI()
@@ -198,5 +221,45 @@ public class SettingsManager : MonoBehaviour
     {
         messageText.text = "";
         settingsUI.SetActive(false);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        //AudioListener.volume = volume;
+        musicVolume = volume;
+        musicTextValue.text = ((int)(volume * 100)).ToString();
+        musicSlider.value = volume;
+        AudioManager.i.UpdateMixerVolume(volume, soundEffectsVolume);
+    }
+
+    public void SetSoundEffectsVolume(float volume)
+    {
+        //AudioListener.volume = volume;
+        soundEffectsVolume = volume;
+        sfxTextValue.text = ((int)(volume * 100)).ToString();
+        sfxTextSlider.value = volume;
+        AudioManager.i.UpdateMixerVolume(musicVolume, volume);
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+    }
+
+    public void VolumeApply()
+    {
+        PlayerPrefs.SetFloat("masterMusic", musicVolume);
+        PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+        //Show Prompt
+        //StartCoroutine(ConfirmationBox());
+    }
+
+    public void AudioDefaultButton()
+    {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+        musicVolume = defaultVolume;
+        soundEffectsVolume = defaultVolume;
+        musicSlider.value = defaultVolume;
+        musicTextValue.text = ((int)(defaultVolume * 100)).ToString();
+        sfxTextSlider.value = defaultVolume;
+        sfxTextValue.text = ((int)(defaultVolume * 100)).ToString();
+        VolumeApply();
     }
 }
