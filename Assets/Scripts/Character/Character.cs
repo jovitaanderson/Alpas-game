@@ -51,7 +51,7 @@ public class Character : MonoBehaviour
 
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            if (Input.GetKey(KeybindManager.i.keys["SPRINT"]))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 this.Animator.IsRunning = true;
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, (moveSpeed + 2) * Time.deltaTime);

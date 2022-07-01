@@ -24,12 +24,12 @@ public class AnimalCharacterManager : MonoBehaviour
 
     public void HandleUpdate(Action onBack)
     {
-        if (Input.GetKeyDown(KeybindManager.i.keys["BACK"]))
+        if (Input.GetKeyDown(ControlManager.i.getKey("BACK")))
             onBack?.Invoke();
 
-        if (Input.GetKeyDown(KeybindManager.i.keys["RIGHT"]))
+        if (Input.GetKeyDown(ControlManager.i.getKey("RIGHT")))
             ++selectedOption;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]))
+        else if (Input.GetKeyDown(ControlManager.i.getKey("LEFT")))
             --selectedOption;
 
         if (selectedOption >= characterDB.CharacterCount)

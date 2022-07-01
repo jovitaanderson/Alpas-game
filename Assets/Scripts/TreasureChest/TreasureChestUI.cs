@@ -36,13 +36,13 @@ public class TreasureChestUI : MonoBehaviour
         if (!answered)
             options[currentAction].color = normalCol;
 
-        if (Input.GetKeyDown(KeybindManager.i.keys["RIGHT"]) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(ControlManager.i.getKey("RIGHT")) || Input.GetKeyDown(KeyCode.D))
             ++currentAction;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(ControlManager.i.getKey("LEFT")) || Input.GetKeyDown(KeyCode.A))
             --currentAction;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(ControlManager.i.getKey("DOWN")) || Input.GetKeyDown(KeyCode.S))
             currentAction += 2;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(ControlManager.i.getKey("UP")) || Input.GetKeyDown(KeyCode.W))
             currentAction -= 2;
 
         //Restrict value of currentAction between 0 and 3
@@ -51,7 +51,7 @@ public class TreasureChestUI : MonoBehaviour
         if (!answered)
             options[currentAction].color = selectedColor;
 
-        if (Input.GetKeyDown(KeybindManager.i.keys["CONFIRM"])) //return = enter key
+        if (Input.GetKeyDown(ControlManager.i.getKey("CONFIRM"))) //return = enter key
         {
             if (!answered)
             {
