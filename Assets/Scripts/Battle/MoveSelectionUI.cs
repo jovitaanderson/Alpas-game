@@ -23,16 +23,16 @@ public class MoveSelectionUI : MonoBehaviour
 
    public void HandleMoveSelection(Action<int> onSelected) 
    {
-        if (Input.GetKeyDown(ControlManager.i.getKey("DOWN")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
             ++currentSelection;
-        else if (Input.GetKeyDown(ControlManager.i.getKey("UP")))   
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))   
             --currentSelection;
 
         currentSelection = Mathf.Clamp(currentSelection, 0, AnimalBase.MaxNumOfMoves);
 
         UpdateMoveSelection(currentSelection);
 
-        if (Input.GetKeyDown(ControlManager.i.getKey("CONFIRM")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
         {
             onSelected?.Invoke(currentSelection);
         }

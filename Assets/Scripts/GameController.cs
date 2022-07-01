@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     public SceneDetails PrevScene { get; private set; }
 
     MenuController menuController;
-    ControlManager keybindManager;
+    SettingsManager keybindManager;
 
     public static GameController Instance {get; private set;}
     private void Awake()
@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
         Instance = this;
 
         menuController = GetComponent<MenuController>();
-        keybindManager = GetComponent<ControlManager>();
+        keybindManager = GetComponent<SettingsManager>();
 
         //TODO: Uncomment this if we want to remove mouse from game
         //Cursor.lockState = CursorLockMode.Locked;
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
 
         keybindManager.onBack += () =>
         {
-            keybindManager.closeControlsUI();
+            keybindManager.closeSettingsUI();
             state = GameState.FreeRoam;
         };
 
@@ -155,7 +155,7 @@ public class GameController : MonoBehaviour
         else
         {
             //instructionsPanel.SetActive(false);
-            keybindManager.closeControlsUI();
+            keybindManager.closeSettingsUI();
             state = GameState.Battle;
             miniMapWindow.SetActive(false);
             walletUI.SetActive(false);
@@ -169,7 +169,7 @@ public class GameController : MonoBehaviour
     TrainerController trainer;
     public void StartTrainerBattle(TrainerController trainer)
     {
-        keybindManager.closeControlsUI();
+        keybindManager.closeSettingsUI();
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
@@ -231,7 +231,7 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
 
-            if (Input.GetKeyDown(ControlManager.i.getKey("MENU")) || Input.GetKeyDown(ControlManager.i.getKey("BACK")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("MENU")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
             {
                 playerController.Character.Animator.IsMoving = false;
                 menuController.OpenMenu();
@@ -291,7 +291,7 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Instructions)
         {
-            if (Input.GetKeyDown(ControlManager.i.getKey("BACK")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
             {
                 // instructionsPanel.SetActive(false);
                 //keybindUI.SetActive(false);
@@ -363,7 +363,7 @@ public class GameController : MonoBehaviour
             //instructionsPanel.SetActive(true);
             //Controls
             state = GameState.Controls;
-            keybindManager.openControlsUI();
+            keybindManager.openSettingsUI();
         } 
         else if (selectedItem == 6)
         {

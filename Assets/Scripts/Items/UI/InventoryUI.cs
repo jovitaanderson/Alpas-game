@@ -72,13 +72,13 @@ public class InventoryUI : MonoBehaviour
             int prevSelection = selectedItem;
             int prevCategory = selectedCategory;
 
-            if (Input.GetKeyDown(ControlManager.i.getKey("DOWN")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
                 ++selectedItem;
-            else if (Input.GetKeyDown(ControlManager.i.getKey("UP")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
                 --selectedItem;
-            else if (Input.GetKeyDown(ControlManager.i.getKey("RIGHT")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")))
                 ++selectedCategory;
-            else if (Input.GetKeyDown(ControlManager.i.getKey("LEFT")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")))
                 --selectedCategory;
 
             if (selectedCategory > Inventory.ItemCategories.Count - 1)
@@ -106,11 +106,11 @@ public class InventoryUI : MonoBehaviour
                
 
             //open party screen if press enter
-            if (Input.GetKeyDown(ControlManager.i.getKey("CONFIRM")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
                 StartCoroutine(ItemSelected());
 
             //if press escape, close the bag
-            else if (Input.GetKeyDown(ControlManager.i.getKey("BACK")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
                 onBack?.Invoke();
         }
         else if (state == InventoryUIState.PartySelection)

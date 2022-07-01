@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ControlManager : MonoBehaviour
+public class SettingsManager : MonoBehaviour
 {
     [SerializeField] Text messageText;
     public GameObject[] keybindButtons;
@@ -20,7 +20,7 @@ public class ControlManager : MonoBehaviour
 
     private Color32 normal = new Color32(255, 255, 255, 255);
 
-    public static ControlManager i { get; private set; }
+    public static SettingsManager i { get; private set; }
 
     private void Awake()
     {
@@ -91,7 +91,7 @@ public class ControlManager : MonoBehaviour
     {
         if (GetComponent<GameController>().State == GameState.Controls)
         {
-            if (Input.GetKeyDown(ControlManager.i.getKey("BACK")) && currentKey == null)
+            if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) && currentKey == null)
                 onBack?.Invoke();
 
             if (currentKey != null)
@@ -188,13 +188,13 @@ public class ControlManager : MonoBehaviour
         }
     }
 
-    public void openControlsUI()
+    public void openSettingsUI()
     {
         updateAllKeyText();
         keybindUI.SetActive(true);
     }
 
-    public void closeControlsUI()
+    public void closeSettingsUI()
     {
         messageText.text = "";
         keybindUI.SetActive(false);
