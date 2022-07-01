@@ -11,6 +11,7 @@ public class QuizManager : MonoBehaviour
     private List<Question> questions;
 
     private Question selectedQuestion;
+    private Question prevQuestion;
 
     private void Awake()
     {
@@ -19,8 +20,16 @@ public class QuizManager : MonoBehaviour
     }
     void SelectQuestion()
     {
+        if (selectedQuestion != null)
+            prevQuestion = selectedQuestion;
         int val = Random.Range(0, questions.Count);
         selectedQuestion = questions[val];
+
+        while (prevQuestion == selectedQuestion)
+        {
+            int newVal = Random.Range(0, questions.Count);
+            selectedQuestion = questions[newVal];
+        }
 
         quizUI.SetQuestion(selectedQuestion);
     }
