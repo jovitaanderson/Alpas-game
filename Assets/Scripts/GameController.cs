@@ -231,7 +231,8 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("MENU")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("MENU")) || Input.GetKeyDown(SettingsManager.i.getKey("MENU1"))
+                || Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
             {
                 playerController.Character.Animator.IsMoving = false;
                 menuController.OpenMenu();
@@ -291,10 +292,8 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Instructions)
         {
-            if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
             {
-                // instructionsPanel.SetActive(false);
-                //keybindUI.SetActive(false);
                 state = GameState.FreeRoam;
             }
         }

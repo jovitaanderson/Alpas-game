@@ -35,9 +35,9 @@ public class MenuController : MonoBehaviour
     {
         int prevSelection = selectedItem;
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             ++selectedItem;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             --selectedItem;
 
         selectedItem = Mathf.Clamp(selectedItem, 0, menuItems.Count - 1);
@@ -46,14 +46,14 @@ public class MenuController : MonoBehaviour
             UpdateItemSelection();
 
         //if press enter then go do action
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             Debug.Log(selectedItem);
             onMenuSelected?.Invoke(selectedItem);
             CloseMenu();
         }
         //else, if press escape, then go back
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
         {
             onBack?.Invoke();
             CloseMenu();

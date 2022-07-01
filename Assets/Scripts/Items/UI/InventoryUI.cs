@@ -72,13 +72,13 @@ public class InventoryUI : MonoBehaviour
             int prevSelection = selectedItem;
             int prevCategory = selectedCategory;
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
                 ++selectedItem;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
                 --selectedItem;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
                 ++selectedCategory;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
                 --selectedCategory;
 
             if (selectedCategory > Inventory.ItemCategories.Count - 1)
@@ -106,11 +106,11 @@ public class InventoryUI : MonoBehaviour
                
 
             //open party screen if press enter
-            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
                 StartCoroutine(ItemSelected());
 
             //if press escape, close the bag
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
                 onBack?.Invoke();
         }
         else if (state == InventoryUIState.PartySelection)

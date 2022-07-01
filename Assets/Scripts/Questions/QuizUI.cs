@@ -33,13 +33,13 @@ public class QuizUI : MonoBehaviour
         if (!answered)
             options[currentAction].color = normalCol;
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
             ++currentAction;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
             --currentAction;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             currentAction += 2;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             currentAction -= 2;
 
         //Restrict value of currentAction between 0 and 3
@@ -48,7 +48,7 @@ public class QuizUI : MonoBehaviour
         if (!answered)
             options[currentAction].color = selectedColor;
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM"))) //return = enter key
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             if (!answered)
             {

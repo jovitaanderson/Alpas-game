@@ -77,13 +77,13 @@ public class PartyScreen : MonoBehaviour
         {
             var prevSelection = selection;
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
                 ++selection;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
                 --selection;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
                 selection += 2;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
                 selection -= 2;
 
             //Restrict value of currentMove between 0 and no. of animals moves
@@ -92,7 +92,7 @@ public class PartyScreen : MonoBehaviour
             if (selection != prevSelection)
                 UpdateMemberSelection(selection);
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             {
                 onSelected?.Invoke();
                 if (onSelected == null)
@@ -103,7 +103,7 @@ public class PartyScreen : MonoBehaviour
 
             }
             //Go back to select action screen if esc or backspace is pressed
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(KeyCode.Backspace))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
             {
                 onBack?.Invoke();
 
@@ -113,9 +113,9 @@ public class PartyScreen : MonoBehaviour
         {
             var prevChoiceSelection = choiceSelection;
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
                 ++choiceSelection;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
                 --choiceSelection;
 
             choiceSelection = Mathf.Clamp(choiceSelection, 0, choices.Length-1);
@@ -123,12 +123,12 @@ public class PartyScreen : MonoBehaviour
             if (choiceSelection != prevChoiceSelection)
                 UpdateChoiceBox(choiceSelection);
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             {
                 StartCoroutine(ChoiceSelection(choiceSelection));
             }
             //else, if press escape, then go back
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
             {
                 choiceSelection = 0;
                 EnableChoiceBox(false);
@@ -138,13 +138,13 @@ public class PartyScreen : MonoBehaviour
         {
             var prevSelection = swapSelection;
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
                 ++swapSelection;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
                 --swapSelection;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
                 swapSelection += 2;
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
                 swapSelection -= 2;
 
             swapSelection = Mathf.Clamp(swapSelection, 0, animals.Count - 1);
@@ -152,14 +152,14 @@ public class PartyScreen : MonoBehaviour
             if (swapSelection != prevSelection)
                 UpdateMemberSelection(swapSelection);
 
-            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             {
                 if (selection == swapSelection)
                     messageText.text = "Cannot swap with same animal";
                 else
                     SwapAnimal(swapSelection, selection);
             }
-            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(KeyCode.Backspace))
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
             {
                 ResetSelection();
             }

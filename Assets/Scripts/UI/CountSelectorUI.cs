@@ -40,9 +40,9 @@ public class CountSelectorUI : MonoBehaviour
     {
         int prevCount = currentCount;
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             ++currentCount;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             --currentCount;
 
         currentCount = Mathf.Clamp(currentCount, 1, maxCount);
@@ -51,10 +51,10 @@ public class CountSelectorUI : MonoBehaviour
             SetValues();
 
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             selected = true;
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
             exit = true;
 
 

@@ -565,13 +565,13 @@ public class BattleSystem : MonoBehaviour
     }
     void HandleActionSelection()
     {
-        if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
             ++currentAction;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
             --currentAction;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             currentAction += 2;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             currentAction -= 2;
 
         //Restrict value of currentAction between 0 and 3
@@ -579,7 +579,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateActionSelection(currentAction);
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(KeyCode.Space)) //return = enter key
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             if (currentAction == 0)
             {
@@ -608,13 +608,13 @@ public class BattleSystem : MonoBehaviour
 
     void HandleMoveSelection()
     {
-        if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
             ++currentMove;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
             --currentMove;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             currentMove += 2;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             currentMove -= 2;
 
         //Restrict value of currentMove between 0 and no. of animals moves
@@ -622,7 +622,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Animal.Moves[currentMove]);
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             var move = playerUnit.Animal.Moves[currentMove];
             if (move.PP == 0) return;
@@ -633,7 +633,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         //When esc key/backspace key press he goes back to selection screen
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(KeyCode.Backspace))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
         {
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
@@ -702,12 +702,13 @@ public class BattleSystem : MonoBehaviour
 
     void HandleAboutToUse()
     {
-        if(Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+        if(Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")) 
+            || Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             aboutToUseChoice = !aboutToUseChoice; //since there are only two options yes/no
 
         dialogBox.UpdateChoiceBox(aboutToUseChoice);
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             dialogBox.EnableChoiceBox(false);
             if(aboutToUseChoice == true)
@@ -721,7 +722,7 @@ public class BattleSystem : MonoBehaviour
                 StartCoroutine(SendNextTrainerAnimal());
             }
         }
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
         {
             dialogBox.EnableChoiceBox(false);
             StartCoroutine(SendNextTrainerAnimal());

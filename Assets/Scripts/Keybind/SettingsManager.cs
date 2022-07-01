@@ -8,17 +8,7 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    [SerializeField] Text messageText;
-    public GameObject[] keybindButtons;
     [SerializeField] GameObject settingsUI;
-    public event Action onBack;
-
-    public Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
-    public Dictionary<string, KeyCode> keys1 = new Dictionary<string, KeyCode>();
-
-    private GameObject currentKey;
-
-    private Color32 normal = new Color32(255, 255, 255, 255);
 
     [Header("Volume Settings")]
     [SerializeField] private Text musicTextValue = null;
@@ -29,6 +19,17 @@ public class SettingsManager : MonoBehaviour
     public static float musicVolume { get; private set; }
     public static float soundEffectsVolume { get; private set; }
 
+    [Header("Keybind Settings")]
+    [SerializeField] Text messageText;
+    public GameObject[] keybindButtons;
+    public event Action onBack;
+
+    public Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
+    public Dictionary<string, KeyCode> keys1 = new Dictionary<string, KeyCode>();
+
+    private GameObject currentKey;
+    private Color32 normal = new Color32(255, 255, 255, 255);
+
     public static SettingsManager i { get; private set; }
 
     private void Awake()
@@ -36,13 +37,27 @@ public class SettingsManager : MonoBehaviour
         i = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+
+        //audio settings
+        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
+        {
+            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
+            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
+        }
+        else
+        {
+            SetMusicVolume(defaultVolume);
+            SetSoundEffectsVolume(defaultVolume);
+        }
+
+        //Keybind settings
         if (!PlayerPrefs.HasKey("SavedKeybinds0"))
         {
             setDefaultKeybinds();
         }
+
         //Actions
         keys.Add("MENU", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("MENU", "M")));
         keys1.Add("MENU1", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("MENU1", "None")));
@@ -60,25 +75,54 @@ public class SettingsManager : MonoBehaviour
         keys1.Add("DOWN1", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("DOWN1", "S")));
         keys.Add("RIGHT", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("RIGHT", "RightArrow")));
         keys1.Add("RIGHT1", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("RIGHT1", "D")));
-        
-        //movement controls cannot be changed
 
-        messageText.text = "test";
+        messageText.text = "";
         updateAllKeyText();
-
-        //audio settings
-        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
-        {
-            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
-            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
-        }
-        else
-        {
-            SetMusicVolume(defaultVolume);
-            SetSoundEffectsVolume(defaultVolume);
-        }
     }
 
+    //Volume functions
+    public void SetMusicVolume(float volume)
+    {
+        //AudioListener.volume = volume;
+        musicVolume = volume;
+        musicTextValue.text = ((int)(volume * 100)).ToString();
+        musicSlider.value = volume;
+        AudioManager.i.UpdateMixerVolume(volume, soundEffectsVolume);
+    }
+
+    public void SetSoundEffectsVolume(float volume)
+    {
+        //AudioListener.volume = volume;
+        soundEffectsVolume = volume;
+        sfxTextValue.text = ((int)(volume * 100)).ToString();
+        sfxTextSlider.value = volume;
+        AudioManager.i.UpdateMixerVolume(musicVolume, volume);
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+    }
+
+    public void VolumeApply()
+    {
+        PlayerPrefs.SetFloat("masterMusic", musicVolume);
+        PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+        //Show Prompt
+        //StartCoroutine(ConfirmationBox());
+    }
+
+    public void AudioDefaultButton()
+    {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+        musicVolume = defaultVolume;
+        soundEffectsVolume = defaultVolume;
+        musicSlider.value = defaultVolume;
+        musicTextValue.text = ((int)(defaultVolume * 100)).ToString();
+        sfxTextSlider.value = defaultVolume;
+        sfxTextValue.text = ((int)(defaultVolume * 100)).ToString();
+        VolumeApply();
+    }
+
+
+    //Keybind functions
     public KeyCode getKey(string key)
     {
         return (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(key));
@@ -106,14 +150,14 @@ public class SettingsManager : MonoBehaviour
         updateAllKeyText();
         messageText.text = "Default keybinds set";
         messageText.color = new Color32(0, 0, 0, 255);
-        
     }
 
     private void OnGUI()
     {
         if (GetComponent<GameController>().State == GameState.Controls)
         {
-            if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) && currentKey == null)
+            if ((Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
+                && currentKey == null)
                 onBack?.Invoke();
 
             if (currentKey != null)
@@ -156,13 +200,13 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void updateKeyText(string key, KeyCode code)
+    private void updateKeyText(string key, KeyCode code)
     {
         Text temp = Array.Find(keybindButtons, x => x.name == key).GetComponentInChildren<Text>();
         temp.text = code.ToString();
     }
 
-    public void updateAllKeyText()
+    private void updateAllKeyText()
     {
         foreach (var keyButton in keybindButtons)
         {
@@ -176,7 +220,6 @@ public class SettingsManager : MonoBehaviour
         messageText.color = new Color32(255, 25, 25, 255);
     }
 
-
     public void ChangeKey(GameObject clicked)
     {
         if (currentKey != null)
@@ -187,7 +230,7 @@ public class SettingsManager : MonoBehaviour
         currentKey.GetComponent<Image>().color = GlobalSettings.i.HighlightedColor;
     }
 
-    public void SaveKeys()
+    public void SaveButton()
     {
         if (keys.ContainsValue(KeyCode.None))
         {
@@ -208,6 +251,7 @@ public class SettingsManager : MonoBehaviour
             messageText.text = "Saved";
             messageText.color = new Color32(0, 0, 0, 255);
         }
+
         VolumeApply();
     }
 
@@ -223,43 +267,4 @@ public class SettingsManager : MonoBehaviour
         settingsUI.SetActive(false);
     }
 
-    public void SetMusicVolume(float volume)
-    {
-        //AudioListener.volume = volume;
-        musicVolume = volume;
-        musicTextValue.text = ((int)(volume * 100)).ToString();
-        musicSlider.value = volume;
-        AudioManager.i.UpdateMixerVolume(volume, soundEffectsVolume);
-    }
-
-    public void SetSoundEffectsVolume(float volume)
-    {
-        //AudioListener.volume = volume;
-        soundEffectsVolume = volume;
-        sfxTextValue.text = ((int)(volume * 100)).ToString();
-        sfxTextSlider.value = volume;
-        AudioManager.i.UpdateMixerVolume(musicVolume, volume);
-        AudioManager.i.PlaySfx(AudioId.UISelect);
-    }
-
-    public void VolumeApply()
-    {
-        PlayerPrefs.SetFloat("masterMusic", musicVolume);
-        PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
-        AudioManager.i.PlaySfx(AudioId.UISelect);
-        //Show Prompt
-        //StartCoroutine(ConfirmationBox());
-    }
-
-    public void AudioDefaultButton()
-    {
-        AudioManager.i.PlaySfx(AudioId.UISelect);
-        musicVolume = defaultVolume;
-        soundEffectsVolume = defaultVolume;
-        musicSlider.value = defaultVolume;
-        musicTextValue.text = ((int)(defaultVolume * 100)).ToString();
-        sfxTextSlider.value = defaultVolume;
-        sfxTextValue.text = ((int)(defaultVolume * 100)).ToString();
-        VolumeApply();
-    }
 }

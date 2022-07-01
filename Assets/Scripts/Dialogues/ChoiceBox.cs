@@ -42,9 +42,9 @@ public class ChoiceBox : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             ++currentChoice;
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")))
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             --currentChoice;
 
         currentChoice = Mathf.Clamp(currentChoice, 0, choiceTexts.Count - 1);
@@ -54,7 +54,7 @@ public class ChoiceBox : MonoBehaviour
             choiceTexts[i].SetSelected(i == currentChoice);
         }
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")))
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             choiceSelected = true;
     }
 }

@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour, ISavable
 
         character.HandleUpdate();
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM"))){
+        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
+        {
             StartCoroutine(Interact());
         }
     }
