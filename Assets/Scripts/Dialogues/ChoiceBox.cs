@@ -42,7 +42,7 @@ public class ChoiceBox : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+        if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
             ++currentChoice;
         else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
             --currentChoice;

@@ -23,7 +23,7 @@ public class MoveSelectionUI : MonoBehaviour
 
    public void HandleMoveSelection(Action<int> onSelected) 
    {
-        if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+        if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
             ++currentSelection;
         else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))   
             --currentSelection;

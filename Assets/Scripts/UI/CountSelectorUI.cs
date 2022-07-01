@@ -42,7 +42,7 @@ public class CountSelectorUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
             ++currentCount;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
             --currentCount;
 
         currentCount = Mathf.Clamp(currentCount, 1, maxCount);

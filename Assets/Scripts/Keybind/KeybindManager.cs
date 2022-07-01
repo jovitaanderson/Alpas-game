@@ -32,7 +32,7 @@ public class KeybindManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("UP"))
+        if (!PlayerPrefs.HasKey("SavedKeybinds1"))
         {
             setDefaultKeybinds();
         }
@@ -52,6 +52,7 @@ public class KeybindManager : MonoBehaviour
 
     public void setDefaultKeybinds()
     {
+        PlayerPrefs.SetString("SavedKeybinds1", "true");
         PlayerPrefs.SetString("UP", "UpArrow");
         PlayerPrefs.SetString("LEFT", "LeftArrow");
         PlayerPrefs.SetString("DOWN", "DownArrow");

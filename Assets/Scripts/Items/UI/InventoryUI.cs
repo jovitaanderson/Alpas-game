@@ -72,7 +72,7 @@ public class InventoryUI : MonoBehaviour
             int prevSelection = selectedItem;
             int prevCategory = selectedCategory;
 
-            if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+            if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
                 ++selectedItem;
             else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
                 --selectedItem;

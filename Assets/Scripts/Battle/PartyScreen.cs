@@ -81,7 +81,7 @@ public class PartyScreen : MonoBehaviour
                 ++selection;
             else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]))
                 --selection;
-            else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+            else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
                 selection += 2;
             else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
                 selection -= 2;
@@ -113,7 +113,7 @@ public class PartyScreen : MonoBehaviour
         {
             var prevChoiceSelection = choiceSelection;
 
-            if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+            if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
                 ++choiceSelection;
             else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
                 --choiceSelection;
@@ -142,7 +142,7 @@ public class PartyScreen : MonoBehaviour
                 ++swapSelection;
             else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]))
                 --swapSelection;
-            else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+            else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
                 swapSelection += 2;
             else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
                 swapSelection -= 2;

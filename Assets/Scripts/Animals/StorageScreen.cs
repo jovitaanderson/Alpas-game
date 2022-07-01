@@ -85,7 +85,7 @@ public class StorageScreen : MonoBehaviour
             ++selection;
         else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]))
             --selection;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
             selection += 5;
         else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]))
             selection -= 5;

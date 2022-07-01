@@ -569,7 +569,7 @@ public class BattleSystem : MonoBehaviour
             ++currentAction;
         else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]) || Input.GetKeyDown(KeyCode.A))
             --currentAction;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]) || Input.GetKeyDown(KeyCode.S))
             currentAction += 2;
         else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeyCode.W))
             currentAction -= 2;
@@ -612,7 +612,7 @@ public class BattleSystem : MonoBehaviour
             ++currentMove;
         else if (Input.GetKeyDown(KeybindManager.i.keys["LEFT"]) || Input.GetKeyDown(KeyCode.A))
             --currentMove;
-        else if (Input.GetKeyDown(KeybindManager.i.keys["Down"]) || Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeybindManager.i.keys["DOWN"]) || Input.GetKeyDown(KeyCode.S))
             currentMove += 2;
         else if (Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeyCode.W))
             currentMove -= 2;
@@ -702,7 +702,7 @@ public class BattleSystem : MonoBehaviour
 
     void HandleAboutToUse()
     {
-        if(Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeybindManager.i.keys["Down"]))
+        if(Input.GetKeyDown(KeybindManager.i.keys["UP"]) || Input.GetKeyDown(KeybindManager.i.keys["DOWN"]))
             aboutToUseChoice = !aboutToUseChoice; //since there are only two options yes/no
 
         dialogBox.UpdateChoiceBox(aboutToUseChoice);
