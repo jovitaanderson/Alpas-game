@@ -8621,6 +8621,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8704103997582788324, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 342533963515042917}
+    - target: {fileID: 8704103997582788324, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704103997582788324, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704103997582788324, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8704878423320429810, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
       propertyPath: m_Sprite
       value: 

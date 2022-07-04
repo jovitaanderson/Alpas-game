@@ -164,3 +164,51 @@ MonoBehaviour:
     - 2030
     - 2035
     correctAns: 2027
+  - questionInfo: What does the name "Singapura", the original name of Singapore,
+      mean in Sanskrit
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - City of Islands
+    - Lion City
+    - City of Ships
+    - Jungle City
+    correctAns: Lion City
+  - questionInfo: What does the What numbers should replace the question marks?ame
+      "Singapura", the original name of Singapore, mean in Sanskrit
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: d1ad445e8ab8c974199d20219bd19061, type: 3}
+    options:
+    - 'Top right: 18, Bottom left: 36, Bottom right: 15'
+    - 'Top right: 15, Bottom left: 18, Bottom right: 36'
+    - 'Top right: 17, Bottom left: 32, Bottom right: 20'
+    - 'Top right: 16, Bottom left: 32, Bottom right: 18'
+    correctAns: 'Top right: 18, Bottom left: 36, Bottom right: 15'
+  - questionInfo: What percentage of the figure is shaded?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 983149ffd3f7df849867771dad95d5f4, type: 3}
+    options:
+    - 50%
+    - 62.5%
+    - 63%
+    - 62%
+    correctAns: 62.5%
+  - questionInfo: What number should replace the question mark?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 1a4f06f5fe4c3a245ad0503c9cf51ce5, type: 3}
+    options:
+    - 50
+    - 52
+    - 55
+    - 57
+    correctAns: 52
+  - questionInfo: Look at lines both across and down and work out which number should
+      replace the question mark.
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: c6f904e7189e302409ca788aa3ad3095, type: 3}
+    options:
+    - 2
+    - 3
+    - 4
+    - 5
+    correctAns: 4

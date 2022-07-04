@@ -222,13 +222,30 @@ MonoBehaviour:
     - "\u201Ca democratic society, based on justice and equality\u201D"
     - "\u201Cpledge ourselves as one united family\u201D"
     correctAns: "\u201Cpledge ourselves as one united family\u201D"
-  - questionInfo: "Which of the following is not cited in Singapore\u2019s National
-      Pledge?"
+  - questionInfo: "How long is the term of Singapore\u2019s president?"
     questionType: 0
     questionImg: {fileID: 0}
     options:
-    - "\u201Cregardless of race, language or religion\u201D "
-    - "\u201Chappiness, prosperity, and progress\u201D "
-    - "\u201Ca democratic society, based on justice and equality\u201D"
-    - "\u201Cpledge ourselves as one united family\u201D"
-    correctAns: "\u201Cpledge ourselves as one united family\u201D"
+    - 12 years
+    - 6 years
+    - 4 years
+    - 1 year
+    correctAns: 6 years
+  - questionInfo: When was MODERN Singapore founded?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 1867
+    - 1853
+    - 1819
+    - 1752
+    correctAns: 1819
+  - questionInfo: What is the total area of Singapore, including the smaller islands?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 886 square km
+    - 686 square km
+    - 622 square km
+    - 490 square km
+    correctAns: 686 km square

@@ -40,8 +40,6 @@ public class MainController : MonoBehaviour
 
     public static float soundEffectsVolume { get; private set; }
 
-    //public static float noChange = 0f;
-
     private void Awake()
     {
         //if (sceneMusic != null)
@@ -111,7 +109,6 @@ public class MainController : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        //AudioListener.volume = volume;
         musicVolume = volume;
         musicTextValue.text = ((int)(volume * 100)).ToString();
         musicSlider.value = volume;
@@ -120,12 +117,11 @@ public class MainController : MonoBehaviour
 
     public void SetSoundEffectsVolume(float volume)
     {
-        //AudioListener.volume = volume;
         soundEffectsVolume = volume;
         sfxTextValue.text = ((int)(volume * 100)).ToString();
         sfxTextSlider.value = volume;
         AudioManager.i.UpdateMixerVolume(musicVolume, volume);
-        PlaySFX();
+
     }
 
     public void VolumeApply()
@@ -141,7 +137,6 @@ public class MainController : MonoBehaviour
     {
         if (MenuType == "Audio")
         {
-            PlaySFX();
             musicVolume = defaultVolume;
             soundEffectsVolume = defaultVolume;
             musicSlider.value = defaultVolume;

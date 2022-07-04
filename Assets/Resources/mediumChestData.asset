@@ -13,46 +13,6 @@ MonoBehaviour:
   m_Name: mediumChestData
   m_EditorClassIdentifier: 
   questions:
-  - questionInfo: What number should replace the question mark?
-    questionType: 1
-    questionImg: {fileID: 21300000, guid: 75ff1fbd5036d9e478d1058701fa1e01, type: 3}
-    options:
-    - 49
-    - 39
-    - 59
-    - 40
-    correctAns: 49
-  - questionInfo: What is the longest word in the English language that can be produced
-      "FEUMOPXCTW"? Letters may only be used once in the word produced.
-    questionType: 0
-    questionImg: {fileID: 0}
-    options:
-    - Cope
-    - Compute
-    - Femocup
-    - Wepxecotup
-    correctAns: Compute
-  - questionInfo: Which letter is midway between the letter two letters below the
-      letter immediately to the left of the letter G, and the letter three letters
-      above the letter immediately to the right of the letter V?
-    questionType: 1
-    questionImg: {fileID: 21300000, guid: d8006d0a20574004cad2a8966c9b9e17, type: 3}
-    options:
-    - K
-    - L
-    - M
-    - Q
-    correctAns: L
-  - questionInfo: "1, 101, 15, 4, 29, \u201393, 43, \u2013190, ? What number should
-      replace the question mark?"
-    questionType: 0
-    questionImg: {fileID: 0}
-    options:
-    - 50
-    - 55
-    - 57
-    - 60
-    correctAns: 57
   - questionInfo: "How tall is the Jewel Changi Airport\u2019s indoor waterfall?"
     questionType: 0
     questionImg: {fileID: 0}
@@ -226,3 +186,181 @@ MonoBehaviour:
     - Raffles Place
     - Redhill
     correctAns: Bras Basah station
+  - questionInfo: What number should replace the question mark?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 75ff1fbd5036d9e478d1058701fa1e01, type: 3}
+    options:
+    - 49
+    - 39
+    - 59
+    - 40
+    correctAns: 49
+  - questionInfo: What is the longest word in the English language that can be produced
+      "FEUMOPXCTW"? Letters may only be used once in the word produced.
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Cope
+    - Compute
+    - Femocup
+    - Wepxecotup
+    correctAns: Compute
+  - questionInfo: Which letter is midway between the letter two letters below the
+      letter immediately to the left of the letter G, and the letter three letters
+      above the letter immediately to the right of the letter V?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: d8006d0a20574004cad2a8966c9b9e17, type: 3}
+    options:
+    - K
+    - L
+    - M
+    - Q
+    correctAns: L
+  - questionInfo: "1, 101, 15, 4, 29, \u201393, 43, \u2013190, ? What number should
+      replace the question mark?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 50
+    - 55
+    - 57
+    - 60
+    correctAns: 57
+  - questionInfo: If five men can build a house in 16 days, how long will it take
+      just two men to build the same house, assuming all men work at the same rate?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 50 days
+    - 40 days
+    - 45 days
+    - 47 days
+    correctAns: 40 days
+  - questionInfo: What number should replace the question mark?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 464fd199afe758e4cb578e2720bf7648, type: 3}
+    options:
+    - 3
+    - 4
+    - 5
+    - 6
+    correctAns: 6
+  - questionInfo: 'Rifle is to firearm as cutlass is to:'
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Blade
+    - Sword
+    - Weapon
+    - Steel
+    correctAns: Sword
+  - questionInfo: What is the difference between the average of the numbers above
+      and the second lowest even number?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 1
+    - 2
+    - 3
+    - 4
+    correctAns: 1
+  - questionInfo: How much does a bag of flour weigh if it weighs 1 kilogram plus
+      the weight of half the bag of flour?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 1
+    - 1.5
+    - 2
+    - 2.5
+    correctAns: 2
+  - questionInfo: 'Dentiform is to tooth as dendriform is to:'
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Triangle
+    - Tree
+    - Doughnut
+    - Arch
+    correctAns: Tree
+  - questionInfo: The average of three numbers is 48. The average of two of these
+      numbers is 56. What is the third number?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 32
+    - 48
+    - 56
+    - 52
+    correctAns: 32
+  - questionInfo: 'In 13 years time the combined ages of my three brothers will be
+      94. What will it be in nine years time? '
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 82
+    - 85
+    - 81
+    - 76
+    correctAns: 82
+  - questionInfo: What number in the grid is three places away from itself less two,
+      two places away from itself divided by two, three places away from itself less
+      five and three places away from itself multiplied by three?
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 6801bfab10660d842933d7ea2761927f, type: 3}
+    options:
+    - 36
+    - 8
+    - 7
+    - 3
+    correctAns: 8
+  - questionInfo: ' Closed is to shut as open is to: '
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - obscure
+    - visilble
+    - field
+    - overt
+    correctAns: overt
+  - questionInfo: ' Harry is one and a third as old as Larry and Larry is one and
+      a third as old as Carrie. Together their ages total 74. How old are Larry,
+      Harry and Carrie?'
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Harry 32, Larry 24, Carrie 18
+    - Harry 30, Larry 20, Carrie 12
+    - Harry 28, Larry 30, Carrie 36
+    - Harry 24, Larry 32, Carrie 21
+    correctAns: Harry 32, Larry 24, Carrie 18
+  - questionInfo: What number should replace the question mark?  1, 31, 59, 85, 109,
+      ?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - 130
+    - 131
+    - 142
+    - 138
+    correctAns: 131
+  - questionInfo: A B C D E F G H, Which letter is two to the left of the letter
+      that is four to the right of the letter immediately to the right of the letter
+      A?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - B
+    - C
+    - D
+    - E
+    correctAns: D
+  - questionInfo: What letter comes next? A, C, F, J, O, ?
+    questionType: 0
+    questionImg: {fileID: 0}
+    options:
+    - Q
+    - S
+    - U
+    - W
+    correctAns: U

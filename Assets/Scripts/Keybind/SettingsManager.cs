@@ -83,7 +83,6 @@ public class SettingsManager : MonoBehaviour
     //Volume functions
     public void SetMusicVolume(float volume)
     {
-        //AudioListener.volume = volume;
         musicVolume = volume;
         musicTextValue.text = ((int)(volume * 100)).ToString();
         musicSlider.value = volume;
@@ -92,26 +91,20 @@ public class SettingsManager : MonoBehaviour
 
     public void SetSoundEffectsVolume(float volume)
     {
-        //AudioListener.volume = volume;
         soundEffectsVolume = volume;
         sfxTextValue.text = ((int)(volume * 100)).ToString();
         sfxTextSlider.value = volume;
         AudioManager.i.UpdateMixerVolume(musicVolume, volume);
-        AudioManager.i.PlaySfx(AudioId.UISelect);
     }
 
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat("masterMusic", musicVolume);
         PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
-        AudioManager.i.PlaySfx(AudioId.UISelect);
-        //Show Prompt
-        //StartCoroutine(ConfirmationBox());
     }
 
     public void AudioDefaultButton()
     {
-        AudioManager.i.PlaySfx(AudioId.UISelect);
         musicVolume = defaultVolume;
         soundEffectsVolume = defaultVolume;
         musicSlider.value = defaultVolume;
@@ -119,6 +112,12 @@ public class SettingsManager : MonoBehaviour
         sfxTextSlider.value = defaultVolume;
         sfxTextValue.text = ((int)(defaultVolume * 100)).ToString();
         VolumeApply();
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+    }
+
+    public void PlaySFX()
+    {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
     }
 
 
@@ -253,6 +252,7 @@ public class SettingsManager : MonoBehaviour
         }
 
         VolumeApply();
+        AudioManager.i.PlaySfx(AudioId.UISelect);
     }
 
     public void openSettingsUI()
