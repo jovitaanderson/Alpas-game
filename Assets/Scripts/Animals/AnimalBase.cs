@@ -13,7 +13,7 @@ public class AnimalBase : ScriptableObject
 {
     //Since we need to use this variable outside this class, to follow OOP we use SerializeField instead of public
     // as it is bad pratice
-
+    [SerializeField] int index;
     [SerializeField] new string name;
 
     [TextArea]
