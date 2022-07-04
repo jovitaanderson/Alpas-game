@@ -115,11 +115,6 @@ public class SettingsManager : MonoBehaviour
         AudioManager.i.PlaySfx(AudioId.UISelect);
     }
 
-    public void PlaySFX()
-    {
-        AudioManager.i.PlaySfx(AudioId.UISelect);
-    }
-
 
     //Keybind functions
     public KeyCode getKey(string key)
