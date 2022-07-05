@@ -262,4 +262,9 @@ public class SettingsManager : MonoBehaviour
         settingsUI.SetActive(false);
     }
 
+    public void PlaySFX()
+    {
+        AudioManager.i.PlaySfx(AudioId.UISelect);
+    }
+
 }

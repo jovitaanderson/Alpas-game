@@ -10647,6 +10647,14 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 8846833009260342660, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -51.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846833009260342660, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8846833009260342661, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -11527,7 +11535,7 @@ PrefabInstance:
       objectReference: {fileID: 1879236401}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.data[0]
@@ -11537,6 +11545,10 @@ PrefabInstance:
       propertyPath: connectedScenes.Array.data[1]
       value: 
       objectReference: {fileID: 1280385472}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: connectedScenes.Array.data[2]
+      value: 
+      objectReference: {fileID: 1483159052}
     - target: {fileID: 2020969623709352167, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: m_RootOrder
       value: 2

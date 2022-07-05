@@ -8,6 +8,8 @@ public class CoinSpawn : MonoBehaviour
     public int maxCoinInMap;
     public Vector2 minPosition; //min x = -59.5, min y = -29.5
     public Vector2 maxPosition; //max x = 79.5 , max y = 29.5
+    public Collider2D[] colliders;
+    public float radius;
 
     public float Timer = 0;
     [SerializeField] public float TimeForNextCoinSpawn;
@@ -32,6 +34,10 @@ public class CoinSpawn : MonoBehaviour
                 Timer = 0;
             }
         }
+
+        
+
+
     }
 
     void SpawnTreasureChestRandom()
