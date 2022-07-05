@@ -48,4 +48,14 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
    public Transform SpawnPoint => spawnPoint;
 }
 
-public enum DestinatonIdentifier {A,B,C,D,E}
+public enum DestinatonIdentifier {A,B,C,D,E,F,G,H,I,J,K}
+
+/*
+ * A: House1
+ * B: Shop
+ * C: NorthBattleArena
+ * D: CentralBattleArena
+ * E: EastBattleArena
+ * F: WestBattleArena
+ * G: SouthBattleArena
+ */
