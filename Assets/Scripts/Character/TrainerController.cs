@@ -43,7 +43,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
                 GameController.Instance.StartTrainerBattle(this);
             }
             else 
-                yield return DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight with trainer.");
+                yield return DialogManager.Instance.ShowDialogText($"All your animals are fainted, cannot fight with {name}.");
            
         }
         else
@@ -80,6 +80,8 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     {
         battleLost = true;
         fov.gameObject.SetActive(false);
+
+        //TODO: if win battle, unlock next trainer
     }
 
     public void SetFovRotation(FacingDirection dir)
