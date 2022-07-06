@@ -6778,12 +6778,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 604246980076941241, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: isTrainer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941241, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: questToStart
       value: 
       objectReference: {fileID: 11400000, guid: 80f9cb2ce8ab331428e99c0cd0636985, type: 2}
     - target: {fileID: 604246980076941241, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: insert npccontroller diagloue here
+      value: argh... I have been defeated...
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941243, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: m_RootOrder
@@ -6795,7 +6803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.7
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6839,7 +6847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: dialog.lines.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: dialog.lines.Array.data[0]
@@ -6847,7 +6855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: dialogAfterBattle.lines.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: dialogAfterBattle.lines.Array.data[0]

@@ -96,11 +96,11 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                 inProgressMark.SetActive(true);
 
                 //For trainer quests
-                if (this.isTrainer)
+                if (trainer!= null)
                 {
-                    yield return trainer.Interact(initiator);
+                    yield return StartCoroutine(trainer.Interact(initiator));
 
-                    if (trainer != null && trainer.BattleLostState)
+                    if (trainer.BattleLostState)
                     {
                         yield return activeQuest.CompleteQuest(initiator);
                         activeQuest = null;
@@ -121,11 +121,11 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
             else if(activeQuest != null)
             {
                 //For trainerQuests
-                if (this.isTrainer)
+                if (trainer != null)
                 {
                     trainer.Interact(initiator);
 
-                    if (trainer != null && trainer.BattleLostState)
+                    if (trainer.BattleLostState)
                     {
                         yield return activeQuest.CompleteQuest(initiator);
                         activeQuest = null;

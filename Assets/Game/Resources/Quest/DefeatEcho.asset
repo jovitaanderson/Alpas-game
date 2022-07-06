@@ -16,12 +16,12 @@ MonoBehaviour:
   description: 
   startDialogue:
     lines:
-    - defeatecho quest started
+    - You came to fight me? Get ready to be defeated by ECHO
   inProgressDialogue:
     lines:
-    - defeatecho quest in progress
+    - Have you come to challenge me again? I wont lose.
   completedDialogue:
     lines:
-    - defeatecho quest completed
+    - Wow! You are much stronger than i expected
   requiredItem: {fileID: 0}
   rewardItem: {fileID: 0}
