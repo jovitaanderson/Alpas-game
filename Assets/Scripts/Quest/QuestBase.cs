@@ -23,4 +23,5 @@ public class QuestBase : ScriptableObject
 
     public ItemBase RequiredItem => requiredItem;
     public ItemBase RewardItem => rewardItem;
+
 }

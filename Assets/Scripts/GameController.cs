@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        //todo: remove comments when done debugging
         if (MainController.checkLoadGame == true)
         {
             string savedSlotName = PlayerPrefs.GetString("SavedGame");
@@ -345,7 +346,7 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 3)
         {
             //Load
-            SavingSystem.i.Load("saveSlot1");
+            SavingSystem.i.Load(PlayerPrefs.GetString("SavedGame"));
             state = GameState.FreeRoam;
         } 
         else if (selectedItem == 4)
