@@ -15,6 +15,8 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     //State
     bool battleLost = false;
 
+    public bool BattleLostState => battleLost;
+
     Character character;
     private void Awake()
     {
@@ -23,7 +25,10 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
     private void Start()
     {
-        SetFovRotation(character.Animator.DefaultDirection);
+        if (fov != null)
+        {
+            SetFovRotation(character.Animator.DefaultDirection);
+        }
     }
 
     private void Update()
@@ -79,7 +84,10 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     public void BattleLost()
     {
         battleLost = true;
-        fov.gameObject.SetActive(false);
+        if (fov != null)
+        {
+            fov.gameObject.SetActive(false);
+        }
 
         //TODO: if win battle, unlock next trainer
     }

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable, ISavable
 {
+
+    [SerializeField] GameObject questionMark;
+    [SerializeField] GameObject inProgressMark;
+
     [SerializeField] Dialog dialog;
+
+    [SerializeField] bool isTrainer;
 
     [Header("Quests")]
     [SerializeField] QuestBase questToStart;
@@ -13,6 +19,8 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     [Header("Movement")]
     [SerializeField] List<Vector2> movementPattern;
     [SerializeField] float timeBetweenPattern;
+
+
 
 
     NPCState state;
@@ -25,14 +33,33 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     AnimalGiver animalGiver;
     Healer healer;
     Merchant merchant;
+    TrainerController trainer;
+    
 
     private void Awake()
     {
+
         character = GetComponent<Character>();
         itemGiver = GetComponent<ItemGiver>();
         animalGiver = GetComponent<AnimalGiver>();
         healer = GetComponent<Healer>();
         merchant = GetComponent<Merchant>();
+        trainer = GetComponent<TrainerController>();
+    }
+
+    public void Start()
+    {
+        if (questToStart != null)
+        {
+            if (questionMark != null)
+            {
+                questionMark.SetActive(true);
+            }
+        }
+        else
+        {
+            questionMark?.SetActive(false);
+        }
     }
 
 
@@ -65,23 +92,62 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                 activeQuest = new Quest(questToStart);
                 yield return activeQuest.StartQuest();
                 questToStart = null;
+                questionMark.SetActive(false);
+                inProgressMark.SetActive(true);
 
-                if (activeQuest.CanBeCompleted())
+                //For trainer quests
+                if (trainer!= null)
                 {
-                    yield return activeQuest.CompleteQuest(initiator);
-                    activeQuest = null;
+                    yield return StartCoroutine(trainer.Interact(initiator));
+
+                    if (trainer.BattleLostState)
+                    {
+                        yield return activeQuest.CompleteQuest(initiator);
+                        activeQuest = null;
+                        inProgressMark.SetActive(false);
+                    }
+                }
+                //For other quests
+                else
+                {
+                    if (activeQuest.CanBeCompleted())
+                    {
+                        yield return activeQuest.CompleteQuest(initiator);
+                        activeQuest = null;
+                        inProgressMark.SetActive(false);
+                    }
                 }
             }
             else if(activeQuest != null)
             {
-                if (activeQuest.CanBeCompleted())
+                //For trainerQuests
+                if (trainer != null)
                 {
-                    yield return activeQuest.CompleteQuest(initiator);
-                    activeQuest = null;
+                    trainer.Interact(initiator);
+
+                    if (trainer.BattleLostState)
+                    {
+                        yield return activeQuest.CompleteQuest(initiator);
+                        activeQuest = null;
+                        inProgressMark.SetActive(false);
+                    }
+                    else
+                    {
+                        yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
+                    }
                 }
-                else
-                {
-                    yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
+                //For other quests
+                else {
+                    if (activeQuest.CanBeCompleted())
+                    {
+                        yield return activeQuest.CompleteQuest(initiator);
+                        activeQuest = null;
+                        inProgressMark.SetActive(false);
+                    }
+                    else
+                    {
+                        yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
+                    }
                 }
             }
             else if (healer != null)
@@ -105,6 +171,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
 
     private void Update()
     {
+
         if (state == NPCState.Idle)
         {
             idleTimer += Time.deltaTime;

@@ -123,91 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &114612827
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -1346580744127624244, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: uniqueId
-      value: 3e2c0f0c-2b63-4a7c-970e-3014186f1260
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681073, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_Name
-      value: Eve
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681080, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: trainerAppearsClip
-      value: trainerAppearsMusic
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681080, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: dialog.lines.Array.data[0]
-      value: Hey, I am a trainer. My animals are strong. Let me show you!
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681080, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: dialogAfterBattle.lines.Array.data[0]
-      value: I will train harder to beat you.
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681081, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: animals.Array.data[0]._base
-      value: 
-      objectReference: {fileID: 11400000, guid: ca468149226716749b086594eb5ebaa7, type: 2}
-    - target: {fileID: 609922825468681081, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: animals.Array.data[0].level
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681082, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1554383793582291090, guid: bcc8a7c69fd17e04c954d9a2b9b1e8e1, type: 3}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 345.62003
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 90.59999
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609922825468681083, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f9ab3daade08f2242ae4256fa0d0b17f, type: 3}
 --- !u!1 &1177741856
 GameObject:
   m_ObjectHideFlags: 0
@@ -6841,6 +6756,111 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f590753ea4167545b40173c0d18d4f1, type: 3}
+--- !u!1001 &1704290968
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 604246980076941241, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: questToStart
+      value: 
+      objectReference: {fileID: 11400000, guid: 5838cc01fd52bfd4997d817a6ef568f7, type: 2}
+    - target: {fileID: 604246980076941241, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: argh... I have been defeated...
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941243, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 346
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941244, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604246980076941246, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: m_Name
+      value: Eve
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: name
+      value: Eve
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: insert start trainer battle dialogue here
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: dialogAfterBattle.lines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203325231343207828, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: dialogAfterBattle.lines.Array.data[0]
+      value: Wow! You were much stronger than i expected...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220980286914923127, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: uniqueId
+      value: 34498298-eb66-4899-931d-be871db68d5b
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: animals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: animals.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: b2c0aa4a40870044eb4fb0b74db56047, type: 2}
+    - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
+      propertyPath: animals.Array.data[0].level
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
 --- !u!4 &129894357984345741
 Transform:
   m_ObjectHideFlags: 0

@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_Name
-      value: QuestObject
+      value: ExitHouseBlocker
       objectReference: {fileID: 0}
     - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_IsActive
@@ -204,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5e2a283105d568d468cfec18c5939745, type: 2}
     - target: {fileID: 8529975477947624592, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.31
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 8529975477947624592, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Save Alpas!
+      value: Stop Dr Doom!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[1]
@@ -327,13 +327,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalToGive:
-    _base: {fileID: 11400000, guid: b2c0aa4a40870044eb4fb0b74db56047, type: 2}
+    _base: {fileID: 11400000, guid: fe035f31cc880d849ba4cdfec3f771c3, type: 2}
     level: 1
   dialog:
     lines:
     - Dr Doom has infected all the animals outside!
     - It is not safe to go out there without an animal
-    - You can have this kitten
+    - Here, have this puppy to start your journey
 --- !u!1001 &953919080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_Name
-      value: QuestObject (1)
+      value: ExitHouseBlocker(2)
       objectReference: {fileID: 0}
     - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
       propertyPath: m_IsActive
@@ -3941,7 +3941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Go and explore Singapore!
+      value: Go and save Singapore!
       objectReference: {fileID: 0}
     - target: {fileID: 604246980076941241, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
       propertyPath: dialog.lines.Array.data[1]
