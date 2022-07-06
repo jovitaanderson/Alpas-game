@@ -10,8 +10,6 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
 
     [SerializeField] Dialog dialog;
 
-    [SerializeField] bool isTrainer;
-
     [Header("Quests")]
     [SerializeField] QuestBase questToStart;
     [SerializeField] QuestBase questToComplete;
