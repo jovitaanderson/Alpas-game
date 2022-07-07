@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         //todo: remove comments when done debugging
-        /*if (MainController.checkLoadGame == true)
+        if (MainController.checkLoadGame == true)
         {
             string savedSlotName = PlayerPrefs.GetString("SavedGame");
             SavingSystem.i.Load(savedSlotName);
@@ -63,7 +63,9 @@ public class GameController : MonoBehaviour
         {
             PlayerPrefs.SetString("SavedGame", "saveSlot1");
             SavingSystem.i.Save("saveSlot1");
-        }*/
+        }
+
+
 
         battleSystem.OnBattleOver += EndBattle;
 

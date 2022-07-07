@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPCController : MonoBehaviour, Interactable, ISavable
 {
@@ -126,8 +127,23 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                     if (trainer.BattleLostState)
                     {
                         yield return activeQuest.CompleteQuest(initiator);
-                        activeQuest = null;
-                        inProgressMark.SetActive(false);
+                        //Speical case where DrDoom will open endcredit scene
+                        if(activeQuest.Base.Name == "DefeatDrDoom")
+                        {
+                            activeQuest = null;
+                            inProgressMark.SetActive(false);
+                            //auto save game before moving on the endcredits
+                            if (!PlayerPrefs.HasKey("SavedGame"))
+                                PlayerPrefs.SetString("SavedGame", "saveSlot1");
+                            SavingSystem.i.Save("saveSlot1");
+                            SceneManager.LoadScene("EndCredits");
+                        }
+                        else
+                        {
+                            activeQuest = null;
+                            inProgressMark.SetActive(false);
+                        }
+
                     }
                     else
                     {
