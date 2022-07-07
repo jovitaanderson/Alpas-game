@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Brendan
-  sprite: {fileID: 21300000, guid: 759dc584fb60b1b4ca7e3148c238943c, type: 3}
+  sprite: {fileID: 3472270671181414768, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
 --- !u!114 &4201773140602634708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals: []
+  animalStorage: {fileID: 0}
 --- !u!114 &6987082975107881324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,6 +473,7 @@ MonoBehaviour:
     level: 10
   - _base: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
     level: 15
+  maxAnimalsInStorage: 20
 --- !u!114 &4201773140602634709
 MonoBehaviour:
   m_ObjectHideFlags: 0
