@@ -17,6 +17,12 @@ public class EndCreditsController : MonoBehaviour
             AudioManager.i.Play(sceneMusic, fade: true); 
     }
 
+    public void Start()
+    {
+        Debug.Log("Endcreditcontroller start");
+        EssentialObjects.i.Destory();
+    }
+
     public void ExitButton()
     {
         AudioManager.i.PlaySfx(AudioId.UISelect);
