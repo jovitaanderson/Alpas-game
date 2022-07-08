@@ -34,4 +34,6 @@ public class EndCreditsController : MonoBehaviour
         AudioManager.i.PlaySfx(AudioId.UISelect);
         SceneManager.LoadScene(0);
     }
+
+    
 }

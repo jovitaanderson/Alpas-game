@@ -33,7 +33,9 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     Healer healer;
     Merchant merchant;
     TrainerController trainer;
-    
+
+    Fader fader;
+
 
     private void Awake()
     {
@@ -48,6 +50,8 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
 
     public void Start()
     {
+        fader = FindObjectOfType<Fader>();
+
         if (questToStart != null)
         {
             if (questionMark != null)
@@ -130,6 +134,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                         //Speical case where DrDoom will open endcredit scene
                         if(activeQuest.Base.Name == "DefeatDrDoom")
                         {
+                            yield return fader.FadeIn(0.5f);
                             activeQuest = null;
                             inProgressMark.SetActive(false);
                             //auto save game before moving on the endcredits
@@ -137,6 +142,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                                 PlayerPrefs.SetString("SavedGame", "saveSlot1");
                             SavingSystem.i.Save("saveSlot1");
                             SceneManager.LoadScene("EndCredits");
+                            
                         }
                         else
                         {
