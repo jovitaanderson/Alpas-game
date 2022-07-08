@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
   m_Name: HelpNeeded(2)
   m_EditorClassIdentifier: 
-  name: 
+  name: HelpNeeded(2)
   description: 
   startDialogue:
-    lines: []
+    lines:
+    - Hello there, could you do me a favour?
+    - I forgot to pass my son his lunchbox for school, could you help me?
+    - He's in the Central Map!
   inProgressDialogue:
-    lines: []
+    lines:
+    - Have you passed the lunchbox to my son in the Central Map yet?
   completedDialogue:
-    lines: []
+    lines:
+    - Oh, you managed to find my son. Thank you so much!
+    - Here is a TOKEN as a reward!
   requiredItem: {fileID: 0}
-  rewardItem: {fileID: 0}
+  rewardItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}

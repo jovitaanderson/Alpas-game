@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
   m_Name: LostToyIPlayground
   m_EditorClassIdentifier: 
-  name: 
+  name: LostToyInPlayground
   description: 
   startDialogue:
-    lines: []
+    lines:
+    - Help... I think I lost my teddy bear in the playground
+    - Could you help me get it.
   inProgressDialogue:
-    lines: []
+    lines:
+    - I still dont have my teddy bear
   completedDialogue:
-    lines: []
+    lines:
+    - Thank you!
+    - Here is an ANTITDOE as a reward
   requiredItem: {fileID: 0}
-  rewardItem: {fileID: 0}
+  rewardItem: {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}
