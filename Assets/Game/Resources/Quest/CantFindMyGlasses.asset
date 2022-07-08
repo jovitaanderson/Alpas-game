@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
+  m_Name: CantFindMyGlasses
+  m_EditorClassIdentifier: 
+  name: CantFindMyGlasses
+  description: 
+  startDialogue:
+    lines:
+    - It seems that I lost my glasses
+    - Could you help me find it?
+  inProgressDialogue:
+    lines:
+    - I still cant see without my glasses
+  completedDialogue:
+    lines:
+    - Thank you so much for finding it!
+    - Here is an AWAKENING as a reward
+  requiredItem: {fileID: 0}
+  rewardItem: {fileID: 11400000, guid: c8c0014cdf29f364599bedfeaba49c8b, type: 2}
