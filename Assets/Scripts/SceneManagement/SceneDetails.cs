@@ -10,7 +10,10 @@ public class SceneDetails : MonoBehaviour
     [SerializeField] List<SceneDetails> connectedScenes;
     [SerializeField] string sceneMusic;
     [SerializeField] Sprite backgroundBattle;
+    [SerializeField] Sprite backgroundCirclesBattle;
     [SerializeField] Image backgroundBattleImage;
+    [SerializeField] Image backgroundBattleCirclesImage1;
+    [SerializeField] Image backgroundBattleCirclesImage2;
 
     public bool IsLoaded { get; private set; }
     List<SavableEntity> savableEntities;
@@ -31,6 +34,14 @@ public class SceneDetails : MonoBehaviour
             //change background battle
             if (backgroundBattle != null)
                 backgroundBattleImage.sprite = backgroundBattle;
+            
+            //change background circles battle
+            if (backgroundCirclesBattle != null)
+            {
+                backgroundBattleCirclesImage1.sprite = backgroundCirclesBattle;
+                backgroundBattleCirclesImage2.sprite = backgroundCirclesBattle;
+            }
+                
 
             //Load alll connected scenes
             foreach (var scene in connectedScenes)
