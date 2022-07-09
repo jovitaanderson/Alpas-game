@@ -150,7 +150,7 @@ public class Inventory : MonoBehaviour, ISavable
         animalCaptureSlots = saveData.animalCaptures.Select(i => new ItemSlot(i)).ToList();
         questSlots = saveData.questItems.Select(i => new ItemSlot(i)).ToList();
 
-        allSlots = new List<List<ItemSlot>>() { slots, animalCaptureSlots };
+        allSlots = new List<List<ItemSlot>>() { slots, animalCaptureSlots, questSlots };
 
         OnUpdated?.Invoke();
     }

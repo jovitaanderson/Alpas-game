@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
+  m_Name: HelpNeeded(4)_PassedTextbook
+  m_EditorClassIdentifier: 
+  name: HelpNeeded(4)_PassedTextbook
+  description: 
+  startDialogue:
+    lines:
+    - Did grandpa ask you to pass me the Textbook?
+  inProgressDialogue:
+    lines:
+    - Where is the textbook?
+  completedDialogue:
+    lines:
+    - Wow! Thank you so much, I need this for class later
+    - Here is a ETHER as a reward
+  requiredItem: {fileID: 11400000, guid: 529d91fde4264484e8e3d736e06f48d0, type: 2}
+  rewardItem: {fileID: 11400000, guid: 6df98afd3c42bc742a64ed672988d553, type: 2}

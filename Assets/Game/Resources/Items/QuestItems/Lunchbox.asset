@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7858604536176114e8ba4484f1912b48, type: 3}
+  m_Name: Lunchbox
+  m_EditorClassIdentifier: 
+  name: Lunchbox
+  description: Quest item for Help Needed (2)
+  usedMessage: 
+  icon: {fileID: -4180193059992750293, guid: 978fdb3ff74d6f04da040e2c3b8f1f22, type: 3}
+  price: 0
+  isSellable: 0
+  canUseInBattle: 0
+  canUseOutsideBattle: 0

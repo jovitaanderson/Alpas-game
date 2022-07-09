@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
+  m_Name: LostToyInPlayground
+  m_EditorClassIdentifier: 
+  name: LostToyInPlayground
+  description: 
+  startDialogue:
+    lines:
+    - Help... I think I lost my ball in the playground
+    - Could you help me get it.
+  inProgressDialogue:
+    lines:
+    - I still dont have my ball
+  completedDialogue:
+    lines:
+    - Thank you!
+    - Here is an ANTITDOE as a reward
+  requiredItem: {fileID: 11400000, guid: 2c7684f9014bd6a4b95ea76207ad2ec6, type: 2}
+  rewardItem: {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}

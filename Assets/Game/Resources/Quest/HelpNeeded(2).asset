@@ -18,13 +18,12 @@ MonoBehaviour:
     lines:
     - Hello there, could you do me a favour?
     - I forgot to pass my son his lunchbox for school, could you help me?
-    - He's in the Central Map!
+    - Here's the lunchbox
   inProgressDialogue:
     lines:
     - Have you passed the lunchbox to my son in the Central Map yet?
   completedDialogue:
     lines:
-    - Oh, you managed to find my son. Thank you so much!
-    - Here is a TOKEN as a reward!
+    - He's in the Central Map! Thank you for helping!
   requiredItem: {fileID: 0}
-  rewardItem: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
+  rewardItem: {fileID: 11400000, guid: daa3ee9864210e3479cb82d58a9ad0f3, type: 2}

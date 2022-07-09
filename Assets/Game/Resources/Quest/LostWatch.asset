@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
+  m_Name: LostWatch
+  m_EditorClassIdentifier: 
+  name: LostWatch
+  description: 
+  startDialogue:
+    lines:
+    - Hey! I lost my watch somewhere in Bukit Timah Nature Reserve
+    - Could you help me find it?
+  inProgressDialogue:
+    lines:
+    - Did you manage to find my watch?
+  completedDialogue:
+    lines:
+    - Thank you! This watch is very precious to me
+    - Here is a REVIVE as a reward
+  requiredItem: {fileID: 11400000, guid: ac35edb34bde7644087a733cc9a305ec, type: 2}
+  rewardItem: {fileID: 11400000, guid: d23567f2625b0ad40b5904a5431d351b, type: 2}

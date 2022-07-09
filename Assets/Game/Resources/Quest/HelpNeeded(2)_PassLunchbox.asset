@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363e4121d443c349a54ee019e18153b, type: 3}
+  m_Name: HelpNeeded(2)_PassLunchbox
+  m_EditorClassIdentifier: 
+  name: HelpNeeded(2)_PassLunchbox
+  description: 
+  startDialogue:
+    lines:
+    - Did grandma ask you to pass me my luncbox?
+  inProgressDialogue:
+    lines:
+    - Where is my lunchbox?
+  completedDialogue:
+    lines:
+    - Thank you! I would be straving without this!
+    - Here is a SUPER POTION as a gift
+  requiredItem: {fileID: 11400000, guid: daa3ee9864210e3479cb82d58a9ad0f3, type: 2}
+  rewardItem: {fileID: 11400000, guid: 0176ceed4fdc31f44b94160c51d96bb5, type: 2}

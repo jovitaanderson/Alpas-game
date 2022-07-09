@@ -18,6 +18,8 @@ MonoBehaviour:
   icon: {fileID: -6090256331845058582, guid: a24a52f9ba972ec4398c9fa0c752026a, type: 3}
   price: 200
   isSellable: 1
+  canUseInBattle: 1
+  canUseOutsideBattle: 1
   hpAmount: 0
   restoreMaxHP: 1
   ppAmount: 0
