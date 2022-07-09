@@ -10,6 +10,8 @@ public class ItemBase : ScriptableObject
     [SerializeField] Sprite icon;
     [SerializeField] float price;
     [SerializeField] bool isSellable;
+    [SerializeField] bool canUseInBattle;
+    [SerializeField] bool canUseOutsideBattle;
     public string Name => name;
     public string Description => description;
     public string UsedMessage => usedMessage;
@@ -23,7 +25,6 @@ public class ItemBase : ScriptableObject
         return false;
     }
 
-    //TODO: remove if not used
-    public virtual bool CanUseInBattle => true;
-    public virtual bool CanUseOutsideBattle => true;
+    public virtual bool CanUseInBattle => canUseInBattle;
+    public virtual bool CanUseOutsideBattle => canUseOutsideBattle;
 }

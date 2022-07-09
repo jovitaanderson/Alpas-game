@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum ItemCategory {  Items, AnimalCapture } //, Tms
+public enum ItemCategory {  Items, AnimalCapture, QuestItems }
 
 public class Inventory : MonoBehaviour, ISavable
 {
     [SerializeField] List<ItemSlot> slots;
     [SerializeField] List<ItemSlot> animalCaptureSlots;
-    
+    [SerializeField] List<ItemSlot> questSlots;
+
 
     List<List<ItemSlot>> allSlots;
 
@@ -20,13 +21,13 @@ public class Inventory : MonoBehaviour, ISavable
     {
         allSlots = new List<List<ItemSlot>>()
         {
-            slots, animalCaptureSlots
+            slots, animalCaptureSlots, questSlots
         };
     }
 
     public static List<string> ItemCategories { get; set; } = new List<string>()
     {
-        "ITEMS", "ANIMAL CAPTURE"
+        "ITEMS", "ANIMAL CAPTURE", "QUEST ITEMS"
     };
 
     public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
@@ -116,8 +117,11 @@ public class Inventory : MonoBehaviour, ISavable
     {
         if (item is RecoveryItem || item is EvolutionItem)
             return ItemCategory.Items;
-        else 
+        else if (item is AnimalCaptureItem)
             return ItemCategory.AnimalCapture;
+        else
+            return ItemCategory.QuestItems;
+
         
     }
 
@@ -132,7 +136,8 @@ public class Inventory : MonoBehaviour, ISavable
         {
             items = slots.Select(i => i.GetSaveData()).ToList(),
             animalCaptures = animalCaptureSlots.Select(i => i.GetSaveData()).ToList(),
-            
+            questItems = questSlots.Select(i => i.GetSaveData()).ToList(),
+
         };
 
         return saveData;
@@ -143,7 +148,7 @@ public class Inventory : MonoBehaviour, ISavable
         var saveData = state as InventorySaveData;
         slots = saveData.items.Select(i => new ItemSlot(i)).ToList();
         animalCaptureSlots = saveData.animalCaptures.Select(i => new ItemSlot(i)).ToList();
-        
+        questSlots = saveData.questItems.Select(i => new ItemSlot(i)).ToList();
 
         allSlots = new List<List<ItemSlot>>() { slots, animalCaptureSlots };
 
@@ -202,5 +207,6 @@ public class InventorySaveData
 {
     public List<ItemSaveData> items;
     public List<ItemSaveData> animalCaptures;
-    
+    public List<ItemSaveData> questItems;
+
 }

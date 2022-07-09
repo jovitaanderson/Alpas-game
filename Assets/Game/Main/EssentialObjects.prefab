@@ -4129,8 +4129,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522288923475043895, guid: e1dc36b3c55426c4ca047a2532a623f1, type: 3}
+      propertyPath: questSlots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522288923475043895, guid: e1dc36b3c55426c4ca047a2532a623f1, type: 3}
       propertyPath: animalCaptureSlots.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522288923475043895, guid: e1dc36b3c55426c4ca047a2532a623f1, type: 3}
+      propertyPath: questSlots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c7684f9014bd6a4b95ea76207ad2ec6, type: 2}
+    - target: {fileID: 2522288923475043895, guid: e1dc36b3c55426c4ca047a2532a623f1, type: 3}
+      propertyPath: questSlots.Array.data[0].count
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2522288923475043895, guid: e1dc36b3c55426c4ca047a2532a623f1, type: 3}
       propertyPath: animalCaptureSlots.Array.data[0].item

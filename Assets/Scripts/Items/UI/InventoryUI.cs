@@ -150,7 +150,10 @@ public class InventoryUI : MonoBehaviour
             //in battle
             if (!item.CanUseInBattle)
             {
-                yield return DialogManager.Instance.ShowDialogText($"this item cannot be used in battle");
+                if(selectedCategory == (int)ItemCategory.QuestItems)
+                    yield return DialogManager.Instance.ShowDialogText($"Quest items cannot be used");
+                else
+                    yield return DialogManager.Instance.ShowDialogText($"This item cannot be used in battle");
                 state = InventoryUIState.ItemSelection;
                 yield break;
             }
@@ -160,14 +163,17 @@ public class InventoryUI : MonoBehaviour
             //outside battle
             if (!item.CanUseOutsideBattle)
             {
-                yield return DialogManager.Instance.ShowDialogText($"this item cannot be used outside of battle");
+                if (selectedCategory == (int)ItemCategory.QuestItems)
+                    yield return DialogManager.Instance.ShowDialogText($"Quest items cannot be used");
+                else
+                    yield return DialogManager.Instance.ShowDialogText($"This item cannot be used outside of battle");
                 state = InventoryUIState.ItemSelection;
                 yield break;
             }
         }
 
-        //if curr selected is pokeball
-        if (selectedCategory == (int)ItemCategory.AnimalCapture)
+        //if curr selected is pokeball/quest item
+        if (selectedCategory == (int)ItemCategory.AnimalCapture || selectedCategory == (int)ItemCategory.QuestItems)
         {
             StartCoroutine(UseItem());
         }

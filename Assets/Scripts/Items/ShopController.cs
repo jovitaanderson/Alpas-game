@@ -134,20 +134,22 @@ public class ShopController : MonoBehaviour
 
         }
         sellingPrice = sellingPrice * countToSell;
-
-        int selectedChoice = 0;
-        yield return DialogManager.Instance.ShowDialogText($"I can give {sellingPrice} for that! Would you like to sell?",
-            waitForInput: false,
-            choices: new List<string>() { "Yes", "No" },
-            onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
-
-        if (selectedChoice == 0)
+        if (countToSell > 1)
         {
-            //yes -> sell the item
-            inventory.RemoveItem(item, countToSell);
-            //add selling price to player's wallet
-            Wallet.i.AddMoney(sellingPrice);
-            yield return DialogManager.Instance.ShowDialogText($"Sold {item.Name} and received {sellingPrice}!");
+            int selectedChoice = 0;
+            yield return DialogManager.Instance.ShowDialogText($"I can give {sellingPrice} for that! Would you like to sell?",
+                waitForInput: false,
+                choices: new List<string>() { "Yes", "No" },
+                onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+
+            if (selectedChoice == 0)
+            {
+                //yes -> sell the item
+                inventory.RemoveItem(item, countToSell);
+                //add selling price to player's wallet
+                Wallet.i.AddMoney(sellingPrice);
+                yield return DialogManager.Instance.ShowDialogText($"Sold {item.Name} and received {sellingPrice}!");
+            }
         }
 
         //walletUI.Close();
