@@ -6,12 +6,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ISavable
 {
+    private String userName;
     [SerializeField] new string name;
     [SerializeField] Sprite sprite;
 
     private Vector2 input;
 
     private Character character;
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("user_name"))
+        {
+            userName = PlayerPrefs.GetString("user_name");
+        }
+        else
+        {
+            userName = name;
+        }
+    }
 
     private void Awake()
     {
@@ -68,8 +81,8 @@ public class PlayerController : MonoBehaviour, ISavable
         }
     }
 
-    public string Name{
-        get => name;
+    public string UserName{
+        get => userName;
     }
     public Sprite Sprite{
         get => sprite;

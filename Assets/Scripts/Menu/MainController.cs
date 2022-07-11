@@ -31,6 +31,9 @@ public class MainController : MonoBehaviour
     public string _newGameLevel;
     public string gameToLoad;
 
+    [Header("Create User Name")]
+    public InputField displayName;
+
     [SerializeField] private GameObject noSavedGameDialog = null;
     [SerializeField] private GameObject loadGameDialog = null;
 
@@ -81,6 +84,8 @@ public class MainController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
+        PlayerPrefs.SetString("user_name", displayName.text);
+        PlayerPrefs.Save();
         PlaySFX();
         SceneManager.LoadScene(_newGameLevel);
     }

@@ -20,9 +20,9 @@ public class ItemGiver : MonoBehaviour, ISavable
 
         AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
 
-        string dialogtext = $"{player.Name} received {item.Name}";
+        string dialogtext = $"{player.UserName} received {item.Name}";
         if (count > 1)
-            dialogtext = $"{player.Name} received {count} {item.Name}s";
+            dialogtext = $"{player.UserName} received {count} {item.Name}s";
         
         yield return DialogManager.Instance.ShowDialogText(dialogtext);
     }

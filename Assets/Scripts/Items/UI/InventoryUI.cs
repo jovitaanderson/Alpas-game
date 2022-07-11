@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Image downArrow;
 
     [SerializeField] PartyScreen partyScreen;
+    [SerializeField] PlayerController player;
 
     Action<ItemBase> onItemUsed;
 
@@ -205,13 +206,13 @@ public class InventoryUI : MonoBehaviour
                 yield break;
             }
         }
-
         
+
         var usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
         if (usedItem != null)
         {
             if (usedItem is RecoveryItem)
-                yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}"); //TODO: change the player to player.name, add on to {usedItem.UsedMessage}
+                yield return DialogManager.Instance.ShowDialogText($"{player.UserName} used {usedItem.Name}"); //TODO: change the player to player.name, add on to {usedItem.UsedMessage}
             onItemUsed?.Invoke(usedItem);
         }
         else

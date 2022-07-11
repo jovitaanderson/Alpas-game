@@ -18,7 +18,7 @@ public class Pickup : MonoBehaviour, Interactable, ISavable
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
 
-            string playerName = initiator.GetComponent<PlayerController>().Name;
+            string playerName = initiator.GetComponent<PlayerController>().UserName;
 
             AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
 

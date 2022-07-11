@@ -785,7 +785,7 @@ public class BattleSystem : MonoBehaviour
             yield break;
         }
 
-        yield return dialogBox.TypeDialog($"{player.Name} used {animalCaptureItem.Name.ToUpper()}"); //player.Name
+        yield return dialogBox.TypeDialog($"{player.UserName} used {animalCaptureItem.Name.ToUpper()}"); //player.Name
 
         var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2,0), Quaternion.identity);
         var pokeball = pokeballObj.GetComponent<SpriteRenderer>();

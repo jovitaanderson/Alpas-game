@@ -20,7 +20,7 @@ public class AnimalGiver : MonoBehaviour, ISavable
 
         AudioManager.i.PlaySfx(AudioId.AnimalObtained, pauseMusic: true);
 
-        string dialogtext = $"{player.Name} received {animalToGive.Base.Name}";
+        string dialogtext = $"{player.UserName} received {animalToGive.Base.Name}";
         yield return DialogManager.Instance.ShowDialogText(dialogtext);
     }
 

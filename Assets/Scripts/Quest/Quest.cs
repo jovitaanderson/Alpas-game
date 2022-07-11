@@ -54,7 +54,7 @@ public class Quest
         {
             inventory.AddItem(Base.RewardItem);
 
-            string playerName = player.GetComponent<PlayerController>().Name;
+            string playerName = player.GetComponent<PlayerController>().UserName;
             yield return DialogManager.Instance.ShowDialogText($"{playerName} received {Base.RewardItem.Name}");
         }
 

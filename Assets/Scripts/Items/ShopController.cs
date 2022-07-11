@@ -134,7 +134,7 @@ public class ShopController : MonoBehaviour
 
         }
         sellingPrice = sellingPrice * countToSell;
-        if (countToSell > 1)
+        if (countToSell >= 1)
         {
             int selectedChoice = 0;
             yield return DialogManager.Instance.ShowDialogText($"I can give {sellingPrice} for that! Would you like to sell?",
