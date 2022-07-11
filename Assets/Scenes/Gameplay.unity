@@ -682,9 +682,15 @@ MonoBehaviour:
   - animal: {fileID: 11400000, guid: e4562e15286cd124893cc9465170806b, type: 2}
     levelRange: {x: 12, y: 17}
     chancePercentage: 20
-  wildAnimalsInWater: []
+  wildAnimalsInWater:
+  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
+    levelRange: {x: 12, y: 18}
+    chancePercentage: 40
+  - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
+    levelRange: {x: 1, y: 9}
+    chancePercentage: 60
   totalChance: 100
-  totalChanceWater: -1
+  totalChanceWater: 100
 --- !u!1001 &917173256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10866,11 +10872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -95.75
+      value: 242.7
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -146.09
+      value: -97.7
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11771,9 +11777,15 @@ MonoBehaviour:
   - animal: {fileID: 11400000, guid: f694682ce702246458616a7e2993ea36, type: 2}
     levelRange: {x: 10, y: 15}
     chancePercentage: 15
-  wildAnimalsInWater: []
+  wildAnimalsInWater:
+  - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 50
+  - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 50
   totalChance: 100
-  totalChanceWater: -1
+  totalChanceWater: 100
 --- !u!114 &1358788680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -12143,9 +12155,15 @@ MonoBehaviour:
   - animal: {fileID: 11400000, guid: e3bd04779fdcc8d4aba69c1d3c70e90c, type: 2}
     levelRange: {x: 3, y: 8}
     chancePercentage: 20
-  wildAnimalsInWater: []
+  wildAnimalsInWater:
+  - animal: {fileID: 11400000, guid: 2b53f24865385ae4e8b83919f5193b12, type: 2}
+    levelRange: {x: 12, y: 16}
+    chancePercentage: 40
+  - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 60
   totalChance: 100
-  totalChanceWater: -1
+  totalChanceWater: 100
 --- !u!1001 &1811045890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12692,6 +12710,12 @@ MonoBehaviour:
   - animal: {fileID: 11400000, guid: f3ad456cc9e7de84e9af3c7d327b47b0, type: 2}
     levelRange: {x: 1, y: 5}
     chancePercentage: 10
-  wildAnimalsInWater: []
+  wildAnimalsInWater:
+  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
+    levelRange: {x: 12, y: 15}
+    chancePercentage: 40
+  - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 60
   totalChance: 100
-  totalChanceWater: -1
+  totalChanceWater: 100
