@@ -5886,18 +5886,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4591168190179762950, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0ef0162a13c28584383667c320a13063, type: 3}
-    - target: {fileID: 4591168190179762950, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591168190179762950, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1502292489
-      objectReference: {fileID: 0}
     - target: {fileID: 4615732714082533951, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7301,18 +7289,6 @@ PrefabInstance:
     - target: {fileID: 5792248599055919854, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834600138760324491, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.20558916
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834600138760324491, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.20558916
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834600138760324491, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.26415092
       objectReference: {fileID: 0}
     - target: {fileID: 5849672803006217206, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10865,10 +10841,6 @@ PrefabInstance:
     - target: {fileID: 8846833008066108925, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846833008066108926, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 16375
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.x
