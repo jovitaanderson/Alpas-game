@@ -52,7 +52,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     {
         fader = FindObjectOfType<Fader>();
 
-        if (questToStart != null)
+        if (questToStart != null || questToComplete != null)
         {
             if (questionMark != null)
             {
@@ -78,6 +78,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                 var quest = new Quest(questToComplete);
                 yield return quest.CompleteQuest(initiator);
                 questToComplete = null;
+                questionMark.SetActive(false);
 
                 Debug.Log($"{quest.Base.Name} completed");
             }
