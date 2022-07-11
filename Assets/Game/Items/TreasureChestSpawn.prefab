@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureChest: {fileID: 4529246239020514138, guid: da66fa217cd0e934b99c01bd42e179e4, type: 3}
-  maxTreasureChestInMap: 5
-  minPosition: {x: -59.5, y: -29.5}
-  maxPosition: {x: 79.5, y: 29.5}
+  maxTreasureChestInMap: 8
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 0, y: 0}
   Timer: 0
-  TimeForNextChestSpawn: 600
+  TimeForNextChestSpawn: 900
