@@ -527,6 +527,11 @@ MonoBehaviour:
   - {fileID: 6061193177749981608, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 3472270671181414768, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 6234804370496863701, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
+  surfSprites:
+  - {fileID: -4465137455631916842, guid: 0808ed254d3377e469371a3e60ad49a1, type: 3}
+  - {fileID: 548946438817077065, guid: 0808ed254d3377e469371a3e60ad49a1, type: 3}
+  - {fileID: 4472088847651303106, guid: 0808ed254d3377e469371a3e60ad49a1, type: 3}
+  - {fileID: 6356773947664160301, guid: 0808ed254d3377e469371a3e60ad49a1, type: 3}
   runDownSprites:
   - {fileID: 4729958203124835492, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
   - {fileID: 2023388368799676934, guid: 3e21370bc77819243b6adde6e58a959d, type: 3}
@@ -672,6 +677,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 29384437225389348aa3ee149916b6db, type: 2}
     count: 1
   animalCaptureSlots: []
+  questSlots: []
 --- !u!114 &2112548606203843202
 MonoBehaviour:
   m_ObjectHideFlags: 0

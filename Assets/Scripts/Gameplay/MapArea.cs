@@ -7,9 +7,13 @@ using UnityEngine;
 public class MapArea : MonoBehaviour
 {
     [SerializeField] List<AnimalEncounterRecord> wildAnimals;
+    [SerializeField] List<AnimalEncounterRecord> wildAnimalsInWater;
 
     [HideInInspector]
     [SerializeField] int totalChance = 0;
+
+    [HideInInspector]
+    [SerializeField] int totalChanceWater = 0;
 
     private void OnValidate()
     {
@@ -20,6 +24,15 @@ public class MapArea : MonoBehaviour
             record.chanceUpper = totalChance + record.chancePercentage;
 
             totalChance = totalChance + record.chancePercentage;
+        }
+
+        totalChanceWater = 0;
+        foreach (var record in wildAnimalsInWater)
+        {
+            record.chanceLower = totalChanceWater;
+            record.chanceUpper = totalChanceWater + record.chancePercentage;
+
+            totalChanceWater = totalChanceWater + record.chancePercentage;
         }
     }
 
@@ -35,10 +48,12 @@ public class MapArea : MonoBehaviour
         }
     }
 
-    public Animal GetRandomWildAnimal()
+    public Animal GetRandomWildAnimal(BattleTrigger trigger)
     {
+        var animalList = (trigger == BattleTrigger.LongGrass) ? wildAnimals : wildAnimalsInWater;
+
         int randVal = Random.Range(1, 101);
-        var animalRecord = wildAnimals.FirstOrDefault(p => randVal >= p.chanceLower && randVal <= p.chanceUpper);
+        var animalRecord = animalList.FirstOrDefault(p => randVal >= p.chanceLower && randVal <= p.chanceUpper);
 
         var levelRange = animalRecord.levelRange;
         int level = levelRange.y == 0 ? levelRange.x : Random.Range(levelRange.x, levelRange.y + 1);

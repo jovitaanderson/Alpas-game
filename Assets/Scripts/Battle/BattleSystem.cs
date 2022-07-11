@@ -10,6 +10,7 @@ using UnityEngine.UI;
 //to store battle state
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, Bag, PartyScreen,AboutToUse, MoveToForget, BattleOver}
 public enum BattleAction { Move, SwitchAnimal, UseItem, Run}
+public enum BattleTrigger { LongGrass, Water }
 
 //To control the entire battle
 public class BattleSystem : MonoBehaviour
@@ -28,6 +29,25 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] string wildBattleMusic;
     [SerializeField] string trainerBattleMusic;
     [SerializeField] string battleVictoryMusic;
+
+    [Header("background image")]
+    [SerializeField] Image backgroundImage;
+    [SerializeField] Sprite grassBackground;
+    [SerializeField] Sprite waterBackground;
+    [SerializeField] Sprite grassBackgroundCirclesBattle;
+    [SerializeField] Sprite waterBackgroundCirclesBattle;
+    [SerializeField] Image backgroundBattleCirclesImage1;
+    [SerializeField] Image backgroundBattleCirclesImage2;
+
+    public void GrassBackground(Sprite grassBackground)
+    {
+        this.grassBackground = grassBackground;
+    }
+
+    public void GrassCirclesBackground(Sprite grassBackgroundCirclesBattle)
+    {
+        this.grassBackgroundCirclesBattle = grassBackgroundCirclesBattle;
+    }
 
 
     public event Action<bool> OnBattleOver;
@@ -49,19 +69,24 @@ public class BattleSystem : MonoBehaviour
     int escapeAttempts;
     MoveBase moveToLearn;
 
-    public void StartBattle(AnimalParty playerParty, Animal wildAnimal)
+    private BattleTrigger battleTrigger;
+
+    public void StartBattle(AnimalParty playerParty, Animal wildAnimal, BattleTrigger trigger = BattleTrigger.LongGrass)
     {
         this.playerParty = playerParty;
         this.wildAnimal = wildAnimal;
         GameObject.Find("GameController").GetComponent<GameController>().animalCharacterManager.characterDB.AnimalSeen(wildAnimal);
         player = playerParty.GetComponent<PlayerController>();
         isTrainerBattle = false;
+
+        battleTrigger = trigger;
+
         AudioManager.i.Play(wildBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
 
-    public void StartTrainerBattle(AnimalParty playerParty, AnimalParty trainerParty)
+    public void StartTrainerBattle(AnimalParty playerParty, AnimalParty trainerParty, BattleTrigger trigger = BattleTrigger.LongGrass)
     {
         this.playerParty = playerParty;
         this.trainerParty = trainerParty;
@@ -69,6 +94,9 @@ public class BattleSystem : MonoBehaviour
         isTrainerBattle = true;
         player = playerParty.GetComponent<PlayerController>();
         trainer = trainerParty.GetComponent<TrainerController>();
+
+        battleTrigger = trigger;
+
         AudioManager.i.Play(trainerBattleMusic);
 
         StartCoroutine(SetupBattle());
@@ -79,6 +107,12 @@ public class BattleSystem : MonoBehaviour
     {
         playerUnit.Clear();
         enemyUnit.Clear();
+
+        backgroundImage.sprite = (battleTrigger == BattleTrigger.LongGrass) ? grassBackground : waterBackground;
+        backgroundBattleCirclesImage1.sprite = (battleTrigger == BattleTrigger.LongGrass) ? 
+            grassBackgroundCirclesBattle : waterBackgroundCirclesBattle;
+        backgroundBattleCirclesImage2.sprite = (battleTrigger == BattleTrigger.LongGrass) ? 
+            grassBackgroundCirclesBattle : waterBackgroundCirclesBattle;
 
         if (!isTrainerBattle)
         {

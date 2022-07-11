@@ -143,12 +143,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void StartBattle()
+    public void StartBattle(BattleTrigger trigger)
     {   
         //We can get animalparty from plaayercontroller since they are both components of the player game object
         var playerParty = playerController.GetComponent<AnimalParty>();
         //FindObjectOfType<MapArea>() will get the reference and return the game object with MapArea
-        var wildAnimal = CurrentScene.GetComponent<MapArea>().GetRandomWildAnimal();
+        var wildAnimal = CurrentScene.GetComponent<MapArea>().GetRandomWildAnimal(trigger);
         var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
 
         if (playerParty.GetHealthyAnimal() == null)
@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour
             battleSystem.gameObject.SetActive(true);
             worldCamera.gameObject.SetActive(false);
 
-            battleSystem.StartBattle(playerParty, wildAnimalCopy);
+            battleSystem.StartBattle(playerParty, wildAnimalCopy, trigger);
         }
     }
 
