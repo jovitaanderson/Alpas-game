@@ -17,34 +17,41 @@ public class MapArea : MonoBehaviour
 
     private void OnValidate()
     {
-        totalChance = 0;
-        foreach (var record in wildAnimals)
-        {
-            record.chanceLower = totalChance;
-            record.chanceUpper = totalChance + record.chancePercentage;
-
-            totalChance = totalChance + record.chancePercentage;
-        }
-
-        totalChanceWater = 0;
-        foreach (var record in wildAnimalsInWater)
-        {
-            record.chanceLower = totalChanceWater;
-            record.chanceUpper = totalChanceWater + record.chancePercentage;
-
-            totalChanceWater = totalChanceWater + record.chancePercentage;
-        }
+        CalculateChancePercentage();
     }
 
     private void Start()
     {
-        totalChance = 0;
-        foreach (var record in wildAnimals)
-        {
-            record.chanceLower = totalChance;
-            record.chanceUpper = totalChance + record.chancePercentage;
+        CalculateChancePercentage();
+    }
 
-            totalChance = totalChance + record.chancePercentage;
+    void CalculateChancePercentage()
+    {
+        totalChance = -1;
+        totalChanceWater = -1;
+
+        if (wildAnimals.Count > 0)
+        {
+            totalChance = 0;
+            foreach (var record in wildAnimals)
+            {
+                record.chanceLower = totalChance;
+                record.chanceUpper = totalChance + record.chancePercentage;
+
+                totalChance = totalChance + record.chancePercentage;
+            }
+        }
+
+        if (wildAnimalsInWater.Count > 0)
+        {
+            totalChanceWater = 0;
+            foreach (var record in wildAnimalsInWater)
+            {
+                record.chanceLower = totalChanceWater;
+                record.chanceUpper = totalChanceWater + record.chancePercentage;
+
+                totalChanceWater = totalChanceWater + record.chancePercentage;
+            }
         }
     }
 

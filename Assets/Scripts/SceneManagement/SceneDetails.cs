@@ -33,19 +33,6 @@ public class SceneDetails : MonoBehaviour
             if (sceneMusic != null)
                 AudioManager.i.Play(sceneMusic, fade: true);
 
-            //change background battle
-            if (backgroundBattle != null)
-                battleSystem.GrassBackground(backgroundBattle);
-
-
-            
-            //change background circles battle
-            if (backgroundCirclesBattle != null)
-            {
-                battleSystem.GrassBackground(backgroundCirclesBattle);
-            }
-                
-
             //Load alll connected scenes
             foreach (var scene in connectedScenes)
            {
@@ -109,4 +96,8 @@ public class SceneDetails : MonoBehaviour
     }
 
     public string SceneMusic => sceneMusic;
+
+    public Sprite Background => backgroundBattle;
+    public Sprite BackgroundCircles => backgroundCirclesBattle;
+
 }

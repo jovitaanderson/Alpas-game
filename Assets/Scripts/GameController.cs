@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour
             battleSystem.gameObject.SetActive(true);
             worldCamera.gameObject.SetActive(false);
 
-            battleSystem.StartBattle(playerParty, wildAnimalCopy, trigger);
+            battleSystem.StartBattle(playerParty, wildAnimalCopy, CurrentScene.Background, CurrentScene.BackgroundCircles, trigger);
         }
     }
 
@@ -184,7 +184,7 @@ public class GameController : MonoBehaviour
         var playerParty = playerController.GetComponent<AnimalParty>();
         var trainerParty = trainer.GetComponent<AnimalParty>();
 
-        battleSystem.StartTrainerBattle(playerParty, trainerParty);
+        battleSystem.StartTrainerBattle(playerParty, trainerParty, CurrentScene.Background, CurrentScene.BackgroundCircles);
     }
 
     public void OnEnterTrainersView(TrainerController trainer)

@@ -238,6 +238,14 @@ PrefabInstance:
       value: westScene
       objectReference: {fileID: 0}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 632814079e25a5448b106bf72c40f2dc, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundCirclesBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 66b1538d78d52b946b1dade19ba24931, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -443,6 +451,14 @@ PrefabInstance:
       propertyPath: sceneMusic
       value: southScene
       objectReference: {fileID: 0}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e81ffba8f8da444c82135b9c874f378, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundCirclesBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ae895215bc452e4ab14c003df0493ec, type: 3}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
@@ -668,7 +684,7 @@ MonoBehaviour:
     chancePercentage: 20
   wildAnimalsInWater: []
   totalChance: 100
-  totalChanceWater: 0
+  totalChanceWater: -1
 --- !u!1001 &917173256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10850,11 +10866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 243.3
+      value: -95.75
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -95.5
+      value: -146.09
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11520,6 +11536,14 @@ PrefabInstance:
       value: northScene
       objectReference: {fileID: 0}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: f593bcafbeee24c4bb4aea847ec8011b, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundCirclesBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 2854e4f8b7053024491db96d4bef741a, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11749,7 +11773,7 @@ MonoBehaviour:
     chancePercentage: 15
   wildAnimalsInWater: []
   totalChance: 100
-  totalChanceWater: 0
+  totalChanceWater: -1
 --- !u!114 &1358788680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
@@ -11880,6 +11904,14 @@ PrefabInstance:
       propertyPath: sceneMusic
       value: centralScene
       objectReference: {fileID: 0}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: ece3dfac65f07164baf0211711946f34, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundCirclesBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: a7c5c136fdd212c4f93d4e2b8437e372, type: 3}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
@@ -12113,7 +12145,7 @@ MonoBehaviour:
     chancePercentage: 20
   wildAnimalsInWater: []
   totalChance: 100
-  totalChanceWater: 0
+  totalChanceWater: -1
 --- !u!1001 &1811045890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12125,6 +12157,14 @@ PrefabInstance:
       propertyPath: sceneMusic
       value: eastScene
       objectReference: {fileID: 0}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: c8ed4e81f2168404b887a65fd796538f, type: 3}
+    - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
+      propertyPath: backgroundCirclesBattle
+      value: 
+      objectReference: {fileID: 21300000, guid: 757b0c1c0f95b7d4d81f17d0594e904d, type: 3}
     - target: {fileID: 666399713239938298, guid: 0dd17a0990c60e944b462ba9e9e30fd3, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
@@ -12654,4 +12694,4 @@ MonoBehaviour:
     chancePercentage: 10
   wildAnimalsInWater: []
   totalChance: 100
-  totalChanceWater: 0
+  totalChanceWater: -1

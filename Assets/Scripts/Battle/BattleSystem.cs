@@ -32,23 +32,12 @@ public class BattleSystem : MonoBehaviour
 
     [Header("background image")]
     [SerializeField] Image backgroundImage;
-    [SerializeField] Sprite grassBackground;
+    Sprite grassBackground;
     [SerializeField] Sprite waterBackground;
-    [SerializeField] Sprite grassBackgroundCirclesBattle;
+    Sprite grassBackgroundCirclesBattle;
     [SerializeField] Sprite waterBackgroundCirclesBattle;
     [SerializeField] Image backgroundBattleCirclesImage1;
     [SerializeField] Image backgroundBattleCirclesImage2;
-
-    public void GrassBackground(Sprite grassBackground)
-    {
-        this.grassBackground = grassBackground;
-    }
-
-    public void GrassCirclesBackground(Sprite grassBackgroundCirclesBattle)
-    {
-        this.grassBackgroundCirclesBattle = grassBackgroundCirclesBattle;
-    }
-
 
     public event Action<bool> OnBattleOver;
 
@@ -71,7 +60,8 @@ public class BattleSystem : MonoBehaviour
 
     private BattleTrigger battleTrigger;
 
-    public void StartBattle(AnimalParty playerParty, Animal wildAnimal, BattleTrigger trigger = BattleTrigger.LongGrass)
+    public void StartBattle(AnimalParty playerParty, Animal wildAnimal,
+        Sprite backgroundBattle, Sprite backgroundCirclesBattle, BattleTrigger trigger = BattleTrigger.LongGrass)
     {
         this.playerParty = playerParty;
         this.wildAnimal = wildAnimal;
@@ -80,13 +70,16 @@ public class BattleSystem : MonoBehaviour
         isTrainerBattle = false;
 
         battleTrigger = trigger;
+        grassBackground = backgroundBattle;
+        grassBackgroundCirclesBattle = backgroundCirclesBattle;
 
         AudioManager.i.Play(wildBattleMusic);
 
         StartCoroutine(SetupBattle());
     }
 
-    public void StartTrainerBattle(AnimalParty playerParty, AnimalParty trainerParty, BattleTrigger trigger = BattleTrigger.LongGrass)
+    public void StartTrainerBattle(AnimalParty playerParty, AnimalParty trainerParty,
+        Sprite backgroundBattle, Sprite backgroundCirclesBattle, BattleTrigger trigger = BattleTrigger.LongGrass)
     {
         this.playerParty = playerParty;
         this.trainerParty = trainerParty;
@@ -96,6 +89,8 @@ public class BattleSystem : MonoBehaviour
         trainer = trainerParty.GetComponent<TrainerController>();
 
         battleTrigger = trigger;
+        grassBackground = backgroundBattle;
+        grassBackgroundCirclesBattle = backgroundCirclesBattle;
 
         AudioManager.i.Play(trainerBattleMusic);
 
@@ -108,11 +103,19 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Clear();
         enemyUnit.Clear();
 
-        backgroundImage.sprite = (battleTrigger == BattleTrigger.LongGrass) ? grassBackground : waterBackground;
-        backgroundBattleCirclesImage1.sprite = (battleTrigger == BattleTrigger.LongGrass) ? 
-            grassBackgroundCirclesBattle : waterBackgroundCirclesBattle;
-        backgroundBattleCirclesImage2.sprite = (battleTrigger == BattleTrigger.LongGrass) ? 
-            grassBackgroundCirclesBattle : waterBackgroundCirclesBattle;
+        if (battleTrigger == BattleTrigger.LongGrass)
+        {
+            backgroundImage.sprite = grassBackground;
+            backgroundBattleCirclesImage1.sprite = grassBackgroundCirclesBattle;
+            backgroundBattleCirclesImage2.sprite = grassBackgroundCirclesBattle;
+        }
+        else
+        {
+            backgroundImage.sprite = waterBackground;
+            backgroundBattleCirclesImage1.sprite = waterBackgroundCirclesBattle;
+            backgroundBattleCirclesImage2.sprite = waterBackgroundCirclesBattle;
+        }
+        
 
         if (!isTrainerBattle)
         {
