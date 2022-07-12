@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
-    [SerializeField] public AnimalList animaListUI;
+    [SerializeField] public AnimalList animaList;
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
@@ -122,11 +122,11 @@ public class GameController : MonoBehaviour
         //Auto set preadded animals in party/storage to seen since we manaually added them
         foreach (var animalInParty in playerController.GetComponent<AnimalParty>().Animals)
         {
-            animaListUI.AnimalSeen(animalInParty);
+            animaList.AnimalSeen(animalInParty);
         }
         foreach (var animalInStorage in playerController.GetComponent<AnimalStorage>().Animals)
         {
-            animaListUI.AnimalSeen(animalInStorage);
+            animaList.AnimalSeen(animalInStorage);
         }
 
     }
@@ -309,10 +309,10 @@ public class GameController : MonoBehaviour
         {
             Action onBack = () =>
             {
-                animaListUI.animalListUI.SetActive(false);
+                animaList.animalListUI.SetActive(false);
                 state = GameState.FreeRoam;
             };
-            animaListUI.HandleUpdate(onBack);
+            animaList.HandleUpdate(onBack);
         }
 
     }
@@ -356,7 +356,7 @@ public class GameController : MonoBehaviour
         {
             //animal List
             state = GameState.AnimalList;
-            animaListUI.animalListUI.gameObject.SetActive(true);
+            animaList.animalListUI.gameObject.SetActive(true);
             //AnimalListUI.HandleUpdate();
         }
         else if (selectedItem == 5)

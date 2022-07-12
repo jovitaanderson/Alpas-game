@@ -1,24 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AnimalList : MonoBehaviour, ISavable
 {
     [SerializeField] public GameObject animalListUI;
     [SerializeField] public List<AnimalCharacter> animalsSeenData;
-    //public AnimalCharacterDatabase characterDB;
+
+    public event Action OnUpdated;
 
     public void AnimalSeen(Animal animal)
     {
         foreach (var animalChar in animalsSeenData)
         {
-            if (animalChar.name == animal.Base.Name)
+            if (animalChar._base.Name == animal.Base.Name)
             {
                 animalChar.seen = true;
                 break;
             }
         }
+        OnUpdated?.Invoke();
     }
 
     public void HandleUpdate(Action onBack)
@@ -30,43 +33,34 @@ public class AnimalList : MonoBehaviour, ISavable
     {
         var saveData = new AnimalSeenSaveData()
         {
-            //animalsSeenData = this.animalsSeenData
-            //animalsSeenData = GetComponent<AnimalCharacterDatabase>().AnimalsSeenData
-            animalsSeenData = this.animalsSeenData
+            animalsSeenData = animalsSeenData.Select(p => p.GetSaveData()).ToList()
         };
         return saveData;
     }
 
-    //Used to restore data when game loaded
     public void RestoreState(object state)
     {
         var saveData = (AnimalSeenSaveData)state;
-        //characterDB = ScriptableObject.CreateInstance<AnimalCharacterDatabase>().UpdateData(saveData.characterDB);
-        //characterDB = new AnimalCharacterDatabase(saveData.characterDB);
-        //GetComponent<AnimalCharacterDatabase>().AnimalsSeenData = saveData.animalsSeenData; 
-        //animalsSeenData = GetComponent<AnimalCharacterDatabase>().AnimalsSeenData.Select(p => p.GetSaveData()).ToList();
-        //animalCharacters = GetComponent<AnimalParty>().Animals.Select(p => p.GetSaveData()).ToList()
-        //characterDB = ScriptableObject.CreateInstance<AnimalCharacterDatabase>();
-        animalsSeenData = saveData.animalsSeenData;
+        animalsSeenData = saveData.animalsSeenData.Select(s => new AnimalCharacter(s)).ToList();
+
+        OnUpdated?.Invoke();
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class AnimalSeenSaveData
 {
-    public List<AnimalCharacter> animalsSeenData;
+    public List<AnimalCharacterSaveData> animalsSeenData;
 }
 
 [System.Serializable]
 public class AnimalCharacter
 {
-    public string name;
-    //public AnimalBase _base;
-
+    public AnimalBase _base;
     public string locations;
     public bool seen;
 
-    /*public AnimalCharacter(AnimalCharacterSaveData saveData)
+    public AnimalCharacter(AnimalCharacterSaveData saveData)
     {
         _base = AnimalDB.GetObjectByName(saveData.name);
         locations = saveData.locations;
@@ -82,15 +76,13 @@ public class AnimalCharacter
             seen = seen
         };
         return saveData;
-    }*/
-
+    }
 }
 
 [System.Serializable]
 public class AnimalCharacterSaveData
 {
     public string name;
-
     public string locations;
     public bool seen;
 }

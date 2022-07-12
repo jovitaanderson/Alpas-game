@@ -18,7 +18,16 @@ public class AnimalListUI : MonoBehaviour
 
     private int selectedOption = 0;
 
+    AnimalList animalList;
+
     private void Start()
+    {
+        animalList = this.GetComponentInParent<AnimalList>();
+        animalsSeenData = this.GetComponentInParent<AnimalList>().animalsSeenData;
+        animalList.OnUpdated += UpdateAnimalSeenList;
+    }
+
+    public void UpdateAnimalSeenList()
     {
         animalsSeenData = this.GetComponentInParent<AnimalList>().animalsSeenData;
     }
@@ -48,7 +57,7 @@ public class AnimalListUI : MonoBehaviour
     private void UpdateCharacter(int selectedOption)
     {
         AnimalCharacter character = animalsSeenData[selectedOption];
-        AnimalBase _base = AnimalDB.GetObjectByName(character.name);
+        AnimalBase _base = character._base;
         if (character.seen == true)
         {
             
