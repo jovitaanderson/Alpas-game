@@ -65,7 +65,7 @@ public class BattleSystem : MonoBehaviour
     {
         this.playerParty = playerParty;
         this.wildAnimal = wildAnimal;
-        GameObject.Find("GameController").GetComponent<GameController>().animalCharacterManager.characterDB.AnimalSeen(wildAnimal);
+        GameObject.Find("GameController").GetComponent<GameController>().animaListUI.AnimalSeen(wildAnimal);
         player = playerParty.GetComponent<PlayerController>();
         isTrainerBattle = false;
 
@@ -145,7 +145,7 @@ public class BattleSystem : MonoBehaviour
             trainerImage.gameObject.SetActive(false);
             enemyUnit.gameObject.SetActive(true);
             var enemyAnimal = trainerParty.GetHealthyAnimal();
-            GameObject.Find("GameController").GetComponent<GameController>().animalCharacterManager.characterDB.AnimalSeen(enemyAnimal);
+            GameObject.Find("GameController").GetComponent<GameController>().animaListUI.AnimalSeen(enemyAnimal);
             enemyUnit.Setup(enemyAnimal);
             yield return dialogBox.TypeDialog($"{trainer.Name} send out {enemyAnimal.Base.Name}");
 

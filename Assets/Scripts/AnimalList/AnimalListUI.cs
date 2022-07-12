@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimalCharacterManager : MonoBehaviour
+public class AnimalListUI : MonoBehaviour
 {
-    public AnimalCharacterDatabase characterDB;
+    //AnimalCharacterDatabase characterDB;
+    List<AnimalCharacter> animalsSeenData;
 
     public Text nameText;
     public Text type1;
@@ -19,7 +20,7 @@ public class AnimalCharacterManager : MonoBehaviour
 
     private void Start()
     {
-        
+        animalsSeenData = this.GetComponentInParent<AnimalList>().animalsSeenData;
     }
 
     public void HandleUpdate(Action onBack)
@@ -32,13 +33,13 @@ public class AnimalCharacterManager : MonoBehaviour
         else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
             --selectedOption;
 
-        if (selectedOption >= characterDB.CharacterCount)
+        if (selectedOption >= animalsSeenData.Count)
         {
             selectedOption = 0;
         }
         else if (selectedOption < 0)
         {
-            selectedOption = characterDB.CharacterCount - 1;
+            selectedOption = animalsSeenData.Count - 1;
         }
 
         UpdateCharacter(selectedOption);
@@ -46,18 +47,20 @@ public class AnimalCharacterManager : MonoBehaviour
 
     private void UpdateCharacter(int selectedOption)
     {
-        AnimalCharacter character = characterDB.GetCharacter(selectedOption);
+        AnimalCharacter character = animalsSeenData[selectedOption];
+        AnimalBase _base = AnimalDB.GetObjectByName(character.name);
         if (character.seen == true)
         {
-            animalSprite.sprite = character._base.FrontSprite;
+            
+            animalSprite.sprite = _base.FrontSprite;
             animalSprite.color = Color.white;
-            nameText.text = $"Name: {character._base.Name}";
-            type1.text = $"Type: {character._base.Type1}, {character._base.Type2}";
+            nameText.text = $"Name: {_base.Name}";
+            type1.text = $"Type: {_base.Type1}, {_base.Type2}";
             locationText.text = $"Map locations: {character.locations}";
-            descrtipionText.text = character._base.Description;
+            descrtipionText.text = _base.Description;
         }
         else {
-            animalSprite.sprite = character._base.FrontSprite;
+            animalSprite.sprite = _base.FrontSprite;
             animalSprite.color = Color.black;
             nameText.text = $"Name: ????";
             type1.text = $"Type: ????, ????";
@@ -65,5 +68,6 @@ public class AnimalCharacterManager : MonoBehaviour
             descrtipionText.text = "????";
         }
     }
-
 }
+
+

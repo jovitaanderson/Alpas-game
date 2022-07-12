@@ -1217,7 +1217,7 @@ RectTransform:
   - {fileID: 2809829648302855968}
   - {fileID: 1441870552318295064}
   - {fileID: 5944458411768770643}
-  - {fileID: 7589199540148401975}
+  - {fileID: 2221026778527374094}
   - {fileID: 7928000608921624945}
   - {fileID: 5481784355964306121}
   m_Father: {fileID: 0}
@@ -5655,7 +5655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.000061035156, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5769384228415604450
@@ -16637,7 +16637,7 @@ GameObject:
   - component: {fileID: 1154244451307055726}
   - component: {fileID: 2995686614530015499}
   m_Layer: 5
-  m_Name: AnimalList
+  m_Name: AnimalListUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16650,21 +16650,21 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7199232143796927386}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -29.246695}
+  m_LocalScale: {x: 2.4000003, y: 2.4000003, z: 2.4000003}
   m_Children:
   - {fileID: 3106008212390435557}
   - {fileID: 2721729921196645244}
   - {fileID: 5564534528753521955}
   - {fileID: 639781563895620634}
-  m_Father: {fileID: 653810240846902563}
-  m_RootOrder: 14
+  m_Father: {fileID: 2221026778527374094}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40, y: -40}
+  m_AnchoredPosition: {x: 1064.7087, y: 667.41986}
+  m_SizeDelta: {x: 759.99994, y: 409.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3285031545850824293
 CanvasRenderer:
@@ -16716,7 +16716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02398a224aca40438b8402212f262ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 11400000, guid: cf78292df0ae8a94293c2e127d917cea, type: 2}
   nameText: {fileID: 4152083772674565741}
   type1: {fileID: 25897689012728319}
   animalSprite: {fileID: 5539518816574753688}
@@ -18532,6 +18531,81 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Settings
+--- !u!1 &8286399144591349693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2221026778527374094}
+  - component: {fileID: 2680730874212820232}
+  - component: {fileID: 923005973434472176}
+  m_Layer: 0
+  m_Name: AnimalList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2221026778527374094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8286399144591349693}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -443.6287, y: -278.0916, z: 12.186122}
+  m_LocalScale: {x: 0.41666663, y: 0.41666663, z: 0.41666663}
+  m_Children:
+  - {fileID: 7589199540148401975}
+  m_Father: {fileID: 653810240846902563}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2680730874212820232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8286399144591349693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f799d0a8944228e4fb5edf07b4dd8a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalListUI: {fileID: 7199232143796927386}
+  animalsSeenData:
+  - name: Kitty
+    locations: 
+    seen: 0
+  - name: Toad
+    locations: 
+    seen: 0
+  - name: Pigeon
+    locations: 
+    seen: 0
+  - name: Tadpole
+    locations: 
+    seen: 0
+  - name: Baby Otter
+    locations: 
+    seen: 0
+--- !u!114 &923005973434472176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8286399144591349693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4881f89f8b930e34489bbb86116ccd4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 335f7eb3-69da-4541-949e-b881917aff6e
 --- !u!1 &8303306088564204892
 GameObject:
   m_ObjectHideFlags: 0
@@ -20897,11 +20971,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
---- !u!224 &15202797266711096 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2954320458820053308, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
-  m_PrefabInstance: {fileID: 2939117799061052164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &15202797266711097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2954320458820053309, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
@@ -20913,6 +20982,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482fa082e2377b14797a51d9c5939a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &15202797266711096 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2954320458820053308, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
+  m_PrefabInstance: {fileID: 2939117799061052164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3819547954798860133
 PrefabInstance:
   m_ObjectHideFlags: 0

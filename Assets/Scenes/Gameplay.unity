@@ -4025,6 +4025,58 @@ PrefabInstance:
       propertyPath: walletUIToo
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[0].name
+      value: Kitten
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[1].name
+      value: Cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[2].name
+      value: Toad
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[3].name
+      value: Pigeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[4].name
+      value: Tadpole
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[5].name
+      value: Hatchling
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[0].locations
+      value: west
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[1].locations
+      value: west
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[2].locations
+      value: west
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[3].locations
+      value: w
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[4].locations
+      value: w
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990525809048424191, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCharacter.Array.data[5].locations
+      value: w
+      objectReference: {fileID: 0}
     - target: {fileID: 2993266876820548015, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4256,6 +4308,10 @@ PrefabInstance:
     - target: {fileID: 3124632453247715652, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152882561742883609, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: uniqueId
+      value: 34274239-51ef-48e7-bcf3-6fe740cd894d
       objectReference: {fileID: 0}
     - target: {fileID: 3189174759086633260, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5244,6 +5300,50 @@ PrefabInstance:
     - target: {fileID: 4042836115979948621, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[0].name
+      value: Kitten
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[1].name
+      value: Toad
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[2].name
+      value: Tadpole
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[3].name
+      value: Baby Otter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[4].name
+      value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[0].locations
+      value: s
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[1].locations
+      value: s
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[2].locations
+      value: a
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[3].locations
+      value: w
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[4].locations
+      value: s
       objectReference: {fileID: 0}
     - target: {fileID: 4067883626822412221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: itemList
@@ -10157,6 +10257,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: characterDB
+      value: 
+      objectReference: {fileID: 1920732917}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[0].name
+      value: Kitten
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[1].name
+      value: Toad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[2].name
+      value: Pigeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[3].name
+      value: Tadpole
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[4].name
+      value: Baby otter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalsSeenData.Array.data[0].locations
+      value: ss
+      objectReference: {fileID: 0}
     - target: {fileID: 8285039720399675697, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10913,6 +11045,10 @@ PrefabInstance:
       propertyPath: keybindUI
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8846833008561578895, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animaListUI
+      value: 
+      objectReference: {fileID: 1920732915}
     - target: {fileID: 8846833008663385036, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.1
@@ -12401,6 +12537,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1920732915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8275349749593312450, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f799d0a8944228e4fb5edf07b4dd8a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1920732917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4066471299148506226, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e6e6d98b48d3844b6f47306a9a1fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2018835371 stripped

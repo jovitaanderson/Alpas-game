@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] InventoryUI inventoryUI;
-    [SerializeField] public AnimalCharacterManager animalCharacterManager;
+    [SerializeField] public AnimalList animaListUI;
 
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         //todo: remove comments when done debugging
-        if (MainController.checkLoadGame == true)
+        /*if (MainController.checkLoadGame == true)
         {
             string savedSlotName = PlayerPrefs.GetString("SavedGame");
             SavingSystem.i.Load(savedSlotName);
@@ -63,7 +63,8 @@ public class GameController : MonoBehaviour
         {
             PlayerPrefs.SetString("SavedGame", "saveSlot1");
             SavingSystem.i.Save("saveSlot1");
-        }
+        // set seen animals to false
+        }*/
 
 
 
@@ -121,11 +122,11 @@ public class GameController : MonoBehaviour
         //Auto set preadded animals in party/storage to seen since we manaually added them
         foreach (var animalInParty in playerController.GetComponent<AnimalParty>().Animals)
         {
-            animalCharacterManager.characterDB.AnimalSeen(animalInParty);
+            animaListUI.AnimalSeen(animalInParty);
         }
         foreach (var animalInStorage in playerController.GetComponent<AnimalStorage>().Animals)
         {
-            animalCharacterManager.characterDB.AnimalSeen(animalInStorage);
+            animaListUI.AnimalSeen(animalInStorage);
         }
 
     }
@@ -308,10 +309,10 @@ public class GameController : MonoBehaviour
         {
             Action onBack = () =>
             {
-                animalCharacterManager.gameObject.SetActive(false);
+                animaListUI.animalListUI.SetActive(false);
                 state = GameState.FreeRoam;
             };
-            animalCharacterManager.HandleUpdate(onBack);
+            animaListUI.HandleUpdate(onBack);
         }
 
     }
@@ -355,7 +356,7 @@ public class GameController : MonoBehaviour
         {
             //animal List
             state = GameState.AnimalList;
-            animalCharacterManager.gameObject.SetActive(true);
+            animaListUI.animalListUI.gameObject.SetActive(true);
             //AnimalListUI.HandleUpdate();
         }
         else if (selectedItem == 5)
