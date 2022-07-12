@@ -127,11 +127,15 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                 //For trainerQuests
                 if (trainer != null)
                 {
-                    trainer.Interact(initiator);
-
-                    if (trainer.BattleLostState)
+                    if (!trainer.BattleLostState)
                     {
+                        yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
+                        yield return StartCoroutine(trainer.Interact(initiator));
+                    }
+                    else {
+
                         yield return activeQuest.CompleteQuest(initiator);
+
                         //Speical case where DrDoom will open endcredit scene
                         if(activeQuest.Base.Name == "DefeatDrDoom")
                         {
@@ -151,10 +155,6 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
                             inProgressMark.SetActive(false);
                         }
 
-                    }
-                    else
-                    {
-                        yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialogue);
                     }
                 }
                 //For other quests
