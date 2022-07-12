@@ -684,11 +684,14 @@ MonoBehaviour:
     chancePercentage: 20
   wildAnimalsInWater:
   - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
-    levelRange: {x: 12, y: 18}
+    levelRange: {x: 12, y: 17}
     chancePercentage: 40
-  - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
-    levelRange: {x: 1, y: 9}
-    chancePercentage: 60
+  - animal: {fileID: 11400000, guid: 37f72560e54561444861c78a89d5f02a, type: 2}
+    levelRange: {x: 12, y: 17}
+    chancePercentage: 30
+  - animal: {fileID: 11400000, guid: 5d25802e10f36984e8eabe842077d4d1, type: 2}
+    levelRange: {x: 12, y: 17}
+    chancePercentage: 30
   totalChance: 100
   totalChanceWater: 100
 --- !u!1001 &917173256
@@ -11725,18 +11728,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
-    levelRange: {x: 3, y: 8}
-    chancePercentage: 10
-  - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
-    levelRange: {x: 3, y: 8}
-    chancePercentage: 10
   - animal: {fileID: 11400000, guid: 3ffacaa6168ff314281f32d605289453, type: 2}
     levelRange: {x: 10, y: 15}
-    chancePercentage: 10
+    chancePercentage: 20
   - animal: {fileID: 11400000, guid: 9644ebb865510ff46bad4c52e2f8e878, type: 2}
     levelRange: {x: 10, y: 15}
-    chancePercentage: 10
+    chancePercentage: 20
   - animal: {fileID: 11400000, guid: 38ea44a9f98d29245890b17246a51e25, type: 2}
     levelRange: {x: 10, y: 15}
     chancePercentage: 10
@@ -11751,11 +11748,17 @@ MonoBehaviour:
     chancePercentage: 15
   wildAnimalsInWater:
   - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
-    levelRange: {x: 1, y: 5}
-    chancePercentage: 50
+    levelRange: {x: 3, y: 8}
+    chancePercentage: 25
   - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
-    levelRange: {x: 1, y: 5}
-    chancePercentage: 50
+    levelRange: {x: 3, y: 8}
+    chancePercentage: 25
+  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
+    levelRange: {x: 10, y: 15}
+    chancePercentage: 25
+  - animal: {fileID: 11400000, guid: 2b53f24865385ae4e8b83919f5193b12, type: 2}
+    levelRange: {x: 10, y: 15}
+    chancePercentage: 25
   totalChance: 100
   totalChanceWater: 100
 --- !u!114 &1358788680 stripped
@@ -12112,12 +12115,9 @@ MonoBehaviour:
   - animal: {fileID: 11400000, guid: f3597ee46b80d984992b441101ef8ebe, type: 2}
     levelRange: {x: 3, y: 8}
     chancePercentage: 10
-  - animal: {fileID: 11400000, guid: b43c41dad4c64ca4ab8bdbdd4637ecc9, type: 2}
-    levelRange: {x: 3, y: 8}
-    chancePercentage: 10
   - animal: {fileID: 11400000, guid: cc1f110990a524441b9f86a51fffb605, type: 2}
     levelRange: {x: 3, y: 8}
-    chancePercentage: 10
+    chancePercentage: 20
   - animal: {fileID: 11400000, guid: c28f5908038dfb2409437f0c060d7dda, type: 2}
     levelRange: {x: 3, y: 8}
     chancePercentage: 10
@@ -12128,12 +12128,15 @@ MonoBehaviour:
     levelRange: {x: 3, y: 8}
     chancePercentage: 20
   wildAnimalsInWater:
-  - animal: {fileID: 11400000, guid: 2b53f24865385ae4e8b83919f5193b12, type: 2}
-    levelRange: {x: 12, y: 16}
+  - animal: {fileID: 11400000, guid: b43c41dad4c64ca4ab8bdbdd4637ecc9, type: 2}
+    levelRange: {x: 3, y: 8}
     chancePercentage: 40
-  - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
-    levelRange: {x: 1, y: 5}
-    chancePercentage: 60
+  - animal: {fileID: 11400000, guid: 79588a8809d6d1f40ae58b348f9a7cdd, type: 2}
+    levelRange: {x: 3, y: 8}
+    chancePercentage: 30
+  - animal: {fileID: 11400000, guid: 67b729d79e5b2604eb4076940fc6df18, type: 2}
+    levelRange: {x: 3, y: 8}
+    chancePercentage: 30
   totalChance: 100
   totalChanceWater: 100
 --- !u!1001 &1811045890
@@ -12359,25 +12362,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildAnimals:
-  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
-    levelRange: {x: 14, y: 19}
-    chancePercentage: 10
   - animal: {fileID: 11400000, guid: 0315c4cfdbf89eb449ff45f8e4480267, type: 2}
     levelRange: {x: 14, y: 19}
-    chancePercentage: 15
+    chancePercentage: 20
   - animal: {fileID: 11400000, guid: a8dccafcc799f25499a5809d1b22c534, type: 2}
     levelRange: {x: 14, y: 19}
-    chancePercentage: 10
+    chancePercentage: 20
   - animal: {fileID: 11400000, guid: 132f213b25cfb8f4581f8e24f8682b7b, type: 2}
     levelRange: {x: 14, y: 19}
-    chancePercentage: 15
+    chancePercentage: 10
   - animal: {fileID: 11400000, guid: 639657b7a1e83d04e974e8eff751d9ba, type: 2}
     levelRange: {x: 14, y: 19}
-    chancePercentage: 10
+    chancePercentage: 20
   - animal: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
-    levelRange: {x: 14, y: 19}
-    chancePercentage: 10
-  - animal: {fileID: 11400000, guid: 2b53f24865385ae4e8b83919f5193b12, type: 2}
     levelRange: {x: 14, y: 19}
     chancePercentage: 10
   - animal: {fileID: 11400000, guid: e4562e15286cd124893cc9465170806b, type: 2}
@@ -12386,10 +12383,13 @@ MonoBehaviour:
   wildAnimalsInWater:
   - animal: {fileID: 11400000, guid: 2b53f24865385ae4e8b83919f5193b12, type: 2}
     levelRange: {x: 14, y: 19}
-    chancePercentage: 50
+    chancePercentage: 40
   - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
     levelRange: {x: 14, y: 19}
-    chancePercentage: 50
+    chancePercentage: 30
+  - animal: {fileID: 11400000, guid: a8dccafcc799f25499a5809d1b22c534, type: 2}
+    levelRange: {x: 14, y: 19}
+    chancePercentage: 30
   totalChance: 100
   totalChanceWater: 100
 --- !u!114 &1879236401 stripped
@@ -12683,11 +12683,14 @@ MonoBehaviour:
     levelRange: {x: 1, y: 5}
     chancePercentage: 10
   wildAnimalsInWater:
-  - animal: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
-    levelRange: {x: 12, y: 15}
-    chancePercentage: 40
-  - animal: {fileID: 11400000, guid: ce06699e75ee76a4f81617be35745e09, type: 2}
+  - animal: {fileID: 11400000, guid: c22b6431054515d4a9ec3ce96cf11d4d, type: 2}
     levelRange: {x: 1, y: 5}
-    chancePercentage: 60
+    chancePercentage: 40
+  - animal: {fileID: 11400000, guid: 67b729d79e5b2604eb4076940fc6df18, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 30
+  - animal: {fileID: 11400000, guid: b43c41dad4c64ca4ab8bdbdd4637ecc9, type: 2}
+    levelRange: {x: 1, y: 5}
+    chancePercentage: 30
   totalChance: 100
   totalChanceWater: 100

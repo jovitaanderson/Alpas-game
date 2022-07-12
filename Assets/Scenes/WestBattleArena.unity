@@ -277,26 +277,26 @@ PrefabInstance:
     - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: animals.Array.data[0]._base
       value: 
-      objectReference: {fileID: 11400000, guid: c9c29e844c924f24b998b9be1a364d91, type: 2}
+      objectReference: {fileID: 11400000, guid: 7b3b85d51790b7b46aa755109e5eb568, type: 2}
     - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: animals.Array.data[0].level
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: animals.Array.data[1]._base
       value: 
-      objectReference: {fileID: 11400000, guid: 726be5fe98c0d724d9d3c5ebd5de9df8, type: 2}
+      objectReference: {fileID: 11400000, guid: cda17cbbbd02f744a9235e88fd1ff84a, type: 2}
     - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: animals.Array.data[1].level
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: animals.Array.data[2]._base
       value: 
-      objectReference: {fileID: 11400000, guid: 8d267ed45cc236349a283f71544dafb1, type: 2}
+      objectReference: {fileID: 11400000, guid: 639657b7a1e83d04e974e8eff751d9ba, type: 2}
     - target: {fileID: 6789521543388048578, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}
       propertyPath: animals.Array.data[2].level
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40de1551ac84b98418b5b31a2f557e38, type: 3}

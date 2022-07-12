@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
+  m_Name: Baby Crocodile
+  m_EditorClassIdentifier: 
+  index: 37
+  name: Baby Crocodile
+  description: Crocodiles have powerful jaws with many conical teeth and short legs
+    with clawed webbed toes. They share a unique body form that allows the eyes,
+    ears, and nostrils to be above the water surface while most of the animal is
+    hidden below. The tail is long and massive, and the skin is thick and plated.
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
+  type1: 6
+  type2: 7
+  maxHp: 40
+  attack: 55
+  defense: 85
+  spAttack: 70
+  spDefense: 50
+  speed: 40
+  expYield: 30
+  growthRate: 1
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: a277ba85fb3860f4f9ebdef5a855c41d, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 7d0285be0fbd98f4791d22afc3d15593, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 3e8abb76fb915af4d88c821f1d48dab6, type: 2}
+    level: 2
+  - moveBase: {fileID: 11400000, guid: ef7df3c75185e1f488da689502e9f539, type: 2}
+    level: 4
+  - moveBase: {fileID: 11400000, guid: 6c7ea56839ca80247965dbd7a7a0bb15, type: 2}
+    level: 6
+  - moveBase: {fileID: 11400000, guid: 6f9b8e765aa78e44ba31b536a4c7c9af, type: 2}
+    level: 8
+  evolutions: []

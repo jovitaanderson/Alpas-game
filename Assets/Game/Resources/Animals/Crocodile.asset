@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d3c2d890c076c43b7f10533b6a2363, type: 3}
+  m_Name: Crocodile
+  m_EditorClassIdentifier: 
+  index: 38
+  name: Crocodile
+  description: Crocodiles occur naturally in the wild in Singapore, although they
+    are not commonly sighted. The species that is found here is the Estuarine Crocodile.
+    Also known as the Saltwater Crocodile, it is one of the largest crocodile species
+    in the world and can grow to more than 5m in length. It has long snout and a
+    broad, muscular tail with ridges.
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
+  type1: 6
+  type2: 7
+  maxHp: 70
+  attack: 85
+  defense: 115
+  spAttack: 90
+  spDefense: 75
+  speed: 80
+  expYield: 60
+  growthRate: 1
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: a277ba85fb3860f4f9ebdef5a855c41d, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: 7d0285be0fbd98f4791d22afc3d15593, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: 3e8abb76fb915af4d88c821f1d48dab6, type: 2}
+    level: 12
+  - moveBase: {fileID: 11400000, guid: ef7df3c75185e1f488da689502e9f539, type: 2}
+    level: 14
+  - moveBase: {fileID: 11400000, guid: 6c7ea56839ca80247965dbd7a7a0bb15, type: 2}
+    level: 18
+  - moveBase: {fileID: 11400000, guid: 6f9b8e765aa78e44ba31b536a4c7c9af, type: 2}
+    level: 20
+  evolutions: []
