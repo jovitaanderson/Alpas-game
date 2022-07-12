@@ -11,6 +11,11 @@ public class AnimalList : MonoBehaviour, ISavable
 
     public event Action OnUpdated;
 
+    public void Start()
+    {
+        SetAllTrue();
+    }
+
     public void AnimalSeen(Animal animal)
     {
         foreach (var animalChar in animalsSeenData)
@@ -20,6 +25,15 @@ public class AnimalList : MonoBehaviour, ISavable
                 animalChar.seen = true;
                 break;
             }
+        }
+        OnUpdated?.Invoke();
+    }
+
+    public void SetAllTrue()
+    {
+        foreach (var animalChar in animalsSeenData)
+        {
+            animalChar.seen = true;
         }
         OnUpdated?.Invoke();
     }
