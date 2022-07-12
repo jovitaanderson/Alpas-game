@@ -13,6 +13,7 @@ public class AnimalList : MonoBehaviour, ISavable
 
     public void Start()
     {
+        //todo: REMOVE once we done with animal descriptions
         SetAllTrue();
     }
 
