@@ -68,6 +68,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Sound: " + clipname + "does not exist!");
             return;
         }
+
+        //pause the music to play sfx
         if (pauseMusic)
         {
             musicPlayer.Pause();

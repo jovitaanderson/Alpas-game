@@ -11,7 +11,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
+            AudioManager.i.PlaySfx(AudioId.ItemObtained); //, pauseMusic: true
             //coinsManager.instance.ChangeMoney(coinValue);
             Wallet.i.AddMoney(coinValue);
         }
