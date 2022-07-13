@@ -45,7 +45,7 @@ public class ConditionsDB
                 //lamda functions
                 OnAfterTurn = (Animal animal) =>
                 {
-                    animal.DecreaseHP(animal.MaxHp / 16);
+                    animal.DecreaseHP(animal.MaxHp / 12);
                     animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to burn");
                 }
 
