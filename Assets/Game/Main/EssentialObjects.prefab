@@ -1606,6 +1606,9 @@ MonoBehaviour:
   waterLayer:
     serializedVersion: 2
     m_Bits: 16
+  noSpawnLayer:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!114 &3875068956061417696
 MonoBehaviour:
   m_ObjectHideFlags: 0

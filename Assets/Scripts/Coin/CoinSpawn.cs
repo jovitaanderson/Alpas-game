@@ -60,7 +60,7 @@ public class CoinSpawn : MonoBehaviour
 
     private bool IsPositionClear(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.i.SolidLayer | GameLayers.i.InteractableLayer | GameLayers.i.GrassLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.i.SolidLayer | GameLayers.i.InteractableLayer | GameLayers.i.GrassLayer | GameLayers.i.NoSpawnLayer) != null)
         {
             return false;
         }
