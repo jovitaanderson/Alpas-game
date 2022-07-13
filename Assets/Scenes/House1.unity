@@ -123,99 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &179539777
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4218428537694305410, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_Size.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4779664380451472901, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127471524260201249, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: dialog.lines.Array.data[0]
-      value: Talk to Dr Mary (Mom) before going outside!
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_Name
-      value: ExitHouseBlocker
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -177.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -205.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: onComplete
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: questToCheck
-      value: 
-      objectReference: {fileID: 11400000, guid: 5e2a283105d568d468cfec18c5939745, type: 2}
-    - target: {fileID: 8529975477947624592, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8529975477947624592, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 9120027102222490776, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_Size.x
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
 --- !u!1001 &417556802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -530,91 +437,184 @@ MonoBehaviour:
     - Dr Doom has infected all the animals outside!
     - It is not safe to go out there without an animal
     - Here, have this puppy to start your journey
---- !u!1001 &953919080
-PrefabInstance:
+--- !u!1 &1056106377
+GameObject:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056106379}
+  - component: {fileID: 1056106378}
+  m_Layer: 0
+  m_Name: ExitHouseBlocker(Mom) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1056106378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056106377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af8fe1d0f06850408b74e0e61a31114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questToCheck: {fileID: 11400000, guid: a3789d4a45fdbd2458a966b7add04590, type: 2}
+  onStart: 0
+  onComplete: 2
+--- !u!4 &1056106379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056106377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -135, y: -205.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1170770428}
+  - {fileID: 1063167028}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1063167027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063167028}
+  - component: {fileID: 1063167029}
+  m_Layer: 6
+  m_Name: Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1063167028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063167027}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.5, y: 30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1056106379}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1063167029
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063167027}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4218428537694305410, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_Size.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4779664380451472901, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127471524260201249, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: dialog.lines.Array.data[0]
-      value: Talk to Dr Richard (Dad) before going outside!
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_Name
-      value: ExitHouseBlocker(2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128096, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -177.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -205.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128158, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: onComplete
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480566873701128159, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: questToCheck
-      value: 
-      objectReference: {fileID: 11400000, guid: a3789d4a45fdbd2458a966b7add04590, type: 2}
-    - target: {fileID: 9120027102222490776, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
-      propertyPath: m_Size.x
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 87def63a672c1b74387a99afa96085d5, type: 3}
+  m_Size: {x: 5, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &1170770427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170770428}
+  - component: {fileID: 1170770430}
+  - component: {fileID: 1170770429}
+  m_Layer: 12
+  m_Name: StoryItem (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1170770428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170770427}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.5, y: 31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1056106379}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1170770429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170770427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520b2b9eb2efdcf408e4b13ee1f29e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - Talk to Dr. Richard (Dad) before leaving the house!
+--- !u!61 &1170770430
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170770427}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1177741856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,11 +2762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -166.09
+      value: -165.5
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -175.66
+      value: -175.5
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2810,6 +2810,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
+--- !u!1 &1336339899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1336339900}
+  - component: {fileID: 1336339901}
+  m_Layer: 6
+  m_Name: Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1336339900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336339899}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.5, y: 30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015605548}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1336339901
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336339899}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1434854031
 GameObject:
   m_ObjectHideFlags: 0
@@ -4385,6 +4442,127 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e163381cbc05b143ab9d93f88585049, type: 3}
+--- !u!1 &2015605546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015605548}
+  - component: {fileID: 2015605547}
+  m_Layer: 0
+  m_Name: ExitHouseBlocker(Mom)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2015605547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015605546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af8fe1d0f06850408b74e0e61a31114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questToCheck: {fileID: 11400000, guid: 5e2a283105d568d468cfec18c5939745, type: 2}
+  onStart: 0
+  onComplete: 2
+--- !u!4 &2015605548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015605546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -135, y: -205.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2046117727}
+  - {fileID: 1336339900}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2046117726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046117727}
+  - component: {fileID: 2046117729}
+  - component: {fileID: 2046117728}
+  m_Layer: 12
+  m_Name: StoryItem (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2046117727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046117726}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.5, y: 31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015605548}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2046117728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046117726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520b2b9eb2efdcf408e4b13ee1f29e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - Talk to Dr. Mary (Mom) before leaving the house!
+--- !u!61 &2046117729
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046117726}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1}
+  m_EdgeRadius: 0
 --- !u!4 &129894357984345741
 Transform:
   m_ObjectHideFlags: 0

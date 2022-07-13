@@ -107,7 +107,7 @@ public class DialogManager : MonoBehaviour
 
             if ((Input.GetKey(SettingsManager.i.getKey("CONFIRM")) || Input.GetKey(SettingsManager.i.getKey("CONFIRM1"))) && i >=6)
             {
-                Debug.Log("Return pressed");
+                //Debug.Log("Return pressed");
                 string remainingString = line.Substring(i+1);
                 dialogText.text += remainingString;
                 i = line.Length - 1;

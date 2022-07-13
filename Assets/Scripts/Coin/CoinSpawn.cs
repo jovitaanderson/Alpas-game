@@ -45,7 +45,7 @@ public class CoinSpawn : MonoBehaviour
         Vector3 randomPoint = GetValidSpawnPoint();
         Instantiate(coin, randomPoint, Quaternion.identity);
         currCount++;
-        Debug.Log(currCount);
+        //Debug.Log(currCount);
     }
 
     Vector3 GetValidSpawnPoint()
