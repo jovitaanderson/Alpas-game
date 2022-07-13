@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LoadPrefs : MonoBehaviour
 {
     [Header("General Setting")]
-    [SerializeField] private bool canUse = false;
+   // [SerializeField] private bool canUse = false;
     [SerializeField] private MainController mainController;
 
     [Header("Volume Settings")]
@@ -15,8 +15,8 @@ public class LoadPrefs : MonoBehaviour
 
     private void Awake()
     {
-        if (canUse)
-        {
+        //if (canUse)
+        //{
             if (PlayerPrefs.HasKey("masterVolume"))
             {
                 float localVolume = PlayerPrefs.GetFloat("masterVolume");
@@ -30,6 +30,6 @@ public class LoadPrefs : MonoBehaviour
                 mainController.ResetButton("Audio");
             }
 
-        }
+        //}
     }
 }
