@@ -687,12 +687,12 @@ public class BattleSystem : MonoBehaviour
             var selectedMember = partyScreen.SelectedMember;
             if (selectedMember.HP <= 0)
             {
-                partyScreen.SetMessageText("You can't send out a fainted pokemon");
+                partyScreen.SetMessageText("You can't send out a fainted animal");
                 return;
             }
             if (selectedMember == playerUnit.Animal)
             {
-                partyScreen.SetMessageText("You can't switch with the same pokemon");
+                partyScreen.SetMessageText("You can't switch with the same animal");
                 return;
             }
 
@@ -716,7 +716,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (playerUnit.Animal.HP <= 0)
             {
-                partyScreen.SetMessageText("You have to choose a pokemon to continue");
+                partyScreen.SetMessageText("You have to choose a animal to continue");
                 return;
             }
             partyScreen.gameObject.SetActive(false);
