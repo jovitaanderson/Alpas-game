@@ -45,6 +45,20 @@ public class AnimalParty : MonoBehaviour
         return animals.Where(x => x.HP > 0).FirstOrDefault();
     }
 
+    public void resetStatsAnimal()
+    {
+        foreach (var animal in animals) //for loop for every animal in animal list
+        {
+            //set animal back to full HP
+            animal.Heal();
+            //cure all status of animal
+            animal.CureStatus();
+
+            //playerParty.Animals.ForEach(p => p.Heal());
+            //animal.Init();
+        }
+    }
+
     //add animals into the party only if the party has less than 6 animals
     public void AddAnimal(Animal newAnimal) 
     {

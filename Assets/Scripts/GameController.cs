@@ -184,6 +184,8 @@ public class GameController : MonoBehaviour
         this.trainer = trainer;
         var playerParty = playerController.GetComponent<AnimalParty>();
         var trainerParty = trainer.GetComponent<AnimalParty>();
+        //reset trainer party animals
+        trainerParty.resetStatsAnimal();
 
         battleSystem.StartTrainerBattle(playerParty, trainerParty, CurrentScene.Background, CurrentScene.BackgroundCircles);
     }
