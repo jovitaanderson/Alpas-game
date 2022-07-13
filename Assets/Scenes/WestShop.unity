@@ -1199,11 +1199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 120.38001
+      value: 119.51
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -226.6
+      value: -226.51
       objectReference: {fileID: 0}
     - target: {fileID: 8190195085743538152, guid: b1980dce2b72f434abab8847a27b3f69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1256,11 +1256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5012267339063133180, guid: 71f4c6c905d28b541b26f68f879e5e3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 115
+      value: 113.5
       objectReference: {fileID: 0}
     - target: {fileID: 5012267339063133180, guid: 71f4c6c905d28b541b26f68f879e5e3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -219
+      value: -217.8
       objectReference: {fileID: 0}
     - target: {fileID: 5012267339063133180, guid: 71f4c6c905d28b541b26f68f879e5e3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1297,6 +1297,10 @@ PrefabInstance:
     - target: {fileID: 5012267339063133182, guid: 71f4c6c905d28b541b26f68f879e5e3f, type: 3}
       propertyPath: m_Name
       value: Healer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610458964989945399, guid: 71f4c6c905d28b541b26f68f879e5e3f, type: 3}
+      propertyPath: uniqueId
+      value: 8890a87b-1972-4ec8-a480-73eb4669091e
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71f4c6c905d28b541b26f68f879e5e3f, type: 3}
@@ -5128,6 +5132,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6236019249158487793, guid: 7e5b430b7b8d270448f33662dffc0707, type: 3}
+      propertyPath: uniqueId
+      value: 1c079091-613d-41a0-bcdb-0dc8b23106e6
+      objectReference: {fileID: 0}
     - target: {fileID: 7240541560247278392, guid: 7e5b430b7b8d270448f33662dffc0707, type: 3}
       propertyPath: m_Name
       value: Merchant
