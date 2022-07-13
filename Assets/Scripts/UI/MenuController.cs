@@ -48,7 +48,7 @@ public class MenuController : MonoBehaviour
         //if press enter then go do action
         if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
-            Debug.Log(selectedItem);
+            //Debug.Log(selectedItem);
             onMenuSelected?.Invoke(selectedItem);
             CloseMenu();
         }

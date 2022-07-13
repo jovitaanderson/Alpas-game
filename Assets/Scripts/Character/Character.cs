@@ -16,7 +16,10 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent <CharacterAnimator>();
-        SetPositionAndSnapToTile(transform.position);
+        if(GetComponent<Merchant>() == null)
+        {
+            SetPositionAndSnapToTile(transform.position);
+        }
     }
 
     public void SetPositionAndSnapToTile(Vector2 pos)
