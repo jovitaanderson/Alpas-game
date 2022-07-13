@@ -100,8 +100,11 @@ public class PartyScreen : MonoBehaviour
                 onSelected?.Invoke();
                 if (onSelected == null)
                 {
-                    EnableChoiceBox(true);
-                    messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
+                    if (animals.Count > 0)
+                    {
+                        EnableChoiceBox(true);
+                        messageText.text = $" {SelectedMember.Base.Name} was selected. Choose an Action";
+                    }
                 }
 
             }

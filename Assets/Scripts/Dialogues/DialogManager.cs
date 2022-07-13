@@ -103,7 +103,7 @@ public class DialogManager : MonoBehaviour
         {
             dialogText.text += lineCharArray[i];
             yield return new WaitForSeconds(1f / lettersPerSecond);
-            Debug.Log("print");
+            //Debug.Log("print");
 
             if ((Input.GetKey(SettingsManager.i.getKey("CONFIRM")) || Input.GetKey(SettingsManager.i.getKey("CONFIRM1"))) && i >=6)
             {

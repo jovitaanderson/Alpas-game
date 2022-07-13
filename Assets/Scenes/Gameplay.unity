@@ -3393,6 +3393,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2341567400718183477, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2345309542605772464, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9178,6 +9182,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: tmSlots.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -9186,12 +9194,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 6df98afd3c42bc742a64ed672988d553, type: 2}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: db6f2ce00e3089048955ed6e6a77b023, type: 2}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[2].item
+      value: 
+      objectReference: {fileID: 11400000, guid: d23567f2625b0ad40b5904a5431d351b, type: 2}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[0].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[1].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: slots.Array.data[2].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: tmSlots.Array.data[0].item
       value: 
       objectReference: {fileID: 11400000, guid: e2ef996e00a70084fbfee78e3f3072b8, type: 2}
     - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: tmSlots.Array.data[0].count
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCaptureSlots.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: questSlots.Array.data[0].item
@@ -10437,6 +10473,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8502907761166982455, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: money
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8529937893113836308, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 0.9607844
@@ -10955,11 +10995,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.5
+      value: -104.5
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -76.8
+      value: -144.8
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302219, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10967,7 +11007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8846833008224302221, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: animals.Array.data[0]._base

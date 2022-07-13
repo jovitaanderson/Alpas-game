@@ -108,7 +108,15 @@ public class InventoryUI : MonoBehaviour
 
             //open party screen if press enter
             if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
-                StartCoroutine(ItemSelected());
+            {
+                if (player.GetComponent<AnimalParty>().Animals.Count > 0 && inventory.GetSlotsByCategory(selectedCategory).Count > 0)
+                    StartCoroutine(ItemSelected());
+                else if (inventory.GetSlotsByCategory(selectedCategory).Count <= 0)
+                    StartCoroutine(DialogManager.Instance.ShowDialogText($"There is no items"));
+                else if (player.GetComponent<AnimalParty>().Animals.Count <= 0)
+                    StartCoroutine(DialogManager.Instance.ShowDialogText($"Item cannot be used when there is no animals"));
+                
+            }
 
             //if press escape, close the bag
             else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
