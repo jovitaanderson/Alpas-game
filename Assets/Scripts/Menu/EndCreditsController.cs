@@ -27,6 +27,8 @@ public class EndCreditsController : MonoBehaviour
     {
         AudioManager.i.PlaySfx(AudioId.UISelect);
         Application.Quit();
+        //TODO: quit game
+        //Application.OpenURL("https://itch.io/");
     }
 
     public void MainMenuButton()

@@ -376,6 +376,9 @@ public class GameController : MonoBehaviour
             SavingSystem.i.Save("saveSlot1");
             //quit game
             Application.Quit();
+
+            //TODO: quit game
+            //Application.OpenURL("https://itch.io/");
         }
 
         
