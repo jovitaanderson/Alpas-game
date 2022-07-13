@@ -54,9 +54,9 @@ public class MainController : MonoBehaviour
     private void Start()
     {
         //TODO: remove if audio is still saved (when restarting game) without this code
-        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
         {
-            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
+            SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
             SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
         }
 
@@ -133,9 +133,10 @@ public class MainController : MonoBehaviour
 
     public void VolumeApply()
     {
-        PlayerPrefs.SetFloat("masterMusic", musicVolume);
+        PlayerPrefs.SetFloat("masterVolume", musicVolume);
         PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
         PlaySFX();
+        PlayerPrefs.Save();
         //Show Prompt
         StartCoroutine(ConfirmationBox());
     }

@@ -41,9 +41,9 @@ public class SettingsManager : MonoBehaviour
     {
 
         //audio settings
-        if (PlayerPrefs.HasKey("masterMusic") && PlayerPrefs.HasKey("masterSFX"))
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
         {
-            SetMusicVolume(PlayerPrefs.GetFloat("masterMusic"));
+            SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
             SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
         }
         else
@@ -99,8 +99,9 @@ public class SettingsManager : MonoBehaviour
 
     public void VolumeApply()
     {
-        PlayerPrefs.SetFloat("masterMusic", musicVolume);
+        PlayerPrefs.SetFloat("masterVolume", musicVolume);
         PlayerPrefs.SetFloat("masterSFX", soundEffectsVolume);
+        PlayerPrefs.Save();
     }
 
     public void AudioDefaultButton()
