@@ -6,30 +6,20 @@ using UnityEngine.UI;
 public class LoadPrefs : MonoBehaviour
 {
     [Header("General Setting")]
-   // [SerializeField] private bool canUse = false;
     [SerializeField] private MainController mainController;
-
-    [Header("Volume Settings")]
-    [SerializeField] private Text volumeTextValue = null;
-    [SerializeField] private Slider volumeSlider = null;
 
     private void Awake()
     {
-        //if (canUse)
-        //{
-            if (PlayerPrefs.HasKey("masterVolume"))
-            {
-                float localVolume = PlayerPrefs.GetFloat("masterVolume");
+       
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
+        {
+            mainController.SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
+            mainController.SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
+        }
+        else
+        {
+            mainController.ResetButton("Audio");
+        }
 
-                volumeTextValue.text = localVolume.ToString("0.0");
-                volumeSlider.value = localVolume;
-                AudioListener.volume = localVolume;
-            }
-            else
-            {
-                mainController.ResetButton("Audio");
-            }
-
-        //}
     }
 }
