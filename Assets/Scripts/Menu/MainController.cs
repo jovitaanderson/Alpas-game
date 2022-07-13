@@ -110,6 +110,8 @@ public class MainController : MonoBehaviour
     {
         PlaySFX();
         Application.Quit();
+        //TODO: quit game
+        //Application.OpenURL("https://itch.io/");
     }
 
     public void SetMusicVolume(float volume)
