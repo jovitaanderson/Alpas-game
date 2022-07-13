@@ -45,9 +45,12 @@ public class PartyScreen : MonoBehaviour
 
     private void Start()
     {
-        //get the children in choicebox
-        choices = choiceBox.GetComponentsInChildren<Text>();
-        UpdateChoiceBox(choiceSelection);
+        if (choiceBox != null)
+        {
+            //get the children in choicebox
+            choices = choiceBox.GetComponentsInChildren<Text>();
+            UpdateChoiceBox(choiceSelection);
+        }
     }
 
     public void SetPartyData()
