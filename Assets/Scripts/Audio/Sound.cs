@@ -11,5 +11,5 @@ public class Sound
     public AudioClip AudioClip;
 
     [Range(0, 1)]
-    public float volume = 0.5f;
+    public float volume = 1f;
 }

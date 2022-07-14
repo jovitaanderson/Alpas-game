@@ -20,8 +20,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] float fadeDuration;
 
     string currMusic;
-    float originalMusicVol;
-    float originalSFXVol;
+    float originalMusicVol = 1f;
     Dictionary<AudioId, AudioData> sfxLookUp;
 
     public static AudioManager i { get; private set; }
@@ -50,11 +49,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
-        {
-            originalMusicVol = PlayerPrefs.GetFloat("masterVolume");
-            originalSFXVol = PlayerPrefs.GetFloat("masterSFX");
-        }
         sfxLookUp = sfxList.ToDictionary(x => x.id);
     }
 
