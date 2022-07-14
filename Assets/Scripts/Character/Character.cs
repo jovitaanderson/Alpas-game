@@ -60,12 +60,12 @@ public class Character : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                this.Animator.IsRunning = true;
+                //this.Animator.IsRunning = true;
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, (moveSpeed + 2) * Time.deltaTime);
             }
             else
             {
-                this.Animator.IsRunning = false;
+                //this.Animator.IsRunning = false;
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             }
             yield return null;
@@ -73,7 +73,7 @@ public class Character : MonoBehaviour
         transform.position = targetPos;
 
         IsMoving = false;
-        this.Animator.IsRunning = false;
+        //this.Animator.IsRunning = false;
 
         //null conidition operator, if OnMoveOver is null, we wont call(invoke) it
         OnMoveOver?.Invoke();

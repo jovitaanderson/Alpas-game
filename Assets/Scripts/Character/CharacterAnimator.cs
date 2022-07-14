@@ -18,7 +18,7 @@ public class CharacterAnimator : MonoBehaviour
 
     [SerializeField] List<Sprite> surfSprites;
 
-    [Header("Run Animation")]
+    /*[Header("Run Animation")]
     [SerializeField] List<Sprite> runDownSprites;
     [SerializeField] List<Sprite> runUpSprites;
     [SerializeField] List<Sprite> runRightSprites;
@@ -27,13 +27,13 @@ public class CharacterAnimator : MonoBehaviour
     [SerializeField] List<Sprite> runDownLeftSprites;
     [SerializeField] List<Sprite> runDownRightSprites;
     [SerializeField] List<Sprite> runUpLeftSprites;
-    [SerializeField] List<Sprite> runUpRightSprites;
+    [SerializeField] List<Sprite> runUpRightSprites;*/
 
     // Parameters
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
-    public bool IsRunning { get; set; }
+    //public bool IsRunning { get; set; }
     public bool IsJumping { get; set; }
     public bool IsSurfing { get; set; }
 
@@ -70,7 +70,7 @@ public class CharacterAnimator : MonoBehaviour
         walkUpRightAnim = new SpriteAnimator(walkUpRightSprites, spriteRenderer);
 
         //Run states
-        runDownAnim = new SpriteAnimator(runDownSprites, spriteRenderer);
+        /*runDownAnim = new SpriteAnimator(runDownSprites, spriteRenderer);
         runUpAnim = new SpriteAnimator(runUpSprites, spriteRenderer);
         runRightAnim = new SpriteAnimator(runRightSprites, spriteRenderer);
         runLeftAnim = new SpriteAnimator(runLeftSprites, spriteRenderer);
@@ -79,7 +79,7 @@ public class CharacterAnimator : MonoBehaviour
         runDownLeftAnim = new SpriteAnimator(runDownLeftSprites, spriteRenderer);
         runDownRightAnim = new SpriteAnimator(runDownRightSprites, spriteRenderer);
         runUpLeftAnim = new SpriteAnimator(runUpLeftSprites, spriteRenderer);
-        runUpRightAnim = new SpriteAnimator(runUpRightSprites, spriteRenderer);
+        runUpRightAnim = new SpriteAnimator(runUpRightSprites, spriteRenderer);*/
 
         SetFacingDirection(defaultDirection);
 
@@ -94,21 +94,21 @@ public class CharacterAnimator : MonoBehaviour
         if (!IsSurfing)
         {
             if (MoveX == 1 && MoveY == 1)
-                currentAnim = IsRunning ? runUpRightAnim : walkUpRightAnim;
+                currentAnim =  walkUpRightAnim;
             else if (MoveX == 1 && MoveY == -1)
-                currentAnim = IsRunning ? runDownRightAnim : walkDownRightAnim;
+                currentAnim =  walkDownRightAnim;
             else if (MoveX == -1 && MoveY == 1)
-                currentAnim = IsRunning ? runUpLeftAnim : walkUpLeftAnim;
+                currentAnim =  walkUpLeftAnim;
             else if (MoveX == -1 && MoveY == -1)
-                currentAnim = IsRunning ? runDownLeftAnim : walkDownLeftAnim;
+                currentAnim =  walkDownLeftAnim;
             else if (MoveX == 1 && MoveY == 0)
-                currentAnim = IsRunning ? runRightAnim : walkRightAnim;
+                currentAnim = walkRightAnim;
             else if (MoveX == -1 && MoveY == 0)
-                currentAnim = IsRunning ? runLeftAnim : walkLeftAnim;
+                currentAnim =  walkLeftAnim;
             else if (MoveX == 0 && MoveY == 1)
-                currentAnim = IsRunning ? runUpAnim : walkUpAnim;
+                currentAnim =  walkUpAnim;
             else if (MoveX == 0 && MoveY == -1)
-                currentAnim = IsRunning ? runDownAnim : walkDownAnim;
+                currentAnim =  walkDownAnim;
 
             if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
                 currentAnim.Start();
