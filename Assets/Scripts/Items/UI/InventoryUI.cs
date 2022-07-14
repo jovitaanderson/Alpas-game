@@ -220,7 +220,7 @@ public class InventoryUI : MonoBehaviour
         if (usedItem != null)
         {
             if (usedItem is RecoveryItem)
-                yield return DialogManager.Instance.ShowDialogText($"{player.UserName} used {usedItem.Name}"); //TODO: change the player to player.name, add on to {usedItem.UsedMessage}
+                yield return DialogManager.Instance.ShowDialogText($"{player.UserName} used {usedItem.Name}");
             onItemUsed?.Invoke(usedItem);
         }
         else

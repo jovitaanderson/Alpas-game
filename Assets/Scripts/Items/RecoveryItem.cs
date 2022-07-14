@@ -81,11 +81,29 @@ public class RecoveryItem : ItemBase
         //Restore PP
         if (restoreMaxHP)
         {
-            animal.Moves.ForEach(m => m.IncreasePP(m.Base.PP));
+            bool canUseItem = false;
+            foreach (var move in animal.Moves)
+            {
+                if (move.PP != move.Base.PP)
+                    canUseItem = true;
+            }
+            if (canUseItem)
+                animal.Moves.ForEach(m => m.IncreasePP(m.Base.PP));
+            else
+                return false;
         }
         else if (ppAmount > 0)
         {
-            animal.Moves.ForEach(m => m.IncreasePP(ppAmount));
+            bool canUseItem = false;
+            foreach (var move in animal.Moves)
+            {
+                if (move.PP != move.Base.PP)
+                    canUseItem = true;
+            }
+            if (canUseItem)
+                animal.Moves.ForEach(m => m.IncreasePP(ppAmount));
+            else
+                return false;
         }
 
         return true;
