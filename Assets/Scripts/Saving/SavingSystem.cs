@@ -82,7 +82,8 @@ public class SavingSystem : MonoBehaviour
 
     void SaveFile(string saveFile, Dictionary<string, object> state)
     {
-        string path = GetPath(saveFile);
+        //todo: for app
+        /*string path = GetPath(saveFile);
         print($"saving to {path}");
 
         using (FileStream fs = File.Open(path, FileMode.Create))
@@ -90,21 +91,48 @@ public class SavingSystem : MonoBehaviour
             // Serialize our object
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             binaryFormatter.Serialize(fs, state);
+        }*/
+
+        //todo: for webGL
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        var memoryStream = new MemoryStream();
+        using (memoryStream)
+        {
+            binaryFormatter.Serialize(memoryStream, state);
         }
+        string content = Convert.ToBase64String(memoryStream.ToArray());
+        PlayerPrefs.SetString("forceSave", content);
+        PlayerPrefs.Save();
     }
 
     Dictionary<string, object> LoadFile(string saveFile)
     {
-        string path = GetPath(saveFile);
+        //todo: for app
+        /*string path = GetPath(saveFile);
         if (!File.Exists(path))
-            return new Dictionary<string, object>();
-
-        using (FileStream fs = File.Open(path, FileMode.Open))
         {
-            // Deserialize our object
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            return (Dictionary<string, object>)binaryFormatter.Deserialize(fs);
+            print($"path doesnt exists");
+            return new Dictionary<string, object>();
         }
+
+         using (FileStream fs = File.Open(path, FileMode.Open))
+         {
+             // Deserialize our object
+             BinaryFormatter binaryFormatter = new BinaryFormatter();
+             return (Dictionary<string, object>)binaryFormatter.Deserialize(fs);
+         }*/
+
+         //todo: for webGL
+        
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        string temp = PlayerPrefs.GetString("forceSave");
+        if (temp == string.Empty)
+        {
+            return null;
+        }
+        MemoryStream memoryStream = new MemoryStream(System.Convert.FromBase64String(temp));
+        return (Dictionary<string, object>)binaryFormatter.Deserialize(memoryStream);
+        
     }
 
     private string GetPath(string saveFile)

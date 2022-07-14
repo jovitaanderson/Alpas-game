@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
         else 
         {
             PlayerPrefs.SetString("SavedGame", "saveSlot1");
+            PlayerPrefs.Save();
             SavingSystem.i.Save("saveSlot1");
         }
 
@@ -342,8 +343,11 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 2)
         {
             //Save
-            if(!PlayerPrefs.HasKey("SavedGame"))
+            if (!PlayerPrefs.HasKey("SavedGame"))
+            {
                 PlayerPrefs.SetString("SavedGame", "saveSlot1");
+                PlayerPrefs.Save();
+            }
             SavingSystem.i.Save("saveSlot1");
             state = GameState.FreeRoam;
         }
@@ -373,7 +377,11 @@ public class GameController : MonoBehaviour
         {
             //save game
             if (!PlayerPrefs.HasKey("SavedGame"))
+            {
                 PlayerPrefs.SetString("SavedGame", "saveSlot1");
+                PlayerPrefs.Save();
+            }
+
             SavingSystem.i.Save("saveSlot1");
             //quit game
             //Application.Quit();
