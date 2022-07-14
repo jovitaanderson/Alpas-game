@@ -53,19 +53,21 @@ public class MainController : MonoBehaviour
 
     private void Start()
     {
-        //TODO: remove if audio is still saved (when restarting game) without this code
+        backButton();
+    }
+
+    public void backButton()
+    {
         if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
         {
             SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
             SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
         }
-
         else
         {
             SetMusicVolume(defaultVolume);
             SetSoundEffectsVolume(defaultVolume);
         }
-
     }
 
     public void NewGameDialogText()
