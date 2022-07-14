@@ -15,6 +15,7 @@ public class AnimalGiver : MonoBehaviour, ISavable
 
         animalToGive.Init();
         player.GetComponent<AnimalParty>().AddAnimal(animalToGive);
+        GameObject.Find("GameController").GetComponent<GameController>().animaList.AnimalSeen(animalToGive);
 
         used = true;
 
