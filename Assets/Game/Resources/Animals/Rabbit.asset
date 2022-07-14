@@ -16,9 +16,7 @@ MonoBehaviour:
   name: Rabbit
   description: 'It might surprise you to learn that there are at least 305 different
     breeds of rabbits around the world. Perhaps the most important distinction between
-    these different types of rabbits is whether they''re wild or domesticated. Wild
-    rabbits tend to be hardier and suited to living in rabbit holes and gathering
-    their own food. They often have shorter greyish brown fur and a leaner appearance. '
+    these different types of rabbits is whether they''re wild or domesticated. '
   frontSprite: {fileID: 21300000, guid: 1d3e42a4a80e04441a7b96f01a34e482, type: 3}
   backSprite: {fileID: 21300000, guid: e578e71a3f2424247bd67e3d3d207d20, type: 3}
   type1: 5
@@ -33,14 +31,14 @@ MonoBehaviour:
   growthRate: 1
   catchRate: 255
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
-    level: 10
-  - moveBase: {fileID: 11400000, guid: c3863ce4dc6143f4eb7eac4d0c802444, type: 2}
-    level: 12
   - moveBase: {fileID: 11400000, guid: c1f7126412739ba42bf14d879ab2fde0, type: 2}
-    level: 14
+    level: 10
   - moveBase: {fileID: 11400000, guid: f73840026a30cc6448db3743b6337382, type: 2}
-    level: 18
+    level: 12
+  - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
+    level: 14
   - moveBase: {fileID: 11400000, guid: 5f311d8c7b682384ca828c9f6c4f57da, type: 2}
+    level: 18
+  - moveBase: {fileID: 11400000, guid: c3863ce4dc6143f4eb7eac4d0c802444, type: 2}
     level: 20
   evolutions: []

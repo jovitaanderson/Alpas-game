@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 'Hamsters are rodents belonging to the subfamily Cricetinae, which
     contains 19 species classified in seven genera.They have become established as
     popular small pets.The best-known species of hamster is the golden or Syrian
-    hamster (Mesocricetus auratus), which is the type most commonly kept as pets. '
+    hamster, which is the type most commonly kept as pets. '
   frontSprite: {fileID: 21300000, guid: 4585d158d2b1a5c4fa98c5237f66d208, type: 3}
   backSprite: {fileID: 21300000, guid: 1483dc55deb53554f892e2ce4133c5e0, type: 3}
   type1: 5
@@ -32,15 +32,15 @@ MonoBehaviour:
   growthRate: 1
   catchRate: 255
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
-    level: 1
-  - moveBase: {fileID: 11400000, guid: c3863ce4dc6143f4eb7eac4d0c802444, type: 2}
-    level: 2
   - moveBase: {fileID: 11400000, guid: 85f3437748e078d419efb57d37b81da6, type: 2}
-    level: 4
+    level: 1
   - moveBase: {fileID: 11400000, guid: d0dcfc010a7db4b4b982ee9c36786531, type: 2}
-    level: 6
+    level: 2
+  - moveBase: {fileID: 11400000, guid: a5a316f074d9a1141be77cdb59cdde26, type: 2}
+    level: 4
   - moveBase: {fileID: 11400000, guid: 6f9b8e765aa78e44ba31b536a4c7c9af, type: 2}
+    level: 6
+  - moveBase: {fileID: 11400000, guid: c3863ce4dc6143f4eb7eac4d0c802444, type: 2}
     level: 8
   evolutions:
   - evolvesinto: {fileID: 11400000, guid: 38ea44a9f98d29245890b17246a51e25, type: 2}
