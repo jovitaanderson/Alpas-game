@@ -6,12 +6,9 @@ using UnityEngine.UI;
 
 public class AnimalListUI : MonoBehaviour
 {
-    //AnimalCharacterDatabase characterDB;
     List<AnimalCharacter> animalsSeenData;
-
     public Text nameText;
     public Text type1;
-    //public Text type2;
     public Image animalSprite;
     public Text locationText;
     public Text descrtipionText;

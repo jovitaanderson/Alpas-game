@@ -109,7 +109,7 @@ public class MainController : MonoBehaviour
     public void ExitButton()
     {
         PlaySFX();
-        Application.Quit();
+        //Application.Quit();
         //TODO: quit game
         Application.OpenURL("https://itch.io/");
     }

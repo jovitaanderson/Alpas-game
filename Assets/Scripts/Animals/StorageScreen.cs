@@ -33,7 +33,7 @@ public class StorageScreen : MonoBehaviour
         }
     }*/
 
-    public void Start()
+    private void Start()
     {
         memberSlots = GetComponentsInChildren<StorageMemberUI>(true);
         moveTexts = movesTextContainer.GetComponentsInChildren<Text>();
