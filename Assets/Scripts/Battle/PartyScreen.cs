@@ -193,7 +193,14 @@ public class PartyScreen : MonoBehaviour
         {
             //Release
             //todo: add comfirmation dialogue before releasing
-            animals.Remove(SelectedMember);
+            if (animals.Count == 1)
+            {
+                StartCoroutine(DialogManager.Instance.ShowDialogText("Cannot release if you only have one animal"));
+            }
+            else
+            {
+                animals.Remove(SelectedMember);
+            }
             ResetSelection();
 
         }
