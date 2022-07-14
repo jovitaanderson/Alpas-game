@@ -379,7 +379,9 @@ public class GameController : MonoBehaviour
             //Application.Quit();
 
             //TODO: quit game
-            Application.OpenURL("https://itch.io/");
+            //Application.OpenURL("https://itch.io/");
+            Application.ExternalEval("window.open('" + "https://itch.io/" + "','_self')");
+
         }
 
         
