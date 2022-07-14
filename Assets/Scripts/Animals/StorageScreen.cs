@@ -16,6 +16,7 @@ public class StorageScreen : MonoBehaviour
     [SerializeField] Text type2;
     [SerializeField] HPBar hpBar;
     [SerializeField] GameObject movesTextContainer;
+    [SerializeField] GameObject noAnimalInStorageMessage;
 
     AnimalStorage storage;
     List<Animal> animals;
@@ -46,6 +47,11 @@ public class StorageScreen : MonoBehaviour
     public void SetStorageData()
     {
         animals = storage.Animals;
+
+        if (animals.Count == 0)
+            noAnimalInStorageMessage.SetActive(true);
+        else
+            noAnimalInStorageMessage.SetActive(false);
 
         for (int i = 0; i < memberSlots.Length; i++)
         {
