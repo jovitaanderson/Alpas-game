@@ -40,17 +40,7 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
 
-        //audio settings
-        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
-        {
-            SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
-            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
-        }
-        else
-        {
-            SetMusicVolume(defaultVolume);
-            SetSoundEffectsVolume(defaultVolume);
-        }
+        backButton();
 
         //Keybind settings
         if (!PlayerPrefs.HasKey("SavedKeybinds0"))
@@ -78,6 +68,20 @@ public class SettingsManager : MonoBehaviour
 
         messageText.text = "";
         updateAllKeyText();
+    }
+
+    public void backButton()
+    {
+        if (PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("masterSFX"))
+        {
+            SetMusicVolume(PlayerPrefs.GetFloat("masterVolume"));
+            SetSoundEffectsVolume(PlayerPrefs.GetFloat("masterSFX"));
+        }
+        else
+        {
+            SetMusicVolume(defaultVolume);
+            SetSoundEffectsVolume(defaultVolume);
+        }
     }
 
     //Volume functions
@@ -153,7 +157,10 @@ public class SettingsManager : MonoBehaviour
         {
             if ((Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
                 && currentKey == null)
+            {
+                backButton();
                 onBack?.Invoke();
+            }
 
             if (currentKey != null)
             {
