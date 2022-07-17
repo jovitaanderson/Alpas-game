@@ -44,10 +44,18 @@ public class TreasureChestSpawn : MonoBehaviour
 
     Vector3 GetValidSpawnPoint()
     {
-        Vector3 randomPoint = new Vector3(Random.Range(minPosition.x, maxPosition.x), Random.Range(minPosition.y, maxPosition.y), 0);
+        //Vector3 randomPoint = new Vector3(Random.Range(minPosition.x, maxPosition.x), Random.Range(minPosition.y, maxPosition.y), 0);
+        int x = Random.Range(Mathf.CeilToInt(minPosition.x), Mathf.FloorToInt(maxPosition.x));
+        int y = Random.Range(Mathf.CeilToInt(minPosition.y), Mathf.FloorToInt(maxPosition.y));
+        Vector3 randomPoint = new Vector3((float)(x + 0.5), (float)(y + 0.5), 0);
+
+
         while (!IsPositionClear(randomPoint))
         {
-            randomPoint = new Vector3(Random.Range(minPosition.x, maxPosition.x), Random.Range(minPosition.y, maxPosition.y), 0);
+            x = Random.Range(Mathf.CeilToInt(minPosition.x), Mathf.FloorToInt(maxPosition.x));
+            y = Random.Range(Mathf.CeilToInt(minPosition.y), Mathf.FloorToInt(maxPosition.y));
+            randomPoint = new Vector3((float)(x + 0.5), (float)(y + 0.5), 0);
+
         }
         return randomPoint;
     }

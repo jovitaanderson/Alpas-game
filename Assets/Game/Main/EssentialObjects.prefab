@@ -5821,6 +5821,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2680730874212820232, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
+      propertyPath: animalsSeenData.Array.data[20]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: f3ad456cc9e7de84e9af3c7d327b47b0, type: 2}
     - target: {fileID: 2700374444283111574, guid: 865945d01cab1514da3b9dcd1a18a1de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
