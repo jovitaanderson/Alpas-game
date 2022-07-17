@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: fd3644599e204b345936a61ca69ebecd
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4814271557941635497
+    second: north_0
+  - first:
+      213: -5982911719067217146
+    second: north_1
+  - first:
+      213: 7712483248598855895
+    second: north_2
+  - first:
+      213: 1088199148439850142
+    second: north_3
+  - first:
+      213: 7061125937849366320
+    second: north_4
+  - first:
+      213: -4690964213907936986
+    second: north_5
+  - first:
+      213: 1208965726202130262
+    second: north_6
+  - first:
+      213: -746427033481712537
+    second: north_7
+  - first:
+      213: -1942870655573419932
+    second: north_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +68,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 448
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +128,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: north_0
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9a06f897abfc240800000000000000
+      internalID: 4814271557941635497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_1
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6031a768d7d68fca0800000000000000
+      internalID: -5982911719067217146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_2
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0b2e0f6ae380b60800000000000000
+      internalID: 7712483248598855895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_3
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9cc3a72c5f0a1f00800000000000000
+      internalID: 1088199148439850142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_4
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037fec701a82ef160800000000000000
+      internalID: 7061125937849366320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_5
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 629a2f7b6e856eeb0800000000000000
+      internalID: -4690964213907936986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_6
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f66ef2ceb17c010800000000000000
+      internalID: 1208965726202130262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ce29a519824a5f0800000000000000
+      internalID: -746427033481712537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: north_8
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 468140abe698905e0800000000000000
+      internalID: -1942870655573419932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

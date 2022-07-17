@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 86133c295d519d44ea5fbb1c1755eb5b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3373983171478037719
+    second: west_0
+  - first:
+      213: -172469569459396514
+    second: west_1
+  - first:
+      213: 5203892612023343309
+    second: west_2
+  - first:
+      213: 5504012425266806948
+    second: west_3
+  - first:
+      213: 7692053252151221056
+    second: west_4
+  - first:
+      213: -776882144666063951
+    second: west_5
+  - first:
+      213: 3786335616789712423
+    second: west_6
+  - first:
+      213: -8892130371525055782
+    second: west_7
+  - first:
+      213: -8332007885670244474
+    second: west_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +68,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 448
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +128,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: west_0
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d4281e71dbc2de20800000000000000
+      internalID: 3373983171478037719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_1
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50eec127d34b9df0800000000000000
+      internalID: -172469569459396514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_2
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc85eec52c0f73840800000000000000
+      internalID: 5203892612023343309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_3
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a04d57a32e226c40800000000000000
+      internalID: 5504012425266806948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_4
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b9cd7bda9afba60800000000000000
+      internalID: 7692053252151221056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_5
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bbe5d63ec5f735f0800000000000000
+      internalID: -776882144666063951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_6
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e092fbe24cb8430800000000000000
+      internalID: 3786335616789712423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada69c42a8ec89480800000000000000
+      internalID: -8892130371525055782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: west_8
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f1fdc09f2ce5c80800000000000000
+      internalID: -8332007885670244474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

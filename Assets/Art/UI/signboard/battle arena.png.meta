@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: da95161e810c8e64daae93cffcc55dc7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -9211171559270188451
+    second: battle arena_0
+  - first:
+      213: -1401309416414845163
+    second: battle arena_1
+  - first:
+      213: -8292138955115676162
+    second: battle arena_2
+  - first:
+      213: -6222387570265920875
+    second: battle arena_3
+  - first:
+      213: -927545571454588470
+    second: battle arena_4
+  - first:
+      213: 3464500441979310596
+    second: battle arena_5
+  - first:
+      213: -327039341350537174
+    second: battle arena_6
+  - first:
+      213: -4791327613830078976
+    second: battle arena_7
+  - first:
+      213: -4508480789783012540
+    second: battle arena_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +68,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 700
+  spritePixelsToUnits: 448
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +128,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: battle arena_0
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5af48c05485b2080800000000000000
+      internalID: -9211171559270188451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_1
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517ee2e928c8d8ce0800000000000000
+      internalID: -1401309416414845163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_2
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdb620dd876cec80800000000000000
+      internalID: -8292138955115676162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_3
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a6e73f873a5a9a0800000000000000
+      internalID: -6222387570265920875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_4
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac966749732b023f0800000000000000
+      internalID: -927545571454588470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_5
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4025c58dbc0641030800000000000000
+      internalID: 3464500441979310596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_6
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a283937a37f167bf0800000000000000
+      internalID: -327039341350537174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e5327bbe8c18db0800000000000000
+      internalID: -4791327613830078976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle arena_8
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44b9f40db98ae61c0800000000000000
+      internalID: -4508480789783012540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

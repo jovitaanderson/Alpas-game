@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: ff8e135c625850a41bb25ee0a29bbde4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2097619832946416524
+    second: east_0
+  - first:
+      213: -1348034154024710663
+    second: east_1
+  - first:
+      213: 6668352289446723294
+    second: east_2
+  - first:
+      213: 94462882144034518
+    second: east_3
+  - first:
+      213: -3523300034984774013
+    second: east_4
+  - first:
+      213: 8910106256493828971
+    second: east_5
+  - first:
+      213: 8913753075703483657
+    second: east_6
+  - first:
+      213: 8586097229646472383
+    second: east_7
+  - first:
+      213: -7454743791185386663
+    second: east_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +68,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 448
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +128,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: east_0
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4742a6720e1c3e2e0800000000000000
+      internalID: -2097619832946416524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_1
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd43404412da4de0800000000000000
+      internalID: -1348034154024710663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_2
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede72a9a31fba8c50800000000000000
+      internalID: 6668352289446723294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_3
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de97a6ad799f4100800000000000000
+      internalID: 94462882144034518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_4
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3867c911949ba1fc0800000000000000
+      internalID: -3523300034984774013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_5
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bdc49be6e07ab70800000000000000
+      internalID: 8910106256493828971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_6
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d0adcf13304bb70800000000000000
+      internalID: 8913753075703483657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb42b0470f1f72770800000000000000
+      internalID: 8586097229646472383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: east_8
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953a8d2d40e6b8890800000000000000
+      internalID: -7454743791185386663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

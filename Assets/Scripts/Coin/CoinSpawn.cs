@@ -34,10 +34,6 @@ public class CoinSpawn : MonoBehaviour
                 Timer = 0;
             }
         }
-
-        
-
-
     }
 
     void SpawnTreasureChestRandom()
