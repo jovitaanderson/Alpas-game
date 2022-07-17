@@ -35,11 +35,35 @@ public class BattleDialogBox : MonoBehaviour
     //To display a typing text effect
     public IEnumerator TypeDialog(string dialog)
     {
-        dialogText.text = "";
+        /*dialogText.text = "";
         foreach (var letter in dialog.ToCharArray())
         {
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / lettersPerSecond);
+        }*/
+
+        dialogText.text = "";
+        char[] lineCharArray = dialog.ToCharArray();
+        /* foreach (var letter in line.ToCharArray())
+         {
+             dialogText.text += letter;
+             yield return new WaitForSeconds(1f / lettersPerSecond);
+         }*/
+
+        for (int i = 0; i < dialog.Length; i++)
+        {
+            dialogText.text += lineCharArray[i];
+            yield return new WaitForSeconds(1f / lettersPerSecond);
+            //Debug.Log("print");
+
+            if ((Input.GetKey(SettingsManager.i.getKey("CONFIRM")) || Input.GetKey(SettingsManager.i.getKey("CONFIRM1"))) && i >= 6)
+            {
+                //Debug.Log("Return pressed");
+                string remainingString = dialog.Substring(i + 1);
+                dialogText.text += remainingString;
+                i = dialog.Length - 1;
+                //yield return new WaitForSeconds(0.5f);
+            }
         }
 
         yield return new WaitForSeconds(1f);

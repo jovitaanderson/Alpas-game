@@ -10757,6 +10757,7 @@ GameObject:
   - component: {fileID: 896116450333417338}
   - component: {fileID: 7406222776205975245}
   - component: {fileID: 8511158898491838042}
+  - component: {fileID: 4801541115896192998}
   m_Layer: 5
   m_Name: MoneyText
   m_TagString: Untagged
@@ -10825,6 +10826,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: X 0
+--- !u!114 &4801541115896192998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284847786279373269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4307491335797624343
 GameObject:
   m_ObjectHideFlags: 0
@@ -16873,7 +16889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02398a224aca40438b8402212f262ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentAnimalList: {fileID: 2680730874212820232}
   nameText: {fileID: 4152083772674565741}
   type1: {fileID: 25897689012728319}
   animalSprite: {fileID: 5539518816574753688}
@@ -21228,6 +21243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
+--- !u!224 &15202797266711096 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2954320458820053308, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
+  m_PrefabInstance: {fileID: 2939117799061052164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &15202797266711097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2954320458820053309, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
@@ -21239,11 +21259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482fa082e2377b14797a51d9c5939a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &15202797266711096 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2954320458820053308, guid: 57beb61115268d845a7191fd0a8835fc, type: 3}
-  m_PrefabInstance: {fileID: 2939117799061052164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3819547954798860133
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -114,6 +114,5 @@ public class DialogManager : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
         }
-
     }
 }

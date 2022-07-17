@@ -45,9 +45,9 @@ public class ShopUI : MonoBehaviour
     {
         var prevSelection = selectedItem;
 
-        if (Input.GetKeyDown (KeyCode.DownArrow ) )
+        if (Input.GetKeyDown(SettingsManager.i.getKey("DOWN")) || Input.GetKeyDown(SettingsManager.i.getKey("DOWN1")))
             ++ selectedItem;
-        else if (Input.GetKeyDown (KeyCode.UpArrow ) )
+        else if (Input.GetKeyDown(SettingsManager.i.getKey("UP")) || Input.GetKeyDown(SettingsManager.i.getKey("UP1")))
             --selectedItem;
 
         selectedItem = Mathf.Clamp(selectedItem, 0 , availableItems.Count - 1 ) ;

@@ -19,6 +19,15 @@ public class Healer : MonoBehaviour
 
             var playerParty = player.GetComponent<AnimalParty>();
             playerParty.Animals.ForEach(p => p.Heal());
+            foreach (var animals in playerParty.Animals)
+            {
+                foreach (var moves in animals.Moves)
+                {
+                    Debug.Log($"Orginial : {moves.PP} base : { moves.Base.PP}");
+                    moves.PP = moves.Base.PP;
+                }
+            }
+
             playerParty.PartyUpdated();
 
             yield return Fader.i.FadeOut(0.5f);

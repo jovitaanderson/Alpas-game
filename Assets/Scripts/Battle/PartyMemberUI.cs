@@ -26,7 +26,7 @@ public class PartyMemberUI : MonoBehaviour
     {
         image.sprite = _animal.Base.FrontSprite;
         nameText.text = _animal.Base.Name;
-        levelText.text = "Lvl" + _animal.Level;
+        levelText.text = "Lvl " + _animal.Level;
         hpBar.SetHP((float)_animal.HP / _animal.MaxHp);
         checkLvlUpImage();
     }
