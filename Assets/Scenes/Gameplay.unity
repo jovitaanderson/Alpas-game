@@ -2021,18 +2021,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1039850145527732804, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_EffectColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1039850145527732804, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_EffectDistance.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1039850145527732804, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_EffectDistance.y
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1068123020815621186, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3692,18 +3680,6 @@ PrefabInstance:
     - target: {fileID: 2409335909039531844, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -230
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438612831269117934, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_EffectColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438612831269117934, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_EffectDistance.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438612831269117934, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_EffectDistance.y
-      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2450070383685582917, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5696,10 +5672,6 @@ PrefabInstance:
     - target: {fileID: 3926340061992930548, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3951282533832995162, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3999278776899641295, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10264,14 +10236,6 @@ PrefabInstance:
     - target: {fileID: 7530766805638607466, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7566453038347419505, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_Text
-      value: 'Story Quests:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7566453038347419505, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7567921806747753275, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.x
