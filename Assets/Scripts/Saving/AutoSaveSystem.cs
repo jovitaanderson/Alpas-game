@@ -6,8 +6,9 @@ public class AutoSaveSystem : MonoBehaviour
 {
 
     public float Timer = 0;
-    [SerializeField] public float TimeCheck; 
-    
+    [SerializeField] public float TimeCheck;
+    [SerializeField] GameObject saveIcon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class AutoSaveSystem : MonoBehaviour
         Timer = Timer + 1 * Time.deltaTime;
         if(Timer >= TimeCheck)
         {
+            StartCoroutine(ShowSavingIcon());
             if (!PlayerPrefs.HasKey("SavedGame"))
                 PlayerPrefs.SetString("SavedGame", "saveSlot1");
             SavingSystem.i.Save("saveSlot1");
@@ -28,4 +30,12 @@ public class AutoSaveSystem : MonoBehaviour
         }
         
     }
+
+    IEnumerator ShowSavingIcon()
+    {
+        saveIcon.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        saveIcon.SetActive(false);
+    }
+
 }
