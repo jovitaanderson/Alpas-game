@@ -9,6 +9,9 @@ public class QuestList : MonoBehaviour, ISavable
     List<Quest> quests = new List<Quest>();
 
     public event Action OnUpdated;
+
+    public List<Quest> Quests => quests;
+
     public void AddQuest(Quest quest)
     {
         if (!quests.Contains(quest))

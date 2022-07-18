@@ -52,7 +52,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     {
         fader = FindObjectOfType<Fader>();
 
-        if (questToStart != null || questToComplete != null || animalGiver.CanBeGiven())
+        if (questToStart != null || questToComplete != null || (animalGiver != null && animalGiver.CanBeGiven()))
         {
             if (questionMark != null)
             {
