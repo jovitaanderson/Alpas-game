@@ -22,6 +22,7 @@ public class BattleHud : MonoBehaviour
     [SerializeField] Color bldColor;
     [SerializeField] Color slrColor;
     [SerializeField] Color bblColor;
+    [SerializeField] Color brkColor;
 
     Animal _animal;
     Dictionary<ConditionID, Color> statusColors;
@@ -47,6 +48,7 @@ public class BattleHud : MonoBehaviour
             {ConditionID.bld, bldColor },
             {ConditionID.slr, slrColor },
             {ConditionID.bbl, bblColor },
+            {ConditionID.brk, brkColor },
         };
 
         SetStatusText();

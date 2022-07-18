@@ -7,7 +7,7 @@ public class LongGrass : MonoBehaviour, IPlayerTriggerable
 
     public void OnPlayerTriggered(PlayerController playerController)
     {
-        if (UnityEngine.Random.Range(1, 101) <= 20) 
+        if (UnityEngine.Random.Range(1, 101) <= 20) //change to 10%
         {
             playerController.Character.Animator.IsMoving = false;
             GameController.Instance.StartBattle(BattleTrigger.LongGrass);

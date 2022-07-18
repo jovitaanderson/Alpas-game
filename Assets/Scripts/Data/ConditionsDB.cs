@@ -262,6 +262,35 @@ public class ConditionsDB
 
             }
 
+         },
+         {
+            ConditionID.brk,
+            new Condition()
+            {
+                Name = "Bark",
+                StartMessage = "is barking",
+                //lamda functions
+                 OnStart = (Animal animal) =>
+                {
+                    //Sleep for  a random no. of turns between 1-4
+                    animal.StatusTime = Random.Range(1,5);
+                    Debug.Log($"Will be self-increasing attack for {animal.StatusTime} moves");
+                },
+                OnAfterTurn = (Animal animal) =>
+                {
+                    if(animal.StatusTime <= 0)
+                   {
+                       animal.CureStatus();
+                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has finished barking!");
+                   }
+
+                    animal.StatusTime--;
+                    animal.IncreaseHP(animal.MaxHp / 10);
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} increased own HP due to fierce barking");
+                }
+
+            }
+
          }
 
         //Todo: add all others move that have status
@@ -276,7 +305,7 @@ public class ConditionsDB
             || condition.Id == ConditionID.bld)
             return 2f;
         else if (condition.Id == ConditionID.par || condition.Id == ConditionID.psn || condition.Id == ConditionID.brn 
-            || condition.Id == ConditionID.slr || condition.Id == ConditionID.bbl)
+            || condition.Id == ConditionID.slr || condition.Id == ConditionID.bbl || condition.Id == ConditionID.brk)
             return 1.5f;
 
         return 1f;
@@ -287,7 +316,7 @@ public enum ConditionID
 {
     none,psn,brn,slp,par,frz,
     confusion,
-    sng,bld,slr,bbl
+    sng,bld,slr,bbl,brk
 
 
     //par - 1/4 chance pokemon wont perform a move

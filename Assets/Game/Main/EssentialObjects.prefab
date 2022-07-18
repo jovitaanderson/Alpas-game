@@ -849,6 +849,7 @@ MonoBehaviour:
   bldColor: {r: 0.6320754, g: 0, b: 0.08354425, a: 1}
   slrColor: {r: 0.33333334, g: 0.28235295, b: 0.28235295, a: 1}
   bblColor: {r: 0.14509805, g: 0.57254905, b: 0.7019608, a: 1}
+  brkColor: {r: 0.079432175, g: 0.4811321, b: 0.2479822, a: 1}
 --- !u!1 &8846833007834707167
 GameObject:
   m_ObjectHideFlags: 0
@@ -10131,6 +10132,22 @@ PrefabInstance:
     - target: {fileID: 1408390442259068667, guid: 87390010e1a233a4b87e097f5cceeab6, type: 3}
       propertyPath: bldColor.r
       value: 0.63529414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408390442259068667, guid: 87390010e1a233a4b87e097f5cceeab6, type: 3}
+      propertyPath: brkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408390442259068667, guid: 87390010e1a233a4b87e097f5cceeab6, type: 3}
+      propertyPath: brkColor.b
+      value: 0.2479822
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408390442259068667, guid: 87390010e1a233a4b87e097f5cceeab6, type: 3}
+      propertyPath: brkColor.g
+      value: 0.4811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408390442259068667, guid: 87390010e1a233a4b87e097f5cceeab6, type: 3}
+      propertyPath: brkColor.r
+      value: 0.079432175
       objectReference: {fileID: 0}
     - target: {fileID: 1408390442259068667, guid: 87390010e1a233a4b87e097f5cceeab6, type: 3}
       propertyPath: brnColor.b

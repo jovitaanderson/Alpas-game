@@ -3541,6 +3541,14 @@ PrefabInstance:
       propertyPath: animals.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2341567400718183477, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: fe035f31cc880d849ba4cdfec3f771c3, type: 2}
+    - target: {fileID: 2341567400718183477, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animals.Array.data[0].level
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2345309542605772464, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9837,6 +9845,14 @@ PrefabInstance:
       propertyPath: questSlots.Array.data[0].item
       value: 
       objectReference: {fileID: 11400000, guid: 643307e03c98b4f42919305394fa8ef2, type: 2}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCaptureSlots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172274596478767982, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: animalCaptureSlots.Array.data[0].count
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7232868449543268385, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
