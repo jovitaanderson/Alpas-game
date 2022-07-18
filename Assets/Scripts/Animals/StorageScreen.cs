@@ -67,11 +67,19 @@ public class StorageScreen : MonoBehaviour
         UpdateMemberSelection(selection);
     }
 
-    public void SwapAnimalStorage(Animal inParty, Animal inStorage)
+    public void ReplaceAnimalStorage(Animal inParty, Animal inStorage)
     {
         var tempAnimal = inStorage;
         animals[selection] = inParty;
         partyScreen.SelectedMember = tempAnimal;
+        SetStorageData();
+        partyScreen.SetPartyData();
+    }
+
+    public void AddFromStorageToParty(int selection)
+    {
+        partyScreen.Party.AddAnimal(animals[selection]);
+        animals.RemoveAt(selection);
         SetStorageData();
         partyScreen.SetPartyData();
     }
@@ -103,7 +111,12 @@ public class StorageScreen : MonoBehaviour
 
         if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
-            SwapAnimalStorage(partyScreen.SelectedMember, animals[selection]);
+            if(partyScreen.State == PartyScreenState.Replace)
+                ReplaceAnimalStorage(partyScreen.SelectedMember, animals[selection]);
+            if (partyScreen.State == PartyScreenState.Add)
+                AddFromStorageToParty(selection);
+
+
             gameObject.SetActive(false);
             partyScreen.ResetSelection();
         }

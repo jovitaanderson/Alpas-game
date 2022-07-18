@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Replace, Release, Busy}
+public enum PartyScreenState { PartyScreen, ChoiceBox, Swap, Replace, Add, Release, Busy}
 
 public class PartyScreen : MonoBehaviour
 {
@@ -27,6 +27,10 @@ public class PartyScreen : MonoBehaviour
         get=> animals [selection];
         set => animals[selection] = value;
     }
+
+    public AnimalParty Party => party;
+
+    public PartyScreenState State => state;
 
     //Party Screen can be called from different states like ActionSelection, RunningTurn, AboutToUse
     public BattleState? CalledFrom { get; set; }
@@ -191,6 +195,18 @@ public class PartyScreen : MonoBehaviour
             animalStorage.gameObject.SetActive(true);
         }
         else if (selection == 2)
+        {
+            if(animals.Count >= 6)
+            {
+                StartCoroutine(DialogManager.Instance.ShowDialogText("Party is full, cannot add animal"));
+            }
+            else
+            {
+                state = PartyScreenState.Add;
+                animalStorage.gameObject.SetActive(true);
+            }
+        }
+        else if (selection == 3)
         {
             //Release
             //todo: add comfirmation dialogue before releasing
