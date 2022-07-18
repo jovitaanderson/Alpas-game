@@ -52,7 +52,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     {
         fader = FindObjectOfType<Fader>();
 
-        if (questToStart != null || questToComplete != null)
+        if (questToStart != null || questToComplete != null || animalGiver.CanBeGiven())
         {
             if (questionMark != null)
             {
@@ -90,6 +90,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
             else if (animalGiver != null && animalGiver.CanBeGiven())
             {
                 yield return animalGiver.GiveAnimal(initiator.GetComponent<PlayerController>());
+                questionMark.SetActive(false);
             }
             else if (questToStart != null)
             {
