@@ -169,6 +169,11 @@ public class TreasureChestManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"You got the answer wrong! Try again next time!");
 
+            if (selectedQuestion.correctAns != null)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"The correct answer should be {selectedQuestion.correctAns}.");
+            }
+
             treasureChestUI.gameObject.SetActive(false);
 
         }

@@ -71,6 +71,11 @@ public class EvolutionManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             yield return DialogManager.Instance.ShowDialogText($"You got the answer wrong! Try again");
 
+            if (quizScript.GetCorrectAnsString!=null)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"The correct answer should be {quizScript.GetCorrectAnsString}.");
+            }
+
             quizUI.SetActive(false);
 
         }
