@@ -62,6 +62,7 @@ public class BattleSystem : MonoBehaviour
 
     bool trainerBattles = false;
 
+
     public void StartBattle(AnimalParty playerParty, Animal wildAnimal,
         Sprite backgroundBattle, Sprite backgroundCirclesBattle, BattleTrigger trigger = BattleTrigger.LongGrass)
     {
@@ -477,7 +478,6 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} gained {expGain} exp");
             yield return playerUnit.Hud.SetExpSmooth();
 
-            //ToDo: might implement the questions here so that player can answer questions before gaining exp
             
             //check level up
             while (playerUnit.Animal.CheckForLevelUp())
@@ -872,6 +872,15 @@ public class BattleSystem : MonoBehaviour
             playerParty.AddAnimal(enemyUnit.Animal);
 
             Destroy(pokeball);
+
+            //get exp gain after catching animal
+            int expYield = enemyUnit.Animal.Base.ExpYield;
+            int enemyLevel = enemyUnit.Animal.Level;
+            int expGain = Mathf.FloorToInt((expYield * enemyLevel) / 8);
+            playerUnit.Animal.Exp += expGain;
+            yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} gained {expGain} exp");
+            yield return playerUnit.Hud.SetExpSmooth();
+
             BattleOver(true);
         } else {
             //pokemon broke out
