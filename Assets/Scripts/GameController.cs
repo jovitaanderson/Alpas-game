@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop, Instructions, Controls, TreasureChest, Question, AnimalList}
-
+public enum GameBattleState { Wild, Trainer}
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
 
-
+    GameBattleState battleState;
     GameState state;
     GameState prevState;
     GameState stateBeforeEvolution;
@@ -160,6 +160,7 @@ public class GameController : MonoBehaviour
         {
             //instructionsPanel.SetActive(false);
             keybindManager.closeSettingsUI();
+            battleState = GameBattleState.Wild;
             state = GameState.Battle;
             miniMapWindow.SetActive(false);
             walletUI.SetActive(false);
@@ -174,6 +175,7 @@ public class GameController : MonoBehaviour
     public void StartTrainerBattle(TrainerController trainer)
     {
         keybindManager.closeSettingsUI();
+        battleState = GameBattleState.Trainer;
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
@@ -409,4 +411,6 @@ public class GameController : MonoBehaviour
     }
 
     public GameState State => state;
+
+    public GameBattleState BattleState => battleState;
 }

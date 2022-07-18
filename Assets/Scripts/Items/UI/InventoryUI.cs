@@ -182,9 +182,16 @@ public class InventoryUI : MonoBehaviour
         }
 
         //if curr selected is pokeball/quest item
-        if (selectedCategory == (int)ItemCategory.AnimalCapture || selectedCategory == (int)ItemCategory.QuestItems)
+        if (selectedCategory == (int)ItemCategory.AnimalCapture)
         {
-            StartCoroutine(UseItem());
+            if(GameController.Instance.BattleState == GameBattleState.Wild)
+                StartCoroutine(UseItem());
+            else
+            {
+                yield return DialogManager.Instance.ShowDialogText($"You cannot steal the trainers' animal!");
+                state = InventoryUIState.ItemSelection;
+                yield break;
+            }
         }
         else
         {
