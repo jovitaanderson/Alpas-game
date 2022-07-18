@@ -23,9 +23,7 @@ public class QuestStoryline : MonoBehaviour
 
         quest = questList.Quests;
         QuestListToBaseQuestArray(questList);
-        //UpdateQuestDescription();
         SetFirstQuestDescription();
-
     }
 
     private void QuestListToBaseQuestArray(QuestList questList)

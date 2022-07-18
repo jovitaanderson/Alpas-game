@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject miniMapWindow;
     [SerializeField] GameObject walletUI;
     [SerializeField] GameObject instructionsPanel;
+    [SerializeField] GameObject questStoryline;
 
     GameBattleState battleState;
     GameState state;
@@ -164,6 +165,7 @@ public class GameController : MonoBehaviour
             state = GameState.Battle;
             miniMapWindow.SetActive(false);
             walletUI.SetActive(false);
+            questStoryline.SetActive(false);
             battleSystem.gameObject.SetActive(true);
             worldCamera.gameObject.SetActive(false);
 
@@ -179,7 +181,8 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
-        walletUI.SetActive(false);
+        //walletUI.SetActive(false);
+        questStoryline.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
@@ -219,6 +222,7 @@ public class GameController : MonoBehaviour
         state = GameState.FreeRoam;
         miniMapWindow.SetActive(true);
         walletUI.SetActive(true);
+        questStoryline.SetActive(true);
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
 

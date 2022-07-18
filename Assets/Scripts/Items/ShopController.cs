@@ -15,6 +15,7 @@ public class ShopController : MonoBehaviour
     [SerializeField] WalletUI walletUI;
     [SerializeField] CountSelectorUI countSelectorUI;
     [SerializeField] GameObject miniMapWindow;
+    [SerializeField] GameObject questStoryline;
 
     public event Action OnStart;
     public event Action OnFinish;
@@ -58,6 +59,7 @@ public class ShopController : MonoBehaviour
             yield return GameController.Instance.MoveCamera(shopCameraOffset);
             walletUI.transform.position += new Vector3(walletUIOffset.x, walletUIOffset.y);
             miniMapWindow.SetActive(false);
+            questStoryline.SetActive(false);
 
             //walletUI.Show();
 
@@ -71,6 +73,7 @@ public class ShopController : MonoBehaviour
             //sell
             walletUI.transform.position += new Vector3(walletUIOffset.x, walletUIOffset.y);
             miniMapWindow.SetActive(false);
+            questStoryline.SetActive(false);
 
             state = ShopState.Selling;
             inventoryUI.gameObject.SetActive(true);
@@ -100,6 +103,7 @@ public class ShopController : MonoBehaviour
     {
         walletUI.transform.position -= new Vector3(walletUIOffset.x, walletUIOffset.y);
         miniMapWindow.SetActive(true);
+        questStoryline.SetActive(true);
         inventoryUI.gameObject.SetActive(false);
         StartCoroutine(StartMenuState());
     }
@@ -201,6 +205,7 @@ public class ShopController : MonoBehaviour
         yield return GameController.Instance.MoveCamera(-shopCameraOffset);
         walletUI.transform.position -= new Vector3(walletUIOffset.x, walletUIOffset.y);
         miniMapWindow.SetActive(true);
+        questStoryline.SetActive(true);
         shopUI.Close();
         //walletUI.Close();
         StartCoroutine(StartMenuState());
