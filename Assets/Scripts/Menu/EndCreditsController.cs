@@ -28,8 +28,8 @@ public class EndCreditsController : MonoBehaviour
         AudioManager.i.PlaySfx(AudioId.UISelect);
         //Application.Quit();
         //TODO: quit game
-        //Application.OpenURL("https://itch.io/");
-        Application.ExternalEval("window.open('" + "https://itch.io/" + "','_self')");
+        Application.OpenURL("https://joderson.itch.io/alpas");
+        //Application.ExternalEval("window.open('" + "https://itch.io/" + "','_self')");
     }
 
     public void MainMenuButton()
