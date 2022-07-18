@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a4def8633cd484a925d38c7b1b4c94, type: 3}
-  m_Name: Aurora Beam
+  m_Name: Punch
   m_EditorClassIdentifier: 
-  name: Aurora Beam
+  name: Punch
   description: 
-  type: 1
-  power: 40
-  accuracy: 90
+  type: 7
+  power: 60
+  accuracy: 80
   alwaysHits: 0
-  pp: 5
+  pp: 10
   priority: 0
-  category: 0
+  category: 2
   effects:
     boosts: []
-    status: 0
+    status: 10
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: auroraBeam
+  sound: bubbleBeam

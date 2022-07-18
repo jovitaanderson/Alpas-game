@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a4def8633cd484a925d38c7b1b4c94, type: 3}
-  m_Name: Bubble Beam
+  m_Name: Kick
   m_EditorClassIdentifier: 
-  name: Bubble Beam
+  name: Kick
   description: 
-  type: 7
+  type: 9
   power: 60
   accuracy: 80
   alwaysHits: 0
   pp: 10
   priority: 0
-  category: 2
+  category: 0
   effects:
     boosts: []
-    status: 10
+    status: 0
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: bubbleBeam
+  sound: flameThrower

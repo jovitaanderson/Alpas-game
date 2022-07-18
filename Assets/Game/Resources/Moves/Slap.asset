@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a4def8633cd484a925d38c7b1b4c94, type: 3}
-  m_Name: Ice Beam
+  m_Name: Slap
   m_EditorClassIdentifier: 
-  name: Ice Beam
+  name: Slap
   description: 
-  type: 1
-  power: 0
+  type: 9
+  power: 20
   accuracy: 100
   alwaysHits: 0
-  pp: 15
+  pp: 20
   priority: 0
-  category: 2
+  category: 0
   effects:
     boosts: []
-    status: 5
+    status: 0
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: iceBeam
+  sound: firePunch

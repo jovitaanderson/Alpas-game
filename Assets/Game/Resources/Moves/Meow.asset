@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41a4def8633cd484a925d38c7b1b4c94, type: 3}
-  m_Name: QuickAttack
+  m_Name: Meow
   m_EditorClassIdentifier: 
-  name: Quick Attack
+  name: Meow
   description: 
-  type: 4
-  power: 40
-  accuracy: 90
+  type: 5
+  power: 20
+  accuracy: 100
   alwaysHits: 0
-  pp: 5
+  pp: 20
   priority: 0
   category: 0
   effects:
@@ -27,4 +27,4 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries: []
   target: 0
-  sound: quickEye
+  sound: meow
