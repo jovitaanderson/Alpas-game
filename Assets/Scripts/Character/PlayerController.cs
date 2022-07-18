@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour, ISavable
     // Update is called once per frame
     public void HandleUpdate()
     {
-
         if (!character.IsMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal"); //sets vector x=-1 , when press left or A, sets x=1, when press right, D
@@ -50,12 +49,14 @@ public class PlayerController : MonoBehaviour, ISavable
             }
         }
 
-        character.HandleUpdate();
+        
 
         if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             StartCoroutine(Interact());
         }
+
+        character.HandleUpdate();
     }
 
     //for collecting coins
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour, ISavable
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer | GameLayers.i.WaterLayer);
         if (collider != null)
         {
+            character.stopMoving();
             yield return collider.GetComponent<Interactable>()?.Interact(transform);
         }
     }

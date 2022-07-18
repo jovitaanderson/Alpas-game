@@ -130,4 +130,9 @@ public class Character : MonoBehaviour
     public CharacterAnimator Animator {
         get => animator;
     }
+
+    public void stopMoving()
+    {
+        IsMoving = false;
+    }
 }
