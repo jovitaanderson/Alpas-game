@@ -18,6 +18,7 @@ public class QuizUI : MonoBehaviour
     int currentAction;
 
     public bool? CorrectAns { get; private set; }
+    public string GetCorrectAnsString { get; private set; }
 
     private void Awake()
     {
@@ -64,6 +65,7 @@ public class QuizUI : MonoBehaviour
                 else
                 {
                     options[currentAction].color = wrongCol;
+                    GetCorrectAnsString = quizManager.GetAnswer();
                     CorrectAns = false;
                 }
             }

@@ -51,6 +51,12 @@ public class QuizManager : MonoBehaviour
         //if 3 chances over or 1 answered correctly, then go back to evolution
         return correctAns;
     }
+
+    public string GetAnswer()
+    {
+        return selectedQuestion.correctAns;
+    }
+
 }
 
 [System.Serializable]
