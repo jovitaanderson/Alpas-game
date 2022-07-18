@@ -214,8 +214,8 @@ public class InventoryUI : MonoBehaviour
                 yield break;
             }
         }
-        
 
+       
         var usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
         if (usedItem != null)
         {

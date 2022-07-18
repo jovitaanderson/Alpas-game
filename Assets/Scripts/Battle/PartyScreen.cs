@@ -55,6 +55,7 @@ public class PartyScreen : MonoBehaviour
 
     public void SetPartyData()
     {
+        messageText.text = "Choose an Animal";
         animals = party.Animals;
 
         for (int i = 0; i < memberSlots.Length; i++)
@@ -70,7 +71,7 @@ public class PartyScreen : MonoBehaviour
 
         UpdateMemberSelection(selection);
 
-        messageText.text = "Choose an Animal";
+        
     }
 
     //Handles party screen selection

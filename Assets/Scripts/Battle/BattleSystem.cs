@@ -60,6 +60,8 @@ public class BattleSystem : MonoBehaviour
 
     private BattleTrigger battleTrigger;
 
+    bool trainerBattles = false;
+
     public void StartBattle(AnimalParty playerParty, Animal wildAnimal,
         Sprite backgroundBattle, Sprite backgroundCirclesBattle, BattleTrigger trigger = BattleTrigger.LongGrass)
     {
@@ -273,12 +275,15 @@ public class BattleSystem : MonoBehaviour
                 var selectedAnimal = partyScreen.SelectedMember;
                 state = BattleState.Busy;
                 yield return SwitchAnimal(selectedAnimal);
+
             }
 
             else if (playerAction == BattleAction.UseItem) 
             {
                 //this is handled from item screen, so do nothing and skip to enemy move
                 dialogBox.EnableActionSelector(false);
+                
+                
                 //yield return ThrowPokeball();
             }
             else if (playerAction == BattleAction.Run) 
@@ -287,11 +292,17 @@ public class BattleSystem : MonoBehaviour
                 yield return TryToEscape();
             }
 
-            // Enemy Turn
-            var enemyMove = enemyUnit.Animal.GetRandomMove();
-            yield return RunMove(enemyUnit, playerUnit, enemyMove);
-            yield return RunAfterTurn(enemyUnit);
-            if (state == BattleState.BattleOver) yield break;
+            if (!trainerBattles)
+            {
+                // Enemy Turn
+                var enemyMove = enemyUnit.Animal.GetRandomMove();
+                yield return RunMove(enemyUnit, playerUnit, enemyMove);
+                yield return RunAfterTurn(enemyUnit);
+                if (state == BattleState.BattleOver) yield break;
+            }
+            trainerBattles = false;
+
+
         }
 
         if (state != BattleState.BattleOver)
@@ -556,6 +567,7 @@ public class BattleSystem : MonoBehaviour
         else if (state == BattleState.PartyScreen)
         {
             HandlePartySelection();
+            
         } 
         else if (state == BattleState.Bag)
         {
@@ -681,9 +693,10 @@ public class BattleSystem : MonoBehaviour
 
     //Handles party screen selection
     void HandlePartySelection()
-    {
+    {       
         Action onSelected = () =>
         {
+            partyScreen.SetMessageText("Choose an Animal");
             var selectedMember = partyScreen.SelectedMember;
             if (selectedMember.HP <= 0)
             {
@@ -714,6 +727,7 @@ public class BattleSystem : MonoBehaviour
 
         Action onBack = () =>
         {
+            partyScreen.SetMessageText("Choose an Animal");
             if (playerUnit.Animal.HP <= 0)
             {
                 partyScreen.SetMessageText("You have to choose a animal to continue");
@@ -813,14 +827,15 @@ public class BattleSystem : MonoBehaviour
     }
 
     IEnumerator ThrowPokeball(AnimalCaptureItem animalCaptureItem) {
-
-        state = BattleState.Busy;
         
         if (isTrainerBattle) {
             yield return dialogBox.TypeDialog($"You cannot steal the trainers' animal!");
+            trainerBattles = true;
             state = BattleState.RunningTurn;
             yield break;
         }
+
+        state = BattleState.Busy;
 
         yield return dialogBox.TypeDialog($"{player.UserName} used {animalCaptureItem.Name.ToUpper()}"); //player.Name
 
@@ -904,6 +919,7 @@ public class BattleSystem : MonoBehaviour
         if (isTrainerBattle) 
         {
             yield return dialogBox.TypeDialog($"You cannot run from trainer battles!");
+            trainerBattles = true;
             state = BattleState.RunningTurn;
             yield break;
         }

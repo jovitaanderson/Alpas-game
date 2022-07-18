@@ -346,14 +346,6 @@ MonoBehaviour:
   walkUpRightSprites:
   - {fileID: 3207657135615146273, guid: a79e2159235861d48af53f421a29feda, type: 3}
   surfSprites: []
-  runDownSprites: []
-  runUpSprites: []
-  runRightSprites: []
-  runLeftSprites: []
-  runDownLeftSprites: []
-  runDownRightSprites: []
-  runUpLeftSprites: []
-  runUpRightSprites: []
 --- !u!114 &5012267339063133177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +362,8 @@ MonoBehaviour:
   inProgressMark: {fileID: 9068545402362977776}
   dialog:
     lines:
-    - You look tired, please take some rest :)
+    - Hi, I am Olivia! I can heal all of your animals.
+    - You look tired! Would you like to rest here?
   questToStart: {fileID: 0}
   questToComplete: {fileID: 0}
   movementPattern: []
