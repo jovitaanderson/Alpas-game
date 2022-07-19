@@ -8,7 +8,7 @@ public class QuestStoryline : MonoBehaviour
 {
     [SerializeField] QuestBase[] storyline;
     [SerializeField] Text questDescriptionText;
-
+    int time = 0;
     int currentQuestNo = 0;
     //public event Action OnQuestCompleted;
     List<QuestBase> questBase = new List<QuestBase>();
@@ -24,6 +24,23 @@ public class QuestStoryline : MonoBehaviour
         quest = questList.Quests;
         QuestListToBaseQuestArray(questList);
         SetFirstQuestDescription();
+    }
+
+    private void Update()
+    {
+        time++;
+        if (time > 50)
+        {
+            Debug.Log($"IN UPDATE: Quest count: {quest.Count}, QuestBase count:{questBase.Count}");
+            time = 0;
+        }
+    }
+
+    private void RefreshList()
+    {
+        questList = QuestList.GetQuestList();
+        quest = questList.Quests;
+        QuestListToBaseQuestArray(questList);
     }
 
     private void QuestListToBaseQuestArray(QuestList questList)
@@ -56,10 +73,16 @@ public class QuestStoryline : MonoBehaviour
 
     public void SetFirstQuestDescription()
     {
+        RefreshList();
+        Debug.Log($"Quest count: {quest.Count}, QuestBase count:{questBase.Count}");
         for (int i = currentQuestNo; i < storyline.Length; i++)
         {
             if (!questBase.Contains(storyline[i]) || isQuestIncomplete(storyline[i]))
             {
+                if (!questBase.Contains(storyline[i]))
+                    Debug.Log($"questBase dont have {storyline[i].Name}");
+                if (isQuestIncomplete(storyline[i]))
+                    Debug.Log($"{storyline[i].Name} is incomplete");
                 questDescriptionText.text = storyline[i].Description;
                 break;
             }
