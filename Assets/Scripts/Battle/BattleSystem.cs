@@ -891,6 +891,37 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} gained {expGain} exp");
             yield return playerUnit.Hud.SetExpSmooth();
 
+            //check level up
+            while (playerUnit.Animal.CheckForLevelUp())
+            {
+                playerUnit.Hud.SetLevel();
+                yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} grew to level {playerUnit.Animal.Level}");
+
+                //try to learn a new move
+                var newMove = playerUnit.Animal.GetLearnableMoveAtCurrLevel();
+                if (newMove != null)
+                {
+                    if (playerUnit.Animal.Moves.Count < AnimalBase.MaxNumOfMoves)
+                    {
+                        playerUnit.Animal.LearnMove(newMove);
+                        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} learned {newMove.Base.Name}");
+                        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+                    }
+                    else
+                    {
+                        yield return dialogBox.TypeDialog($"{playerUnit.Animal.Base.Name} is trying to learn {newMove.Base.Name},");
+                        yield return dialogBox.TypeDialog($"but it cannot learn more than {AnimalBase.MaxNumOfMoves} moves.");
+                        yield return ChooseMoveToForget(playerUnit.Animal, newMove.Base);
+                        yield return new WaitUntil(() => state != BattleState.MoveToForget);
+                        yield return new WaitForSeconds(2f);
+
+                    }
+                }
+
+                yield return playerUnit.Hud.SetExpSmooth(true);
+            }
+
+            yield return new WaitForSeconds(1f);
             BattleOver(true);
         } else {
             //pokemon broke out
