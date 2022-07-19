@@ -89,6 +89,19 @@ public class Animal
         VolatileStatus = null;
     }
 
+    //check if all moves are 0
+    public bool CheckMovesAreZero()
+    {
+        for (int i = 0; i < Moves.Count; i++) 
+        {
+            if (Moves[i].PP > 1)
+            {
+                return false;
+            } 
+        }
+        return true;
+    }
+
     //Fucntion to get savable data of animal
     public AnimalSaveData GetSaveData()
     {

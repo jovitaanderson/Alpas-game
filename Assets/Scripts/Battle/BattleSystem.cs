@@ -562,7 +562,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (state == BattleState.MoveSelection)
         {
-            HandleMoveSelection();
+            StartCoroutine(HandleMoveSelection());
         }
         else if (state == BattleState.PartyScreen)
         {
@@ -655,7 +655,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void HandleMoveSelection()
+    IEnumerator HandleMoveSelection()
     {
         if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
             ++currentMove;
@@ -674,7 +674,17 @@ public class BattleSystem : MonoBehaviour
         if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
         {
             var move = playerUnit.Animal.Moves[currentMove];
-            if (move.PP == 0) return;
+            if (move.PP == 0)
+            {
+                if (playerUnit.Animal.CheckMovesAreZero())
+                {
+                    yield return DialogManager.Instance.ShowDialogText("You ran out of moves!");
+                    BattleOver(true);
+                    yield break;
+                }
+                else
+                    yield break;
+            }
 
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
