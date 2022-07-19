@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class SavingSystem : MonoBehaviour
 {
+    [SerializeField] GameObject saveIcon;
     public static SavingSystem i { get; private set; }
     private void Awake()
     {
@@ -82,6 +83,7 @@ public class SavingSystem : MonoBehaviour
 
     void SaveFile(string saveFile, Dictionary<string, object> state)
     {
+        StartCoroutine(ShowSavingIcon());
         //todo: for app
         /*string path = GetPath(saveFile);
         print($"saving to {path}");
@@ -138,5 +140,12 @@ public class SavingSystem : MonoBehaviour
     private string GetPath(string saveFile)
     {
         return Path.Combine(Application.persistentDataPath, saveFile);
+    }
+
+    IEnumerator ShowSavingIcon()
+    {
+        saveIcon.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        saveIcon.SetActive(false);
     }
 }
