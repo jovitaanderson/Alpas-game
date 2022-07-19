@@ -10,6 +10,7 @@ public class QuestList : MonoBehaviour, ISavable
 
     public event Action OnUpdated;
 
+
     public List<Quest> Quests => quests;
 
     public void AddQuest(Quest quest)
