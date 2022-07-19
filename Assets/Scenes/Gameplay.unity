@@ -11705,6 +11705,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8846833007802125983, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 149.22998
+      objectReference: {fileID: 0}
     - target: {fileID: 8846833008066108925, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -11812,14 +11816,6 @@ PrefabInstance:
     - target: {fileID: 8846833009182673574, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846833009260342660, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -51.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846833009260342660, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -30.7
       objectReference: {fileID: 0}
     - target: {fileID: 8846833009260342661, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_IsActive
