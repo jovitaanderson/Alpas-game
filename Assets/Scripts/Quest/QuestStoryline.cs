@@ -8,19 +8,30 @@ public class QuestStoryline : MonoBehaviour
 {
     [SerializeField] QuestBase[] storyline;
     [SerializeField] Text questDescriptionText;
+    [SerializeField] QuestList questList;
 
-    QuestList questList;
-    List<Quest> quest = new List<Quest>();
     List<QuestBase> questBase = new List<QuestBase>();
+    List<Quest> quest = new List<Quest>();
 
     int currentQuestNo = 0;
+    int questCount = 0;
 
     void Start()
     {
-        questList = QuestList.GetQuestList();
-        questList.OnUpdated += UpdateQuestDescription;
+        quest = questList.Quests;
+        QuestListToBaseQuestArray(questList);
+        SetFirstIncompleteQuestDes();
 
-        SetFirstQuestDescription();
+        questList.OnUpdated += UpdateQuestDescription;
+    }
+
+    private void Update()
+    {
+        if(quest.Count != questCount)
+        {
+            SetFirstIncompleteQuestDes();
+            questCount = quest.Count;
+        }
     }
 
     private void RefreshList()
@@ -55,7 +66,7 @@ public class QuestStoryline : MonoBehaviour
         return false;
     }
 
-    public void SetFirstQuestDescription()
+    public void SetFirstIncompleteQuestDes()
     {
         RefreshList();
         for (int i = currentQuestNo; i < storyline.Length; i++)

@@ -4957,6 +4957,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3383985024321534678, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+      propertyPath: questList
+      value: 
+      objectReference: {fileID: 968807639}
     - target: {fileID: 3395865779700736873, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
@@ -12242,6 +12246,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d63d8b628e233d74c8c081f4c81d7aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &968807639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6762355041564878811, guid: 67357e393db24044e9edbf326e2239c7, type: 3}
+  m_PrefabInstance: {fileID: 917173256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426e1d2f8eb329f4bbbb40e2fbfaf34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1026283407
