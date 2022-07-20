@@ -678,8 +678,21 @@ public class BattleSystem : MonoBehaviour
             {
                 if (playerUnit.Animal.CheckMovesAreZero())
                 {
-                    yield return DialogManager.Instance.ShowDialogText("You ran out of moves!");
-                    BattleOver(true);
+                    yield return DialogManager.Instance.ShowDialogText($"{playerUnit.Animal.Base.Name} ran out of moves!");
+                    //check if not all animals have 0 pp
+                    if (playerParty.GetHealthyPPAnimal() != null)
+                    {
+                        //choose other available animals
+                        var playerAnimal = playerParty.GetHealthyPPAnimal();
+                        yield return DialogManager.Instance.ShowDialogText($"{playerAnimal.Base.Name} will be used next");
+                        playerUnit.Setup(playerAnimal);
+                        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+                    }
+                    else
+                    {
+                        BattleOver(true);
+                    }
+                    
                     yield break;
                 }
                 else

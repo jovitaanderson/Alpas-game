@@ -45,6 +45,11 @@ public class AnimalParty : MonoBehaviour
         return animals.Where(x => x.HP > 0).FirstOrDefault();
     }
 
+    public Animal GetHealthyPPAnimal()
+    {
+        return animals.Where(x => (x.CheckMovesAreZero() != true) && (x.HP > 0)).FirstOrDefault();
+    }
+
     public void resetStatsAnimal()
     {
         foreach (var animal in animals) //for loop for every animal in animal list
