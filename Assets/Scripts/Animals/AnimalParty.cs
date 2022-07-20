@@ -60,6 +60,7 @@ public class AnimalParty : MonoBehaviour
             animal.Heal();
             //cure all status of animal
             animal.CureStatus();
+            animal.CureVolatileStatus();
 
             //playerParty.Animals.ForEach(p => p.Heal());
             //animal.Init();
