@@ -62,6 +62,8 @@ public class BattleSystem : MonoBehaviour
 
     bool trainerBattles = false;
 
+    bool isStillDoingHandle = false;
+
 
     public void StartBattle(AnimalParty playerParty, Animal wildAnimal,
         Sprite backgroundBattle, Sprite backgroundCirclesBattle, BattleTrigger trigger = BattleTrigger.LongGrass)
@@ -657,6 +659,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator HandleMoveSelection()
     {
+        if (!isStillDoingHandle) { 
         if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
             ++currentMove;
         else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
@@ -671,44 +674,55 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Animal.Moves[currentMove]);
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
-        {
-            var move = playerUnit.Animal.Moves[currentMove];
-            if (move.PP == 0)
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             {
-                if (playerUnit.Animal.CheckMovesAreZero())
+                isStillDoingHandle = true;
+                var move = playerUnit.Animal.Moves[currentMove];
+                if (move.PP == 0)
                 {
-                    yield return DialogManager.Instance.ShowDialogText($"{playerUnit.Animal.Base.Name} ran out of moves!");
-                    //check if not all animals have 0 pp
-                    if (playerParty.GetHealthyAnimal() != null)
+                    if (playerUnit.Animal.CheckMovesAreZero())
                     {
-                        //choose other available animals
-                        var playerAnimal = playerParty.GetHealthyAnimal();
-                        yield return DialogManager.Instance.ShowDialogText($"{playerAnimal.Base.Name} will be used next");
-                        playerUnit.Setup(playerAnimal);
-                        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
-                        yield return dialogBox.TypeDialog($"Go {playerAnimal.Base.Name} !");
-                        
+                        yield return DialogManager.Instance.ShowDialogText($"{playerUnit.Animal.Base.Name} ran out of moves!");
+                        //check if not all animals have 0 pp
+                        if (playerParty.GetHealthyAnimal() != null)
+                        {
+                            //choose other available animals
+                            var playerAnimal = playerParty.GetHealthyAnimal();
+                            yield return DialogManager.Instance.ShowDialogText($"{playerAnimal.Base.Name} will be used next");
+                            playerUnit.Setup(playerAnimal);
+                            dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+                            yield return dialogBox.TypeDialog($"Go {playerAnimal.Base.Name} !");
+
+                        }
+                        else
+                        {
+                            dialogBox.EnableMoveSelector(false);
+                            dialogBox.EnableDialogText(true);
+                            playerUnit.PlayFaintAnimation();
+                            yield return new WaitForSeconds(1f);
+                            BattleOver(false);
+                        }
+                        isStillDoingHandle = false;
+                        yield break;
                     }
                     else
                     {
-                        dialogBox.EnableMoveSelector(false);
-                        dialogBox.EnableActionSelector(false);
-                        dialogBox.EnableDialogText(true);
-                        playerUnit.PlayFaintAnimation();
-                        yield return new WaitForSeconds(1f);
-                        BattleOver(false);
-                    }
-                    
-                    yield break;
-                }
+                        isStillDoingHandle = false;
+                        yield break;
+                    }                    
+                } 
                 else
-                    yield break;
+                {
+                    dialogBox.EnableMoveSelector(false);
+                    dialogBox.EnableDialogText(true);
+                    StartCoroutine(RunTurns(BattleAction.Move));
+                    isStillDoingHandle = false;
+                }
             }
-
-            dialogBox.EnableMoveSelector(false);
-            dialogBox.EnableDialogText(true);
-            StartCoroutine(RunTurns(BattleAction.Move));
+            else
+            {
+                yield break;
+            }
         }
 
         //When esc key/backspace key press he goes back to selection screen
