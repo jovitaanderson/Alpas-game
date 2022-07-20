@@ -40,13 +40,13 @@ public class ConditionsDB
             ConditionID.brn,
             new Condition()
             {
-                Name = "Burn",
-                StartMessage = "has been burn",
+                Name = "Snarl",
+                StartMessage = "has been snarled at",
                 //lamda functions
                 OnAfterTurn = (Animal animal) =>
                 {
                     animal.DecreaseHP(animal.MaxHp / 12);
-                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to burn");
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to fierce snarling");
                 }
 
             }
@@ -190,13 +190,13 @@ public class ConditionsDB
             ConditionID.bld,
             new Condition()
             {
-                Name = "Blood Bath",
-                StartMessage = "is blood bathing",
+                Name = "Buzz",
+                StartMessage = "is buzzing",
                 //lamda functions
                 OnAfterTurn = (Animal animal) =>
                 {
                     animal.DecreaseHP(animal.MaxHp / 16);
-                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to the blood bath");
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt itself due to the buzz");
                 }
 
             }
@@ -206,27 +206,27 @@ public class ConditionsDB
             ConditionID.slr,
             new Condition()
             {
-                Name = "Solar Beam",
-                StartMessage = "is using solar beaming",
+                Name = "Scream",
+                StartMessage = "is screaming",
                 //lamda functions
                OnStart = (Animal animal) =>
                 {
                     //Sleep for  a random no. of turns between 1-4
                     animal.StatusTime = Random.Range(1,5);
-                    Debug.Log($"Will be solar beamed for {animal.StatusTime} moves");
+                    Debug.Log($"Will be screaming for {animal.StatusTime} moves");
                 },
                 OnAfterTurn = (Animal animal) =>
                 {
                    if(animal.StatusTime <= 0)
                    {
                        animal.CureStatus();
-                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has recovered from solar beam!");
+                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has recovered from the loud scream!");
                        
                    }
 
                     animal.StatusTime--;
                     animal.DecreaseHP(animal.MaxHp / 12);
-                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt its eyes due to solar beam");
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} hurt its ears due to the loud scream");
                     
                 }
 
@@ -237,26 +237,26 @@ public class ConditionsDB
             ConditionID.bbl,
             new Condition()
             {
-                Name = "Bubble Beam",
-                StartMessage = "is using bubble beaming",
+                Name = "Punch",
+                StartMessage = "is punching",
                 //lamda functions
                 OnStart = (Animal animal) =>
                 {
                     //Sleep for  a random no. of turns between 1-4
                     animal.StatusTime = Random.Range(1,5);
-                    Debug.Log($"Will be bubble beamed for {animal.StatusTime} moves");
+                    Debug.Log($"Will be punched for {animal.StatusTime} moves");
                 },
                 OnAfterTurn = (Animal animal) =>
                 {
                    if(animal.StatusTime <= 0)
                    {
                        animal.CureStatus();
-                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has recovered from bubble beam!");
+                       animal.StatusChanges.Enqueue($"{animal.Base.Name} has recovered from the powerful punch!");
                     }
 
                     animal.StatusTime--;
                     animal.DecreaseHP(animal.MaxHp / 12);
-                    animal.StatusChanges.Enqueue($"{animal.Base.Name} cannot breathe due to bubble beam");
+                    animal.StatusChanges.Enqueue($"{animal.Base.Name} cannot breathe due to the powerful punch");
                     
                 }
 
