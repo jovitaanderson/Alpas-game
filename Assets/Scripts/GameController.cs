@@ -185,7 +185,6 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
-        //walletUI.SetActive(false);
         questStoryline.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);

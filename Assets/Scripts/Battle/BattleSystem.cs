@@ -326,6 +326,8 @@ public class BattleSystem : MonoBehaviour
         yield return ShowStatusChanges(sourceUnit.Animal);
 
         move.PP--;
+        sourceUnit.Animal.EmptyMethodForOnPPChanged();
+
         yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} used {move.Base.Name}");
 
         if (CheckIfMoveHits(move, sourceUnit.Animal, targetUnit.Animal))

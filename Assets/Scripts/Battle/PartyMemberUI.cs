@@ -10,6 +10,7 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] GameObject lvlUpObj;
     [SerializeField] Text nameText;
     [SerializeField] Text levelText;
+    [SerializeField] GameObject noPPText;
     [SerializeField] HPBar hpBar;
 
     Animal _animal;
@@ -19,6 +20,7 @@ public class PartyMemberUI : MonoBehaviour
         UpdateData();
 
         _animal.OnHPChanged += UpdateData;
+        _animal.OnPPChanged += UpdateData;
 
     }
 
@@ -29,6 +31,7 @@ public class PartyMemberUI : MonoBehaviour
         levelText.text = "Lvl " + _animal.Level;
         hpBar.SetHP((float)_animal.HP / _animal.MaxHp);
         checkLvlUpImage();
+        checkForNoPP();
     }
 
     public void checkLvlUpImage()
@@ -38,6 +41,14 @@ public class PartyMemberUI : MonoBehaviour
             lvlUpObj.SetActive(true);
         else
             lvlUpObj.SetActive(false);
+    }
+
+    public void checkForNoPP()
+    {
+        if (_animal.CheckMovesAreZero())
+            noPPText.SetActive(true);
+        else
+            noPPText.SetActive(false);
     }
 
     //Change color of selected party member
