@@ -680,17 +680,24 @@ public class BattleSystem : MonoBehaviour
                 {
                     yield return DialogManager.Instance.ShowDialogText($"{playerUnit.Animal.Base.Name} ran out of moves!");
                     //check if not all animals have 0 pp
-                    if (playerParty.GetHealthyPPAnimal() != null)
+                    if (playerParty.GetHealthyAnimal() != null)
                     {
                         //choose other available animals
-                        var playerAnimal = playerParty.GetHealthyPPAnimal();
+                        var playerAnimal = playerParty.GetHealthyAnimal();
                         yield return DialogManager.Instance.ShowDialogText($"{playerAnimal.Base.Name} will be used next");
                         playerUnit.Setup(playerAnimal);
                         dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+                        yield return dialogBox.TypeDialog($"Go {playerAnimal.Base.Name} !");
+                        
                     }
                     else
                     {
-                        BattleOver(true);
+                        dialogBox.EnableMoveSelector(false);
+                        dialogBox.EnableActionSelector(false);
+                        dialogBox.EnableDialogText(true);
+                        playerUnit.PlayFaintAnimation();
+                        yield return new WaitForSeconds(1f);
+                        BattleOver(false);
                     }
                     
                     yield break;
@@ -995,7 +1002,7 @@ public class BattleSystem : MonoBehaviour
         if (enemySpeed < playerSpeed)
         {
             yield return dialogBox.TypeDialog($"Ran away safely");
-            BattleOver(true);
+            BattleOver(false);
         }
         else 
         {
@@ -1005,7 +1012,7 @@ public class BattleSystem : MonoBehaviour
             if (UnityEngine.Random.Range(0,256) < f)
             {
                 yield return dialogBox.TypeDialog($"Ran away safely!");
-                BattleOver(true);
+                BattleOver(false);
             }
             else 
             {

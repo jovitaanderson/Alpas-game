@@ -94,7 +94,7 @@ public class Animal
     {
         for (int i = 0; i < Moves.Count; i++) 
         {
-            if (Moves[i].PP > 1)
+            if (Moves[i].PP > 0)
             {
                 return false;
             } 
