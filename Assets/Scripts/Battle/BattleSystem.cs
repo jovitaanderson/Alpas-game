@@ -692,7 +692,6 @@ public class BattleSystem : MonoBehaviour
                             playerUnit.Setup(playerAnimal);
                             dialogBox.SetMoveNames(playerUnit.Animal.Moves);
                             yield return dialogBox.TypeDialog($"Go {playerAnimal.Base.Name} !");
-
                         }
                         else
                         {
@@ -702,14 +701,9 @@ public class BattleSystem : MonoBehaviour
                             yield return new WaitForSeconds(1f);
                             BattleOver(false);
                         }
-                        isStillDoingHandle = false;
-                        yield break;
                     }
-                    else
-                    {
-                        isStillDoingHandle = false;
-                        yield break;
-                    }                    
+                    isStillDoingHandle = false;
+                    yield break;
                 } 
                 else
                 {
