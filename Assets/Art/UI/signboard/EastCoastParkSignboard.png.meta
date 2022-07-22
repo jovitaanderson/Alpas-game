@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 231407f80836e4e44bd69e542833d36a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7043270198259895959
+    second: EastCoastParkSignboard_0
+  - first:
+      213: -3538455961601640137
+    second: EastCoastParkSignboard_1
+  - first:
+      213: 2398437429105136928
+    second: EastCoastParkSignboard_2
+  - first:
+      213: 8635032307304725515
+    second: EastCoastParkSignboard_3
+  - first:
+      213: -6301813064609583200
+    second: EastCoastParkSignboard_4
+  - first:
+      213: 8246435384321963113
+    second: EastCoastParkSignboard_5
+  - first:
+      213: -5992108886174522511
+    second: EastCoastParkSignboard_6
+  - first:
+      213: 3452075765345350761
+    second: EastCoastParkSignboard_7
+  - first:
+      213: -3362132654673229613
+    second: EastCoastParkSignboard_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +68,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -101,7 +128,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_0
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961bf9f4217414e90800000000000000
+      internalID: -7043270198259895959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_1
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739fe5bec01e4eec0800000000000000
+      internalID: -3538455961601640137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_2
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 1584
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02510d16226f84120800000000000000
+      internalID: 2398437429105136928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_3
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c7be4122cc5d770800000000000000
+      internalID: 8635032307304725515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_4
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0afa70bf7667b88a0800000000000000
+      internalID: -6301813064609583200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_5
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 1136
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964f8b16a49317270800000000000000
+      internalID: 8246435384321963113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_6
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1732b1037b0c7dca0800000000000000
+      internalID: -5992108886174522511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_7
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964f4236e9c38ef20800000000000000
+      internalID: 3452075765345350761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EastCoastParkSignboard_8
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 688
+        width: 448
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d80676f92e4751d0800000000000000
+      internalID: -3362132654673229613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
