@@ -33,4 +33,4 @@ If you wish to play or download the game, head over to https://joderson.itch.io/
 # Credits :clipboard:
 ‘Alpas' is a game project developed by us, students of the National University of Singapore for the module CP2106: Independent Software Development Project (AY 2022/23). ‘Alpas’ is a free-to-play game for the general public and we do not intend to make any revenue from it. Due to the time constraints of the submission for this project, several assets, music, and questions used in this game were not created by us. Below are the credits and links of the rightful owners of each asset, music, and question used in our game. Do contact us if there are any issues. :) 
 
-<a href="https://www.google.com/](https://docs.google.com/document/d/1GA0iyH_So2eDQ_1D8-6ZMCQPOid89I2FyNmXJ3fEP_I/edit?usp=sharing" target="_blank">Credits and special thanks</a>
+<a href="https://docs.google.com/document/d/1GA0iyH_So2eDQ_1D8-6ZMCQPOid89I2FyNmXJ3fEP_I/edit?usp=sharing" target="_blank">Credits and special thanks</a>
