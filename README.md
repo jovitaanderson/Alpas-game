@@ -11,13 +11,15 @@ We hope to make learning fun and interactive for children and young adults in Si
 # Storyline :open_book:
 You are the son of Dr. Mary(Mom) and Dr. Richard(Dad) who just found out that their subordinate, Dr. Doom, has become an evil scientist.
 Dr. Doom has created a virus and injected it into rats for testing. One of the rats had escaped the lab and had spread the virus to all the animals in Singapore. This virus will make animals go bizarre and attack humans if not trained. Your goal is to save these animals by battling and training them to be immune to the virus.
+
 As Dr. Doom is an evil Mathematics genius, he created the virus in a way where the antidote for upgrading each animal could only be obtained by a series of Mathematics questions. Hence, in order to train these animals to be immune to the virus, your goal is to solve these Mathematics and IQ questions.
 To help your journey, Mom and Dad has created treasure chests that will spawn randomly around the map. In hopes of challenging you with IQ, and Singapore History questions, you will be better prepared to solve Dr.Doom's antidote for upgrading each animal, and gain additional coins for doing so!
+
 To win the game, you will have to defeat Dr. Doom's four assistants, Echo, Eve, Pyro, Viper, and Dr. Doom (in that order) to stop the virus from spreading. Upon each successful defeat, a new map will unlock. 
 
 # How to play the game :video_game:
 The game is currently hosted on a web browser and available for download on Windows. <br />
-If you wish to play or download the game head over to https://joderson.itch.io/alpas
+If you wish to play or download the game, head over to https://joderson.itch.io/alpas
 
 # Tech Stack :desktop_computer:	
 * Github (Collaboration)
