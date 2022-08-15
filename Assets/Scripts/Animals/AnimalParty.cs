@@ -42,7 +42,14 @@ public class AnimalParty : MonoBehaviour
     {
         //Get first animal in the party that is no fainted
         //If all animal fainted it will return null
-        return animals.Where(x => x.HP > 0).FirstOrDefault();
+        return animals.Where(x => (x.HP > 0) ).FirstOrDefault(); //&& (x.CheckMovesAreZero() != true)
+    }
+
+    public Animal GetHealthyPPAnimal()
+    {
+        //Get first animal in the party that is no fainted
+        //If all animal fainted it will return null
+        return animals.Where(x => (x.HP > 0) && (x.CheckMovesAreZero() != true)).FirstOrDefault(); 
     }
 
     public void resetStatsAnimal()
@@ -53,6 +60,7 @@ public class AnimalParty : MonoBehaviour
             animal.Heal();
             //cure all status of animal
             animal.CureStatus();
+            animal.CureVolatileStatus();
 
             //playerParty.Animals.ForEach(p => p.Heal());
             //animal.Init();

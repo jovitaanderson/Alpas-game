@@ -62,6 +62,8 @@ public class BattleSystem : MonoBehaviour
 
     bool trainerBattles = false;
 
+    bool isStillDoingHandle = false;
+
 
     public void StartBattle(AnimalParty playerParty, Animal wildAnimal,
         Sprite backgroundBattle, Sprite backgroundCirclesBattle, BattleTrigger trigger = BattleTrigger.LongGrass)
@@ -324,6 +326,8 @@ public class BattleSystem : MonoBehaviour
         yield return ShowStatusChanges(sourceUnit.Animal);
 
         move.PP--;
+        sourceUnit.Animal.EmptyMethodForOnPPChanged();
+
         yield return dialogBox.TypeDialog($"{sourceUnit.Animal.Base.Name} used {move.Base.Name}");
 
         if (CheckIfMoveHits(move, sourceUnit.Animal, targetUnit.Animal))
@@ -657,6 +661,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator HandleMoveSelection()
     {
+        if (!isStillDoingHandle) { 
         if (Input.GetKeyDown(SettingsManager.i.getKey("RIGHT")) || Input.GetKeyDown(SettingsManager.i.getKey("RIGHT1")))
             ++currentMove;
         else if (Input.GetKeyDown(SettingsManager.i.getKey("LEFT")) || Input.GetKeyDown(SettingsManager.i.getKey("LEFT1")))
@@ -671,32 +676,72 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Animal.Moves[currentMove]);
 
-        if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
-        {
-            var move = playerUnit.Animal.Moves[currentMove];
-            if (move.PP == 0)
+            if (Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM")) || Input.GetKeyDown(SettingsManager.i.getKey("CONFIRM1")))
             {
-                if (playerUnit.Animal.CheckMovesAreZero())
+                isStillDoingHandle = true;
+                var move = playerUnit.Animal.Moves[currentMove];
+                if (move.PP == 0)
                 {
-                    yield return DialogManager.Instance.ShowDialogText("You ran out of moves!");
-                    BattleOver(true);
+                    //if (playerUnit.Animal.CheckMovesAreZero())
+                    //{
+                    //    yield return DialogManager.Instance.ShowDialogText($"{playerUnit.Animal.Base.Name} ran out of moves!");
+                    //    //check if not all animals have 0 pp
+                    //    if (playerParty.GetHealthyAnimal() != null)
+                    //    {
+                    //        //choose other available animals
+                    //        var playerAnimal = playerParty.GetHealthyAnimal();
+                    //        yield return DialogManager.Instance.ShowDialogText($"{playerAnimal.Base.Name} will be used next");
+                    //        playerUnit.Setup(playerAnimal);
+                    //        dialogBox.SetMoveNames(playerUnit.Animal.Moves);
+                    //        yield return dialogBox.TypeDialog($"Go {playerAnimal.Base.Name} !");
+                    //    }
+                    //    else
+                    //    {
+                    //        dialogBox.EnableMoveSelector(false);
+                    //        dialogBox.EnableDialogText(true);
+                    //        playerUnit.PlayFaintAnimation();
+                    //        yield return new WaitForSeconds(1f);
+                    //        BattleOver(false);
+                    //    }
+                    //}
+
+                    if (playerUnit.Animal.CheckMovesAreZero())
+                    {
+                        yield return DialogManager.Instance.ShowDialogText($"{playerUnit.Animal.Base.Name} ran out of moves!");
+                        if (isTrainerBattle)
+                        {
+                            //check if all animals have pp
+                            if (playerParty.GetHealthyPPAnimal() == null)
+                            {
+                                dialogBox.EnableMoveSelector(false);
+                                dialogBox.EnableDialogText(true);
+                                playerUnit.PlayFaintAnimation();
+                                yield return new WaitForSeconds(1f);
+                                BattleOver(false);
+                            } 
+
+                        }
+                    }
+                    isStillDoingHandle = false;
                     yield break;
-                }
+                } 
                 else
-                    yield break;
+                {
+                    dialogBox.EnableMoveSelector(false);
+                    dialogBox.EnableDialogText(true);
+                    StartCoroutine(RunTurns(BattleAction.Move));
+                    isStillDoingHandle = false;
+                }
+            }
+            
+            //When esc key/backspace key press he goes back to selection screen
+            else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
+            {
+                dialogBox.EnableMoveSelector(false);
+                dialogBox.EnableDialogText(true);
+                ActionSelection();
             }
 
-            dialogBox.EnableMoveSelector(false);
-            dialogBox.EnableDialogText(true);
-            StartCoroutine(RunTurns(BattleAction.Move));
-        }
-
-        //When esc key/backspace key press he goes back to selection screen
-        else if (Input.GetKeyDown(SettingsManager.i.getKey("BACK")) || Input.GetKeyDown(SettingsManager.i.getKey("BACK1")))
-        {
-            dialogBox.EnableMoveSelector(false);
-            dialogBox.EnableDialogText(true);
-            ActionSelection();
         }
 
     }
@@ -982,7 +1027,7 @@ public class BattleSystem : MonoBehaviour
         if (enemySpeed < playerSpeed)
         {
             yield return dialogBox.TypeDialog($"Ran away safely");
-            BattleOver(true);
+            BattleOver(false);
         }
         else 
         {
@@ -992,7 +1037,7 @@ public class BattleSystem : MonoBehaviour
             if (UnityEngine.Random.Range(0,256) < f)
             {
                 yield return dialogBox.TypeDialog($"Ran away safely!");
-                BattleOver(true);
+                BattleOver(false);
             }
             else 
             {

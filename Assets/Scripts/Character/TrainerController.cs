@@ -40,7 +40,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     {
         if (!battleLost)
         {
-            if (initiator.GetComponent<AnimalParty>().GetHealthyAnimal() != null)
+            if (initiator.GetComponent<AnimalParty>().GetHealthyPPAnimal() != null)
             {
                 character.LookTowards(initiator.position);
                 AudioManager.i.Play(trainerAppearsClip);

@@ -153,7 +153,11 @@ public class GameController : MonoBehaviour
         var wildAnimal = CurrentScene.GetComponent<MapArea>().GetRandomWildAnimal(trigger);
         var wildAnimalCopy = new Animal(wildAnimal.Base, wildAnimal.Level);
 
-        if (playerParty.GetHealthyAnimal() == null)
+        if (playerParty.GetHealthyPPAnimal() == null)
+        {
+            StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted or have no more moves, cannot fight wild animals."));
+        }
+        else if (playerParty.GetHealthyAnimal() == null)
         {
             StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight wild animals."));
         }
@@ -181,7 +185,6 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         miniMapWindow.SetActive(false);
         walletUI.SetActive(false);
-        //walletUI.SetActive(false);
         questStoryline.SetActive(false);
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
@@ -198,7 +201,11 @@ public class GameController : MonoBehaviour
     public void OnEnterTrainersView(TrainerController trainer)
     {
         var playerParty = playerController.GetComponent<AnimalParty>();
-        if (playerParty.GetHealthyAnimal() == null)
+        if (playerParty.GetHealthyPPAnimal() == null)
+        {
+            StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted or have no more moves, cannot fight wild animals."));
+        }
+        else if (playerParty.GetHealthyAnimal() == null)
         {
             StartCoroutine(DialogManager.Instance.ShowDialogText("All your animals are fainted, cannot fight with trainer."));
         } else

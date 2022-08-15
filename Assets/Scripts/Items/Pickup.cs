@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour, Interactable, ISavable
 {
     [SerializeField] ItemBase item;
+    [SerializeField] GameObject miniMapIcon;
 
     public bool Used { get; set; } = false;
 
@@ -17,6 +18,7 @@ public class Pickup : MonoBehaviour, Interactable, ISavable
             Used = true;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
+            miniMapIcon.SetActive(false);
 
             string playerName = initiator.GetComponent<PlayerController>().UserName;
 
@@ -40,6 +42,7 @@ public class Pickup : MonoBehaviour, Interactable, ISavable
         {
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
+            miniMapIcon.SetActive(false);
         }
     }
 }

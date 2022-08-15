@@ -45,6 +45,7 @@ public class Animal
     public Queue<string> StatusChanges { get; private set; }
     public event System.Action OnStatusChanged;
     public event System.Action OnHPChanged;
+    public event System.Action OnPPChanged;
 
 
     public void Init()
@@ -94,7 +95,7 @@ public class Animal
     {
         for (int i = 0; i < Moves.Count; i++) 
         {
-            if (Moves[i].PP > 1)
+            if (Moves[i].PP > 0)
             {
                 return false;
             } 
@@ -227,6 +228,11 @@ public class Animal
         _base = evolution.EvolvesInto;
         //recalculate the stats
         CalculateStats();
+    }
+
+    public void EmptyMethodForOnPPChanged()
+    {
+        OnPPChanged?.Invoke();
     }
 
     public void Heal()
