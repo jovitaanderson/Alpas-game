@@ -14,6 +14,8 @@ To win the game, you will have to defeat Dr. Doom's four assistants, Echo, Eve, 
 The game is currently hosted on a web browser and available for download on Windows. <br />
 If you wish to play or download the game click [here](https://joderson.itch.io/alpas)
 
+<iframe frameborder="0" src="https://itch.io/embed/1585184?border_width=2&amp;bg_color=1b1b1b&amp;fg_color=b5e853&amp;link_color=eaeaea&amp;border_color=000000" width="554" height="169"><a href="https://joderson.itch.io/alpas">Alpas by joderson</a></iframe>
+
 # Motivation 💪
 As gamers ourselves, we decided that since games are already so addictive why not benefit ourselves from them? When we were young, we did not have much interest in reading a variety of books to expand our knowledge, but instead, would prefer spending our time playing video games. At that point in time, the video games that we played were not developed for educational purposes. We played it just because it was fun. As a result, we were often lacking behind our peers academically in school because we spent too much time on games that did not benefit us in the long run. 
 
