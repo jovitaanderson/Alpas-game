@@ -20,6 +20,7 @@ To win the game, you will have to defeat Dr. Doom's four assistants, Echo, Eve, 
 # How to play the game 🎮
 The game is currently hosted on a web browser and available for download on Windows. <br />
 If you wish to play or download the game, head over to https://joderson.itch.io/alpas
+<iframe frameborder="0" src="https://itch.io/embed/1585184?border_width=0&amp;bg_color=1b1b1b&amp;fg_color=b5e853&amp;link_color=eaeaea&amp;border_color=000000" width="550" height="165"><a href="https://joderson.itch.io/alpas">Alpas by joderson</a></iframe>
 
 # Tech Stack 🖥️	
 * Github (Collaboration)
